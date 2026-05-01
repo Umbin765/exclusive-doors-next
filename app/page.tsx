@@ -1,7 +1,6 @@
 import Nav from '@/components/Nav';
 import Hero from '@/components/Hero';
 import CategoryGrid from '@/components/CategoryGrid';
-import StatsBar from '@/components/StatsBar';
 import ProductSection from '@/components/ProductSection';
 import CtaBand from '@/components/CtaBand';
 import WhyUs from '@/components/WhyUs';
@@ -19,7 +18,6 @@ export default function Home() {
       <Nav />
       <Hero />
       <CategoryGrid />
-      <StatsBar />
       {productSections.map((section) => (
         <ProductSection key={section.id} section={section} />
       ))}
