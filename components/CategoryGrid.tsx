@@ -2,7 +2,7 @@ import { categories } from '@/lib/data';
 
 export default function CategoryGrid() {
   return (
-    <section className="bg-neutral-900 flex flex-col min-h-[70vh]">
+    <section className="bg-neutral-900 flex flex-col min-h-[50vh]">
       <div className="flex-1 grid grid-cols-2 lg:grid-cols-4 gap-2 p-2">
         {categories.map((cat) => (
           <a
