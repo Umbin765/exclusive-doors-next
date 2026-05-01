@@ -21,8 +21,10 @@ export interface Stat {
 
 export interface CategoryCard {
   title: string;
+  tags: string;
   sub: string;
   img: string;
+  href: string;
 }
 
 export interface ProductSectionData {
@@ -132,10 +134,34 @@ export const heroHighlights = [
 ];
 
 export const categories: CategoryCard[] = [
-  { title: 'Uși Interior',  sub: 'Filomuro, furnir, sticlă, glisante și duble',     img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80' },
-  { title: 'Uși Exterior',  sub: 'Aluminiu, lemn și soluții complet personalizate', img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80' },
-  { title: 'Uși Glisante',  sub: 'Sisteme glisante, liftant-culisante și pliante',  img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80' },
-  { title: 'Uși Pivotante', sub: 'Design modern, pivot central și offset',          img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80' },
+  {
+    title: 'Uși Interior',
+    tags: 'FILOMURO, FURNIR, STICLĂ, ALBE',
+    sub: 'La comandă, adaptate la dimensiuni, finisaje și stil',
+    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+    href: '#interior',
+  },
+  {
+    title: 'Uși Exterior',
+    tags: 'ALUMINIU, LEMN, LA COMANDĂ',
+    sub: 'Modele de calitate, configurate la comandă',
+    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
+    href: '#exterior',
+  },
+  {
+    title: 'Uși Glisante',
+    tags: 'SISTEM GLISANT, PLIANTE, LIFTANT',
+    sub: 'Elegante și funcționale, ideale pentru spații deschise',
+    img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80',
+    href: '#glisante',
+  },
+  {
+    title: 'Uși Pivotante',
+    tags: 'PIVOT CENTRAL, PIVOT OFFSET',
+    sub: 'Design spectaculos pentru intrări de impact',
+    img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80',
+    href: '#pivotante',
+  },
 ];
 
 export const statsBarItems: Stat[] = [
