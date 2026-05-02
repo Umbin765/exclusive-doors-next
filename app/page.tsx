@@ -18,7 +18,7 @@ export default function Home() {
       <Nav />
       <Hero />
       <CategoryGrid />
-      <div className="bg-[linear-gradient(180deg,_#ffffff_0%,_#f2ede8_25%,_#e8e2db_50%,_#f2ede8_75%,_#ffffff_100%)]">
+      <div className="bg-[linear-gradient(180deg,_#ffffff_0%,_#fff8e8_15%,_#fdefc4_32%,_#fef6d8_48%,_#f0ebe4_65%,_#e4ddd5_80%,_#ffffff_100%)]">
         {productSections.map((section, i) => (
           <ProductSection key={section.id} section={section} alt={i % 2 !== 0} />
         ))}
