@@ -34,16 +34,28 @@ export default function ProductSection({ section }: { section: ProductSectionDat
         {subCards.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6" data-aos="fade-up">
             {subCards.map((card) => (
-              <a key={card.title} href="#contact" className="group block">
-                <div className="overflow-hidden rounded-lg mb-4 bg-gray-100">
+              <a
+                key={card.title}
+                href="#contact"
+                className="group block border border-gray-200 rounded-xl overflow-hidden hover:border-amber-400 transition-colors duration-300"
+              >
+                <div className="overflow-hidden">
                   <img
                     src={card.img}
                     alt={card.title}
                     className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <h3 className="font-bold text-gray-900 mb-1 group-hover:text-amber-500 transition-colors">{card.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{card.desc}</p>
+                <div className="p-5">
+                  <h3 className="font-bold text-gray-900 mb-2">{card.title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed mb-4">{card.desc}</p>
+                  <span className="inline-flex items-center gap-1 text-sm font-semibold text-amber-500">
+                    Detalii
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </span>
+                </div>
               </a>
             ))}
           </div>
