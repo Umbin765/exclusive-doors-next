@@ -37,7 +37,7 @@ export default function ProductSection({ section }: { section: ProductSectionDat
               <a
                 key={card.title}
                 href="#contact"
-                className="group block border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:border-amber-400 hover:shadow-lg transition-all duration-300"
+                className="group block border-2 border-transparent rounded-xl overflow-hidden shadow-md hover:border-amber-400 hover:shadow-[0_8px_40px_rgba(0,0,0,0.18)] transition-all duration-300"
               >
                 <div className="overflow-hidden">
                   <img
