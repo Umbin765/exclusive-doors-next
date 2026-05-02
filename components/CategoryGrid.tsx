@@ -2,7 +2,7 @@ import { categories } from '@/lib/data';
 
 export default function CategoryGrid() {
   return (
-    <section className="bg-white py-12">
+    <section className="bg-white pt-20 pb-12">
       <div className="px-4">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-2" style={{ height: '70vh' }}>
           {categories.map((cat) => (
