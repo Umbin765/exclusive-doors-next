@@ -1,11 +1,11 @@
 import { ProductSectionData, megaMenus } from '@/lib/data';
 
-export default function ProductSection({ section }: { section: ProductSectionData }) {
+export default function ProductSection({ section, alt }: { section: ProductSectionData; alt?: boolean }) {
   const { id, eyebrow, heading, body, ctaLabel } = section;
   const subCards = megaMenus[id]?.cards ?? [];
 
   return (
-    <section className="py-20 bg-white border-t border-gray-100" id={id}>
+    <section className={`py-20 border-t border-gray-100 ${alt ? 'bg-stone-50' : 'bg-white'}`} id={id}>
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Text block */}

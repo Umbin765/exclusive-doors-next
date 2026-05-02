@@ -18,8 +18,8 @@ export default function Home() {
       <Nav />
       <Hero />
       <CategoryGrid />
-      {productSections.map((section) => (
-        <ProductSection key={section.id} section={section} />
+      {productSections.map((section, i) => (
+        <ProductSection key={section.id} section={section} alt={i % 2 !== 0} />
       ))}
       <CtaBand />
       <WhyUs />
