@@ -34,17 +34,17 @@ export default function ProductSection({ section }: { section: ProductSectionDat
         {subCards.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6" data-aos="fade-up">
             {subCards.map((card) => (
-              <div key={card.title}>
+              <a key={card.title} href="#contact" className="group block">
                 <div className="overflow-hidden rounded-lg mb-4 bg-gray-100">
                   <img
                     src={card.img}
                     alt={card.title}
-                    className="w-full h-56 object-cover hover:scale-105 transition-transform duration-500"
+                    className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <h3 className="font-bold text-gray-900 mb-1">{card.title}</h3>
+                <h3 className="font-bold text-gray-900 mb-1 group-hover:text-amber-500 transition-colors">{card.title}</h3>
                 <p className="text-sm text-gray-500 leading-relaxed">{card.desc}</p>
-              </div>
+              </a>
             ))}
           </div>
         )}
