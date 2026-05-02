@@ -32,10 +32,7 @@ export interface ProductSectionData {
   eyebrow: string;
   heading: string;
   body: string;
-  img: string;
-  alt: string;
-  imageLeft: boolean;
-  dark: boolean;
+  ctaLabel: string;
 }
 
 export interface Feature {
@@ -174,43 +171,31 @@ export const statsBarItems: Stat[] = [
 export const productSections: ProductSectionData[] = [
   {
     id: 'interior',
-    eyebrow: 'Showroom București',
-    heading: 'Showroom și magazin de uși de interior în București',
-    body: 'Descoperiți o selecție vastă de uși de interior — filomuro, furnir, sticlă, glisante și duble — expuse în showroom-ul nostru din București. Fiecare model poate fi personalizat la comandă.',
-    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80',
-    alt: 'Uși Interior',
-    imageLeft: true,
-    dark: false,
+    eyebrow: 'Showroom și magazin de uși de interior în București',
+    heading: 'Uși de interior la comandă',
+    body: 'Dacă amenajezi, renovezi sau construiești un spațiu premium și cauți un magazin de uși de interior în București, în showroom-ul Exclusive Doors găsești soluții alese pentru proiecte rezidențiale și comerciale. Oferim uși de interior la comandă, adaptate perfect în funcție de dimensiuni, finisaje, stil și cerințele fiecărui spațiu: uși din lemn, uși filomuro, uși albe, uși glisante, uși laminate sau uși din sticlă.',
+    ctaLabel: 'Vezi colecția de uși de interior',
   },
   {
     id: 'exterior',
-    eyebrow: 'La comandă',
-    heading: 'Uși de exterior la comandă',
-    body: 'Uși de exterior din aluminiu, lemn masiv și soluții complet personalizate. Securitate ridicată, izolare termică și estetică premium pentru intrarea casei dumneavoastră.',
-    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80',
-    alt: 'Uși Exterior',
-    imageLeft: false,
-    dark: true,
+    eyebrow: 'Uși de exterior la comandă',
+    heading: 'Uși de exterior premium',
+    body: 'Uși de exterior din aluminiu, lemn masiv și soluții complet personalizate pentru orice proiect rezidențial sau comercial. Securitate ridicată, izolare termică superioară și estetică premium — pentru o intrare care face impresie și rezistă în timp.',
+    ctaLabel: 'Vezi colecția de uși de exterior',
   },
   {
     id: 'glisante',
-    eyebrow: 'Sisteme glisante',
-    heading: 'Uși glisante premium',
-    body: 'Sisteme glisante, liftant-culisante și pliante pentru interior și exterior. Soluții elegante care maximizează spațiul și aduc lumină naturală în orice cameră.',
-    img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=900&q=80',
-    alt: 'Uși Glisante',
-    imageLeft: true,
-    dark: false,
+    eyebrow: 'Sisteme glisante premium',
+    heading: 'Uși glisante la comandă',
+    body: 'Sisteme glisante, liftant-culisante și pliante pentru interior și exterior. Soluții elegante care maximizează spațiul și aduc lumină naturală în orice cameră — perfecte pentru case moderne și spații deschise.',
+    ctaLabel: 'Vezi colecția de uși glisante',
   },
   {
     id: 'pivotante',
-    eyebrow: 'Design modern',
-    heading: 'Uși pivotante de design',
-    body: 'Uși cu pivot central sau offset — statement-ul perfect pentru o intrare de impact. Disponibile în dimensiuni supradimensionate și finisaje la alegere.',
-    img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=80',
-    alt: 'Uși Pivotante',
-    imageLeft: false,
-    dark: true,
+    eyebrow: 'Uși pivotante de design',
+    heading: 'Uși pivotante la comandă',
+    body: 'Uși cu pivot central sau offset — statement-ul perfect pentru o intrare de impact. Disponibile în dimensiuni supradimensionate, finisaje la alegere și soluții complet personalizate pentru proiecte de arhitectură de excepție.',
+    ctaLabel: 'Vezi colecția de uși pivotante',
   },
 ];
 
