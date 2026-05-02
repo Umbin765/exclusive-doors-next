@@ -5,7 +5,7 @@ export default function ProductSection({ section, alt }: { section: ProductSecti
   const subCards = megaMenus[id]?.cards ?? [];
 
   return (
-    <section className="py-20 border-t border-stone-200/60" id={id}>
+    <section className={`py-20 border-t border-gray-100 ${alt ? 'bg-stone-50' : 'bg-white'}`} id={id}>
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Text block */}
