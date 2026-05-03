@@ -16,7 +16,7 @@ export default function WhyUs() {
 
         {/* Right: content */}
         <div data-aos="fade-left">
-          <p className="text-xs tracking-[0.3em] uppercase text-amber-500 font-semibold mb-4">
+          <p className="text-xs tracking-[0.3em] uppercase text-yellow-400 font-semibold mb-4">
             De ce să alegi Exclusive Doors?
           </p>
           <h2 className="text-4xl font-bold leading-tight mb-6">
@@ -32,7 +32,7 @@ export default function WhyUs() {
           <div className="space-y-7">
             {features.map((f) => (
               <div key={f.title} className="flex gap-4">
-                <div className="shrink-0 mt-0.5 text-amber-500">
+                <div className="shrink-0 mt-0.5 text-yellow-400">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}>
                     <path d={f.iconPath} />
                   </svg>

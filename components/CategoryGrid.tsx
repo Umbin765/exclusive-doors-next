@@ -5,7 +5,7 @@ export default function CategoryGrid() {
     <section className="bg-white pt-20 pb-12">
       {/* Section header */}
       <div className="text-center mb-10 px-6" data-aos="fade-up">
-        <p className="text-xs font-bold tracking-[0.3em] uppercase text-amber-500 mb-3">
+        <p className="text-xs font-bold tracking-[0.3em] uppercase text-yellow-400 mb-3">
           Colecția noastră
         </p>
         <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -46,7 +46,7 @@ export default function CategoryGrid() {
 
               {/* Bottom content */}
               <div className="absolute bottom-0 left-0 right-0 p-5">
-                <p className="text-[10px] font-bold tracking-widest text-amber-400 mb-2 uppercase">
+                <p className="text-[10px] font-bold tracking-widest text-yellow-400 mb-2 uppercase">
                   {cat.tags}
                 </p>
                 <h3 className="text-lg font-bold text-white mb-1">{cat.title}</h3>

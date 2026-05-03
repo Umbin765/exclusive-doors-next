@@ -21,7 +21,7 @@ export default function Hero() {
             href="https://maps.google.com/?q=Bd.+Dacia+153-155+Bucuresti"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-amber-400 text-gray-900 text-xs font-semibold px-4 py-2 rounded-full mt-8 mb-8 hover:bg-amber-300 transition-colors"
+            className="inline-flex items-center gap-2 bg-yellow-400 text-gray-900 text-xs font-semibold px-4 py-2 rounded-full mt-8 mb-8 hover:bg-yellow-300 transition-colors"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
               <path fillRule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-2.003 3.5-4.697 3.5-8.327a8 8 0 10-16 0c0 3.63 1.555 6.326 3.5 8.327a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
@@ -31,7 +31,7 @@ export default function Hero() {
 
           <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-6 max-w-3xl">
             Showroom &amp; magazin de uși{' '}
-            <span className="text-amber-400">la comandă</span>{' '}
+            <span className="text-yellow-400">la comandă</span>{' '}
             premium în București
           </h1>
           <p className="text-gray-300 text-base lg:text-lg leading-relaxed max-w-2xl mb-10">
@@ -43,7 +43,7 @@ export default function Hero() {
           <div className="flex flex-wrap gap-4 mb-14">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 bg-amber-400 text-gray-900 text-sm font-bold px-8 py-3.5 hover:bg-amber-300 transition-colors"
+              className="inline-flex items-center gap-2 bg-yellow-400 text-gray-900 text-sm font-bold px-8 py-3.5 hover:bg-yellow-300 transition-colors"
             >
               Programare showroom
               <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
@@ -80,7 +80,7 @@ export default function Hero() {
           <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-gray-700">
             {heroHighlights.map((item) => (
               <div key={item.text} className="py-4 px-5 flex items-center gap-3">
-                <span className="text-amber-400 shrink-0">{item.icon}</span>
+                <span className="text-yellow-400 shrink-0">{item.icon}</span>
                 <span className="text-sm text-gray-300">{item.text}</span>
               </div>
             ))}

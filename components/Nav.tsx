@@ -29,7 +29,7 @@ export default function Nav() {
                   href={menu.href}
                   className={`px-3 h-full flex items-center text-sm border-b-2 transition-colors ${
                     activeMenu === key
-                      ? 'text-amber-500 border-amber-400'
+                      ? 'text-yellow-400 border-yellow-400'
                       : 'text-gray-600 border-transparent hover:text-gray-900'
                   }`}
                 >
@@ -48,7 +48,7 @@ export default function Nav() {
                           <li key={cat}>
                             <a
                               href="#"
-                              className="text-sm text-gray-700 hover:text-amber-500 transition-colors block py-1"
+                              className="text-sm text-gray-700 hover:text-yellow-400 transition-colors block py-1"
                             >
                               {cat}
                             </a>
@@ -57,7 +57,7 @@ export default function Nav() {
                       </ul>
                       <a
                         href={menu.href}
-                        className="text-amber-500 text-xs font-semibold mt-4 inline-flex items-center gap-1 hover:gap-2 transition-all"
+                        className="text-yellow-400 text-xs font-semibold mt-4 inline-flex items-center gap-1 hover:gap-2 transition-all"
                       >
                         Vezi toate →
                       </a>
