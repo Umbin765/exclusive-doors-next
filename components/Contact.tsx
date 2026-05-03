@@ -34,11 +34,16 @@ export default function Contact() {
             </div>
           </div>
 
-          <div
-            className="h-72 bg-stone-700 flex items-center justify-center text-stone-400 text-sm"
-            data-aos="fade-left"
-          >
-            Google Maps embed placeholder
+          <div className="h-72 rounded-lg overflow-hidden" data-aos="fade-left">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.6!2d26.0685308!3d44.5672858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b21ca1c1c4fd8f%3A0xee6fb9a733ebb916!2sExclusive%20Doors!5e0!3m2!1sro!2sro!4v1"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
       </div>
