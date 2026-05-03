@@ -6,8 +6,6 @@ import CtaBand from '@/components/CtaBand';
 import WhyUs from '@/components/WhyUs';
 import Reviews from '@/components/Reviews';
 import Portfolio from '@/components/Portfolio';
-import Blog from '@/components/Blog';
-import Faq from '@/components/Faq';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import { productSections } from '@/lib/data';
@@ -25,8 +23,6 @@ export default function Home() {
       <WhyUs />
       <Reviews />
       <Portfolio />
-      <Blog />
-      <Faq />
       <Contact />
       <Footer />
     </>
