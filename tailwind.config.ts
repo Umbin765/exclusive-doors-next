@@ -7,7 +7,14 @@ const config: Config = {
     './lib/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        accent: {
+          DEFAULT: '#F8AF17',
+          hover: '#F5A000',
+        },
+      },
+    },
   },
   plugins: [],
 }

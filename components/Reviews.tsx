@@ -12,7 +12,7 @@ export default function Reviews() {
         <div className="grid md:grid-cols-3 gap-6">
           {reviews.map((r) => (
             <div key={r.name} className="bg-stone-700 p-6" data-aos="fade-up">
-              <div className="flex text-amber-400 text-lg mb-3 tracking-tight">★★★★★</div>
+              <div className="flex text-accent text-lg mb-3 tracking-tight">★★★★★</div>
               <p className="text-stone-300 text-sm leading-relaxed mb-5">&ldquo;{r.text}&rdquo;</p>
               <div className="flex items-center justify-between text-sm">
                 <span className="font-semibold text-white">{r.name}</span>

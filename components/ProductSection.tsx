@@ -10,7 +10,7 @@ export default function ProductSection({ section, alt }: { section: ProductSecti
 
         {/* Text block */}
         <div className="max-w-2xl mb-12" data-aos="fade-up">
-          <p className="text-xs font-bold tracking-[0.25em] uppercase text-amber-400 mb-4">
+          <p className="text-xs font-bold tracking-[0.25em] uppercase text-accent mb-4">
             {eyebrow}
           </p>
           <h2 className="text-4xl font-bold text-gray-900 leading-tight mb-6">
@@ -37,7 +37,7 @@ export default function ProductSection({ section, alt }: { section: ProductSecti
               <a
                 key={card.title}
                 href="#contact"
-                className="group block border-2 border-transparent rounded-xl overflow-hidden shadow-md hover:border-amber-400 hover:shadow-[0_8px_40px_rgba(0,0,0,0.18)] transition-all duration-300"
+                className="group block border-2 border-transparent rounded-xl overflow-hidden shadow-md hover:border-accent hover:shadow-[0_8px_40px_rgba(0,0,0,0.18)] transition-all duration-300"
               >
                 <div className="overflow-hidden">
                   <img
@@ -49,7 +49,7 @@ export default function ProductSection({ section, alt }: { section: ProductSecti
                 <div className="p-5">
                   <h3 className="font-bold text-gray-900 mb-2">{card.title}</h3>
                   <p className="text-sm text-gray-500 leading-relaxed mb-4">{card.desc}</p>
-                  <span className="inline-flex items-center gap-1 text-sm font-semibold text-amber-400">
+                  <span className="inline-flex items-center gap-1 text-sm font-semibold text-accent">
                     Detalii
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

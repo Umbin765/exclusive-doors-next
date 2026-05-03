@@ -2,7 +2,7 @@ import { statsBarItems } from '@/lib/data';
 
 export default function StatsBar() {
   return (
-    <section className="bg-amber-400 text-gray-900 py-12">
+    <section className="bg-accent text-gray-900 py-12">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
         {statsBarItems.map((stat) => (
           <div key={stat.label} data-aos="fade-up">
