@@ -37,7 +37,7 @@ export default function Nav() {
                 </a>
 
                 {activeMenu === key && (
-                  <div className="absolute top-full left-0 w-[660px] bg-white shadow-2xl border border-gray-100 rounded-2xl p-6 grid grid-cols-[160px_1fr] gap-6">
+                  <div className="absolute top-full left-0 w-[660px] bg-white shadow-2xl border border-gray-100 p-6 grid grid-cols-[160px_1fr] gap-6">
                     {/* Category list */}
                     <div>
                       <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">
