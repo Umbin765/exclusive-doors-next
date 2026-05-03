@@ -47,6 +47,52 @@ export interface Review {
   text: string;
 }
 
+export interface FallbackGoogleReview {
+  author_name: string;
+  profile_photo_url: string;
+  rating: number;
+  relative_time_description: string;
+  text: string;
+}
+
+export const fallbackGoogleReviews: FallbackGoogleReview[] = [
+  {
+    author_name: 'Cristina Constantin',
+    profile_photo_url: 'https://lh3.googleusercontent.com/a/ACg8ocI0R_Pzn1KYpW9CoP1zy_hwYTbRVZ8sehXsDseO9mLjEczp=s128-c0x00000000-cc-rp-mo-ba4',
+    rating: 5,
+    relative_time_description: 'acum 9 luni',
+    text: 'Am mers la Exclusive Doors căutând o ușă cât mai calitativă, atât din punct de vedere al siguranței dar și pentru izolare termică și fonică. Doamna Monica a fost foarte amabilă încă de la prima conversație telefonică. Am ales o ușă de exterior Groke complet din aluminiu. Montajul a fost super ok. Recomand atât ușa în sine cât și Exclusive Doors și pe doamna Monica.',
+  },
+  {
+    author_name: 'Bianca N',
+    profile_photo_url: 'https://lh3.googleusercontent.com/a/ACg8ocKe8pG65Kn_sksrZMC7_MoUGnHWrnJzxU8Ta5lH8hKolG7yLg=s128-c0x00000000-cc-rp-mo',
+    rating: 5,
+    relative_time_description: 'acum 5 luni',
+    text: 'Am avut o experiență foarte bună cu dvs (și cu colegul dvs. Robert). Am primit explicații prompte și detaliate de fiecare dată, ne-ați ghidat în alegerea opțiunilor disponibile într-un mod care să ne asigure că primim cel mai bun raport calitate-preț și cele mai bune soluții. Vă mulțumim și cu siguranță vom reveni la dvs. pentru următorul nostru proiect.',
+  },
+  {
+    author_name: 'Ashraf AL Kebsi',
+    profile_photo_url: 'https://lh3.googleusercontent.com/a/ACg8ocLjIbt26Xy9usXgthQOkC1Z1ZzInOAZcfQDy3BJh5-8o8VKaQ=s128-c0x00000000-cc-rp-mo-ba2',
+    rating: 5,
+    relative_time_description: 'acum un an',
+    text: 'O echipă profesională, promptă, eficientă și precisă. Din momentul în care am discutat telefonic, vizitat showroomul elegant unde am putut afla foarte multe informații utile care ne-au ajutat să luăm cea mai bună decizie, calitatea materialelor și sistemelor de închidere și până la eficiența echipei de montaj. Îi recomand cu încredere!',
+  },
+  {
+    author_name: 'Cristi Dandes',
+    profile_photo_url: 'https://lh3.googleusercontent.com/a-/ALV-UjVvRFrZ69I5OPT0S4fzXkx2sLglpGyRJsF5phQBf-DUzoBHBKwy=s128-c0x00000000-cc-rp-mo-ba3',
+    rating: 5,
+    relative_time_description: 'acum 4 ani',
+    text: 'Ușa pe care am comandat-o este mult peste ceea ce ne-am imaginat că ar putea fi o ușă de intrare. Deși ne-am convins din showroom că au niște materiale și sisteme extrem de calitative, când am văzut în realitate cum arată ne-a surprins complet. Toată interacțiunea, atât în showroom, cât și la montaj, sunt peste orice customer service întâlnit în România.',
+  },
+  {
+    author_name: 'Marian Tatarusanu',
+    profile_photo_url: 'https://lh3.googleusercontent.com/a-/ALV-UjX2HKyQk_xduX_ySFFogMnXH-u6sBxowOpaYh16Tz2DMxu_tRUs=s128-c0x00000000-cc-rp-mo',
+    rating: 5,
+    relative_time_description: 'acum 2 ani',
+    text: 'Mulțumesc echipei pentru încă o colaborare la cele mai înalte standarde. Tocmai ce am finalizat lucrările la GrandAV133 unde echipa s-a ocupat de parchet și uși. Profesionalism desăvârșit, termene respectate și rezultate impecabile.',
+  },
+];
+
 export interface PortfolioItem {
   title: string;
   img: string;

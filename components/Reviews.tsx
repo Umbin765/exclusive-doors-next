@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { fallbackGoogleReviews } from '@/lib/data';
 
 interface GoogleReview {
   author_name: string;
@@ -86,7 +87,6 @@ function ReviewCard({ review }: { review: GoogleReview }) {
 
 export default function Reviews() {
   const [data, setData] = useState<ReviewsData | null>(null);
-  const [error, setError] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -94,12 +94,12 @@ export default function Reviews() {
       .then((r) => r.json())
       .then((json) => {
         if (json.error || !Array.isArray(json.reviews)) {
-          setError(true);
+          setData({ rating: 4.3, totalReviews: 152, reviews: fallbackGoogleReviews });
         } else {
           setData(json);
         }
       })
-      .catch(() => setError(true));
+      .catch(() => setData({ rating: 4.3, totalReviews: 152, reviews: fallbackGoogleReviews }));
   }, []);
 
   const scroll = (dir: 'left' | 'right') => {
@@ -144,7 +144,7 @@ export default function Reviews() {
         </div>
 
         {/* Cards + arrows */}
-        {error ? null : data ? (
+        {data ? (
           <div className="relative" data-aos="fade-up">
             <button
               onClick={() => scroll('left')}
