@@ -21,7 +21,7 @@ export default function ProductSection({ section, alt }: { section: ProductSecti
           </p>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 border border-gray-900 text-sm font-medium px-6 py-3 rounded-full hover:bg-gray-900 hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 border border-gray-900 text-sm font-medium px-6 py-3 hover:bg-gray-900 hover:text-white transition-colors"
           >
             {ctaLabel}
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

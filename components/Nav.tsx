@@ -109,7 +109,7 @@ export default function Nav() {
             </a>
             <a
               href="#contact"
-              className="bg-gray-900 text-white text-sm px-5 py-2.5 rounded-full hover:bg-gray-700 transition-colors"
+              className="bg-gray-900 text-white text-sm px-5 py-2.5 hover:bg-gray-700 transition-colors"
             >
               Programare showroom
             </a>
