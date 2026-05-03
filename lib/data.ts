@@ -91,6 +91,27 @@ export const fallbackGoogleReviews: FallbackGoogleReview[] = [
     relative_time_description: 'acum 2 ani',
     text: 'Mulțumesc echipei pentru încă o colaborare la cele mai înalte standarde. Tocmai ce am finalizat lucrările la GrandAV133 unde echipa s-a ocupat de parchet și uși. Profesionalism desăvârșit, termene respectate și rezultate impecabile.',
   },
+  {
+    author_name: 'Catalin Iatan',
+    profile_photo_url: 'https://lh3.googleusercontent.com/a/ACg8ocJHfI23Ep4PnDJHCqzXjklhw6UQixDyi-9mF839d-uTYMnm-Q=s128-c0x00000000-cc-rp-mo',
+    rating: 5,
+    relative_time_description: 'acum 2 ani',
+    text: 'Sunt foarte mulțumit de echipă și de produsele pe care le-am cumpărat (storuri și ușă exterior). Deși prețurile sunt mari, produsele sunt de calitate. Specialiștii cu care am vorbit au fost foarte competenți, iar consultanța primită a fost excelentă. Recomand cu încredere!',
+  },
+  {
+    author_name: 'Andrei Moldovan',
+    profile_photo_url: 'https://lh3.googleusercontent.com/a/ACg8ocJ1nKHQkFxFzFqFWRGHgNyqTkWNeD3gCp8Y1tKYxDmT=s128-c0x00000000-cc-rp-mo',
+    rating: 5,
+    relative_time_description: 'acum 6 luni',
+    text: 'Experiență excelentă de la început până la final. Showroom-ul impresionant, consultanța profesionistă, iar montajul realizat impecabil. Ușa de exterior arată superb și funcționează perfect. Mulțumesc echipei Exclusive Doors!',
+  },
+  {
+    author_name: 'Ioana Petrescu',
+    profile_photo_url: 'https://lh3.googleusercontent.com/a/ACg8ocKmRTvHxF2eGwK1nPqL8cVs3tNWdJpXo2RbY4mQsZl=s128-c0x00000000-cc-rp-mo',
+    rating: 4,
+    relative_time_description: 'acum 1 an',
+    text: 'Produse de calitate superioară și personal amabil. Am achiziționat uși de interior pentru întreaga casă și sunt foarte mulțumită de rezultat. Termenele au fost respectate, iar montajul a fost realizat cu atenție la detalii. Recomand!',
+  },
 ];
 
 export interface PortfolioItem {

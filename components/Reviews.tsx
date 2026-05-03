@@ -93,11 +93,15 @@ export default function Reviews() {
     fetch('/api/reviews')
       .then((r) => r.json())
       .then((json) => {
-        if (json.error || !Array.isArray(json.reviews)) {
-          setData({ rating: 4.3, totalReviews: 152, reviews: fallbackGoogleReviews });
-        } else {
-          setData(json);
-        }
+        const liveReviews = Array.isArray(json.reviews) ? json.reviews : [];
+        const liveNames = new Set(liveReviews.map((r: GoogleReview) => r.author_name));
+        const extras = fallbackGoogleReviews.filter((r) => !liveNames.has(r.author_name));
+        const merged = [...liveReviews, ...extras].slice(0, 8);
+        setData({
+          rating: json.rating ?? 4.3,
+          totalReviews: json.totalReviews ?? 152,
+          reviews: merged,
+        });
       })
       .catch(() => setData({ rating: 4.3, totalReviews: 152, reviews: fallbackGoogleReviews }));
   }, []);
