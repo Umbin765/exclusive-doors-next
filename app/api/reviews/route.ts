@@ -23,6 +23,6 @@ export async function GET() {
     name: data.result.name,
     rating: data.result.rating,
     totalReviews: data.result.user_ratings_total,
-    reviews: data.result.reviews,
+    reviews: data.result.reviews.filter((r: { rating: number }) => r.rating >= 4),
   });
 }
