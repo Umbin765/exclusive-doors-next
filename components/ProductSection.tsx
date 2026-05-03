@@ -43,7 +43,7 @@ export default function ProductSection({ section, alt }: { section: ProductSecti
                   <img
                     src={card.img}
                     alt={card.title}
-                    className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div className="p-5">
