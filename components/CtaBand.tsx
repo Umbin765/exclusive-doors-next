@@ -5,7 +5,7 @@ export default function CtaBand() {
       {/* Left — dark content panel */}
       <div className="bg-neutral-900 flex items-center px-10 py-16 lg:px-16">
         <div data-aos="fade-up" className="max-w-lg">
-          <p className="text-xs font-bold tracking-[0.3em] uppercase text-yellow-400 mb-5">
+          <p className="text-xs font-bold tracking-[0.3em] uppercase text-amber-500 mb-5">
             Consultanță gratuită
           </p>
           <h2 className="text-4xl font-bold text-white leading-tight mb-6">
@@ -19,7 +19,7 @@ export default function CtaBand() {
           <div className="flex flex-wrap gap-4">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 bg-yellow-400 text-gray-900 text-sm font-bold px-7 py-3.5 hover:bg-yellow-300 transition-colors"
+              className="inline-flex items-center gap-2 bg-amber-500 text-gray-900 text-sm font-bold px-7 py-3.5 hover:bg-amber-400 transition-colors"
             >
               Programare showroom
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
