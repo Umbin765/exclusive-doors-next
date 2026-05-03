@@ -142,7 +142,7 @@ export const megaMenus: Record<string, MegaMenuItem> = {
   interior: {
     label: 'Uși Interior',
     href: '#interior',
-    categories: ['Filomuro', 'Albe vopsite', 'Laminate', 'Furnir natural', 'Sticlă', 'Glisante', 'Duble'],
+    categories: ['Filomuro', 'Furniruite', 'Albe vopsite', 'Laminate', 'Din sticlă', 'HGM', 'Grauthoff'],
     heading: 'Tipuri de uși interior',
     cards: [
       { title: 'Filomuro',     desc: 'La nivel cu peretele, pentru un aspect modern și îngrijit.',    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80' },
@@ -153,12 +153,12 @@ export const megaMenus: Record<string, MegaMenuItem> = {
   exterior: {
     label: 'Uși Exterior',
     href: '#exterior',
-    categories: ['Aluminiu', 'Lemn masiv', 'Personalizate', 'Blindate', 'Pivot exterior'],
+    categories: ['Metalice antiefracție', 'Termice GROKE', 'Superlock', 'Hörmann', 'Personalizate'],
     heading: 'Tipuri de uși exterior',
     cards: [
-      { title: 'Aluminiu',      desc: 'Uși de exterior din aluminiu — moderne și durabile.',           img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80' },
-      { title: 'Lemn masiv',    desc: 'Uși de exterior din lemn masiv, clasice și calde.',            img: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=400&q=80' },
-      { title: 'Personalizate', desc: 'Soluții complet personalizate pentru orice proiect.',           img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80' },
+      { title: 'Termice GROKE', desc: 'Uși de exterior termice GROKE — izolare superioară și securitate.',  img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80' },
+      { title: 'Hörmann',       desc: 'Uși de exterior Hörmann, clasice și durabile.',                     img: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=400&q=80' },
+      { title: 'Personalizate', desc: 'Soluții complet personalizate pentru orice proiect.',                img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80' },
     ],
   },
   glisante: {
@@ -186,9 +186,9 @@ export const megaMenus: Record<string, MegaMenuItem> = {
 };
 
 export const heroStats: Stat[] = [
-  { num: '17+',    label: 'Ani experiență' },
-  { num: '5.000+', label: 'Variante uși exterior' },
-  { num: '4.8/5',  label: 'Rating Google' },
+  { num: '15+',     label: 'Ani experiență' },
+  { num: '1.000+',  label: 'Design-uri disponibile' },
+  { num: '4.3/5',   label: 'Rating Google' },
 ];
 
 export const heroHighlights = [
@@ -230,39 +230,39 @@ export const categories: CategoryCard[] = [
 ];
 
 export const statsBarItems: Stat[] = [
-  { num: '17+',    label: 'Ani experiență' },
-  { num: '5.000+', label: 'Variante uși exterior' },
-  { num: '300+',   label: 'Modele uși interior' },
-  { num: '4.8/5',  label: 'Rating Google' },
+  { num: '15+',     label: 'Ani experiență' },
+  { num: '1.000+',  label: 'Design-uri disponibile' },
+  { num: '4.3/5',   label: 'Rating Google' },
+  { num: '152',     label: 'Recenzii' },
 ];
 
 export const productSections: ProductSectionData[] = [
   {
     id: 'interior',
-    eyebrow: 'Showroom și magazin de uși de interior în București',
+    eyebrow: 'Showroom și magazin de uși de interior în Otopeni',
     heading: 'Uși de interior la comandă',
-    body: 'Dacă amenajezi, renovezi sau construiești un spațiu premium și cauți un magazin de uși de interior în București, în showroom-ul Exclusive Doors găsești soluții alese pentru proiecte rezidențiale și comerciale. Oferim uși de interior la comandă, adaptate perfect în funcție de dimensiuni, finisaje, stil și cerințele fiecărui spațiu: uși din lemn, uși filomuro, uși albe, uși glisante, uși laminate sau uși din sticlă.',
+    body: 'Una dintre cele mai diverse game de uși premium din țară. Dacă amenajezi, renovezi sau construiești un spațiu premium, în showroom-ul Exclusive Doors găsești soluții alese pentru proiecte rezidențiale și comerciale. Oferim produse originale la prețuri corecte — uși filomuro, furniruite, albe vopsite, laminate, din sticlă, HGM și Grauthoff — adaptate perfect în funcție de dimensiuni, finisaje și stilul fiecărui spațiu.',
     ctaLabel: 'Vezi colecția de uși de interior',
   },
   {
     id: 'exterior',
     eyebrow: 'Uși de exterior la comandă',
     heading: 'Uși de exterior premium',
-    body: 'Uși de exterior din aluminiu, lemn masiv și soluții complet personalizate pentru orice proiect rezidențial sau comercial. Securitate ridicată, izolare termică superioară și estetică premium — pentru o intrare care face impresie și rezistă în timp.',
+    body: 'Produse originale la prețuri corecte, de la branduri de top: GROKE, Superlock, Hörmann și ASTRA. Uși metalice antiefracție, termice și personalizate pentru orice proiect rezidențial sau comercial. Securitate ridicată, izolare termică superioară și estetică premium — pentru o intrare care face impresie și rezistă în timp.',
     ctaLabel: 'Vezi colecția de uși de exterior',
   },
   {
     id: 'glisante',
     eyebrow: 'Sisteme glisante premium',
     heading: 'Uși glisante la comandă',
-    body: 'Sisteme glisante, liftant-culisante și pliante pentru interior și exterior. Soluții elegante care maximizează spațiul și aduc lumină naturală în orice cameră — perfecte pentru case moderne și spații deschise.',
+    body: 'Sisteme glisante, liftant-culisante și pliante pentru interior și exterior. Livrare și montaj în toată țara — soluții elegante care maximizează spațiul și aduc lumină naturală în orice cameră. Perfecte pentru case moderne, vile și spații deschise.',
     ctaLabel: 'Vezi colecția de uși glisante',
   },
   {
     id: 'pivotante',
     eyebrow: 'Uși pivotante de design',
     heading: 'Uși pivotante la comandă',
-    body: 'Uși cu pivot central sau offset — statement-ul perfect pentru o intrare de impact. Disponibile în dimensiuni supradimensionate, finisaje la alegere și soluții complet personalizate pentru proiecte de arhitectură de excepție.',
+    body: 'Uși cu pivot central sau offset — statement-ul perfect pentru o intrare de impact. Livrare și montaj în toată țara. Disponibile în dimensiuni supradimensionate, finisaje la alegere și soluții complet personalizate pentru proiecte de arhitectură de excepție.',
     ctaLabel: 'Vezi colecția de uși pivotante',
   },
 ];
@@ -335,9 +335,10 @@ export const faqs: FAQ[] = [
 ];
 
 export const footerColumns: FooterColumn[] = [
-  { heading: 'Uși Interior',  links: ['Filomuro', 'Furnir', 'Sticlă', 'Glisante', 'Duble', 'Pivot'] },
-  { heading: 'Uși Exterior',  links: ['Aluminiu', 'Lemn', 'Personalizate', 'Blindate'] },
+  { heading: 'Uși Interior',  links: ['Filomuro', 'Furniruite', 'Albe vopsite', 'Laminate', 'Din sticlă', 'HGM', 'Grauthoff'] },
+  { heading: 'Uși Exterior',  links: ['Metalice antiefracție', 'Termice GROKE', 'Superlock', 'Hörmann', 'Personalizate'] },
   { heading: 'Uși Glisante',  links: ['Sistem glisant', 'Liftant-culisant', 'Pliante'] },
   { heading: 'Uși Pivotante', links: ['Pivot central', 'Pivot offset', 'Design premium'] },
   { heading: 'Resurse',       links: ['Blog', 'Proiecte', 'Despre noi', 'Contact', 'Politica confidențialitate'] },
+  { heading: 'Urmărește-ne',  links: ['Facebook', 'Instagram', 'Google Maps'] },
 ];

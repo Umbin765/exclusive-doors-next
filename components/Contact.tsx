@@ -22,7 +22,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="font-bold text-gray-900 mb-0.5">Adresă</p>
-                    <p className="text-sm text-gray-500">Bd. Dacia, nr. 153-155, București 020057</p>
+                    <p className="text-sm text-gray-500">Airport Plaza, Drumul Gării Odăi 1A (DN1), Parter, 075100 Otopeni, Ilfov</p>
                   </div>
                 </div>
 
@@ -35,7 +35,7 @@ export default function Contact() {
                   <div>
                     <p className="font-bold text-gray-900 mb-0.5">Program</p>
                     <p className="text-sm text-gray-500">Luni – Vineri: 10:00 – 18:00</p>
-                    <p className="text-sm text-gray-500">Consultanță proiect, doar cu programare</p>
+                    <p className="text-sm text-gray-500">Sâmbătă: 10:00 – 15:00, doar cu programare</p>
                   </div>
                 </div>
 
@@ -47,8 +47,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="font-bold text-gray-900 mb-0.5">Telefon & email</p>
-                    <a href="tel:+40757874874" className="text-sm text-gray-500 hover:text-accent transition-colors block">
-                      +40 (0)757 874 874
+                    <a href="tel:+40728959652" className="text-sm text-gray-500 hover:text-accent transition-colors block">
+                      +40 (0)728 959 652
                     </a>
                     <a href="mailto:office@exclusivedoors.ro" className="text-sm text-gray-500 hover:text-accent transition-colors block">
                       office@exclusivedoors.ro
@@ -59,7 +59,7 @@ export default function Contact() {
             </div>
 
             <a
-              href="tel:+40757874874"
+              href="tel:+40728959652"
               className="mt-10 w-full bg-accent hover:bg-accent-hover text-gray-900 font-bold text-sm py-4 flex items-center justify-center gap-2 transition-colors"
             >
               Programează o vizită

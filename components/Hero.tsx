@@ -18,7 +18,7 @@ export default function Hero() {
         <div className="max-w-7xl mx-auto px-6 pt-10 pb-6 w-full" data-aos="fade-up">
           {/* Location bubble */}
           <a
-            href="https://maps.google.com/?q=Bd.+Dacia+153-155+Bucuresti"
+            href="https://maps.google.com/?cid=17163938270079558934"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-accent text-gray-900 text-xs font-semibold px-4 py-2 rounded-full mt-8 mb-8 hover:bg-accent-hover transition-colors"
@@ -26,7 +26,7 @@ export default function Hero() {
             <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
               <path fillRule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-2.003 3.5-4.697 3.5-8.327a8 8 0 10-16 0c0 3.63 1.555 6.326 3.5 8.327a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
             </svg>
-            Showroom București — Bd. Dacia, nr. 153-155
+            Showroom Otopeni — Airport Plaza, DN1
           </a>
 
           <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-6 max-w-3xl">

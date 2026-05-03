@@ -104,8 +104,8 @@ export default function Nav() {
 
           {/* Phone + CTA */}
           <div className="flex items-center gap-4 shrink-0">
-            <a href="tel:0757874874" className="text-sm font-semibold hidden md:block">
-              0757 874 874
+            <a href="tel:0728959652" className="text-sm font-semibold hidden md:block">
+              0728 959 652
             </a>
             <a
               href="#contact"
