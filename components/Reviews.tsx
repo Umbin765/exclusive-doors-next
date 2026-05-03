@@ -145,7 +145,7 @@ export default function Reviews() {
 
         {/* Cards + arrows */}
         {data ? (
-          <div className="relative" data-aos="fade-up">
+          <div className="relative">
             <button
               onClick={() => scroll('left')}
               className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-200 rounded-full w-10 h-10 flex items-center justify-center shadow-md hover:border-accent transition-colors"
