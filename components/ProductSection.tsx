@@ -5,11 +5,11 @@ export default function ProductSection({ section, alt }: { section: ProductSecti
   const subCards = megaMenus[id]?.cards ?? [];
 
   return (
-    <section className={`py-20 border-t border-gray-100 ${alt ? 'bg-stone-50' : 'bg-white'}`} id={id}>
+    <section className={`py-28 border-t border-gray-100 ${alt ? 'bg-stone-50' : 'bg-white'}`} id={id}>
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Text block */}
-        <div className="max-w-2xl mb-12" data-aos="fade-up">
+        <div className="max-w-2xl mb-16" data-aos="fade-up">
           <p className="text-xs font-bold tracking-[0.25em] uppercase text-accent mb-4">
             {eyebrow}
           </p>
@@ -43,7 +43,7 @@ export default function ProductSection({ section, alt }: { section: ProductSecti
                   <img
                     src={card.img}
                     alt={card.title}
-                    className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div className="p-5">
