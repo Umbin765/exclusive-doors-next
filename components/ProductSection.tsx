@@ -32,7 +32,7 @@ export default function ProductSection({ section, alt }: { section: ProductSecti
 
         {/* 3-image grid */}
         {subCards.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6" data-aos="fade-up">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8" data-aos="fade-up">
             {subCards.map((card) => (
               <a
                 key={card.title}
