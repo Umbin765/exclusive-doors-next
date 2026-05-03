@@ -8,8 +8,8 @@ export default function WhyUs() {
         {/* Left: project photo */}
         <div data-aos="fade-right">
           <img
-            src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=900&q=80"
-            alt="Proiect hotelier de anvergură — Exclusive Doors"
+            src="https://images.unsplash.com/photo-1613977257363-707ba9348227?w=900&q=80"
+            alt="Proiect rezidențial de anvergură — Exclusive Doors"
             className="w-full h-[540px] object-cover rounded-lg"
           />
         </div>
