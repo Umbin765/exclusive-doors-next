@@ -46,7 +46,7 @@ export default function ProductSection({ section, alt }: { section: ProductSecti
                     className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <div className="p-5">
+                <div className="p-4">
                   <h3 className="font-bold text-gray-900 mb-2">{card.title}</h3>
                   <p className="text-sm text-gray-500 leading-relaxed mb-4">{card.desc}</p>
                   <span className="inline-flex items-center gap-1 text-sm font-semibold text-accent">
