@@ -19,7 +19,7 @@ export default function CtaBand() {
           <div className="flex flex-wrap gap-4">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 bg-accent text-gray-900 text-sm font-bold px-7 py-3.5 hover:bg-accent-hover transition-colors"
+              className="inline-flex items-center gap-2 bg-accent text-gray-900 text-sm font-bold px-7 py-3.5 rounded-full hover:bg-accent-hover transition-colors"
             >
               Programare showroom
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -28,7 +28,7 @@ export default function CtaBand() {
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 border border-gray-600 text-white text-sm font-medium px-7 py-3.5 hover:border-white transition-colors"
+              className="inline-flex items-center gap-2 border border-gray-600 text-white text-sm font-medium px-7 py-3.5 rounded-full hover:border-white transition-colors"
             >
               Cere ofertă online
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

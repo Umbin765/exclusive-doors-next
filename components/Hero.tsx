@@ -43,7 +43,7 @@ export default function Hero() {
           <div className="flex flex-wrap gap-4 mb-14">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 bg-accent text-gray-900 text-sm font-bold px-8 py-3.5 hover:bg-accent-hover transition-colors"
+              className="inline-flex items-center gap-2 bg-accent text-gray-900 text-sm font-bold px-8 py-3.5 rounded-full hover:bg-accent-hover transition-colors"
             >
               Programare showroom
               <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
@@ -52,7 +52,7 @@ export default function Hero() {
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 border border-white/60 text-white text-sm font-medium px-8 py-3.5 hover:bg-white hover:text-gray-900 transition-colors"
+              className="inline-flex items-center gap-2 border border-white/60 text-white text-sm font-medium px-8 py-3.5 rounded-full hover:bg-white hover:text-gray-900 transition-colors"
             >
               Cere ofertă online
               <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">

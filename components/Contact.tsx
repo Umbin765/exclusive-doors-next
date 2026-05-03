@@ -60,7 +60,7 @@ export default function Contact() {
 
             <a
               href="tel:+40728959652"
-              className="mt-10 w-full bg-accent hover:bg-accent-hover text-gray-900 font-bold text-sm py-4 flex items-center justify-center gap-2 transition-colors"
+              className="mt-10 w-full bg-accent hover:bg-accent-hover text-gray-900 font-bold text-sm py-4 flex items-center justify-center gap-2 rounded-full transition-colors"
             >
               Programează o vizită
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">

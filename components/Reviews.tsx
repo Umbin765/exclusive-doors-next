@@ -138,7 +138,7 @@ export default function Reviews() {
                   href="https://search.google.com/local/writereview?placeid=ChIJj_3EwaEcskARFrnrM6e5b-4"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm border border-gray-300 rounded-lg px-4 py-2 hover:border-accent transition-colors whitespace-nowrap"
+                  className="text-sm border border-gray-300 rounded-full px-4 py-2 hover:border-accent transition-colors whitespace-nowrap"
                 >
                   Scrie o recenzie
                 </a>

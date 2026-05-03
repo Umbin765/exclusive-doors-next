@@ -37,7 +37,7 @@ export default function Nav() {
                 </a>
 
                 {activeMenu === key && (
-                  <div className="absolute top-full left-0 w-[660px] bg-white shadow-2xl border border-gray-100 p-6 grid grid-cols-[160px_1fr] gap-6">
+                  <div className="absolute top-full left-0 w-[660px] bg-white shadow-2xl border border-gray-100 p-6 grid grid-cols-[160px_1fr] gap-6 rounded-xl">
                     {/* Category list */}
                     <div>
                       <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">
@@ -109,7 +109,7 @@ export default function Nav() {
             </a>
             <a
               href="#contact"
-              className="bg-gray-900 text-white text-sm px-5 py-2.5 hover:bg-gray-700 transition-colors"
+              className="bg-gray-900 text-white text-sm px-5 py-2.5 rounded-full hover:bg-gray-700 transition-colors"
             >
               Programare showroom
             </a>
