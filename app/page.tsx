@@ -16,10 +16,13 @@ export default function Home() {
       <Nav />
       <Hero />
       <CategoryGrid />
-      {productSections.map((section, i) => (
+      {productSections.slice(0, 2).map((section, i) => (
         <ProductSection key={section.id} section={section} alt={i % 2 !== 0} />
       ))}
       <CtaBand />
+      {productSections.slice(2).map((section, i) => (
+        <ProductSection key={section.id} section={section} alt={i % 2 !== 0} />
+      ))}
       <WhyUs />
       <Reviews />
       <Portfolio />
