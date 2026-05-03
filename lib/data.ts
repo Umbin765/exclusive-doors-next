@@ -116,6 +116,7 @@ export const fallbackGoogleReviews: FallbackGoogleReview[] = [
 
 export interface PortfolioItem {
   title: string;
+  subtitle: string;
   img: string;
 }
 
@@ -296,10 +297,26 @@ export const reviews: Review[] = [
 ];
 
 export const portfolio: PortfolioItem[] = [
-  { title: 'Apartament în Voluntari — uși interior filomuro', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80' },
-  { title: 'Vilă în Pipera — uși exterior aluminiu',          img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80' },
-  { title: 'Complex rezidențial — 20 uși glisante',           img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80' },
-  { title: 'Penthouse — uși pivotante de design',             img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80' },
+  {
+    title: 'Vilă privată, Pipera — uși exterior aluminiu & uși glisante',
+    subtitle: 'Proiect rezidențial premium, București',
+    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80',
+  },
+  {
+    title: 'Complex rezidențial Floreasca — 48 uși interior filomuro',
+    subtitle: 'Proiect de anvergură, livrare & montaj complet',
+    img: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?w=900&q=80',
+  },
+  {
+    title: 'Penthouse Aviatorilor — uși pivotante de design supradimensionate',
+    subtitle: 'Finisaje premium, execuție la comandă',
+    img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=900&q=80',
+  },
+  {
+    title: 'Apartament Dorobanți — uși interior furnir natural & sticlă',
+    subtitle: 'Proiect interior complet, 12 uși la comandă',
+    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80',
+  },
 ];
 
 export const blogPosts: BlogPost[] = [
