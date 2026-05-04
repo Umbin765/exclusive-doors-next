@@ -54,12 +54,19 @@ function ReviewCard({ review }: { review: GoogleReview }) {
     <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col gap-3 min-w-[280px] max-w-[320px] shrink-0">
       <div className="flex items-start justify-between gap-2">
         <div className="flex items-center gap-3">
-          <img
-            src={review.profile_photo_url}
-            alt={review.author_name}
-            className="w-10 h-10 rounded-full object-cover"
-            referrerPolicy="no-referrer"
-          />
+          <div className="relative shrink-0">
+            <img
+              src={review.profile_photo_url}
+              alt={review.author_name}
+              className="w-10 h-10 rounded-full object-cover"
+              referrerPolicy="no-referrer"
+            />
+            <span className="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-green-500 rounded-full flex items-center justify-center ring-2 ring-white">
+              <svg className="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </span>
+          </div>
           <div>
             <p className="font-semibold text-gray-900 text-sm leading-tight">{review.author_name}</p>
             <p className="text-xs text-gray-400">{review.relative_time_description}</p>
