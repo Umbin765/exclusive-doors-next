@@ -16,9 +16,9 @@ export default function ProductGallery({ mainImg, thumbImgs, alt }: Props) {
   const next = () => setActive((i) => (i + 1) % allImgs.length);
 
   return (
-    <div className="bg-stone-50 p-5">
+    <div className="bg-stone-50 p-5 flex flex-col h-full">
       {/* Main image with arrow controls */}
-      <div className="relative rounded-xl overflow-hidden h-[420px]">
+      <div className="relative rounded-xl overflow-hidden flex-1 min-h-[420px]">
         <img
           src={allImgs[active]}
           alt={alt}
