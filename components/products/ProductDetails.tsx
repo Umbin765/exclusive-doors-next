@@ -73,16 +73,16 @@ export default function ProductDetails({ product }: { product: Product }) {
 
       {/* Price */}
       <div className="border-t border-gray-100 pt-5">
-        <p className="text-[9px] font-bold tracking-[0.3em] uppercase text-gray-300 mb-1.5">
-          Preț de pornire
-        </p>
-        <div className="flex items-baseline gap-2">
+        <div className="flex items-baseline gap-3">
           <span className="text-3xl font-bold text-gray-900">
             {product.startingPrice.toLocaleString('ro-RO')} €
           </span>
+          <span className="bg-accent/10 text-accent text-[8px] font-bold tracking-[0.2em] uppercase px-2 py-1 rounded-full">
+            de la
+          </span>
           <span className="text-xs text-gray-400">+ TVA</span>
         </div>
-        <p className="text-[10px] text-gray-300 mt-1">Prețul final depinde de dimensiuni și finisaj ales</p>
+        <p className="text-[10px] text-gray-300 mt-1.5">Prețul final depinde de dimensiuni și finisaj ales</p>
       </div>
 
       {/* CTAs */}
