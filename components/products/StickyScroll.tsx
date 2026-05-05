@@ -153,6 +153,8 @@ export default function StickyScroll({ stops, badge }: Props) {
 
         {/* RIGHT — scroll stops */}
         <div>
+          {/* Spacer — user must scroll past this before first stop activates */}
+          <div className="min-h-[70vh]" />
           {stops.map((stop, i) => {
             const isActive = activeIndex === i;
             const isAbove = i < activeIndex;
