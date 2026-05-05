@@ -4,6 +4,7 @@ export interface MegaMenuCard {
   title: string;
   desc: string;
   img: string;
+  href: string;
 }
 
 export interface MegaMenuItem {
@@ -141,46 +142,46 @@ export interface FooterColumn {
 export const megaMenus: Record<string, MegaMenuItem> = {
   interior: {
     label: 'Uși Interior',
-    href: '#interior',
+    href: '/products/interior',
     categories: ['Filomuro', 'Furniruite', 'Albe vopsite', 'Laminate', 'Din sticlă', 'HGM', 'Grauthoff'],
     heading: 'Tipuri de uși interior',
     cards: [
-      { title: 'Filomuro',     desc: 'La nivel cu peretele, pentru un aspect modern și îngrijit.',    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80' },
-      { title: 'Albe vopsite', desc: 'Uși de interior vopsite în alb, luminoase și elegante.',        img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80' },
-      { title: 'Laminate',     desc: 'Uși de interior laminate, pentru un aspect cald și natural.',   img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80' },
+      { title: 'Filomuro',     desc: 'La nivel cu peretele, pentru un aspect modern și îngrijit.',    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80',  href: '/products/interior/filomuro' },
+      { title: 'Albe vopsite', desc: 'Uși de interior vopsite în alb, luminoase și elegante.',        img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80', href: '/products/interior/filomuro' },
+      { title: 'Laminate',     desc: 'Uși de interior laminate, pentru un aspect cald și natural.',   img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80',  href: '/products/interior/filomuro' },
     ],
   },
   exterior: {
     label: 'Uși Exterior',
-    href: '#exterior',
+    href: '/products/exterior',
     categories: ['Metalice antiefracție', 'Termice GROKE', 'Superlock', 'Hörmann', 'Personalizate'],
     heading: 'Tipuri de uși exterior',
     cards: [
-      { title: 'Termice GROKE', desc: 'Uși de exterior termice GROKE — izolare superioară și securitate.',  img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80' },
-      { title: 'Hörmann',       desc: 'Uși de exterior Hörmann, clasice și durabile.',                     img: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=400&q=80' },
-      { title: 'Personalizate', desc: 'Soluții complet personalizate pentru orice proiect.',                img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80' },
+      { title: 'Termice GROKE', desc: 'Uși de exterior termice GROKE — izolare superioară și securitate.',  img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80', href: '/products/exterior/groke-thermosafe' },
+      { title: 'Hörmann',       desc: 'Uși de exterior Hörmann, clasice și durabile.',                     img: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=400&q=80', href: '/products/exterior/groke-thermosafe' },
+      { title: 'Personalizate', desc: 'Soluții complet personalizate pentru orice proiect.',                img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80', href: '/products/exterior/groke-thermosafe' },
     ],
   },
   glisante: {
     label: 'Uși Glisante',
-    href: '#glisante',
+    href: '/products/glisante',
     categories: ['Sistem glisant', 'Liftant-culisant', 'Pliante', 'Telescopice'],
     heading: 'Tipuri de uși glisante',
     cards: [
-      { title: 'Sistem glisant',   desc: 'Elegante și funcționale, ideale pentru spații deschise.',  img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80' },
-      { title: 'Liftant-culisant', desc: 'Sisteme liftant-culisante pentru deschideri mari.',         img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80' },
-      { title: 'Pliante',          desc: 'Uși pliante pentru separarea elegantă a spațiilor.',       img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80' },
+      { title: 'Sistem glisant',   desc: 'Elegante și funcționale, ideale pentru spații deschise.',  img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80', href: '/products/glisante/liftant-culisant' },
+      { title: 'Liftant-culisant', desc: 'Sisteme liftant-culisante pentru deschideri mari.',         img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80',  href: '/products/glisante/liftant-culisant' },
+      { title: 'Pliante',          desc: 'Uși pliante pentru separarea elegantă a spațiilor.',       img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80', href: '/products/glisante/liftant-culisant' },
     ],
   },
   pivotante: {
     label: 'Uși Pivotante',
-    href: '#pivotante',
+    href: '/products/pivotante',
     categories: ['Pivot central', 'Pivot offset', 'Design supradimensionat'],
     heading: 'Tipuri de uși pivotante',
     cards: [
-      { title: 'Pivot central',     desc: 'Design spectaculos cu pivot central.',                        img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80' },
-      { title: 'Pivot offset',      desc: 'Impact vizual maxim cu pivot asimetric.',                     img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80' },
-      { title: 'Supradimensionate', desc: 'Modele la comandă pentru înălțimi și lățimi speciale.',       img: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=400&q=80' },
+      { title: 'Pivot central',     desc: 'Design spectaculos cu pivot central.',                        img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80', href: '/products/pivotante/grand-pivot' },
+      { title: 'Pivot offset',      desc: 'Impact vizual maxim cu pivot asimetric.',                     img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80',  href: '/products/pivotante/grand-pivot' },
+      { title: 'Supradimensionate', desc: 'Modele la comandă pentru înălțimi și lățimi speciale.',       img: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=400&q=80', href: '/products/pivotante/grand-pivot' },
     ],
   },
 };
@@ -341,4 +342,371 @@ export const footerColumns: FooterColumn[] = [
   { heading: 'Uși Pivotante', links: ['Pivot central', 'Pivot offset', 'Design premium'] },
   { heading: 'Resurse',       links: ['Blog', 'Proiecte', 'Despre noi', 'Contact', 'Politica confidențialitate'] },
   { heading: 'Urmărește-ne',  links: ['Facebook', 'Instagram', 'Google Maps'] },
+];
+
+// ─── Product Page Types ───────────────────────────────────────────────────────
+
+export interface ProductSpec {
+  key: string;
+  value: string;
+}
+
+export interface ProductFinish {
+  color: string;
+  label: string;
+}
+
+export interface ScrollStop {
+  eyebrow: string;
+  title: string;
+  body: string;
+  stats: { num: string; label: string }[];
+}
+
+export interface DetailPanel {
+  title: string;
+  body: string;
+  specKey: string;
+  specVal: string;
+  img: string;
+}
+
+export interface Product {
+  slug: string;
+  category: string;
+  eyebrow: string;
+  name: string;
+  model: string;
+  tags: string[];
+  mainImg: string;
+  thumbImgs: string[];
+  specs: ProductSpec[];
+  finishes: ProductFinish[];
+  description: string;
+  scrollStops: ScrollStop[];
+  details: DetailPanel[];
+}
+
+export interface CategoryMeta {
+  label: string;
+  heading: string;
+  sub: string;
+}
+
+// ─── Product Page Data ────────────────────────────────────────────────────────
+
+export const categoryMeta: Record<string, CategoryMeta> = {
+  interior: {
+    label: 'Uși Interior',
+    heading: 'Uși de interior la comandă',
+    sub: 'Filomuro, furniruite, albe vopsite și laminate — adaptate la dimensiuni, finisaje și stilul fiecărui spațiu.',
+  },
+  exterior: {
+    label: 'Uși Exterior',
+    heading: 'Uși de exterior premium',
+    sub: 'Metalice antiefracție, termice și personalizate — securitate, izolare și estetică pentru orice proiect.',
+  },
+  glisante: {
+    label: 'Uși Glisante',
+    heading: 'Uși glisante la comandă',
+    sub: 'Sisteme glisante, liftant-culisante și pliante — elegante, funcționale, livrare și montaj în toată țara.',
+  },
+  pivotante: {
+    label: 'Uși Pivotante',
+    heading: 'Uși pivotante de design',
+    sub: 'Pivot central sau offset — statement-ul perfect pentru o intrare de impact, disponibil la orice dimensiune.',
+  },
+};
+
+export const products: Product[] = [
+  {
+    slug: 'filomuro',
+    category: 'interior',
+    eyebrow: 'Ușă Interior · Filomuro',
+    name: 'Furnir Stejar Natural',
+    model: 'FLM-OAK-01 · La comandă',
+    tags: ['Filomuro', 'Furnir natural', 'La comandă'],
+    mainImg: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80',
+    thumbImgs: [
+      'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80',
+      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80',
+      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80',
+      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80',
+    ],
+    specs: [
+      { key: 'Material', value: 'Furnir stejar natural' },
+      { key: 'Sistem', value: 'Filomuro (flush wall)' },
+      { key: 'Izolație fonică', value: '38 dB' },
+      { key: 'Înălțime maximă', value: '3000 mm' },
+      { key: 'Garanție', value: '5 ani' },
+    ],
+    finishes: [
+      { color: '#c8a96e', label: 'Stejar natural' },
+      { color: '#6b4c2a', label: 'Nuc' },
+      { color: '#f0f0f0', label: 'Alb mat' },
+      { color: '#2a2a2a', label: 'Negru mat' },
+      { color: '#b8b0a0', label: 'Gri deschis' },
+    ],
+    description: 'Ușile Filomuro sunt montate la nivel cu peretele, creând o suprafață continuă fără toc vizibil. Disponibile cu furnir de stejar natural, nuc, sau în variante vopsite mat. Ideale pentru proiecte premium cu finisaje îngrijite și arhitectură contemporană. Substrat MDF hidrofug 19mm, garnituri perimetrale triple.',
+    scrollStops: [
+      {
+        eyebrow: 'Sistem Filomuro',
+        title: 'La nivel cu peretele',
+        body: 'Toc invizibil integrat în structura peretelui. Suprafață continuă, fără întreruperi vizuale. Rezultatul: o cameră care respiră.',
+        stats: [{ num: '0mm', label: 'Toc vizibil' }, { num: '3000', label: 'Înălțime max mm' }],
+      },
+      {
+        eyebrow: 'Izolație fonică',
+        title: '38 dB de liniște',
+        body: 'Garnituri perimetrale triple și panou central cu masă mare. Zgomotul rămâne afară, confortul rămâne înăuntru.',
+        stats: [{ num: '38 dB', label: 'Izolație' }, { num: '3×', label: 'Garnituri' }],
+      },
+      {
+        eyebrow: 'Finisaj furnir',
+        title: 'Stejar natural sau la alegere',
+        body: 'Furnir tăiat sfert, stratificat pe MDF hidrofug. Disponibil în stejar, nuc, frasin și 40+ culori RAL vopsite mat.',
+        stats: [{ num: '40+', label: 'Finisaje' }, { num: '5 ani', label: 'Garanție' }],
+      },
+    ],
+    details: [
+      {
+        title: 'Mâner & închidere',
+        body: 'Design minimalist integrat. Sistem de închidere multipunct cu clapetă magnetică silențioasă.',
+        specKey: 'Mecanism',
+        specVal: 'Multipunct',
+        img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
+      },
+      {
+        title: 'Toc invizibil',
+        body: 'Toc integrat în perete cu finisaj continuu. Joc de 2mm pe perimetru, garnitură magnetică inclusă.',
+        specKey: 'Joc perimetral',
+        specVal: '2 mm',
+        img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80',
+      },
+      {
+        title: 'Furnir natural',
+        body: 'Furnir stejar tăiat sfert, aplicat pe MDF 19mm. Fibra lemnului vizibilă, cu protecție UV inclusă.',
+        specKey: 'Substrat',
+        specVal: 'MDF 19mm',
+        img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80',
+      },
+    ],
+  },
+  {
+    slug: 'groke-thermosafe',
+    category: 'exterior',
+    eyebrow: 'Ușă Exterior · GROKE',
+    name: 'Thermosafe 90',
+    model: 'GRK-TS90 · La comandă',
+    tags: ['Antiefracție RC3', 'Termoizolantă', 'La comandă'],
+    mainImg: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80',
+    thumbImgs: [
+      'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=400&q=80',
+      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80',
+      'https://images.unsplash.com/photo-1613977257363-707ba9348227?w=400&q=80',
+      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80',
+    ],
+    specs: [
+      { key: 'Material', value: 'Aluminiu' },
+      { key: 'Izolație termică', value: '1.0 W/m²K' },
+      { key: 'Antiefracție', value: 'RC3' },
+      { key: 'Izolație fonică', value: '42 dB' },
+      { key: 'Garanție', value: '10 ani' },
+    ],
+    finishes: [
+      { color: '#1a1a1a', label: 'Negru mat' },
+      { color: '#c0c0c0', label: 'Argintiu' },
+      { color: '#8b7355', label: 'Bronze' },
+      { color: '#f5f5f5', label: 'Alb RAL 9016' },
+    ],
+    description: 'Ușile GROKE Thermosafe sunt soluția premium pentru intrări rezidențiale de înaltă performanță. Profil din aluminiu reciclabil, garnituri triple, sisteme de blocare multipunct și finisaje anodizate sau vopsite în orice culoare RAL. Disponibile la orice dimensiune, inclusiv formate supradimensionate.',
+    scrollStops: [
+      {
+        eyebrow: 'Securitate RC3',
+        title: 'Rezistentă la efracție',
+        body: 'Clasă de rezistență RC3 — testată la 3 minute de atac cu scule de efracție. Oțel armat în interiorul profilului de aluminiu.',
+        stats: [{ num: 'RC3', label: 'Clasă efracție' }, { num: '3 min', label: 'Rezistență atac' }],
+      },
+      {
+        eyebrow: 'Termoizolație',
+        title: '1.0 W/m²K — performanță pasivă',
+        body: 'Rupere de punte termică integrată. Pierderile de căldură reduse cu până la 40% față de o ușă standard.',
+        stats: [{ num: '1.0', label: 'W/m²K' }, { num: '40%', label: 'Economie energie' }],
+      },
+      {
+        eyebrow: 'Finisaj aluminiu',
+        title: 'Orice culoare RAL',
+        body: 'Vopsire electrostatică rezistentă la UV și coroziune. Anodizare disponibilă pentru un look premium metalic.',
+        stats: [{ num: '200+', label: 'Culori RAL' }, { num: '10 ani', label: 'Garanție' }],
+      },
+    ],
+    details: [
+      {
+        title: 'Sistem de închidere',
+        body: 'Broască multipunct GROKE cu 5 puncte de ancorare. Cilindru antiefracție inclus.',
+        specKey: 'Puncte blocare',
+        specVal: '5',
+        img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80',
+      },
+      {
+        title: 'Profil aluminiu',
+        body: 'Secțiune 90mm cu ruptură de punte termică dublă. Panou central din spumă poliuretanică.',
+        specKey: 'Secțiune profil',
+        specVal: '90 mm',
+        img: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=80',
+      },
+      {
+        title: 'Garnituri triple',
+        body: 'Trei rânduri de garnituri EPDM pe perimetru. Etanșare perfectă la apă, vânt și zgomot.',
+        specKey: 'Izolație fonică',
+        specVal: '42 dB',
+        img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80',
+      },
+    ],
+  },
+  {
+    slug: 'liftant-culisant',
+    category: 'glisante',
+    eyebrow: 'Ușă Glisantă · Sistem',
+    name: 'Liftant-Culisant 200',
+    model: 'LC-200 · La comandă',
+    tags: ['Liftant-culisant', 'Termoizolant', 'La comandă'],
+    mainImg: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=900&q=80',
+    thumbImgs: [
+      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80',
+      'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80',
+      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80',
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80',
+    ],
+    specs: [
+      { key: 'Sistem', value: 'Liftant-culisant' },
+      { key: 'Deschidere maximă', value: '6000 mm' },
+      { key: 'Izolație termică', value: '0.8 W/m²K' },
+      { key: 'Izolație fonică', value: '42 dB' },
+      { key: 'Garanție', value: '10 ani' },
+    ],
+    finishes: [
+      { color: '#1a1a1a', label: 'Negru mat' },
+      { color: '#f0f0f0', label: 'Alb RAL 9016' },
+      { color: '#c0c0c0', label: 'Argintiu anodizat' },
+      { color: '#8b7355', label: 'Bronze' },
+    ],
+    description: 'Sistemul liftant-culisant permite deschideri de până la 6 metri cu un singur gest. Panoul se ridică ușor de pe pragul de etanșare și culisează lin pe șine ascunse. Ideal pentru case cu terasă sau grădină, aducând lumina naturală adânc în interior.',
+    scrollStops: [
+      {
+        eyebrow: 'Mecanism liftant',
+        title: 'Se ridică, apoi culisează',
+        body: 'La acționarea mânerului, panoul se ridică 3mm de pe pragul de etanșare și culisează fără frecare. Un singur gest, o deschidere spectaculoasă.',
+        stats: [{ num: '3mm', label: 'Lift la acționare' }, { num: '6m', label: 'Deschidere max' }],
+      },
+      {
+        eyebrow: 'Termoizolație',
+        title: '0.8 W/m²K — standard pasiv',
+        body: 'Profilul de aluminiu cu ruptură de punte termică triplă și sticlă dublă sau triplă low-e. Potrivit pentru case pasive.',
+        stats: [{ num: '0.8', label: 'W/m²K' }, { num: 'Triple', label: 'Garnituri' }],
+      },
+      {
+        eyebrow: 'Sticlă & lumină',
+        title: 'Până la 90% transparență',
+        body: 'Ramă minimă de 45mm. Suprafața vitrată maximizată. Sticlă securizată sau laminată la alegere, cu control solar opțional.',
+        stats: [{ num: '45mm', label: 'Ramă profil' }, { num: '90%', label: 'Suprafață sticlă' }],
+      },
+    ],
+    details: [
+      {
+        title: 'Mâner & mecanism',
+        body: 'Mâner ergonomic cu blocare multipunct automată. Senzor de poziție inclus pe sistemele cu motor de acționare.',
+        specKey: 'Tip acționare',
+        specVal: 'Manual / Motor',
+        img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80',
+      },
+      {
+        title: 'Prag ascuns',
+        body: 'Prag cu înălțime redusă de 20mm — acces fără obstacole, ideal pentru spații cu pardoseală continuă interior-exterior.',
+        specKey: 'Înălțime prag',
+        specVal: '20 mm',
+        img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
+      },
+      {
+        title: 'Șine de rulare',
+        body: 'Șine din oțel inoxidabil cu role cu rulmenți. Sarcina maximă per panou: 400kg. Funcționare silențioasă garantată.',
+        specKey: 'Sarcină max panou',
+        specVal: '400 kg',
+        img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80',
+      },
+    ],
+  },
+  {
+    slug: 'grand-pivot',
+    category: 'pivotante',
+    eyebrow: 'Ușă Pivotantă · Design',
+    name: 'Grand Pivot',
+    model: 'GPV-01 · La comandă',
+    tags: ['Pivot central', 'Supradimensionată', 'La comandă'],
+    mainImg: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=900&q=80',
+    thumbImgs: [
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80',
+      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80',
+      'https://images.unsplash.com/photo-1613977257363-707ba9348227?w=400&q=80',
+      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80',
+    ],
+    specs: [
+      { key: 'Tip pivot', value: 'Central / Offset' },
+      { key: 'Înălțime maximă', value: '3500 mm' },
+      { key: 'Lățime maximă', value: '1500 mm' },
+      { key: 'Greutate maximă', value: '400 kg' },
+      { key: 'Garanție', value: '10 ani' },
+    ],
+    finishes: [
+      { color: '#1a1a1a', label: 'Negru mat' },
+      { color: '#c8a96e', label: 'Furnir stejar' },
+      { color: '#6b4c2a', label: 'Furnir nuc' },
+      { color: '#f0f0f0', label: 'Alb mat' },
+      { color: '#c0c0c0', label: 'Inox periat' },
+    ],
+    description: 'Ușile Grand Pivot sunt statement-ul perfect pentru o intrare de impact. Pivot central sau offset — disponibil la orice dimensiune, inclusiv formate supradimensionate până la 3500mm înălțime. Construcție cu miez din aluminiu turnat, placată cu furnir natural sau vopsită în orice culoare RAL.',
+    scrollStops: [
+      {
+        eyebrow: 'Mecanism pivot',
+        title: 'Rotire pe pivot central',
+        body: 'Pivotul este integrat în pardoseală și tavan, invizibil. Ușa se rotește în jurul axei centrale cu un gest minim — spectacol garantat.',
+        stats: [{ num: '180°', label: 'Unghi rotire' }, { num: '3500', label: 'Înălțime max mm' }],
+      },
+      {
+        eyebrow: 'Construcție',
+        title: 'Până la 400 kg — solid ca piatra',
+        body: 'Miez din aluminiu turnat, placaj structurat, placă exterioară la alegere. Rulmenți cu bile sigilați pentru 500.000 cicluri garantate.',
+        stats: [{ num: '400 kg', label: 'Greutate max' }, { num: '500K', label: 'Cicluri garantate' }],
+      },
+      {
+        eyebrow: 'Design',
+        title: 'Orice finisaj, orice dimensiune',
+        body: 'Furnir natural, vopsit RAL, inox periat sau combinații. Sticlă integrată disponibilă. Fiecare piesă este unică și fabricată la comandă.',
+        stats: [{ num: '100%', label: 'La comandă' }, { num: '10 ani', label: 'Garanție' }],
+      },
+    ],
+    details: [
+      {
+        title: 'Pivot & rulmenți',
+        body: 'Pivot din oțel inoxidabil cu rulmenți cu bile sigilați. Suportă 400kg, funcționare silențioasă și lină garantată 10 ani.',
+        specKey: 'Sarcină max',
+        specVal: '400 kg',
+        img: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=80',
+      },
+      {
+        title: 'Miez structural',
+        body: 'Miez din aluminiu turnat în tipar, ranforsare perimetrală cu profil de oțel. Rigid, ușor, fără deformare în timp.',
+        specKey: 'Material miez',
+        specVal: 'Aluminiu turnat',
+        img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80',
+      },
+      {
+        title: 'Finisaj furnir',
+        body: 'Furnir natural tăiat sfert, aplicat pe ambele fețe. Protecție UV și lac mat sau satinat la alegere.',
+        specKey: 'Grosime furnir',
+        specVal: '0.6 mm',
+        img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80',
+      },
+    ],
+  },
 ];
