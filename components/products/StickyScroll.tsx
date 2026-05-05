@@ -12,7 +12,7 @@ interface Props {
 const SPRING = 'cubic-bezier(0.34, 1.56, 0.64, 1)';
 
 export default function StickyScroll({ stops, badge }: Props) {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(-1);
   const stopRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
@@ -129,7 +129,7 @@ export default function StickyScroll({ stops, badge }: Props) {
 
               {/* Stop counter */}
               <span className="absolute bottom-4 right-4 z-20 text-white/30 text-[0.625rem] font-bold tracking-widest">
-                {String(activeIndex + 1).padStart(2, '0')} / {String(stops.length).padStart(2, '0')}
+                {String(Math.max(activeIndex + 1, 1)).padStart(2, '0')} / {String(stops.length).padStart(2, '0')}
               </span>
             </div>
 
