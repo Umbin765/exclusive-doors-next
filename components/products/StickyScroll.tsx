@@ -9,83 +9,176 @@ interface Props {
   badge: string;
 }
 
+// Non-linear easing: spring overshoot for entering elements
+const SPRING = 'cubic-bezier(0.34, 1.56, 0.64, 1)';
+// Aggressive ease-out for exiting
+const SHARP_OUT = 'cubic-bezier(0.76, 0, 0.24, 1)';
+
 export default function StickyScroll({ stops, img, badge }: Props) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [prevIndex, setPrevIndex] = useState<number | null>(null);
   const stopRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const observers = stopRefs.current.map((el, i) => {
       if (!el) return null;
       const observer = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActiveIndex(i); },
-        { threshold: 0.5 }
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setPrevIndex(activeIndex);
+            setActiveIndex(i);
+          }
+        },
+        { threshold: 0.45 }
       );
       observer.observe(el);
       return observer;
     });
     return () => observers.forEach((o) => o?.disconnect());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return (
-    <section className="grid grid-cols-1 lg:grid-cols-2 border-t border-gray-100">
+  // Image zooms in slightly as you progress through stops
+  const imgScale = 1 + activeIndex * 0.04;
 
-      {/* LEFT — sticky image */}
-      <div className="relative bg-stone-50 p-6">
-        <div className="sticky top-20">
-          <div className="rounded-xl overflow-hidden h-[460px]">
-            <img src={img} alt={badge} className="w-full h-full object-cover" />
+  return (
+    <section className="grid grid-cols-1 lg:grid-cols-2 bg-gray-950">
+
+      {/* LEFT — sticky image, dark bg, zooms per stop */}
+      <div className="relative lg:h-auto">
+        <div className="sticky top-0 h-screen flex flex-col justify-center px-8 py-8 overflow-hidden">
+
+          {/* Dark ambient glow that shifts with active stop */}
+          <div
+            className="absolute inset-0 pointer-events-none transition-opacity duration-1000"
+            style={{
+              background: `radial-gradient(ellipse at ${30 + activeIndex * 20}% 60%, rgba(248,175,23,0.07) 0%, transparent 70%)`,
+            }}
+          />
+
+          {/* Image with zoom */}
+          <div className="relative rounded-2xl overflow-hidden flex-1 max-h-[70vh]">
+            <img
+              src={img}
+              alt={badge}
+              className="w-full h-full object-cover"
+              style={{
+                transform: `scale(${imgScale})`,
+                transition: `transform 1.2s ${SHARP_OUT}`,
+                transformOrigin: 'center center',
+              }}
+            />
+            {/* Dark vignette overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-950/60 via-transparent to-transparent" />
+
+            {/* Badge */}
+            <span className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-accent text-[8px] font-bold tracking-[0.35em] uppercase px-3 py-1.5 rounded-full border border-accent/20">
+              {badge}
+            </span>
+
+            {/* Stop counter */}
+            <span className="absolute bottom-4 right-4 text-white/30 text-[10px] font-bold tracking-widest">
+              {String(activeIndex + 1).padStart(2, '0')} / {String(stops.length).padStart(2, '0')}
+            </span>
           </div>
-          <span className="absolute top-9 left-9 bg-black/50 backdrop-blur-sm text-accent text-[9px] font-bold tracking-[0.3em] uppercase px-3 py-1.5 rounded">
-            {badge}
-          </span>
+
           {/* Dot indicators */}
           <div className="flex gap-2 justify-center mt-5">
             {stops.map((_, i) => (
               <button
                 key={i}
                 onClick={() => stopRefs.current[i]?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
-                className={`h-1 rounded-full transition-all duration-300 ${
-                  activeIndex === i ? 'w-6 bg-accent' : 'w-2 bg-gray-200'
-                }`}
+                className="h-px rounded-full transition-all duration-500"
+                style={{
+                  width: activeIndex === i ? 32 : 8,
+                  background: activeIndex === i ? '#F8AF17' : 'rgba(255,255,255,0.2)',
+                  transition: `width 0.4s ${SPRING}, background 0.3s ease`,
+                }}
               />
             ))}
           </div>
         </div>
       </div>
 
-      {/* RIGHT — scroll stops */}
-      <div className="bg-white border-l border-gray-100">
-        {stops.map((stop, i) => (
-          <div
-            key={i}
-            ref={(el) => { stopRefs.current[i] = el; }}
-            className={`min-h-[60vh] flex flex-col justify-center px-12 py-16 border-b border-gray-50 transition-all duration-500 ${
-              activeIndex === i
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-25 translate-y-2'
-            }`}
-          >
-            <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-accent mb-4">
-              {stop.eyebrow}
-            </p>
-            <h3 className="text-3xl font-bold text-gray-900 leading-tight mb-5">
-              {stop.title}
-            </h3>
-            <p className="text-sm text-gray-500 leading-relaxed mb-8 max-w-sm">
-              {stop.body}
-            </p>
-            <div className="flex gap-10">
-              {stop.stats.map((stat) => (
-                <div key={stat.label}>
-                  <div className="text-2xl font-bold text-gray-900">{stat.num}</div>
-                  <div className="text-[9px] font-bold tracking-[0.2em] uppercase text-gray-400 mt-1">
-                    {stat.label}
+      {/* RIGHT — scroll stops with animated text */}
+      <div className="border-l border-white/5">
+        {stops.map((stop, i) => {
+          const isActive = activeIndex === i;
+          const isAbove = i < activeIndex;
+
+          return (
+            <div
+              key={i}
+              ref={(el) => { stopRefs.current[i] = el; }}
+              className="min-h-[80vh] flex flex-col justify-center px-12 py-20 border-b border-white/5"
+            >
+              {/* Eyebrow — slides in from left */}
+              <div
+                style={{
+                  opacity: isActive ? 1 : 0.15,
+                  transform: isActive ? 'translateX(0)' : isAbove ? 'translateX(-12px)' : 'translateX(20px)',
+                  transition: `all 0.7s ${SPRING}`,
+                  letterSpacing: isActive ? '0.35em' : '0.2em',
+                }}
+              >
+                <p className="text-[9px] font-bold uppercase text-accent mb-5">
+                  {stop.eyebrow}
+                </p>
+              </div>
+
+              {/* Title — spring up from below */}
+              <div
+                style={{
+                  opacity: isActive ? 1 : 0.1,
+                  transform: isActive
+                    ? 'translateY(0) scale(1)'
+                    : isAbove
+                    ? 'translateY(-24px) scale(0.97)'
+                    : 'translateY(40px) scale(0.95)',
+                  filter: isActive ? 'blur(0px)' : 'blur(3px)',
+                  transition: `opacity 0.6s ease, transform 0.8s ${SPRING}, filter 0.6s ease`,
+                }}
+              >
+                <h3 className="text-4xl font-bold text-white leading-tight mb-6 max-w-xs">
+                  {stop.title}
+                </h3>
+              </div>
+
+              {/* Body — delayed fade */}
+              <div
+                style={{
+                  opacity: isActive ? 0.65 : 0,
+                  transform: isActive ? 'translateY(0)' : 'translateY(16px)',
+                  transition: `opacity 0.7s ease 0.1s, transform 0.7s ${SPRING} 0.1s`,
+                }}
+              >
+                <p className="text-sm text-gray-400 leading-relaxed mb-10 max-w-sm">
+                  {stop.body}
+                </p>
+              </div>
+
+              {/* Stats — spring in with stagger */}
+              <div className="flex gap-10">
+                {stop.stats.map((stat, si) => (
+                  <div
+                    key={stat.label}
+                    style={{
+                      opacity: isActive ? 1 : 0,
+                      transform: isActive ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.85)',
+                      transition: `opacity 0.6s ease ${0.2 + si * 0.1}s, transform 0.7s ${SPRING} ${0.2 + si * 0.1}s`,
+                    }}
+                  >
+                    <div className="text-3xl font-bold text-white tracking-tight">{stat.num}</div>
+                    <div className="text-[8px] font-bold tracking-[0.25em] uppercase text-white/30 mt-1.5">
+                      {stat.label}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
     </section>
