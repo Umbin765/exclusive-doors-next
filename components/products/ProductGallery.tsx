@@ -1,14 +1,16 @@
 'use client';
 
 import { useState } from 'react';
+import SaleBadge from './SaleBadge';
 
 interface Props {
   mainImg: string;
   thumbImgs: string[];
   alt: string;
+  salePercent?: number;
 }
 
-export default function ProductGallery({ mainImg, thumbImgs, alt }: Props) {
+export default function ProductGallery({ mainImg, thumbImgs, alt, salePercent }: Props) {
   const allImgs = [mainImg, ...thumbImgs];
   const [active, setActive] = useState(0);
 
@@ -46,6 +48,13 @@ export default function ProductGallery({ mainImg, thumbImgs, alt }: Props) {
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
           </svg>
         </button>
+
+        {/* Sale badge */}
+        {salePercent && (
+          <div className="absolute top-3 left-3">
+            <SaleBadge percent={salePercent} />
+          </div>
+        )}
 
         {/* Counter */}
         <span className="absolute bottom-3 right-3 bg-white/75 backdrop-blur-sm text-gray-500 text-[9px] tracking-widest px-2.5 py-1 rounded-md">

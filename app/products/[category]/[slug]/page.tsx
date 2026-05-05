@@ -37,6 +37,7 @@ export default function ProductPage({ params }: Props) {
             mainImg={product.mainImg}
             thumbImgs={product.thumbImgs}
             alt={product.name}
+            salePercent={product.salePercent}
           />
           {/* Right column: details panel */}
           <div className="bg-stone-50 border-t lg:border-t-0 lg:border-l border-gray-100 p-4 lg:p-5 lg:h-full lg:flex lg:flex-col">

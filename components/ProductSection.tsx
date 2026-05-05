@@ -1,4 +1,5 @@
 import { ProductSectionData, megaMenus } from '@/lib/data';
+import SaleBadge from '@/components/products/SaleBadge';
 
 export default function ProductSection({ section, alt }: { section: ProductSectionData; alt?: boolean }) {
   const { id, eyebrow, heading, body, ctaLabel } = section;
@@ -36,20 +37,33 @@ export default function ProductSection({ section, alt }: { section: ProductSecti
             {subCards.map((card) => (
               <a
                 key={card.title}
-                href="#contact"
-                className="group block border-2 border-transparent rounded-xl overflow-hidden shadow-md hover:border-accent hover:shadow-[0_8px_40px_rgba(0,0,0,0.18)] transition-all duration-300"
+                href={card.href ?? '#contact'}
+                className={`group block border-2 rounded-xl overflow-hidden shadow-md hover:shadow-[0_8px_40px_rgba(0,0,0,0.18)] transition-all duration-300 ${
+                  card.salePercent
+                    ? 'border-accent/40 hover:border-accent'
+                    : 'border-transparent hover:border-accent'
+                }`}
               >
-                <div className="overflow-hidden">
+                <div className="relative overflow-hidden">
                   <img
                     src={card.img}
                     alt={card.title}
                     className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500"
                   />
+                  {card.salePercent && (
+                    <div className="absolute top-3 left-3">
+                      <SaleBadge percent={card.salePercent} />
+                    </div>
+                  )}
                 </div>
                 <div className="p-4">
                   <h3 className="font-bold text-gray-900 mb-2">{card.title}</h3>
                   <p className="text-sm text-gray-500 leading-relaxed mb-4">{card.desc}</p>
-                  <span className="inline-flex items-center gap-1 text-sm font-semibold text-accent">
+                  <span
+                    className={`inline-flex items-center gap-1 text-sm font-semibold ${
+                      card.salePercent ? 'text-gray-900 border border-accent rounded px-2 py-0.5' : 'text-accent'
+                    }`}
+                  >
                     Detalii
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

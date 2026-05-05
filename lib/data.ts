@@ -5,6 +5,7 @@ export interface MegaMenuCard {
   desc: string;
   img: string;
   href: string;
+  salePercent?: number;
 }
 
 export interface MegaMenuItem {
@@ -146,7 +147,7 @@ export const megaMenus: Record<string, MegaMenuItem> = {
     categories: ['Filomuro', 'Furniruite', 'Albe vopsite', 'Laminate', 'Din sticlă', 'HGM', 'Grauthoff'],
     heading: 'Tipuri de uși interior',
     cards: [
-      { title: 'Filomuro',     desc: 'La nivel cu peretele, pentru un aspect modern și îngrijit.',    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80',  href: '/products/interior/filomuro' },
+      { title: 'Filomuro',     desc: 'La nivel cu peretele, pentru un aspect modern și îngrijit.',    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80',  href: '/products/interior/filomuro', salePercent: 20 },
       { title: 'Albe vopsite', desc: 'Uși de interior vopsite în alb, luminoase și elegante.',        img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80', href: '/products/interior/filomuro' },
       { title: 'Laminate',     desc: 'Uși de interior laminate, pentru un aspect cald și natural.',   img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80',  href: '/products/interior/filomuro' },
     ],
@@ -157,7 +158,7 @@ export const megaMenus: Record<string, MegaMenuItem> = {
     categories: ['Metalice antiefracție', 'Termice GROKE', 'Superlock', 'Hörmann', 'Personalizate'],
     heading: 'Tipuri de uși exterior',
     cards: [
-      { title: 'Termice GROKE', desc: 'Uși de exterior termice GROKE — izolare superioară și securitate.',  img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80', href: '/products/exterior/groke-thermosafe' },
+      { title: 'Termice GROKE', desc: 'Uși de exterior termice GROKE — izolare superioară și securitate.',  img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80', href: '/products/exterior/groke-thermosafe', salePercent: 15 },
       { title: 'Hörmann',       desc: 'Uși de exterior Hörmann, clasice și durabile.',                     img: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=400&q=80', href: '/products/exterior/groke-thermosafe' },
       { title: 'Personalizate', desc: 'Soluții complet personalizate pentru orice proiect.',                img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80', href: '/products/exterior/groke-thermosafe' },
     ],
@@ -168,7 +169,7 @@ export const megaMenus: Record<string, MegaMenuItem> = {
     categories: ['Sistem glisant', 'Liftant-culisant', 'Pliante', 'Telescopice'],
     heading: 'Tipuri de uși glisante',
     cards: [
-      { title: 'Sistem glisant',   desc: 'Elegante și funcționale, ideale pentru spații deschise.',  img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80', href: '/products/glisante/liftant-culisant' },
+      { title: 'Sistem glisant',   desc: 'Elegante și funcționale, ideale pentru spații deschise.',  img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80', href: '/products/glisante/liftant-culisant', salePercent: 10 },
       { title: 'Liftant-culisant', desc: 'Sisteme liftant-culisante pentru deschideri mari.',         img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80',  href: '/products/glisante/liftant-culisant' },
       { title: 'Pliante',          desc: 'Uși pliante pentru separarea elegantă a spațiilor.',       img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80', href: '/products/glisante/liftant-culisant' },
     ],
@@ -179,7 +180,7 @@ export const megaMenus: Record<string, MegaMenuItem> = {
     categories: ['Pivot central', 'Pivot offset', 'Design supradimensionat'],
     heading: 'Tipuri de uși pivotante',
     cards: [
-      { title: 'Pivot central',     desc: 'Design spectaculos cu pivot central.',                        img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80', href: '/products/pivotante/grand-pivot' },
+      { title: 'Pivot central',     desc: 'Design spectaculos cu pivot central.',                        img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80', href: '/products/pivotante/grand-pivot', salePercent: 12 },
       { title: 'Pivot offset',      desc: 'Impact vizual maxim cu pivot asimetric.',                     img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80',  href: '/products/pivotante/grand-pivot' },
       { title: 'Supradimensionate', desc: 'Modele la comandă pentru înălțimi și lățimi speciale.',       img: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=400&q=80', href: '/products/pivotante/grand-pivot' },
     ],
@@ -385,6 +386,7 @@ export interface Product {
   finishes: ProductFinish[];
   description: string;
   startingPrice: number;
+  salePercent?: number;
   scrollStops: ScrollStop[];
   details: DetailPanel[];
 }
@@ -451,6 +453,7 @@ export const products: Product[] = [
     ],
     description: 'Ușile Filomuro sunt montate la nivel cu peretele, creând o suprafață continuă fără toc vizibil. Disponibile cu furnir de stejar natural, nuc, sau în variante vopsite mat. Ideale pentru proiecte premium cu finisaje îngrijite și arhitectură contemporană. Substrat MDF hidrofug 19mm, garnituri perimetrale triple.',
     startingPrice: 700,
+    salePercent: 20,
     scrollStops: [
       {
         eyebrow: 'Sistem Filomuro',
@@ -541,6 +544,7 @@ export const products: Product[] = [
     ],
     description: 'Ușile GROKE Thermosafe sunt soluția premium pentru intrări rezidențiale de înaltă performanță. Profil din aluminiu reciclabil, garnituri triple, sisteme de blocare multipunct și finisaje anodizate sau vopsite în orice culoare RAL. Disponibile la orice dimensiune, inclusiv formate supradimensionate.',
     startingPrice: 2200,
+    salePercent: 15,
     scrollStops: [
       {
         eyebrow: 'Securitate RC3',
@@ -631,6 +635,7 @@ export const products: Product[] = [
     ],
     description: 'Sistemul liftant-culisant permite deschideri de până la 6 metri cu un singur gest. Panoul se ridică ușor de pe pragul de etanșare și culisează lin pe șine ascunse. Ideal pentru case cu terasă sau grădină, aducând lumina naturală adânc în interior.',
     startingPrice: 3500,
+    salePercent: 10,
     scrollStops: [
       {
         eyebrow: 'Mecanism liftant',
@@ -722,6 +727,7 @@ export const products: Product[] = [
     ],
     description: 'Ușile Grand Pivot sunt statement-ul perfect pentru o intrare de impact. Pivot central sau offset — disponibil la orice dimensiune, inclusiv formate supradimensionate până la 3500mm înălțime. Construcție cu miez din aluminiu turnat, placată cu furnir natural sau vopsită în orice culoare RAL.',
     startingPrice: 4800,
+    salePercent: 12,
     scrollStops: [
       {
         eyebrow: 'Mecanism pivot',
