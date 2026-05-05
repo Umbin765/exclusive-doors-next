@@ -51,16 +51,6 @@ export default function ProductPage({ params }: Props) {
       {/* Related products */}
       <RelatedProducts products={related} />
 
-      {/* Description */}
-      <div className="bg-stone-50 border-t border-gray-100 px-8 py-10">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-[0.625rem] font-bold tracking-[0.3em] uppercase text-gray-300 mb-4">
-            Despre produs
-          </p>
-          <p className="text-sm text-gray-500 leading-relaxed max-w-xl">{product.description}</p>
-        </div>
-      </div>
-
       {/* Sticky scroll */}
       <StickyScroll
         stops={product.scrollStops}
