@@ -73,12 +73,12 @@ export default function ProductDetails({ product }: { product: Product }) {
 
       {/* Price */}
       <div className="border-t border-gray-100 pt-5">
-        <div className="flex items-baseline gap-3">
+        <p className="text-[10px] font-bold tracking-[0.25em] uppercase text-accent mb-1">
+          De la
+        </p>
+        <div className="flex items-baseline gap-2">
           <span className="text-3xl font-bold text-gray-900">
             {product.startingPrice.toLocaleString('ro-RO')} €
-          </span>
-          <span className="bg-accent/10 text-accent text-[8px] font-bold tracking-[0.2em] uppercase px-2 py-1 rounded-full">
-            de la
           </span>
           <span className="text-xs text-gray-400">+ TVA</span>
         </div>
