@@ -39,7 +39,7 @@ export default function StickyScroll({ stops, badge }: Props) {
       {/* ── MOBILE: each stop stacked with inline image ── */}
       <div className="lg:hidden">
         {stops.map((stop, i) => (
-          <div key={i} className="border-b border-white/5">
+          <div key={i}>
             {/* Image */}
             <div className="relative h-56 sm:h-72 overflow-hidden">
               <img
@@ -152,7 +152,7 @@ export default function StickyScroll({ stops, badge }: Props) {
         </div>
 
         {/* RIGHT — scroll stops */}
-        <div className="border-l border-white/5">
+        <div>
           {stops.map((stop, i) => {
             const isActive = activeIndex === i;
             const isAbove = i < activeIndex;
@@ -161,7 +161,7 @@ export default function StickyScroll({ stops, badge }: Props) {
               <div
                 key={i}
                 ref={(el) => { stopRefs.current[i] = el; }}
-                className="min-h-[80vh] flex flex-col justify-center px-12 py-20 border-b border-white/5"
+                className="min-h-[80vh] flex flex-col justify-center px-12 py-20"
               >
                 {/* Eyebrow */}
                 <div
