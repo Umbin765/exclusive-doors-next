@@ -20,7 +20,7 @@ export default function ProductGallery({ mainImg, thumbImgs, alt, salePercent }:
   return (
     <div className="bg-stone-50 p-4 lg:p-5 flex flex-col lg:h-full">
       {/* Main image with arrow controls */}
-      <div className="relative rounded-xl overflow-hidden lg:flex-1 h-64 sm:h-80 lg:h-auto lg:min-h-[420px]">
+      <div className="relative rounded-xl overflow-hidden lg:flex-1 h-64 sm:h-80 lg:h-auto lg:min-h-[26.25rem]">
         <img
           src={allImgs[active]}
           alt={alt}
@@ -57,7 +57,7 @@ export default function ProductGallery({ mainImg, thumbImgs, alt, salePercent }:
         )}
 
         {/* Counter */}
-        <span className="absolute bottom-3 right-3 bg-white/75 backdrop-blur-sm text-gray-500 text-[9px] tracking-widest px-2.5 py-1 rounded-md">
+        <span className="absolute bottom-3 right-3 bg-white/75 backdrop-blur-sm text-gray-500 text-[0.5625rem] tracking-widest px-2.5 py-1 rounded-md">
           {active + 1} / {allImgs.length}
         </span>
       </div>

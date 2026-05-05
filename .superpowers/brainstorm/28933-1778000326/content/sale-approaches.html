@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sale Design — Exclusive Doors</title>
+<script src="/helper.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0f0f0f;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #fff;
+    padding: 40px 24px 60px;
+  }
+
+  h1 {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #F8AF17;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .sub2 {
+    font-size: 14px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 48px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .approach {
+    border: 2px solid transparent;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    background: #1a1a1a;
+  }
+  .approach:hover {
+    border-color: rgba(248,175,23,0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  }
+  .approach.selected {
+    border-color: #F8AF17;
+    box-shadow: 0 0 0 1px #F8AF17, 0 12px 40px rgba(248,175,23,0.15);
+  }
+
+  .approach-label {
+    padding: 16px 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .letter-badge {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(248,175,23,0.15);
+    color: #F8AF17;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .approach-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── CARD MOCKUP SHELL ── */
+  .card-mockup {
+    margin: 16px;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+    color: #111;
+  }
+  .card-img-wrap {
+    position: relative;
+    height: 180px;
+    background: #e8e0d5;
+    overflow: hidden;
+  }
+  .card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .card-body {
+    padding: 14px 16px 16px;
+  }
+  .card-eyebrow {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 4px;
+  }
+  .card-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 3px;
+  }
+  .card-model {
+    font-size: 10px;
+    color: #bbb;
+    margin-bottom: 12px;
+  }
+
+  /* APPROACH A — Diagonal corner ribbon */
+  .ribbon-wrap {
+    position: absolute;
+    top: 0; right: 0;
+    width: 90px; height: 90px;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 10;
+  }
+  .ribbon {
+    position: absolute;
+    top: 18px;
+    right: -22px;
+    width: 110px;
+    background: #c8251e;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 5px 0;
+    transform: rotate(45deg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  .price-a {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .price-original {
+    font-size: 12px;
+    color: #bbb;
+    text-decoration: line-through;
+  }
+  .price-sale-a {
+    font-size: 20px;
+    font-weight: 800;
+    color: #c8251e;
+  }
+  .price-tax {
+    font-size: 10px;
+    color: #bbb;
+  }
+  .cta-a {
+    margin-top: 10px;
+    width: 100%;
+    background: #111;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  /* APPROACH B — Slim top accent bar + elegant price */
+  .sale-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #F8AF17 0%, #f5c842 100%);
+  }
+  .sale-float-tag {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background: rgba(0,0,0,0.72);
+    backdrop-filter: blur(6px);
+    color: #F8AF17;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: 4px;
+    border: 1px solid rgba(248,175,23,0.3);
+  }
+  .price-b {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .price-b-from {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #F8AF17;
+  }
+  .price-b-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .price-b-main {
+    font-size: 20px;
+    font-weight: 800;
+    color: #111;
+  }
+  .price-b-orig {
+    font-size: 12px;
+    color: #bbb;
+    text-decoration: line-through;
+  }
+  .price-b-tax {
+    font-size: 10px;
+    color: #bbb;
+  }
+  .cta-b {
+    margin-top: 10px;
+    width: 100%;
+    background: #111;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  /* APPROACH C — Full dark overlay badge */
+  .badge-c {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: #111;
+    color: #F8AF17;
+    padding: 6px 12px 6px 10px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 10;
+    border: 1px solid rgba(248,175,23,0.25);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    backdrop-filter: blur(4px);
+  }
+  .badge-c-pct {
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: #F8AF17;
+  }
+  .badge-c-label {
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(248,175,23,0.6);
+    margin-top: 1px;
+  }
+  .price-c {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .price-c-main {
+    font-size: 20px;
+    font-weight: 800;
+    color: #111;
+  }
+  .price-c-orig {
+    font-size: 12px;
+    color: #bbb;
+    text-decoration: line-through;
+  }
+  .price-c-tax {
+    font-size: 10px;
+    color: #bbb;
+  }
+  .cta-c {
+    margin-top: 10px;
+    width: 100%;
+    border: 2px solid #F8AF17;
+    background: transparent;
+    color: #111;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .desc {
+    padding: 14px 20px 20px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.6;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .desc strong {
+    color: rgba(255,255,255,0.75);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+  }
+
+  .selection-hint {
+    text-align: center;
+    margin-top: 36px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+  }
+</style>
+</head>
+<body>
+
+<p class="h1" style="font-size:11px;font-weight:800;letter-spacing:0.35em;text-transform:uppercase;color:#F8AF17;margin-bottom:8px;">Exclusive Doors — Sale Design</p>
+<p class="subtitle" style="font-size:24px;font-weight:800;color:#fff;margin-bottom:6px;">3 approaches to premium sale indicators</p>
+<p class="sub2" style="font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:44px;">Each mockup shows how a product card looks when on sale. Click to select your favourite.</p>
+
+<div class="grid">
+
+  <!-- APPROACH A: Classic ribbon -->
+  <div class="approach" data-choice="a" onclick="toggleSelect(this)">
+    <div class="approach-label">
+      <div class="letter-badge">A</div>
+      <span class="approach-name">Corner ribbon + red price</span>
+    </div>
+    <div style="padding:12px 16px 0;">
+      <div class="card-mockup">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="door" />
+          <div class="ribbon-wrap">
+            <div class="ribbon">PROMO</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-eyebrow">Ușă Interior · Filomuro</div>
+          <div class="card-title">Furnir Stejar Natural</div>
+          <div class="card-model">FLM-OAK-01 · La comandă</div>
+          <div class="price-a">
+            <span class="price-original">700 €</span>
+            <span class="price-sale-a">560 €</span>
+            <span class="price-tax">+ TVA</span>
+          </div>
+          <button class="cta-a">Cere ofertă</button>
+        </div>
+      </div>
+    </div>
+    <div class="desc">
+      <strong>Classic ribbon</strong>
+      High contrast, familiar to shoppers. The red diagonal ribbon is immediately recognisable as a sale signal. Can feel less premium at this price point.
+    </div>
+  </div>
+
+  <!-- APPROACH B: Gold bar + elegant price -->
+  <div class="approach" data-choice="b" onclick="toggleSelect(this)">
+    <div class="approach-label">
+      <div class="letter-badge">B</div>
+      <span class="approach-name">Gold bar + floating tag</span>
+    </div>
+    <div style="padding:12px 16px 0;">
+      <div class="card-mockup">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="door" />
+          <div class="sale-bar"></div>
+          <div class="sale-float-tag">OFERTĂ SPECIALĂ</div>
+        </div>
+        <div class="card-body">
+          <div class="card-eyebrow">Ușă Interior · Filomuro</div>
+          <div class="card-title">Furnir Stejar Natural</div>
+          <div class="card-model">FLM-OAK-01 · La comandă</div>
+          <div class="price-b">
+            <span class="price-b-from">De la</span>
+            <div class="price-b-row">
+              <span class="price-b-main">560 €</span>
+              <span class="price-b-orig">700 €</span>
+              <span class="price-b-tax">+ TVA</span>
+            </div>
+          </div>
+          <button class="cta-b">Cere ofertă</button>
+        </div>
+      </div>
+    </div>
+    <div class="desc">
+      <strong>Subtle gold accent</strong>
+      Uses the brand's gold colour. A slim top bar signals "something special" without shouting. The floating tag on the image adds context. Feels premium and on-brand.
+    </div>
+  </div>
+
+  <!-- APPROACH C: Dark percentage badge -->
+  <div class="approach" data-choice="c" onclick="toggleSelect(this)">
+    <div class="approach-label">
+      <div class="letter-badge">C</div>
+      <span class="approach-name">Dark % badge + gold CTA</span>
+    </div>
+    <div style="padding:12px 16px 0;">
+      <div class="card-mockup">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="door" />
+          <div class="badge-c">
+            <span class="badge-c-pct">−20%</span>
+            <span class="badge-c-label">reducere</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-eyebrow">Ușă Interior · Filomuro</div>
+          <div class="card-title">Furnir Stejar Natural</div>
+          <div class="card-model">FLM-OAK-01 · La comandă</div>
+          <div class="price-c">
+            <span class="price-c-main">560 €</span>
+            <span class="price-c-orig">700 €</span>
+            <span class="price-c-tax">+ TVA</span>
+          </div>
+          <button class="cta-c">Cere ofertă</button>
+        </div>
+      </div>
+    </div>
+    <div class="desc">
+      <strong>Dark floating badge</strong>
+      Bold percentage grabs attention immediately. The dark-on-gold palette matches the brand exactly. The gold CTA border reinforces the "special" feeling throughout the card.
+    </div>
+  </div>
+
+</div>
+
+<p class="selection-hint">Click a card to select — then tell me your pick in the chat</p>
+
+</body>
+</html>

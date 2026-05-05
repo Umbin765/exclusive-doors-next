@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Category Design Directions</title>
+<script src="/helper.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f0f0f; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #fff; padding: 40px 24px; }
+  h1 { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #888; margin-bottom: 6px; }
+  .subtitle { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+  .sub2 { font-size: 12px; color: #555; margin-bottom: 40px; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+  .card {
+    border: 1px solid #222; cursor: pointer; transition: border-color .2s; position: relative; overflow: hidden;
+  }
+  .card:hover { border-color: #555; }
+  .card.selected { border-color: #f59e0b; }
+  .card.selected .badge { display: block; }
+  .badge { display: none; position: absolute; top: 10px; right: 10px; background: #f59e0b; color: #000; font-size: 9px; font-weight: 800; letter-spacing: 1px; padding: 3px 8px; z-index: 10; }
+
+  .cat-label { padding: 14px 18px; border-bottom: 1px solid #1e1e1e; display: flex; align-items: center; gap: 10px; }
+  .cat-num { font-size: 11px; font-weight: 800; color: #333; }
+  .cat-name { font-size: 13px; font-weight: 700; }
+  .cat-vibe { font-size: 10px; color: #555; margin-top: 1px; }
+
+  /* ── INTERIOR: warm, residential, soft ───────── */
+  .interior-preview {
+    background: #f5f0eb;
+    padding: 20px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  }
+  .int-gallery { display: flex; flex-direction: column; gap: 6px; }
+  .int-main { height: 100px; background: #d9cfc5; display: flex; align-items: center; justify-content: center; }
+  .int-thumbs { display: grid; grid-template-columns: repeat(3,1fr); gap: 4px; }
+  .int-thumb { height: 32px; background: #c9bfb5; }
+  .int-info { padding: 4px 0; }
+  .int-eyebrow { font-size: 8px; letter-spacing: 3px; color: #c8a96e; margin-bottom: 6px; }
+  .int-name { font-size: 15px; font-weight: 800; color: #1a1a1a; line-height: 1.1; margin-bottom: 8px; }
+  .int-spec { font-size: 9px; color: #888; padding: 5px 0; border-bottom: 1px solid #e0d8d0; display: flex; justify-content: space-between; }
+  .int-spec span:last-child { color: #333; font-weight: 600; }
+  .int-cta { margin-top: 10px; background: #1a1a1a; color: #fff; font-size: 9px; font-weight: 700; letter-spacing: 1px; padding: 9px; text-align: center; }
+
+  /* ── EXTERIOR: dark, secure, architectural ───── */
+  .exterior-preview {
+    background: #0d0d0d;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  }
+  .ext-gallery { background: #111; display: flex; flex-direction: column; gap: 4px; padding: 14px; }
+  .ext-main { height: 100px; background: #1e1e1e; display: flex; align-items: center; justify-content: center; }
+  .ext-thumbs { display: grid; grid-template-columns: repeat(4,1fr); gap: 3px; }
+  .ext-thumb { height: 24px; background: #252525; }
+  .ext-info { padding: 16px 14px; }
+  .ext-eyebrow { font-size: 8px; letter-spacing: 3px; color: #f59e0b; margin-bottom: 6px; }
+  .ext-name { font-size: 15px; font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 8px; }
+  .ext-badge { display: inline-block; border: 1px solid rgba(245,158,11,0.4); color: #f59e0b; font-size: 8px; letter-spacing: 1px; padding: 2px 7px; margin-bottom: 8px; }
+  .ext-spec { font-size: 9px; color: #555; padding: 5px 0; border-bottom: 1px solid #1e1e1e; display: flex; justify-content: space-between; }
+  .ext-spec span:last-child { color: #fff; font-weight: 600; }
+  .ext-cta { margin-top: 10px; background: #f59e0b; color: #000; font-size: 9px; font-weight: 800; letter-spacing: 1px; padding: 9px; text-align: center; }
+
+  /* ── GLISANTE: open, airy, modern ───────────── */
+  .glisante-preview {
+    background: #f8f8f8;
+    padding: 0;
+    overflow: hidden;
+  }
+  .gli-hero { height: 110px; background: #e2e2e2; display: flex; align-items: center; justify-content: center; position: relative; }
+  .gli-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(248,248,248,1) 0%, transparent 60%); }
+  .gli-body { padding: 0 16px 16px; }
+  .gli-eyebrow { font-size: 8px; letter-spacing: 3px; color: #888; margin-bottom: 4px; }
+  .gli-name { font-size: 15px; font-weight: 800; color: #111; margin-bottom: 8px; }
+  .gli-specs { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; margin-bottom: 10px; }
+  .gli-spec-box { background: #fff; border: 1px solid #eee; padding: 6px; text-align: center; }
+  .gli-spec-num { font-size: 12px; font-weight: 800; color: #111; }
+  .gli-spec-lbl { font-size: 7px; color: #aaa; letter-spacing: 1px; }
+  .gli-cta { background: #111; color: #fff; font-size: 9px; font-weight: 700; letter-spacing: 1px; padding: 9px; text-align: center; }
+
+  /* ── PIVOTANTE: bold, architectural, statement ─ */
+  .pivotante-preview {
+    background: #0a0a0a;
+    position: relative; overflow: hidden;
+  }
+  .piv-accent-line { width: 3px; background: #f59e0b; position: absolute; left: 0; top: 0; bottom: 0; }
+  .piv-content { padding: 16px 16px 16px 20px; }
+  .piv-eyebrow { font-size: 8px; letter-spacing: 4px; color: #f59e0b; margin-bottom: 6px; }
+  .piv-name { font-size: 22px; font-weight: 900; color: #fff; line-height: 1.0; margin-bottom: 4px; letter-spacing: -1px; }
+  .piv-sub { font-size: 9px; color: #444; margin-bottom: 12px; }
+  .piv-img { height: 80px; background: #161616; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+  .piv-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 10px; }
+  .piv-tag { border: 1px solid #2a2a2a; color: #555; font-size: 8px; letter-spacing: 1px; padding: 3px 7px; }
+  .piv-cta { background: #f59e0b; color: #000; font-size: 9px; font-weight: 800; letter-spacing: 2px; padding: 9px; text-align: center; }
+
+  .note { margin-top: 32px; font-size: 11px; color: #444; text-align: center; }
+  .note span { color: #666; }
+</style>
+</head>
+<body>
+
+<h1>Design Direction</h1>
+<div class="subtitle">Each category has its own visual personality</div>
+<div class="sub2">All use the Split (B) layout — the mood shifts to match the product. Click any to confirm it feels right.</div>
+
+<div class="grid">
+
+  <!-- INTERIOR -->
+  <div class="card" id="c-interior" onclick="toggle('interior')">
+    <div class="badge">✓ OK</div>
+    <div class="cat-label">
+      <div class="cat-num">01</div>
+      <div>
+        <div class="cat-name">Uși Interior</div>
+        <div class="cat-vibe">Warm · Residential · Light background</div>
+      </div>
+    </div>
+    <div class="interior-preview">
+      <div class="int-gallery">
+        <div class="int-main"><span style="font-size:8px;color:#bbb;">foto ușă</span></div>
+        <div class="int-thumbs">
+          <div class="int-thumb"></div><div class="int-thumb"></div><div class="int-thumb"></div>
+        </div>
+      </div>
+      <div class="int-info">
+        <div class="int-eyebrow">UȘĂ INTERIOR · FILOMURO</div>
+        <div class="int-name">Flush Wall<br/>System</div>
+        <div class="int-spec"><span>Finisaj</span><span>Furnir stejar</span></div>
+        <div class="int-spec"><span>Izolație fonică</span><span>38 dB</span></div>
+        <div class="int-spec"><span>La comandă</span><span>Da</span></div>
+        <div class="int-cta">Cere ofertă</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXTERIOR -->
+  <div class="card" id="c-exterior" onclick="toggle('exterior')">
+    <div class="badge">✓ OK</div>
+    <div class="cat-label">
+      <div class="cat-num">02</div>
+      <div>
+        <div class="cat-name">Uși Exterior</div>
+        <div class="cat-vibe">Dark · Secure · Amber accents</div>
+      </div>
+    </div>
+    <div class="exterior-preview">
+      <div class="ext-gallery">
+        <div class="ext-main"><span style="font-size:8px;color:#444;">foto ușă</span></div>
+        <div class="ext-thumbs">
+          <div class="ext-thumb"></div><div class="ext-thumb"></div>
+          <div class="ext-thumb"></div><div class="ext-thumb"></div>
+        </div>
+      </div>
+      <div class="ext-info">
+        <div class="ext-eyebrow">UȘĂ EXTERIOR · GROKE</div>
+        <div class="ext-name">Thermosafe<br/>90</div>
+        <div class="ext-badge">ANTIEFRACȚIE RC3</div>
+        <div class="ext-spec"><span>Material</span><span>Aluminiu</span></div>
+        <div class="ext-spec"><span>Izolație</span><span>1.0 W/m²K</span></div>
+        <div class="ext-spec"><span>Garanție</span><span>10 ani</span></div>
+        <div class="ext-cta">Cere ofertă</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GLISANTE -->
+  <div class="card" id="c-glisante" onclick="toggle('glisante')">
+    <div class="badge">✓ OK</div>
+    <div class="cat-label">
+      <div class="cat-num">03</div>
+      <div>
+        <div class="cat-name">Uși Glisante</div>
+        <div class="cat-vibe">Light · Open · Airy — emphasises space</div>
+      </div>
+    </div>
+    <div class="glisante-preview">
+      <div class="gli-hero">
+        <span style="font-size:8px;color:#bbb;position:relative;z-index:1;">foto ușă glisantă</span>
+        <div class="gli-hero-overlay"></div>
+      </div>
+      <div class="gli-body">
+        <div class="gli-eyebrow">UȘĂ GLISANTĂ · SISTEM</div>
+        <div class="gli-name">Liftant-Culisant 200</div>
+        <div class="gli-specs">
+          <div class="gli-spec-box"><div class="gli-spec-num">6m</div><div class="gli-spec-lbl">Deschidere max</div></div>
+          <div class="gli-spec-box"><div class="gli-spec-num">42dB</div><div class="gli-spec-lbl">Izolație</div></div>
+          <div class="gli-spec-box"><div class="gli-spec-num">RC2</div><div class="gli-spec-lbl">Securitate</div></div>
+        </div>
+        <div class="gli-cta">Cere ofertă</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PIVOTANTE -->
+  <div class="card" id="c-pivotante" onclick="toggle('pivotante')">
+    <div class="badge">✓ OK</div>
+    <div class="cat-label">
+      <div class="cat-num">04</div>
+      <div>
+        <div class="cat-name">Uși Pivotante</div>
+        <div class="cat-vibe">Bold · Architectural · Statement piece</div>
+      </div>
+    </div>
+    <div class="pivotante-preview">
+      <div class="piv-accent-line"></div>
+      <div class="piv-content">
+        <div class="piv-eyebrow">UȘĂ PIVOTANTĂ · DESIGN</div>
+        <div class="piv-name">Grand<br/>Pivot</div>
+        <div class="piv-sub">Pivot central · Supradimensionată · La comandă</div>
+        <div class="piv-img"><span style="font-size:8px;color:#333;">foto ușă pivotantă</span></div>
+        <div class="piv-tags">
+          <div class="piv-tag">PIVOT CENTRAL</div>
+          <div class="piv-tag">H 3000mm</div>
+          <div class="piv-tag">FURNIR / VOPSIT</div>
+          <div class="piv-tag">LA COMANDĂ</div>
+        </div>
+        <div class="piv-cta">Cere ofertă personalizată</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="note">All four use the <span>Split (B) layout</span> — gallery left, details right. The mood adapts per category.</div>
+
+<script>
+const selected = new Set();
+function toggle(id) {
+  const el = document.getElementById('c-'+id);
+  if (selected.has(id)) {
+    selected.delete(id);
+    el.classList.remove('selected');
+  } else {
+    selected.add(id);
+    el.classList.add('selected');
+  }
+  if (window.__superpowers_record) window.__superpowers_record('click', id, 'Category: '+id);
+}
+</script>
+</body>
+</html>

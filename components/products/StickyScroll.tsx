@@ -49,18 +49,18 @@ export default function StickyScroll({ stops, badge }: Props) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-950/70 via-transparent to-transparent" />
               {i === 0 && (
-                <span className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-accent text-[8px] font-bold tracking-[0.35em] uppercase px-3 py-1.5 rounded-full border border-accent/20">
+                <span className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-accent text-[0.5rem] font-bold tracking-[0.35em] uppercase px-3 py-1.5 rounded-full border border-accent/20">
                   {badge}
                 </span>
               )}
-              <span className="absolute bottom-3 right-3 text-white/30 text-[10px] font-bold tracking-widest">
+              <span className="absolute bottom-3 right-3 text-white/30 text-[0.625rem] font-bold tracking-widest">
                 {String(i + 1).padStart(2, '0')} / {String(stops.length).padStart(2, '0')}
               </span>
             </div>
 
             {/* Text */}
             <div className="px-6 py-8">
-              <p className="text-[9px] font-bold uppercase tracking-[0.35em] text-accent mb-4">
+              <p className="text-[0.5625rem] font-bold uppercase tracking-[0.35em] text-accent mb-4">
                 {stop.eyebrow}
               </p>
               <h3 className="text-2xl font-bold text-white leading-tight mb-4">
@@ -73,7 +73,7 @@ export default function StickyScroll({ stops, badge }: Props) {
                 {stop.stats.map((stat) => (
                   <div key={stat.label}>
                     <div className="text-2xl font-bold text-white tracking-tight">{stat.num}</div>
-                    <div className="text-[8px] font-bold tracking-[0.25em] uppercase text-white/30 mt-1">
+                    <div className="text-[0.5rem] font-bold tracking-[0.25em] uppercase text-white/30 mt-1">
                       {stat.label}
                     </div>
                   </div>
@@ -123,12 +123,12 @@ export default function StickyScroll({ stops, badge }: Props) {
               <div className="absolute inset-0 bg-gradient-to-t from-gray-950/60 via-transparent to-transparent z-10" />
 
               {/* Badge */}
-              <span className="absolute top-4 left-4 z-20 bg-black/60 backdrop-blur-sm text-accent text-[8px] font-bold tracking-[0.35em] uppercase px-3 py-1.5 rounded-full border border-accent/20">
+              <span className="absolute top-4 left-4 z-20 bg-black/60 backdrop-blur-sm text-accent text-[0.5rem] font-bold tracking-[0.35em] uppercase px-3 py-1.5 rounded-full border border-accent/20">
                 {badge}
               </span>
 
               {/* Stop counter */}
-              <span className="absolute bottom-4 right-4 z-20 text-white/30 text-[10px] font-bold tracking-widest">
+              <span className="absolute bottom-4 right-4 z-20 text-white/30 text-[0.625rem] font-bold tracking-widest">
                 {String(activeIndex + 1).padStart(2, '0')} / {String(stops.length).padStart(2, '0')}
               </span>
             </div>
@@ -172,7 +172,7 @@ export default function StickyScroll({ stops, badge }: Props) {
                     letterSpacing: isActive ? '0.35em' : '0.2em',
                   }}
                 >
-                  <p className="text-[9px] font-bold uppercase text-accent mb-5">
+                  <p className="text-[0.5625rem] font-bold uppercase text-accent mb-5">
                     {stop.eyebrow}
                   </p>
                 </div>
@@ -220,7 +220,7 @@ export default function StickyScroll({ stops, badge }: Props) {
                       }}
                     >
                       <div className="text-3xl font-bold text-white tracking-tight">{stat.num}</div>
-                      <div className="text-[8px] font-bold tracking-[0.25em] uppercase text-white/30 mt-1.5">
+                      <div className="text-[0.5rem] font-bold tracking-[0.25em] uppercase text-white/30 mt-1.5">
                         {stat.label}
                       </div>
                     </div>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Page Layouts</title>
+<script src="/helper.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f0f0f; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #fff; padding: 40px 24px; }
+
+  h1 { font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: #888; margin-bottom: 6px; }
+  .subtitle { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 40px; }
+
+  .layouts { display: flex; flex-direction: column; gap: 60px; }
+
+  /* ── OPTION LABEL ─────────────────────────────── */
+  .opt-label {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 16px; cursor: pointer;
+  }
+  .opt-letter {
+    width: 32px; height: 32px; border: 1px solid #333; display: flex; align-items: center;
+    justify-content: center; font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    color: #888; flex-shrink: 0; transition: all .2s;
+  }
+  .opt-name { font-size: 15px; font-weight: 700; color: #fff; }
+  .opt-desc { font-size: 12px; color: #666; margin-top: 2px; }
+
+  .layout-wrap {
+    border: 1px solid #222; transition: border-color .2s; cursor: pointer; position: relative;
+  }
+  .layout-wrap:hover { border-color: #f59e0b; }
+  .layout-wrap.selected { border-color: #f59e0b; }
+  .layout-wrap.selected .opt-letter { background: #f59e0b; color: #000; border-color: #f59e0b; }
+  .selected-badge {
+    display: none; position: absolute; top: 12px; right: 12px;
+    background: #f59e0b; color: #000; font-size: 10px; font-weight: 700;
+    letter-spacing: 1px; padding: 3px 8px;
+  }
+  .layout-wrap.selected .selected-badge { display: block; }
+
+  /* ── NAV ─────────────────────────────────────── */
+  .mock-nav {
+    background: rgba(255,255,255,0.04); backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 0 28px; height: 52px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .mock-logo { font-size: 11px; font-weight: 700; letter-spacing: 5px; color: #fff; }
+  .mock-nav-links { display: flex; gap: 20px; }
+  .mock-nav-links span { font-size: 10px; color: #aaa; }
+  .mock-cta-nav {
+    background: #fff; color: #000; font-size: 9px; font-weight: 700;
+    letter-spacing: 1px; padding: 6px 14px;
+  }
+
+  /* ── SHARED ELEMENTS ─────────────────────────── */
+  .amber { color: #f59e0b; }
+  .eyebrow { font-size: 9px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: #f59e0b; margin-bottom: 8px; }
+  .product-name { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; color: #fff; line-height: 1.1; }
+  .product-sub { font-size: 11px; color: #777; margin-top: 6px; line-height: 1.6; }
+  .spec-item { font-size: 10px; color: #aaa; padding: 7px 0; border-bottom: 1px solid #222; display: flex; justify-content: space-between; }
+  .spec-val { color: #fff; font-weight: 600; }
+  .cta-primary { background: #f59e0b; color: #000; font-size: 10px; font-weight: 800; letter-spacing: 2px; padding: 12px 22px; display: inline-block; text-transform: uppercase; }
+  .cta-secondary { border: 1px solid #444; color: #fff; font-size: 10px; letter-spacing: 1px; padding: 11px 18px; display: inline-block; }
+  .tag { background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.25); color: #f59e0b; font-size: 9px; letter-spacing: 1px; padding: 3px 8px; display: inline-block; }
+  .img-ph { background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); display: flex; align-items: center; justify-content: center; }
+  .img-label { font-size: 9px; color: #444; letter-spacing: 2px; text-transform: uppercase; }
+
+  /* ════════════════════════════════════════════════
+     OPTION A — Editorial (dark hero + below grid)
+  ════════════════════════════════════════════════ */
+  .opt-a .hero-img {
+    height: 260px; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #2a2a2a 0%, #111 100%);
+  }
+  .opt-a .hero-img .img-label { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .opt-a .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.85) 40%, transparent 100%);
+    padding: 36px 32px; display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .opt-a .below { display: grid; grid-template-columns: 1fr 220px; gap: 0; }
+  .opt-a .below-left { padding: 24px 28px; border-right: 1px solid #1e1e1e; }
+  .opt-a .below-right { padding: 24px 28px; background: #0a0a0a; }
+  .opt-a .thumb-strip { display: flex; gap: 6px; margin-top: 16px; }
+  .opt-a .thumb { height: 48px; flex: 1; }
+
+  /* ════════════════════════════════════════════════
+     OPTION B — Split (gallery | info)
+  ════════════════════════════════════════════════ */
+  .opt-b .split { display: grid; grid-template-columns: 1.1fr 1fr; }
+  .opt-b .gallery { background: #111; padding: 20px; }
+  .opt-b .main-photo { height: 200px; margin-bottom: 8px; }
+  .opt-b .thumb-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 6px; }
+  .opt-b .thumb { height: 42px; }
+  .opt-b .details { padding: 28px 24px; background: #0d0d0d; display: flex; flex-direction: column; gap: 14px; }
+  .opt-b .specs { margin-top: 4px; }
+  .opt-b .ctarow { display: flex; gap: 8px; margin-top: 4px; }
+
+  /* ════════════════════════════════════════════════
+     OPTION C — Showcase (name → carousel → stats)
+  ════════════════════════════════════════════════ */
+  .opt-c .header-band { padding: 22px 28px; background: #0d0d0d; border-bottom: 1px solid #1e1e1e; }
+  .opt-c .breadcrumb { font-size: 9px; color: #555; letter-spacing: 1px; margin-bottom: 10px; }
+  .opt-c .head-row { display: flex; justify-content: space-between; align-items: flex-end; }
+  .opt-c .carousel { height: 220px; position: relative; }
+  .opt-c .carousel-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center;
+    font-size: 14px; color: #fff; cursor: pointer;
+  }
+  .opt-c .carousel-arrow.left { left: 14px; }
+  .opt-c .carousel-arrow.right { right: 14px; }
+  .opt-c .dots { display: flex; gap: 5px; justify-content: center; padding: 10px 0; background: #0d0d0d; }
+  .opt-c .dot { height: 2px; background: #444; }
+  .opt-c .dot.active { background: #f59e0b; }
+  .opt-c .stat-grid { display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid #1e1e1e; }
+  .opt-c .stat-box { padding: 16px; border-right: 1px solid #1e1e1e; }
+  .opt-c .stat-box:last-child { border-right: none; }
+  .opt-c .stat-num { font-size: 16px; font-weight: 800; color: #fff; }
+  .opt-c .stat-lbl { font-size: 9px; color: #555; letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; }
+  .opt-c .bottom { display: grid; grid-template-columns: 1fr 220px; }
+  .opt-c .desc { padding: 24px 28px; border-right: 1px solid #1e1e1e; }
+  .opt-c .actions { padding: 24px 20px; background: #0a0a0a; display: flex; flex-direction: column; gap: 10px; justify-content: center; }
+</style>
+</head>
+<body>
+
+<h1>Product Page</h1>
+<div class="subtitle">Three premium layouts — click to select</div>
+
+<div class="layouts">
+
+  <!-- ══ OPTION A ════════════════════════════════ -->
+  <div class="layout-wrap" id="opt-a" onclick="selectOpt('a')">
+    <div class="selected-badge">✓ SELECTED</div>
+    <div class="opt-label" style="padding:16px 20px 0;">
+      <div class="opt-letter" id="letter-a">A</div>
+      <div>
+        <div class="opt-name">Editorial</div>
+        <div class="opt-desc">Dark cinematic hero — product details reveal below</div>
+      </div>
+    </div>
+
+    <div class="opt-a">
+      <div class="mock-nav">
+        <div class="mock-logo">EXCLUSIVE DOORS</div>
+        <div class="mock-nav-links"><span>Uși Interior</span><span>Uși Exterior</span><span>Glisante</span><span>Pivotante</span></div>
+        <div class="mock-cta-nav">Programare</div>
+      </div>
+      <div class="hero-img img-ph">
+        <span class="img-label">Imagine produs</span>
+        <div class="hero-overlay">
+          <div class="eyebrow">Uși Exterior · GROKE</div>
+          <div class="product-name">Thermosafe 90</div>
+          <div class="product-sub" style="max-width:260px;">Ușă termoizolantă din aluminiu, antiefracție,<br/>disponibilă la comandă în orice finisaj.</div>
+          <div style="display:flex;gap:6px;margin-top:14px;">
+            <div class="tag">ANTIEFRACȚIE RC3</div>
+            <div class="tag">IZOLAȚIE TERMICĂ</div>
+          </div>
+        </div>
+      </div>
+      <div class="below">
+        <div class="below-left">
+          <div style="font-size:11px;color:#666;margin-bottom:12px;">Galerie foto</div>
+          <div class="thumb-strip">
+            <div class="thumb img-ph"><span class="img-label" style="font-size:7px;">01</span></div>
+            <div class="thumb img-ph"><span class="img-label" style="font-size:7px;">02</span></div>
+            <div class="thumb img-ph"><span class="img-label" style="font-size:7px;">03</span></div>
+            <div class="thumb img-ph"><span class="img-label" style="font-size:7px;">04</span></div>
+            <div class="thumb img-ph"><span class="img-label" style="font-size:7px;">05</span></div>
+          </div>
+          <div style="margin-top:18px;font-size:10px;color:#555;line-height:1.7;">
+            Ușile GROKE Thermosafe sunt soluția premium pentru intrări rezidențiale de înaltă performanță. Aluminiu reciclabil, garnituri triple, sisteme de blocare multipunct și finisaje anodizate sau vopsite.
+          </div>
+        </div>
+        <div class="below-right">
+          <div style="font-size:9px;color:#555;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;">Specificații</div>
+          <div class="spec-item"><span>Material</span><span class="spec-val">Aluminiu</span></div>
+          <div class="spec-item"><span>Izolație termică</span><span class="spec-val">1.0 W/m²K</span></div>
+          <div class="spec-item"><span>Antiefracție</span><span class="spec-val amber">RC3</span></div>
+          <div class="spec-item"><span>Izolație fonică</span><span class="spec-val">42 dB</span></div>
+          <div class="spec-item"><span>Garanție</span><span class="spec-val">10 ani</span></div>
+          <div style="margin-top:18px;display:flex;flex-direction:column;gap:8px;">
+            <div class="cta-primary" style="text-align:center;">Cere ofertă</div>
+            <div class="cta-secondary" style="text-align:center;">Programare showroom</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ OPTION B ════════════════════════════════ -->
+  <div class="layout-wrap" id="opt-b" onclick="selectOpt('b')">
+    <div class="selected-badge">✓ SELECTED</div>
+    <div class="opt-label" style="padding:16px 20px 0;">
+      <div class="opt-letter" id="letter-b">B</div>
+      <div>
+        <div class="opt-name">Split</div>
+        <div class="opt-desc">Gallery left · all product info right — nothing hidden below the fold</div>
+      </div>
+    </div>
+
+    <div class="opt-b">
+      <div class="mock-nav">
+        <div class="mock-logo">EXCLUSIVE DOORS</div>
+        <div class="mock-nav-links"><span>Uși Interior</span><span>Uși Exterior</span><span>Glisante</span><span>Pivotante</span></div>
+        <div class="mock-cta-nav">Programare</div>
+      </div>
+      <div style="padding:10px 28px;background:#0a0a0a;font-size:9px;color:#555;border-bottom:1px solid #1a1a1a;">
+        Acasă &nbsp;/&nbsp; Uși Exterior &nbsp;/&nbsp; <span style="color:#fff;">GROKE Thermosafe 90</span>
+      </div>
+      <div class="split">
+        <div class="gallery">
+          <div class="main-photo img-ph"><span class="img-label">Imagine principală</span></div>
+          <div class="thumb-row">
+            <div class="thumb img-ph"><span class="img-label" style="font-size:7px;">01</span></div>
+            <div class="thumb img-ph"><span class="img-label" style="font-size:7px;">02</span></div>
+            <div class="thumb img-ph"><span class="img-label" style="font-size:7px;">03</span></div>
+            <div class="thumb img-ph"><span class="img-label" style="font-size:7px;">04</span></div>
+          </div>
+        </div>
+        <div class="details">
+          <div>
+            <div class="eyebrow">Uși Exterior · GROKE</div>
+            <div class="product-name">Thermosafe 90</div>
+            <div class="product-sub">Ușă termoizolantă din aluminiu, antiefracție, disponibilă la comandă.</div>
+          </div>
+          <div style="display:flex;gap:5px;">
+            <div class="tag">RC3</div>
+            <div class="tag">GROKE</div>
+            <div class="tag">LA COMANDĂ</div>
+          </div>
+          <div class="specs">
+            <div class="spec-item"><span>Material</span><span class="spec-val">Aluminiu</span></div>
+            <div class="spec-item"><span>Izolație termică</span><span class="spec-val">1.0 W/m²K</span></div>
+            <div class="spec-item"><span>Antiefracție</span><span class="spec-val amber">RC3</span></div>
+            <div class="spec-item"><span>Izolație fonică</span><span class="spec-val">42 dB</span></div>
+            <div class="spec-item"><span>Garanție</span><span class="spec-val">10 ani</span></div>
+          </div>
+          <div class="ctarow">
+            <div class="cta-primary">Cere ofertă</div>
+            <div class="cta-secondary">Showroom</div>
+          </div>
+          <div style="font-size:9px;color:#444;line-height:1.6;border-top:1px solid #1e1e1e;padding-top:12px;">
+            📞 0728 959 652 &nbsp;·&nbsp; Livrare și montaj în toată țara
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ OPTION C ════════════════════════════════ -->
+  <div class="layout-wrap" id="opt-c" onclick="selectOpt('c')">
+    <div class="selected-badge">✓ SELECTED</div>
+    <div class="opt-label" style="padding:16px 20px 0;">
+      <div class="opt-letter" id="letter-c">C</div>
+      <div>
+        <div class="opt-name">Showcase</div>
+        <div class="opt-desc">Name + tags → full-width carousel → specs as stat chips → description + CTA</div>
+      </div>
+    </div>
+
+    <div class="opt-c">
+      <div class="mock-nav">
+        <div class="mock-logo">EXCLUSIVE DOORS</div>
+        <div class="mock-nav-links"><span>Uși Interior</span><span>Uși Exterior</span><span>Glisante</span><span>Pivotante</span></div>
+        <div class="mock-cta-nav">Programare</div>
+      </div>
+      <div class="header-band">
+        <div class="breadcrumb">Acasă &nbsp;/&nbsp; Uși Exterior &nbsp;/&nbsp; GROKE Thermosafe 90</div>
+        <div class="head-row">
+          <div>
+            <div class="eyebrow">Uși Exterior · GROKE</div>
+            <div class="product-name" style="font-size:30px;">Thermosafe 90</div>
+          </div>
+          <div style="display:flex;gap:5px;align-items:flex-end;">
+            <div class="tag">ANTIEFRACȚIE RC3</div>
+            <div class="tag">IZOLAȚIE TERMICĂ</div>
+            <div class="tag">LA COMANDĂ</div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel img-ph" style="position:relative;">
+        <span class="img-label">Carusel foto produs</span>
+        <div class="carousel-arrow left">‹</div>
+        <div class="carousel-arrow right">›</div>
+      </div>
+      <div class="dots" style="border-bottom:1px solid #1e1e1e;">
+        <div class="dot active" style="width:24px;"></div>
+        <div class="dot" style="width:8px;"></div>
+        <div class="dot" style="width:8px;"></div>
+        <div class="dot" style="width:8px;"></div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-num amber">RC3</div>
+          <div class="stat-lbl">Antiefracție</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">1.0</div>
+          <div class="stat-lbl">W/m²K izolație</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">42 dB</div>
+          <div class="stat-lbl">Izolație fonică</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">10 ani</div>
+          <div class="stat-lbl">Garanție</div>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="desc">
+          <div style="font-size:9px;color:#555;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">Despre produs</div>
+          <div style="font-size:11px;color:#aaa;line-height:1.8;">
+            Ușile GROKE Thermosafe sunt soluția premium pentru intrări rezidențiale de înaltă performanță. Aluminiu reciclabil, garnituri triple, sisteme de blocare multipunct și finisaje anodizate sau vopsite în orice culoare RAL.
+          </div>
+          <div style="margin-top:14px;font-size:9px;color:#555;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Opțiuni disponibile</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <div style="border:1px solid #2a2a2a;padding:5px 10px;font-size:9px;color:#888;">Vopsit RAL</div>
+            <div style="border:1px solid #2a2a2a;padding:5px 10px;font-size:9px;color:#888;">Anodizat</div>
+            <div style="border:1px solid #2a2a2a;padding:5px 10px;font-size:9px;color:#888;">Inox periat</div>
+            <div style="border:1px solid #2a2a2a;padding:5px 10px;font-size:9px;color:#888;">Sticlă laterală</div>
+          </div>
+        </div>
+        <div class="actions">
+          <div class="cta-primary" style="text-align:center;">Cere ofertă personalizată</div>
+          <div class="cta-secondary" style="text-align:center;">Programare showroom</div>
+          <div style="font-size:9px;color:#444;text-align:center;margin-top:4px;">📞 0728 959 652</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let selected = null;
+function selectOpt(id) {
+  ['a','b','c'].forEach(x => {
+    document.getElementById('opt-'+x).classList.remove('selected');
+    document.getElementById('letter-'+x).style.background = '';
+    document.getElementById('letter-'+x).style.color = '#888';
+    document.getElementById('letter-'+x).style.borderColor = '#333';
+  });
+  document.getElementById('opt-'+id).classList.add('selected');
+  document.getElementById('letter-'+id).style.background = '#f59e0b';
+  document.getElementById('letter-'+id).style.color = '#000';
+  document.getElementById('letter-'+id).style.borderColor = '#f59e0b';
+  selected = id;
+  if (window.__superpowers_record) window.__superpowers_record('click', id, 'Option '+id.toUpperCase());
+}
+</script>
+</body>
+</html>

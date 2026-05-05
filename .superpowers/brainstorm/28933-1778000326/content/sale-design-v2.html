@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sale Design v2</title>
+<script src="/helper.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0f0f0f;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #fff;
+    padding: 40px 24px 80px;
+  }
+  .page-label { font-size: 11px; font-weight: 800; letter-spacing: 0.35em; text-transform: uppercase; color: #F8AF17; margin-bottom: 8px; }
+  .page-title { font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+  .page-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 52px; }
+  .section-label {
+    font-size: 10px; font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(255,255,255,0.3); margin-bottom: 20px; margin-top: 52px;
+    border-bottom: 1px solid rgba(255,255,255,0.07); padding-bottom: 10px;
+  }
+  .card { background: #fff; border-radius: 12px; overflow: hidden; color: #111; box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+  .card-img { position: relative; height: 200px; overflow: hidden; }
+  .card-img img { width: 100%; height: 100%; object-fit: cover; }
+  .card-body { padding: 16px; }
+  .eyebrow { font-size: 9px; font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase; color: #aaa; margin-bottom: 4px; }
+  .card-title { font-size: 16px; font-weight: 800; color: #111; margin-bottom: 3px; }
+  .card-desc { font-size: 12px; color: #999; margin-bottom: 14px; line-height: 1.5; }
+
+  .sale-badge {
+    position: absolute; top: 14px; left: 14px; z-index: 10;
+    background: #111; border: 1px solid rgba(248,175,23,0.3);
+    border-radius: 7px; padding: 7px 12px 7px 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+    display: flex; flex-direction: column; align-items: flex-start;
+  }
+  .badge-pct { font-size: 20px; font-weight: 900; line-height: 1; color: #F8AF17; letter-spacing: -0.02em; }
+  .badge-word { font-size: 7px; font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(248,175,23,0.55); margin-top: 2px; }
+
+  .cta-normal { margin-top: 4px; width: 100%; border: 2px solid #eee; color: #aaa; font-size: 10px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; padding: 10px; border-radius: 7px; text-align: center; }
+  .cta-sale   { margin-top: 4px; width: 100%; border: 2px solid #F8AF17; color: #111; font-size: 10px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; padding: 10px; border-radius: 7px; text-align: center; }
+
+  .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 860px; }
+
+  /* Product page */
+  .product-page-mock {
+    background: #f6f3ef; border-radius: 16px; overflow: hidden;
+    display: grid; grid-template-columns: 1.15fr 1fr; max-width: 860px;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.5);
+  }
+  .gallery-side { background: #eee8e0; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+  .gallery-main { position: relative; border-radius: 10px; overflow: hidden; height: 280px; }
+  .gallery-main img { width: 100%; height: 100%; object-fit: cover; }
+  .gallery-thumbs { display: flex; gap: 8px; }
+  .thumb { width: 52px; height: 52px; border-radius: 8px; overflow: hidden; border: 2px solid transparent; opacity: 0.5; }
+  .thumb.active { border-color: #F8AF17; opacity: 1; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+  .details-side { background: #fff; padding: 20px 22px; display: flex; flex-direction: column; gap: 14px; overflow-y: auto; }
+  .details-eyebrow { font-size: 9px; font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase; color: #F8AF17; }
+  .details-name { font-size: 22px; font-weight: 800; color: #111; line-height: 1.15; }
+  .details-model { font-size: 10px; color: #bbb; margin-top: 2px; }
+  .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag { border: 1px solid #eee; color: #bbb; font-size: 9px; letter-spacing: 0.2em; padding: 3px 8px; border-radius: 4px; text-transform: uppercase; }
+  .specs-title { font-size: 9px; font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase; color: #ddd; margin-bottom: 6px; }
+  .spec-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid #f5f5f5; }
+  .spec-key { font-size: 11px; color: #bbb; }
+  .spec-val { font-size: 11px; font-weight: 700; color: #222; }
+
+  .sale-price-block { background: #fffbf0; border: 1px solid rgba(248,175,23,0.25); border-radius: 10px; padding: 14px 16px; }
+  .spb-label { font-size: 9px; font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase; color: #F8AF17; margin-bottom: 4px; }
+  .spb-row { display: flex; align-items: baseline; gap: 10px; }
+  .spb-price { font-size: 26px; font-weight: 900; color: #111; }
+  .spb-orig { font-size: 14px; color: #ccc; text-decoration: line-through; }
+  .spb-tax { font-size: 11px; color: #bbb; }
+  .spb-saving { font-size: 11px; color: #F8AF17; font-weight: 700; margin-top: 4px; }
+
+  .cta-primary { background: #111; color: #fff; font-size: 11px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; padding: 12px; border-radius: 7px; text-align: center; }
+  .cta-secondary-sale { border: 2px solid #F8AF17; color: #111; font-size: 11px; font-weight: 700; padding: 10px; border-radius: 7px; text-align: center; }
+
+  .annotation {
+    background: rgba(248,175,23,0.08); border: 1px solid rgba(248,175,23,0.18);
+    border-radius: 8px; padding: 12px 16px; font-size: 12px;
+    color: rgba(255,255,255,0.55); line-height: 1.6; margin-top: 14px; max-width: 860px;
+  }
+  .annotation strong { color: #F8AF17; }
+  .pill {
+    display: inline-block; background: rgba(248,175,23,0.12); border: 1px solid rgba(248,175,23,0.2);
+    color: #F8AF17; font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    padding: 3px 10px; border-radius: 20px; margin-bottom: 16px;
+  }
+</style>
+</head>
+<body>
+
+<p class="page-label">Sale Design v2 — Revised</p>
+<p class="page-title">Badge on cards · Full price details on product page only</p>
+<p class="page-sub">No price shown in catalog — just the badge as a teaser. Full sale treatment revealed on the product page.</p>
+
+<!-- ① CARDS -->
+<p class="section-label">① Cards — homepage sections &amp; category pages (badge only, no price)</p>
+<div class="three-col">
+
+  <!-- ON SALE -->
+  <div class="card">
+    <div class="card-img">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="" />
+      <div class="sale-badge">
+        <span class="badge-pct">−20%</span>
+        <span class="badge-word">reducere</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="eyebrow">Uși Interior</div>
+      <div class="card-title">Filomuro</div>
+      <div class="card-desc">La nivel cu peretele, pentru un aspect modern și îngrijit.</div>
+      <div class="cta-sale">Detalii →</div>
+    </div>
+  </div>
+
+  <!-- Regular -->
+  <div class="card" style="opacity:0.6;">
+    <div class="card-img">
+      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80" alt="" />
+    </div>
+    <div class="card-body">
+      <div class="eyebrow">Uși Interior</div>
+      <div class="card-title">Albe Vopsite</div>
+      <div class="card-desc">Luminoase și elegante, pentru orice spațiu.</div>
+      <div class="cta-normal">Detalii →</div>
+    </div>
+  </div>
+
+  <!-- Regular -->
+  <div class="card" style="opacity:0.6;">
+    <div class="card-img">
+      <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80" alt="" />
+    </div>
+    <div class="card-body">
+      <div class="eyebrow">Uși Interior</div>
+      <div class="card-title">Laminate</div>
+      <div class="card-desc">Aspect cald și natural, disponibile la comandă.</div>
+      <div class="cta-normal">Detalii →</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="annotation">
+  <strong>Cards:</strong> Only the badge and gold CTA border signal the sale. No price shown — the badge creates curiosity and pulls users to the product page to see the offer.
+</div>
+
+<!-- ② PRODUCT PAGE -->
+<p class="section-label">② Product page — full sale treatment (badge + price block)</p>
+
+<div class="product-page-mock">
+  <div class="gallery-side">
+    <div class="gallery-main">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80" alt="" />
+      <div class="sale-badge">
+        <span class="badge-pct">−20%</span>
+        <span class="badge-word">reducere</span>
+      </div>
+      <span style="position:absolute;bottom:10px;right:10px;background:rgba(255,255,255,0.7);font-size:9px;color:#555;padding:3px 8px;border-radius:4px;letter-spacing:0.1em;">1 / 5</span>
+    </div>
+    <div class="gallery-thumbs">
+      <div class="thumb active"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&q=80" alt="" /></div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=200&q=80" alt="" /></div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=200&q=80" alt="" /></div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=200&q=80" alt="" /></div>
+    </div>
+  </div>
+
+  <div class="details-side">
+    <div>
+      <div class="details-eyebrow">Ușă Interior · Filomuro</div>
+      <div class="details-name">Furnir Stejar Natural</div>
+      <div class="details-model">FLM-OAK-01 · La comandă</div>
+    </div>
+    <div class="tags">
+      <span class="tag">Filomuro</span>
+      <span class="tag">Furnir natural</span>
+      <span class="tag">La comandă</span>
+    </div>
+    <div style="border-top:1px solid #f0f0f0;padding-top:12px;">
+      <div class="specs-title">Specificații</div>
+      <div class="spec-row"><span class="spec-key">Material</span><span class="spec-val">Furnir stejar natural</span></div>
+      <div class="spec-row"><span class="spec-key">Sistem</span><span class="spec-val">Filomuro (flush wall)</span></div>
+      <div class="spec-row"><span class="spec-key">Izolație fonică</span><span class="spec-val">38 dB</span></div>
+      <div class="spec-row"><span class="spec-key">Garanție</span><span class="spec-val">5 ani</span></div>
+    </div>
+
+    <!-- KEY: warm sale price block replacing normal price -->
+    <div class="sale-price-block">
+      <div class="spb-label">Preț promoțional</div>
+      <div class="spb-row">
+        <span class="spb-price">560 €</span>
+        <span class="spb-orig">700 €</span>
+        <span class="spb-tax">+ TVA</span>
+      </div>
+      <div class="spb-saving">Economisești 140 € · ofertă limitată</div>
+    </div>
+
+    <div class="cta-primary">Cere ofertă personalizată</div>
+    <div class="cta-secondary-sale">Programare showroom</div>
+  </div>
+</div>
+
+<div class="annotation">
+  <strong>Product page:</strong> Badge on gallery image. Price block replaces the normal "De la X €" with a warm gold-tinted panel: "Preț promoțional" label, bold sale price, crossed-out original, savings line. Secondary CTA border turns gold.
+</div>
+
+</body>
+</html>

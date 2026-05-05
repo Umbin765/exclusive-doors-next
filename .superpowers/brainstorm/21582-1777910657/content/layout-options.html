@@ -1,0 +1,117 @@
+<h2>Product Page Layout</h2>
+<p class="subtitle">Three approaches for the door product page — pick the one that feels right</p>
+
+<div class="cards">
+
+  <!-- Option A -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#f5f5f5; padding:16px; font-family:sans-serif;">
+      <div style="background:#1a1a1a;color:#fff;padding:6px 10px;font-size:9px;letter-spacing:2px;margin-bottom:8px;">EXCLUSIVE DOORS</div>
+      <!-- Hero image full width -->
+      <div style="background:#c8c8c8;height:120px;display:flex;align-items:center;justify-content:center;color:#888;font-size:10px;margin-bottom:8px;">HERO PHOTO (full width)</div>
+      <!-- Product name + breadcrumb below -->
+      <div style="display:grid;grid-template-columns:1fr 140px;gap:10px;">
+        <div>
+          <div style="font-size:8px;color:#f59e0b;letter-spacing:2px;margin-bottom:4px;">UȘĂ EXTERIOR</div>
+          <div style="font-size:14px;font-weight:700;margin-bottom:4px;">GROKE Thermosafe 90</div>
+          <div style="font-size:8px;color:#666;line-height:1.5;margin-bottom:6px;">Ușă termoizolantă din aluminiu, antiefracție, disponibilă la comandă în orice dimensiune și finisaj.</div>
+          <!-- Thumbnail strip -->
+          <div style="display:flex;gap:4px;margin-bottom:8px;">
+            <div style="background:#bbb;width:28px;height:28px;"></div>
+            <div style="background:#aaa;width:28px;height:28px;"></div>
+            <div style="background:#999;width:28px;height:28px;"></div>
+            <div style="background:#888;width:28px;height:28px;"></div>
+          </div>
+          <div style="background:#1a1a1a;color:#fff;font-size:8px;padding:5px 10px;display:inline-block;">Cere ofertă</div>
+        </div>
+        <div>
+          <div style="font-size:8px;font-weight:700;margin-bottom:4px;color:#444;">SPECIFICAȚII</div>
+          <div style="font-size:8px;color:#666;line-height:1.8;">Material: Aluminiu<br/>Izolație: 1.0 W/m²K<br/>Antiefracție: RC3<br/>Garanție: 10 ani</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Editorial</h3>
+      <p>Full-width hero photo, product info below in a two-column layout. Cinematic first impression, specs sidebar alongside the description.</p>
+    </div>
+  </div>
+
+  <!-- Option B -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#f5f5f5; padding:16px; font-family:sans-serif;">
+      <div style="background:#1a1a1a;color:#fff;padding:6px 10px;font-size:9px;letter-spacing:2px;margin-bottom:8px;">EXCLUSIVE DOORS</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <!-- Left: gallery -->
+        <div>
+          <div style="background:#c8c8c8;height:100px;display:flex;align-items:center;justify-content:center;color:#888;font-size:9px;margin-bottom:4px;">MAIN PHOTO</div>
+          <div style="display:flex;gap:3px;">
+            <div style="background:#bbb;flex:1;height:24px;"></div>
+            <div style="background:#aaa;flex:1;height:24px;"></div>
+            <div style="background:#999;flex:1;height:24px;"></div>
+          </div>
+        </div>
+        <!-- Right: details -->
+        <div>
+          <div style="font-size:7px;color:#f59e0b;letter-spacing:2px;margin-bottom:3px;">UȘĂ EXTERIOR</div>
+          <div style="font-size:12px;font-weight:700;margin-bottom:4px;">GROKE Thermosafe 90</div>
+          <div style="font-size:7px;color:#666;line-height:1.5;margin-bottom:5px;">Ușă termoizolantă din aluminiu, antiefracție, disponibilă la comandă.</div>
+          <div style="border-top:1px solid #ddd;padding-top:5px;margin-bottom:5px;">
+            <div style="font-size:7px;color:#333;line-height:1.9;">Material: Aluminiu<br/>Izolație: 1.0 W/m²K<br/>Antiefracție: RC3<br/>Garanție: 10 ani</div>
+          </div>
+          <div style="background:#f59e0b;color:#000;font-size:8px;font-weight:700;padding:5px 10px;display:inline-block;margin-bottom:3px;">Cere ofertă</div>
+          <div style="border:1px solid #1a1a1a;color:#1a1a1a;font-size:8px;padding:4px 10px;display:inline-block;margin-left:3px;">Programare</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — E-commerce split</h3>
+      <p>Gallery left, details right — the familiar product page pattern. Photos + specs + CTAs all above the fold. Efficient and scannable.</p>
+    </div>
+  </div>
+
+  <!-- Option C -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#f5f5f5; padding:16px; font-family:sans-serif;">
+      <div style="background:#1a1a1a;color:#fff;padding:6px 10px;font-size:9px;letter-spacing:2px;margin-bottom:8px;">EXCLUSIVE DOORS</div>
+      <!-- Name + eyebrow first -->
+      <div style="margin-bottom:6px;">
+        <div style="font-size:7px;color:#f59e0b;letter-spacing:2px;margin-bottom:2px;">UȘĂ EXTERIOR · GROKE</div>
+        <div style="font-size:14px;font-weight:700;">Thermosafe 90</div>
+      </div>
+      <!-- Full-width carousel -->
+      <div style="background:#c8c8c8;height:80px;display:flex;align-items:center;justify-content:center;color:#888;font-size:9px;margin-bottom:4px;">← PHOTO CAROUSEL →</div>
+      <!-- Dot indicators -->
+      <div style="display:flex;gap:3px;justify-content:center;margin-bottom:6px;">
+        <div style="width:12px;height:3px;background:#1a1a1a;"></div>
+        <div style="width:6px;height:3px;background:#bbb;"></div>
+        <div style="width:6px;height:3px;background:#bbb;"></div>
+        <div style="width:6px;height:3px;background:#bbb;"></div>
+      </div>
+      <!-- Specs in a row -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:6px;">
+        <div style="background:#fff;border:1px solid #ddd;padding:4px;text-align:center;">
+          <div style="font-size:9px;font-weight:700;">RC3</div>
+          <div style="font-size:7px;color:#888;">Antiefracție</div>
+        </div>
+        <div style="background:#fff;border:1px solid #ddd;padding:4px;text-align:center;">
+          <div style="font-size:9px;font-weight:700;">1.0</div>
+          <div style="font-size:7px;color:#888;">W/m²K</div>
+        </div>
+        <div style="background:#fff;border:1px solid #ddd;padding:4px;text-align:center;">
+          <div style="font-size:9px;font-weight:700;">10 ani</div>
+          <div style="font-size:7px;color:#888;">Garanție</div>
+        </div>
+        <div style="background:#fff;border:1px solid #ddd;padding:4px;text-align:center;">
+          <div style="font-size:9px;font-weight:700;">Cmd.</div>
+          <div style="font-size:7px;color:#888;">La comandă</div>
+        </div>
+      </div>
+      <div style="background:#f59e0b;color:#000;font-size:8px;font-weight:700;padding:5px;text-align:center;">Cere ofertă personalizată</div>
+    </div>
+    <div class="card-body">
+      <h3>C — Showcase</h3>
+      <p>Name first, then a full-width photo carousel, then key specs as stat chips. Clean and modern — feels premium, not e-commerce.</p>
+    </div>
+  </div>
+
+</div>

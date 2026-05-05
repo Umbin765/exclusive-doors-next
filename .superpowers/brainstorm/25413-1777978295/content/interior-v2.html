@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interior Door — Product Page v2</title>
+<script src="/helper.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #111;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    padding: 32px 24px;
+  }
+  .label { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #555; margin-bottom: 6px; }
+  .heading { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 28px; }
+
+  /* ── PAGE SHELL ─────────────────────────── */
+  .page {
+    background: #fff;
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+  }
+
+  /* ── NAV ─────────────────────────────────── */
+  .nav {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    padding: 0 28px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo { font-size: 12px; font-weight: 800; letter-spacing: 5px; color: #111; }
+  .nav-links { display: flex; gap: 22px; }
+  .nav-links span { font-size: 10px; color: #999; }
+  .nav-links span.active { color: #111; font-weight: 600; }
+  .nav-cta {
+    background: #111; color: #fff;
+    font-size: 9px; font-weight: 700; letter-spacing: 1px;
+    padding: 8px 16px;
+  }
+
+  /* ── BREADCRUMB ─────────────────────────── */
+  .breadcrumb {
+    padding: 10px 28px;
+    background: #fafaf9;
+    border-bottom: 1px solid #f0ede8;
+    font-size: 9px; color: #bbb; letter-spacing: 0.5px;
+  }
+  .breadcrumb strong { color: #555; }
+
+  /* ── SPLIT BODY ─────────────────────────── */
+  .split { display: grid; grid-template-columns: 1.15fr 1fr; }
+
+  /* ─ GALLERY ─────────────────────────────── */
+  .gallery {
+    background: #f8f6f2;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .main-img {
+    border-radius: 12px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #e8e2d9 0%, #d8d0c5 100%);
+    height: 280px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .main-img-label { font-size: 9px; color: #bbb; letter-spacing: 2px; }
+  .zoom-badge {
+    position: absolute; bottom: 12px; right: 12px;
+    background: rgba(255,255,255,0.75); backdrop-filter: blur(4px);
+    border-radius: 6px;
+    color: #666; font-size: 8px; letter-spacing: 1px; padding: 4px 8px;
+  }
+  .thumbs { display: grid; grid-template-columns: repeat(5,1fr); gap: 6px; }
+  .thumb {
+    height: 52px; border-radius: 8px; cursor: pointer;
+    border: 2px solid transparent; transition: border-color .15s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .thumb:nth-child(1) { background: #ddd7cc; border-color: #F8AF17; }
+  .thumb:nth-child(2) { background: #d2cbbf; }
+  .thumb:nth-child(3) { background: #c8c0b3; }
+  .thumb:nth-child(4) { background: #bcb4a6; }
+  .thumb:nth-child(5) { background: #b0a898; }
+
+  /* ─ DETAILS ─────────────────────────────── */
+  .details {
+    padding: 28px 26px;
+    background: #fff;
+    border-left: 1px solid #f0ede8;
+    display: flex; flex-direction: column; gap: 18px;
+  }
+
+  .eyebrow {
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 4px; text-transform: uppercase;
+    color: #F8AF17;
+    margin-bottom: 6px;
+  }
+  .product-name {
+    font-size: 24px; font-weight: 800;
+    color: #111; line-height: 1.1; letter-spacing: -0.5px;
+  }
+  .product-model { font-size: 10px; color: #bbb; margin-top: 5px; }
+
+  .tags { display: flex; gap: 5px; flex-wrap: wrap; }
+  .tag {
+    border: 1px solid #ede8e0;
+    color: #aaa; font-size: 8px; letter-spacing: 1px;
+    padding: 4px 9px; text-transform: uppercase;
+    border-radius: 4px;
+  }
+
+  .divider { border: none; border-top: 1px solid #f0ede8; }
+
+  /* specs */
+  .section-label {
+    font-size: 8px; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: #ccc; margin-bottom: 10px;
+  }
+  .spec-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 0; border-bottom: 1px solid #f8f6f2;
+  }
+  .spec-key { font-size: 10px; color: #aaa; }
+  .spec-val { font-size: 10px; font-weight: 600; color: #333; }
+
+  /* finish swatches */
+  .swatches { display: flex; gap: 8px; align-items: center; }
+  .swatch {
+    width: 24px; height: 24px; border-radius: 50%;
+    border: 2px solid transparent; cursor: pointer;
+    transition: border-color .15s;
+  }
+  .swatch.active { border-color: #F8AF17; }
+  .swatch-info { font-size: 9px; color: #bbb; margin-top: 6px; }
+
+  /* ctas */
+  .cta-stack { display: flex; flex-direction: column; gap: 8px; }
+  .cta-primary {
+    background: #111; color: #fff;
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    padding: 14px; text-align: center; text-transform: uppercase;
+    cursor: pointer;
+  }
+  .cta-primary:hover { background: #333; }
+  .cta-secondary {
+    border: 1px solid #ddd; color: #555;
+    font-size: 10px; padding: 12px; text-align: center;
+    letter-spacing: 1px; cursor: pointer;
+  }
+  .cta-note {
+    font-size: 9px; color: #ccc; text-align: center; padding-top: 2px;
+  }
+
+  /* ── DESCRIPTION BAND ───────────────────── */
+  .desc-band {
+    padding: 24px 28px;
+    background: #fafaf9;
+    border-top: 1px solid #f0ede8;
+  }
+  .desc-text {
+    font-size: 11px; color: #888; line-height: 1.9; max-width: 580px;
+  }
+
+  /* ── RELATED ─────────────────────────────── */
+  .related-band {
+    padding: 24px 28px 28px;
+    background: #f8f6f2;
+    border-top: 1px solid #f0ede8;
+  }
+  .related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 14px; }
+  .related-card {
+    border-radius: 12px; overflow: hidden;
+    border: 2px solid transparent;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: border-color .15s;
+    cursor: pointer;
+  }
+  .related-card:hover { border-color: #F8AF17; }
+  .related-img {
+    height: 72px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .related-img:nth-child(1) { background: #ddd7cc; }
+  .related-info { padding: 10px 12px; }
+  .related-name { font-size: 11px; font-weight: 700; color: #222; }
+  .related-sub { font-size: 9px; color: #bbb; margin-top: 2px; }
+</style>
+</head>
+<body>
+
+<div class="label">Interior Door · Product Page</div>
+<div class="heading">Matching the home page style · /products/interior/filomuro</div>
+
+<div class="page">
+
+  <!-- NAV -->
+  <div class="nav">
+    <div class="logo">EXCLUSIVE DOORS</div>
+    <div class="nav-links">
+      <span class="active">Uși Interior</span>
+      <span>Uși Exterior</span>
+      <span>Glisante</span>
+      <span>Pivotante</span>
+    </div>
+    <div class="nav-cta">Programare showroom</div>
+  </div>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    Acasă &nbsp;/&nbsp; Uși Interior &nbsp;/&nbsp; <strong>Filomuro — Furnir Stejar Natural</strong>
+  </div>
+
+  <!-- SPLIT -->
+  <div class="split">
+
+    <!-- GALLERY -->
+    <div class="gallery">
+      <div class="main-img">
+        <span class="main-img-label">Imagine principală</span>
+        <div class="zoom-badge">↔ Mărește</div>
+      </div>
+      <div class="thumbs">
+        <div class="thumb"></div>
+        <div class="thumb"></div>
+        <div class="thumb"></div>
+        <div class="thumb"></div>
+        <div class="thumb"></div>
+      </div>
+    </div>
+
+    <!-- DETAILS -->
+    <div class="details">
+
+      <div>
+        <div class="eyebrow">Ușă Interior · Filomuro</div>
+        <div class="product-name">Furnir Stejar<br/>Natural</div>
+        <div class="product-model">Model FLM-OAK-01 · La comandă</div>
+      </div>
+
+      <div class="tags">
+        <span class="tag">Filomuro</span>
+        <span class="tag">Furnir natural</span>
+        <span class="tag">La comandă</span>
+      </div>
+
+      <hr class="divider"/>
+
+      <div>
+        <div class="section-label">Specificații</div>
+        <div class="spec-row"><span class="spec-key">Material</span><span class="spec-val">Furnir stejar natural</span></div>
+        <div class="spec-row"><span class="spec-key">Sistem</span><span class="spec-val">Filomuro (flush wall)</span></div>
+        <div class="spec-row"><span class="spec-key">Izolație fonică</span><span class="spec-val">38 dB</span></div>
+        <div class="spec-row"><span class="spec-key">Înălțime maximă</span><span class="spec-val">3000 mm</span></div>
+        <div class="spec-row"><span class="spec-key">Garanție</span><span class="spec-val">5 ani</span></div>
+      </div>
+
+      <div>
+        <div class="section-label">Finisaje disponibile</div>
+        <div class="swatches">
+          <div class="swatch active" style="background:#c8a96e;"></div>
+          <div class="swatch" style="background:#6b4c2a;"></div>
+          <div class="swatch" style="background:#f0f0f0; border:1px solid #ddd;"></div>
+          <div class="swatch" style="background:#2a2a2a;"></div>
+          <div class="swatch" style="background:#b8b0a0;"></div>
+        </div>
+        <div class="swatch-info">Stejar natural · 4 alte variante disponibile</div>
+      </div>
+
+      <div class="cta-stack">
+        <div class="cta-primary">Cere ofertă personalizată</div>
+        <div class="cta-secondary">Programare showroom</div>
+        <div class="cta-note">📞 0728 959 652 · Consultanță gratuită</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DESCRIPTION -->
+  <div class="desc-band">
+    <div class="section-label" style="margin-bottom:10px;">Despre produs</div>
+    <div class="desc-text">
+      Ușile Filomuro sunt montate la nivel cu peretele, creând o suprafață continuă fără toc vizibil. Disponibile cu furnir de stejar natural, nuc, sau în variante vopsite mat. Ideale pentru proiecte premium cu finisaje îngrijite și arhitectură contemporană.
+    </div>
+  </div>
+
+  <!-- RELATED -->
+  <div class="related-band">
+    <div class="section-label">Din aceeași categorie</div>
+    <div class="related-grid">
+      <div class="related-card">
+        <div class="related-img" style="background:#ddd7cc;"><span style="font-size:8px;color:#bbb;">foto</span></div>
+        <div class="related-info">
+          <div class="related-name">Albe vopsite</div>
+          <div class="related-sub">Interior · La comandă</div>
+        </div>
+      </div>
+      <div class="related-card">
+        <div class="related-img" style="background:#d4cec6;"><span style="font-size:8px;color:#bbb;">foto</span></div>
+        <div class="related-info">
+          <div class="related-name">Sticlă & furnir</div>
+          <div class="related-sub">Interior · La comandă</div>
+        </div>
+      </div>
+      <div class="related-card">
+        <div class="related-img" style="background:#cac4bc;"><span style="font-size:8px;color:#bbb;">foto</span></div>
+        <div class="related-info">
+          <div class="related-name">Grauthoff HGM</div>
+          <div class="related-sub">Interior · La comandă</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

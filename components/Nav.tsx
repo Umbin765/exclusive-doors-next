@@ -46,7 +46,7 @@ export default function Nav() {
                     <div className="absolute top-full left-0 w-[41.25rem] bg-white shadow-2xl border border-gray-100 p-6 grid grid-cols-[10rem_1fr] gap-6 rounded-xl">
                       {/* Category list */}
                       <div>
-                        <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">
+                        <p className="text-[0.625rem] font-bold uppercase tracking-widest text-gray-400 mb-3">
                           Categorii
                         </p>
                         <ul className="space-y-0.5">
@@ -71,7 +71,7 @@ export default function Nav() {
 
                       {/* Photo cards */}
                       <div>
-                        <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">
+                        <p className="text-[0.625rem] font-bold uppercase tracking-widest text-gray-400 mb-3">
                           {menu.heading}
                         </p>
                         <div className="grid grid-cols-3 gap-3">

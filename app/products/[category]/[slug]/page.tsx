@@ -30,7 +30,7 @@ export default function ProductPage({ params }: Props) {
       <Nav />
       {/* Hero: breadcrumb + split layout */}
       {/* Mobile: natural height stacked; Desktop: viewport-filling side-by-side */}
-      <div className="flex flex-col lg:h-[calc(100vh-64px)]">
+      <div className="flex flex-col lg:h-[calc(100vh-4rem)]">
         <Breadcrumb category={category} productName={product.name} />
         <section className="flex-1 grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] lg:min-h-0">
           <ProductGallery
@@ -54,7 +54,7 @@ export default function ProductPage({ params }: Props) {
       {/* Description */}
       <div className="bg-stone-50 border-t border-gray-100 px-8 py-10">
         <div className="max-w-7xl mx-auto">
-          <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-300 mb-4">
+          <p className="text-[0.625rem] font-bold tracking-[0.3em] uppercase text-gray-300 mb-4">
             Despre produs
           </p>
           <p className="text-sm text-gray-500 leading-relaxed max-w-xl">{product.description}</p>

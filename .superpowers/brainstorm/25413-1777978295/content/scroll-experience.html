@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scroll Experience — Interior Door</title>
+<script src="/helper.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0a0a0a;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #fff;
+  }
+
+  /* ── INTRO LABEL ─────────────────────────── */
+  .intro {
+    padding: 32px 28px 24px;
+    border-bottom: 1px solid #1e1e1e;
+  }
+  .intro-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: #555; margin-bottom: 6px; }
+  .intro-title { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .intro-sub { font-size: 12px; color: #555; }
+
+  /* ── SECTION HEADER ─────────────────────── */
+  .section-head {
+    padding: 32px 28px 0;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .step-num {
+    width: 28px; height: 28px; border: 1px solid #333;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 700; color: #555; flex-shrink: 0;
+  }
+  .step-title { font-size: 13px; font-weight: 700; color: #888; }
+  .step-desc { font-size: 10px; color: #444; margin-top: 2px; }
+
+  /* ══════════════════════════════════════════
+     SECTION 1 — Sticky scroll (Apple style)
+  ══════════════════════════════════════════ */
+  .sticky-section {
+    padding: 24px 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  /* Left: the locked image */
+  .sticky-img-col {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 380px;
+    background: #111;
+  }
+  .sticky-img-col img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: brightness(0.85);
+  }
+  .sticky-badge {
+    position: absolute; top: 14px; left: 14px;
+    background: rgba(0,0,0,0.6); backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 8px; letter-spacing: 2px; color: #F8AF17; text-transform: uppercase;
+  }
+  .sticky-label {
+    position: absolute; bottom: 14px; right: 14px;
+    font-size: 8px; color: #555; letter-spacing: 1px;
+  }
+
+  /* Right: rotating text panels */
+  .sticky-text-col {
+    padding: 0 0 0 28px;
+    display: flex; flex-direction: column; gap: 0;
+    justify-content: center;
+  }
+
+  /* Simulating 3 scroll states stacked to show the concept */
+  .scroll-state {
+    padding: 20px 0;
+    border-bottom: 1px solid #1a1a1a;
+    opacity: 0.35;
+    transition: opacity .3s;
+  }
+  .scroll-state.active { opacity: 1; }
+  .scroll-state:last-child { border-bottom: none; }
+  .state-eyebrow {
+    font-size: 8px; letter-spacing: 3px; color: #F8AF17;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .state-title { font-size: 18px; font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 8px; }
+  .state-body { font-size: 11px; color: #666; line-height: 1.8; max-width: 300px; }
+  .state-spec {
+    margin-top: 10px; display: flex; gap: 16px;
+  }
+  .state-spec-item { text-align: center; }
+  .state-spec-num { font-size: 16px; font-weight: 800; color: #fff; }
+  .state-spec-lbl { font-size: 8px; color: #555; letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; }
+
+  .scroll-indicator {
+    margin: 0 28px;
+    padding: 12px 0;
+    border-top: 1px solid #1a1a1a;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .dots-row { display: flex; gap: 5px; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: #333; }
+  .dot.active { background: #F8AF17; }
+  .scroll-hint { font-size: 9px; color: #444; letter-spacing: 1px; margin-left: auto; }
+
+  /* ══════════════════════════════════════════
+     SECTION 2 — Detail zoom panels
+  ══════════════════════════════════════════ */
+  .zoom-panels {
+    padding: 0 28px 28px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .zoom-card {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    background: #111;
+    cursor: pointer;
+    border: 1px solid #1e1e1e;
+    transition: border-color .2s;
+  }
+  .zoom-card:hover { border-color: #F8AF17; }
+  .zoom-img {
+    height: 160px;
+    overflow: hidden;
+    position: relative;
+  }
+  .zoom-img img {
+    width: 100%; height: 100%; object-fit: cover;
+    transform-origin: center;
+    transition: transform .6s ease;
+  }
+  .zoom-card:hover .zoom-img img { transform: scale(1.08); }
+  .zoom-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+  }
+  .zoom-title {
+    position: absolute; bottom: 10px; left: 12px;
+    font-size: 11px; font-weight: 700; color: #fff;
+  }
+  .zoom-body {
+    padding: 12px 14px;
+    font-size: 10px; color: #666; line-height: 1.7;
+  }
+  .zoom-spec {
+    padding: 8px 14px 12px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid #1e1e1e;
+  }
+  .zoom-spec-label { font-size: 8px; color: #444; letter-spacing: 1px; text-transform: uppercase; }
+  .zoom-spec-val { font-size: 10px; font-weight: 700; color: #F8AF17; }
+
+  /* ══════════════════════════════════════════
+     SECTION 3 — 3D model viewer
+  ══════════════════════════════════════════ */
+  .model-section {
+    margin: 0 28px 28px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #1e1e1e;
+    background: linear-gradient(135deg, #111 0%, #0d0d0d 100%);
+    position: relative;
+    height: 260px;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 12px;
+  }
+  .model-grid {
+    position: absolute; inset: 0; opacity: 0.06;
+    background-image:
+      linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+  .model-icon {
+    width: 64px; height: 64px;
+    border: 1px solid #333; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; z-index: 1;
+    background: rgba(255,255,255,0.03);
+  }
+  .model-icon svg { width: 32px; height: 32px; color: #F8AF17; }
+  .model-text { position: relative; z-index: 1; text-align: center; }
+  .model-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .model-sub { font-size: 10px; color: #555; }
+  .model-controls {
+    position: absolute; bottom: 16px; right: 16px;
+    display: flex; gap: 6px;
+  }
+  .model-btn {
+    border: 1px solid #2a2a2a; background: rgba(255,255,255,0.04);
+    color: #666; font-size: 9px; letter-spacing: 1px; padding: 5px 10px;
+    border-radius: 6px;
+  }
+  .model-orbit {
+    position: absolute; bottom: 16px; left: 16px;
+    font-size: 9px; color: #333; letter-spacing: 1px;
+  }
+
+  /* ── SECTION LABELS ─────────────────────── */
+  .section-divider {
+    margin: 0 28px;
+    padding: 20px 0 16px;
+    border-top: 1px solid #1a1a1a;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-divider-num {
+    font-size: 9px; font-weight: 800; color: #F8AF17; letter-spacing: 2px;
+  }
+  .section-divider-title { font-size: 12px; font-weight: 700; color: #555; }
+
+  /* ── ANIMATION LABELS ───────────────────── */
+  .anim-label {
+    display: inline-block;
+    border: 1px solid #F8AF17;
+    color: #F8AF17; font-size: 8px; letter-spacing: 2px;
+    padding: 2px 7px; margin-bottom: 6px;
+    text-transform: uppercase; border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="intro">
+  <div class="intro-label">Scroll Experience · Below the split</div>
+  <div class="intro-title">Product deep-dive — what loads after the fold</div>
+  <div class="intro-sub">Three sections stacked: sticky scroll → detail zooms → 3D model</div>
+</div>
+
+<!-- ═══ SECTION 1: STICKY SCROLL ══════════════ -->
+<div class="section-head" style="padding-top:28px;">
+  <div class="step-num">1</div>
+  <div>
+    <div class="step-title">Sticky scroll — Apple style</div>
+    <div class="step-desc">Door photo locked left · feature text fades in/out on scroll · 3 stops</div>
+  </div>
+</div>
+
+<div class="sticky-section">
+
+  <!-- LOCKED IMAGE -->
+  <div class="sticky-img-col">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Door" />
+    <div class="sticky-badge">Filomuro · Furnir stejar</div>
+    <div class="sticky-label">↕ se blochează la scroll</div>
+  </div>
+
+  <!-- ROTATING TEXT STATES -->
+  <div class="sticky-text-col">
+
+    <div class="scroll-state active">
+      <div class="anim-label">Scroll stop 1 — fade in</div>
+      <div class="state-eyebrow">Sistem Filomuro</div>
+      <div class="state-title">La nivel cu<br/>peretele</div>
+      <div class="state-body">Toc invizibil integrat în structura peretelui. Suprafață continuă, fără întreruperi vizuale. Rezultatul: o cameră care respiră.</div>
+      <div class="state-spec">
+        <div class="state-spec-item">
+          <div class="state-spec-num">0mm</div>
+          <div class="state-spec-lbl">Toc vizibil</div>
+        </div>
+        <div class="state-spec-item">
+          <div class="state-spec-num">3000</div>
+          <div class="state-spec-lbl">Înălțime max mm</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-state">
+      <div class="anim-label">Scroll stop 2 — slide up</div>
+      <div class="state-eyebrow">Izolație Fonică</div>
+      <div class="state-title">38 dB de<br/>liniște</div>
+      <div class="state-body">Garnituri perimetrale triple și panou central cu masă mare. Zgomotul rămâne afară, confortul rămâne înăuntru.</div>
+      <div class="state-spec">
+        <div class="state-spec-item">
+          <div class="state-spec-num">38 dB</div>
+          <div class="state-spec-lbl">Izolație</div>
+        </div>
+        <div class="state-spec-item">
+          <div class="state-spec-num">3×</div>
+          <div class="state-spec-lbl">Garnituri</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-state">
+      <div class="anim-label">Scroll stop 3 — zoom in</div>
+      <div class="state-eyebrow">Finisaj furnir</div>
+      <div class="state-title">Stejar natural<br/>sau la alegere</div>
+      <div class="state-body">Furnir tăiat sfert, stratificat pe MDF hidrofug. Disponibil în stejar, nuc, frasin și 40+ culori RAL vopsite mat.</div>
+      <div class="state-spec">
+        <div class="state-spec-item">
+          <div class="state-spec-num">40+</div>
+          <div class="state-spec-lbl">Finisaje</div>
+        </div>
+        <div class="state-spec-item">
+          <div class="state-spec-num">5 ani</div>
+          <div class="state-spec-lbl">Garanție</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="scroll-indicator">
+  <div class="dots-row">
+    <div class="dot active"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+  <div class="scroll-hint">SCROLL ↓</div>
+</div>
+
+<!-- ═══ SECTION 2: DETAIL ZOOMS ══════════════ -->
+<div class="section-divider">
+  <div class="section-divider-num">02</div>
+  <div class="section-divider-title">Detalii tehnice — zoom pe componente</div>
+</div>
+
+<div class="zoom-panels">
+
+  <!-- HANDLE -->
+  <div class="zoom-card">
+    <div class="zoom-img">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Mâner" style="object-position: 30% center;" />
+      <div class="zoom-overlay"></div>
+      <div class="zoom-title">Mâner & închidere</div>
+    </div>
+    <div class="zoom-body">Design minimalist integrat. Sistem de închidere multipunct cu clapetă magnetică silențioasă.</div>
+    <div class="zoom-spec">
+      <span class="zoom-spec-label">Mecanism</span>
+      <span class="zoom-spec-val">Multipunct</span>
+    </div>
+  </div>
+
+  <!-- FRAME DETAIL -->
+  <div class="zoom-card">
+    <div class="zoom-img">
+      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80" alt="Toc" style="object-position: center 40%;" />
+      <div class="zoom-overlay"></div>
+      <div class="zoom-title">Toc invizibil</div>
+    </div>
+    <div class="zoom-body">Toc integrat în perete cu finisaj continuu. Joc de 2mm pe perimetru, garnitură magnetică inclusă.</div>
+    <div class="zoom-spec">
+      <span class="zoom-spec-label">Joc perimetral</span>
+      <span class="zoom-spec-val">2 mm</span>
+    </div>
+  </div>
+
+  <!-- FINISH CLOSEUP -->
+  <div class="zoom-card">
+    <div class="zoom-img">
+      <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80" alt="Furnir" style="object-position: center 60%;" />
+      <div class="zoom-overlay"></div>
+      <div class="zoom-title">Furnir natural</div>
+    </div>
+    <div class="zoom-body">Furnir stejar tăiat sfert, aplicat pe MDF 19mm. Fibra lemnului vizibilă, cu protecție UV inclusă.</div>
+    <div class="zoom-spec">
+      <span class="zoom-spec-label">Substrat</span>
+      <span class="zoom-spec-val">MDF 19mm</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ SECTION 3: 3D MODEL ═══════════════════ -->
+<div class="section-divider">
+  <div class="section-divider-num">03</div>
+  <div class="section-divider-title">Model 3D interactiv — rotire liberă</div>
+</div>
+
+<div class="model-section" style="margin-bottom: 32px;">
+  <div class="model-grid"></div>
+  <div class="model-icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+    </svg>
+  </div>
+  <div class="model-text">
+    <div class="model-title">Model 3D · Filomuro Furnir Stejar</div>
+    <div class="model-sub">Rotire 360° · Zoom · Configurare finisaj în timp real</div>
+  </div>
+  <div class="model-orbit">⟳ Drag to orbit</div>
+  <div class="model-controls">
+    <div class="model-btn">Stejar natural</div>
+    <div class="model-btn">Alb mat</div>
+    <div class="model-btn">Nuc</div>
+  </div>
+</div>
+
+</body>
+</html>

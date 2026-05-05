@@ -11,7 +11,7 @@ export default function SaleBadge({ percent, className = '' }: Props) {
       <span className="text-xl font-black leading-none tracking-tight text-accent">
         −{percent}%
       </span>
-      <span className="text-[7px] font-bold tracking-[0.3em] uppercase text-accent/55 mt-0.5">
+      <span className="text-[0.4375rem] font-bold tracking-[0.3em] uppercase text-accent/55 mt-0.5">
         reducere
       </span>
     </div>

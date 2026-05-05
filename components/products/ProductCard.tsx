@@ -30,7 +30,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
       {/* Body */}
       <div className="p-4 bg-white">
-        <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-accent mb-1">
+        <p className="text-[0.625rem] font-bold tracking-[0.3em] uppercase text-accent mb-1">
           {product.eyebrow}
         </p>
         <h3 className="font-bold text-gray-900 text-base leading-tight">{product.name}</h3>
@@ -39,14 +39,14 @@ export default function ProductCard({ product }: { product: Product }) {
           {product.tags.map((tag) => (
             <span
               key={tag}
-              className="border border-gray-200 text-gray-400 text-[9px] tracking-widest px-2 py-0.5 rounded"
+              className="border border-gray-200 text-gray-400 text-[0.5625rem] tracking-widest px-2 py-0.5 rounded"
             >
               {tag}
             </span>
           ))}
         </div>
         <div
-          className={`mt-4 w-full border-2 text-[10px] font-bold tracking-[0.15em] uppercase py-2.5 text-center rounded-lg transition-colors duration-200 ${
+          className={`mt-4 w-full border-2 text-[0.625rem] font-bold tracking-[0.15em] uppercase py-2.5 text-center rounded-lg transition-colors duration-200 ${
             onSale
               ? 'border-accent text-gray-900 group-hover:bg-accent'
               : 'border-gray-200 text-gray-400 group-hover:border-gray-400'
