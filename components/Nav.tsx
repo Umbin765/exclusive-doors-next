@@ -70,7 +70,7 @@ export default function Nav() {
                       </p>
                       <div className="grid grid-cols-3 gap-3">
                         {menu.cards.map((card) => (
-                          <a key={card.title} href="#" className="group">
+                          <a key={card.title} href={card.href} className="group">
                             <div className="h-28 overflow-hidden rounded mb-2 bg-gray-100">
                               <img
                                 src={card.img}
