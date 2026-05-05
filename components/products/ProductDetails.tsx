@@ -7,7 +7,7 @@ export default function ProductDetails({ product }: { product: Product }) {
   const [activeFinish, setActiveFinish] = useState(0);
 
   return (
-    <div className="bg-white border-l border-gray-100 px-6 pt-5 pb-[88px] flex flex-col gap-3.5">
+    <div className="bg-white border-l border-gray-100 px-6 py-5 flex flex-col gap-3.5 h-full">
 
       {/* Identity */}
       <div>
