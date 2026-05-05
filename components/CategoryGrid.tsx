@@ -46,11 +46,11 @@ export default function CategoryGrid() {
 
               {/* Bottom content */}
               <div className="absolute bottom-0 left-0 right-0 p-5">
-                <p className="text-[9px] font-bold tracking-widest text-accent mb-1.5 uppercase line-clamp-1">
+                <p className="text-xs font-bold tracking-widest text-accent mb-2 uppercase line-clamp-1">
                   {cat.tags}
                 </p>
-                <h3 className="text-lg font-bold text-white mb-1">{cat.title}</h3>
-                <p className="text-xs text-gray-300 leading-snug">{cat.sub}</p>
+                <h3 className="text-xl font-bold text-white mb-1.5">{cat.title}</h3>
+                <p className="text-sm text-gray-300 leading-snug">{cat.sub}</p>
               </div>
             </a>
           ))}
