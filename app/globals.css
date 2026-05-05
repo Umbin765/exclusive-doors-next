@@ -17,11 +17,9 @@
    it in simultaneously. clip-path is safe to use alongside position:sticky. */
 @keyframes dark-section-enter {
   from {
-    opacity: 0;
-    clip-path: inset(6% 0 0 0);
+    clip-path: inset(100% 0 0 0);
   }
   to {
-    opacity: 1;
     clip-path: inset(0% 0 0 0);
   }
 }
@@ -29,5 +27,5 @@
 .dark-section-enter {
   animation: dark-section-enter linear both;
   animation-timeline: view();
-  animation-range: entry 0% entry 35%;
+  animation-range: entry 0% entry 60%;
 }
