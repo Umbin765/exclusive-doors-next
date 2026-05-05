@@ -5,7 +5,6 @@ import Breadcrumb from '@/components/products/Breadcrumb';
 import ProductGallery from '@/components/products/ProductGallery';
 import ProductDetails from '@/components/products/ProductDetails';
 import StickyScroll from '@/components/products/StickyScroll';
-import DetailZoom from '@/components/products/DetailZoom';
 import RelatedProducts from '@/components/products/RelatedProducts';
 import { products, categoryMeta } from '@/lib/data';
 
@@ -40,9 +39,6 @@ export default function ProductPage({ params }: Props) {
         />
         <ProductDetails product={product} />
       </section>
-
-      {/* Detail zoom panels */}
-      <DetailZoom details={product.details} />
 
       {/* Description */}
       <div className="bg-stone-50 border-t border-gray-100 px-8 py-10">
