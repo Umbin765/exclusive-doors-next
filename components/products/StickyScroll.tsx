@@ -37,9 +37,6 @@ export default function StickyScroll({ stops, badge }: Props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Image zooms in slightly as you progress through stops
-  const imgScale = 1 + activeIndex * 0.04;
-
   return (
     <section className="grid grid-cols-1 lg:grid-cols-2 bg-gray-950">
 
@@ -65,8 +62,7 @@ export default function StickyScroll({ stops, badge }: Props) {
                 className="absolute inset-0 w-full h-full object-cover"
                 style={{
                   opacity: activeIndex === i ? 1 : 0,
-                  transform: `scale(${activeIndex === i ? imgScale : 1})`,
-                  transition: `opacity 0.9s ease, transform 1.2s ${SHARP_OUT}`,
+                  transition: `opacity 0.9s ease`,
                   transformOrigin: 'center center',
                   zIndex: activeIndex === i ? 1 : 0,
                 }}
