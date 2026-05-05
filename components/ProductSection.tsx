@@ -6,14 +6,14 @@ export default function ProductSection({ section, alt }: { section: ProductSecti
 
   return (
     <section className={`py-20 border-t border-gray-100 ${alt ? 'bg-stone-50' : 'bg-white'}`} id={id}>
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
         {/* Text block */}
         <div className="max-w-2xl mb-12" data-aos="fade-up">
           <p className="text-xs font-bold tracking-[0.25em] uppercase text-accent mb-4">
             {eyebrow}
           </p>
-          <h2 className="text-4xl font-bold text-gray-900 leading-tight mb-6">
+          <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 leading-tight mb-6">
             {heading}
           </h2>
           <p className="text-gray-500 leading-relaxed mb-8">

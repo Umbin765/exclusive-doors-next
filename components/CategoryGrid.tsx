@@ -4,11 +4,11 @@ export default function CategoryGrid() {
   return (
     <section className="bg-white pt-20 pb-12">
       {/* Section header */}
-      <div className="text-center mb-10 px-6" data-aos="fade-up">
+      <div className="text-center mb-10 px-4 sm:px-6" data-aos="fade-up">
         <p className="text-xs font-bold tracking-[0.3em] uppercase text-accent mb-3">
           Colecția noastră
         </p>
-        <h2 className="text-4xl font-bold text-gray-900 mb-4">
+        <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-4">
           Descoperă produsele din showroom
         </h2>
         <p className="text-gray-500 text-base max-w-xl mx-auto leading-relaxed">
@@ -19,7 +19,7 @@ export default function CategoryGrid() {
 
       {/* Cards */}
       <div className="px-4">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2" style={{ height: '70vh' }}>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2" style={{ minHeight: '50vh', height: 'clamp(320px, 70vh, 700px)' }}>
           {categories.map((cat) => (
             <a
               key={cat.title}
@@ -46,7 +46,7 @@ export default function CategoryGrid() {
 
               {/* Bottom content */}
               <div className="absolute bottom-0 left-0 right-0 p-5">
-                <p className="text-[10px] font-bold tracking-widest text-accent mb-2 uppercase">
+                <p className="text-[9px] font-bold tracking-widest text-accent mb-1.5 uppercase line-clamp-1">
                   {cat.tags}
                 </p>
                 <h3 className="text-lg font-bold text-white mb-1">{cat.title}</h3>

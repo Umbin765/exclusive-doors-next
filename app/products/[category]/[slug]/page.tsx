@@ -28,18 +28,19 @@ export default function ProductPage({ params }: Props) {
   return (
     <>
       <Nav />
-      {/* Viewport-filling hero: breadcrumb + split */}
-      <div className="flex flex-col h-[calc(100vh-64px)]">
+      {/* Hero: breadcrumb + split layout */}
+      {/* Mobile: natural height stacked; Desktop: viewport-filling side-by-side */}
+      <div className="flex flex-col lg:h-[calc(100vh-64px)]">
         <Breadcrumb category={category} productName={product.name} />
-        <section className="flex-1 grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] min-h-0">
+        <section className="flex-1 grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] lg:min-h-0">
           <ProductGallery
             mainImg={product.mainImg}
             thumbImgs={product.thumbImgs}
             alt={product.name}
           />
-          {/* Right column: same p-5 wrapper as gallery so details card aligns with photo */}
-          <div className="h-full bg-stone-50 border-l border-gray-100 p-5 flex flex-col">
-            <div className="flex-1 min-h-0 bg-white rounded-xl overflow-hidden">
+          {/* Right column: details panel */}
+          <div className="bg-stone-50 border-t lg:border-t-0 lg:border-l border-gray-100 p-4 lg:p-5 lg:h-full lg:flex lg:flex-col">
+            <div className="lg:flex-1 lg:min-h-0 bg-white rounded-xl overflow-hidden">
               <ProductDetails product={product} />
             </div>
           </div>

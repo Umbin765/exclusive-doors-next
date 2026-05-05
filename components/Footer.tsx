@@ -11,7 +11,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-gray-900 text-white pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
         {/* Contact strip */}
         <div className="flex flex-wrap gap-6 items-center mb-10 pb-10 border-b border-gray-800">
@@ -22,7 +22,7 @@ export default function Footer() {
           <a href="mailto:office@exclusivedoors.ro" className="text-sm text-gray-400 hover:text-white transition-colors">
             office@exclusivedoors.ro
           </a>
-          <span className="text-sm text-gray-500">Airport Plaza, Drumul Gării Odăi 1A (DN1), Parter, 075100 Otopeni, Ilfov</span>
+          <span className="text-sm text-gray-500 break-words">Airport Plaza, Drumul Gării Odăi 1A (DN1), Parter, 075100 Otopeni, Ilfov</span>
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-6 gap-8 mb-12">

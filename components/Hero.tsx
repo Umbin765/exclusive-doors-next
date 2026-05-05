@@ -15,7 +15,7 @@ export default function Hero() {
 
       {/* Main content */}
       <div className="relative flex-1 flex items-start">
-        <div className="max-w-7xl mx-auto px-6 pt-10 pb-6 w-full" data-aos="fade-up">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-8 sm:pt-10 pb-6 w-full" data-aos="fade-up">
           {/* Location bubble */}
           <a
             href="https://maps.google.com/?cid=17163938270079558934"
@@ -29,7 +29,7 @@ export default function Hero() {
             Showroom Otopeni — Airport Plaza, DN1
           </a>
 
-          <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-6 max-w-3xl">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-6 max-w-3xl">
             Showroom &amp; magazin de uși{' '}
             <span className="text-accent">la comandă</span>{' '}
             premium în București
@@ -63,10 +63,10 @@ export default function Hero() {
           </div>
 
           {/* Stats */}
-          <div className="flex flex-wrap gap-8">
+          <div className="flex flex-wrap gap-6 sm:gap-8">
             {heroStats.map((stat, i) => (
-              <div key={stat.label} className={i > 0 ? 'border-l border-gray-600 pl-8' : ''}>
-                <div className="text-3xl font-bold text-white">{stat.num}</div>
+              <div key={stat.label} className={i > 0 ? 'border-l border-gray-600 pl-6 sm:pl-8' : ''}>
+                <div className="text-2xl sm:text-3xl font-bold text-white">{stat.num}</div>
                 <div className="text-xs text-gray-400 mt-0.5">{stat.label}</div>
               </div>
             ))}

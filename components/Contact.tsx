@@ -1,8 +1,8 @@
 export default function Contact() {
   return (
     <section className="py-24 bg-white" id="contact">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-stretch">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
 
           {/* Left: info */}
           <div className="flex flex-col justify-between" data-aos="fade-right">
@@ -10,7 +10,7 @@ export default function Contact() {
               <p className="text-xs font-bold tracking-[0.3em] uppercase text-accent mb-4">
                 Showroom București
               </p>
-              <h2 className="text-4xl font-bold text-gray-900 mb-10">Vizitează-ne</h2>
+              <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-8 sm:mb-10">Vizitează-ne</h2>
 
               <div className="space-y-7">
                 <div className="flex items-start gap-4">
