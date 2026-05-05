@@ -5,7 +5,6 @@ import { ScrollStop } from '@/lib/data';
 
 interface Props {
   stops: ScrollStop[];
-  img: string;
   badge: string;
 }
 
@@ -14,7 +13,7 @@ const SPRING = 'cubic-bezier(0.34, 1.56, 0.64, 1)';
 // Aggressive ease-out for exiting
 const SHARP_OUT = 'cubic-bezier(0.76, 0, 0.24, 1)';
 
-export default function StickyScroll({ stops, img, badge }: Props) {
+export default function StickyScroll({ stops, badge }: Props) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState<number | null>(null);
   const stopRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -56,28 +55,37 @@ export default function StickyScroll({ stops, img, badge }: Props) {
             }}
           />
 
-          {/* Image with zoom */}
+          {/* Crossfading image stack */}
           <div className="relative rounded-2xl overflow-hidden flex-1 max-h-[70vh]">
-            <img
-              src={img}
-              alt={badge}
-              className="w-full h-full object-cover"
-              style={{
-                transform: `scale(${imgScale})`,
-                transition: `transform 1.2s ${SHARP_OUT}`,
-                transformOrigin: 'center center',
-              }}
-            />
+            {stops.map((stop, i) => (
+              <img
+                key={i}
+                src={stop.img}
+                alt={`${badge} — stop ${i + 1}`}
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{
+                  opacity: activeIndex === i ? 1 : 0,
+                  transform: `scale(${activeIndex === i ? imgScale : 1})`,
+                  transition: `opacity 0.9s ease, transform 1.2s ${SHARP_OUT}`,
+                  transformOrigin: 'center center',
+                  zIndex: activeIndex === i ? 1 : 0,
+                }}
+              />
+            ))}
+
+            {/* Spacer to give the container height */}
+            <div className="invisible w-full h-full" aria-hidden />
+
             {/* Dark vignette overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-gray-950/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-950/60 via-transparent to-transparent z-10" />
 
             {/* Badge */}
-            <span className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-accent text-[8px] font-bold tracking-[0.35em] uppercase px-3 py-1.5 rounded-full border border-accent/20">
+            <span className="absolute top-4 left-4 z-20 bg-black/60 backdrop-blur-sm text-accent text-[8px] font-bold tracking-[0.35em] uppercase px-3 py-1.5 rounded-full border border-accent/20">
               {badge}
             </span>
 
             {/* Stop counter */}
-            <span className="absolute bottom-4 right-4 text-white/30 text-[10px] font-bold tracking-widest">
+            <span className="absolute bottom-4 right-4 z-20 text-white/30 text-[10px] font-bold tracking-widest">
               {String(activeIndex + 1).padStart(2, '0')} / {String(stops.length).padStart(2, '0')}
             </span>
           </div>

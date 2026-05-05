@@ -54,7 +54,6 @@ export default function ProductPage({ params }: Props) {
       {/* Sticky scroll */}
       <StickyScroll
         stops={product.scrollStops}
-        img={product.mainImg}
         badge={product.eyebrow}
       />
 

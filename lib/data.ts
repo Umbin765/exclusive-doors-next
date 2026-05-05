@@ -361,6 +361,7 @@ export interface ScrollStop {
   title: string;
   body: string;
   stats: { num: string; label: string }[];
+  img: string;
 }
 
 export interface DetailPanel {
@@ -454,18 +455,21 @@ export const products: Product[] = [
         title: 'La nivel cu peretele',
         body: 'Toc invizibil integrat în structura peretelui. Suprafață continuă, fără întreruperi vizuale. Rezultatul: o cameră care respiră.',
         stats: [{ num: '0mm', label: 'Toc vizibil' }, { num: '3000', label: 'Înălțime max mm' }],
+        img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80',
       },
       {
         eyebrow: 'Izolație fonică',
         title: '38 dB de liniște',
         body: 'Garnituri perimetrale triple și panou central cu masă mare. Zgomotul rămâne afară, confortul rămâne înăuntru.',
         stats: [{ num: '38 dB', label: 'Izolație' }, { num: '3×', label: 'Garnituri' }],
+        img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=80',
       },
       {
         eyebrow: 'Finisaj furnir',
         title: 'Stejar natural sau la alegere',
         body: 'Furnir tăiat sfert, stratificat pe MDF hidrofug. Disponibil în stejar, nuc, frasin și 40+ culori RAL vopsite mat.',
         stats: [{ num: '40+', label: 'Finisaje' }, { num: '5 ani', label: 'Garanție' }],
+        img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&q=80',
       },
     ],
     details: [
@@ -526,18 +530,21 @@ export const products: Product[] = [
         title: 'Rezistentă la efracție',
         body: 'Clasă de rezistență RC3 — testată la 3 minute de atac cu scule de efracție. Oțel armat în interiorul profilului de aluminiu.',
         stats: [{ num: 'RC3', label: 'Clasă efracție' }, { num: '3 min', label: 'Rezistență atac' }],
+        img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80',
       },
       {
         eyebrow: 'Termoizolație',
         title: '1.0 W/m²K — performanță pasivă',
         body: 'Rupere de punte termică integrată. Pierderile de căldură reduse cu până la 40% față de o ușă standard.',
         stats: [{ num: '1.0', label: 'W/m²K' }, { num: '40%', label: 'Economie energie' }],
+        img: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?w=900&q=80',
       },
       {
         eyebrow: 'Finisaj aluminiu',
         title: 'Orice culoare RAL',
         body: 'Vopsire electrostatică rezistentă la UV și coroziune. Anodizare disponibilă pentru un look premium metalic.',
         stats: [{ num: '200+', label: 'Culori RAL' }, { num: '10 ani', label: 'Garanție' }],
+        img: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=900&q=80',
       },
     ],
     details: [
@@ -598,18 +605,21 @@ export const products: Product[] = [
         title: 'Se ridică, apoi culisează',
         body: 'La acționarea mânerului, panoul se ridică 3mm de pe pragul de etanșare și culisează fără frecare. Un singur gest, o deschidere spectaculoasă.',
         stats: [{ num: '3mm', label: 'Lift la acționare' }, { num: '6m', label: 'Deschidere max' }],
+        img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=900&q=80',
       },
       {
         eyebrow: 'Termoizolație',
         title: '0.8 W/m²K — standard pasiv',
         body: 'Profilul de aluminiu cu ruptură de punte termică triplă și sticlă dublă sau triplă low-e. Potrivit pentru case pasive.',
         stats: [{ num: '0.8', label: 'W/m²K' }, { num: 'Triple', label: 'Garnituri' }],
+        img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80',
       },
       {
         eyebrow: 'Sticlă & lumină',
         title: 'Până la 90% transparență',
         body: 'Ramă minimă de 45mm. Suprafața vitrată maximizată. Sticlă securizată sau laminată la alegere, cu control solar opțional.',
         stats: [{ num: '45mm', label: 'Ramă profil' }, { num: '90%', label: 'Suprafață sticlă' }],
+        img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80',
       },
     ],
     details: [
@@ -671,18 +681,21 @@ export const products: Product[] = [
         title: 'Rotire pe pivot central',
         body: 'Pivotul este integrat în pardoseală și tavan, invizibil. Ușa se rotește în jurul axei centrale cu un gest minim — spectacol garantat.',
         stats: [{ num: '180°', label: 'Unghi rotire' }, { num: '3500', label: 'Înălțime max mm' }],
+        img: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=900&q=80',
       },
       {
         eyebrow: 'Construcție',
         title: 'Până la 400 kg — solid ca piatra',
         body: 'Miez din aluminiu turnat, placaj structurat, placă exterioară la alegere. Rulmenți cu bile sigilați pentru 500.000 cicluri garantate.',
         stats: [{ num: '400 kg', label: 'Greutate max' }, { num: '500K', label: 'Cicluri garantate' }],
+        img: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?w=900&q=80',
       },
       {
         eyebrow: 'Design',
         title: 'Orice finisaj, orice dimensiune',
         body: 'Furnir natural, vopsit RAL, inox periat sau combinații. Sticlă integrată disponibilă. Fiecare piesă este unică și fabricată la comandă.',
         stats: [{ num: '100%', label: 'La comandă' }, { num: '10 ani', label: 'Garanție' }],
+        img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&q=80',
       },
     ],
     details: [
