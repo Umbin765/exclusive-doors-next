@@ -14,8 +14,12 @@ export default function Nav() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
 
             {/* Logo */}
-            <a href="/" className="text-sm sm:text-base lg:text-lg font-bold tracking-widest shrink-0">
-              EXCLUSIVE DOORS
+            <a href="/" className="shrink-0 flex items-center">
+              <img
+                src="/logo.png"
+                alt="Exclusive Doors"
+                className="h-8 sm:h-9 w-auto"
+              />
             </a>
 
             {/* Mega-menu items — desktop only */}
@@ -144,8 +148,8 @@ export default function Nav() {
           <div className="relative ml-auto w-full max-w-sm bg-white h-full overflow-y-auto flex flex-col">
             {/* Drawer header */}
             <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 sticky top-0 bg-white z-10">
-              <a href="/" className="text-sm font-bold tracking-widest" onClick={() => setMobileOpen(false)}>
-                EXCLUSIVE DOORS
+              <a href="/" className="flex items-center" onClick={() => setMobileOpen(false)}>
+                <img src="/logo.png" alt="Exclusive Doors" className="h-7 w-auto" />
               </a>
               <button
                 onClick={() => setMobileOpen(false)}
