@@ -384,6 +384,7 @@ export interface Product {
   specs: ProductSpec[];
   finishes: ProductFinish[];
   description: string;
+  startingPrice: number;
   scrollStops: ScrollStop[];
   details: DetailPanel[];
 }
@@ -449,6 +450,7 @@ export const products: Product[] = [
       { color: '#b8b0a0', label: 'Gri deschis' },
     ],
     description: 'Ușile Filomuro sunt montate la nivel cu peretele, creând o suprafață continuă fără toc vizibil. Disponibile cu furnir de stejar natural, nuc, sau în variante vopsite mat. Ideale pentru proiecte premium cu finisaje îngrijite și arhitectură contemporană. Substrat MDF hidrofug 19mm, garnituri perimetrale triple.',
+    startingPrice: 700,
     scrollStops: [
       {
         eyebrow: 'Sistem Filomuro',
@@ -538,6 +540,7 @@ export const products: Product[] = [
       { color: '#f5f5f5', label: 'Alb RAL 9016' },
     ],
     description: 'Ușile GROKE Thermosafe sunt soluția premium pentru intrări rezidențiale de înaltă performanță. Profil din aluminiu reciclabil, garnituri triple, sisteme de blocare multipunct și finisaje anodizate sau vopsite în orice culoare RAL. Disponibile la orice dimensiune, inclusiv formate supradimensionate.',
+    startingPrice: 2200,
     scrollStops: [
       {
         eyebrow: 'Securitate RC3',
@@ -627,6 +630,7 @@ export const products: Product[] = [
       { color: '#8b7355', label: 'Bronze' },
     ],
     description: 'Sistemul liftant-culisant permite deschideri de până la 6 metri cu un singur gest. Panoul se ridică ușor de pe pragul de etanșare și culisează lin pe șine ascunse. Ideal pentru case cu terasă sau grădină, aducând lumina naturală adânc în interior.',
+    startingPrice: 3500,
     scrollStops: [
       {
         eyebrow: 'Mecanism liftant',
@@ -717,6 +721,7 @@ export const products: Product[] = [
       { color: '#c0c0c0', label: 'Inox periat' },
     ],
     description: 'Ușile Grand Pivot sunt statement-ul perfect pentru o intrare de impact. Pivot central sau offset — disponibil la orice dimensiune, inclusiv formate supradimensionate până la 3500mm înălțime. Construcție cu miez din aluminiu turnat, placată cu furnir natural sau vopsită în orice culoare RAL.',
+    startingPrice: 4800,
     scrollStops: [
       {
         eyebrow: 'Mecanism pivot',
