@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    /* Fluid scaling: 16px below ~1391px, scales up to 22px at 1920px.
+       Since Tailwind uses rem everywhere (text, spacing, max-widths),
+       the entire layout scales proportionally on large screens. */
+    font-size: clamp(1rem, 1.15vw, 1.375rem);
+  }
+}
