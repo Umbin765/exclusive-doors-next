@@ -37,12 +37,11 @@ export default function ProductPage({ params }: Props) {
             thumbImgs={product.thumbImgs}
             alt={product.name}
           />
-          {/* Right column: details aligned to photo, spacer matches thumbnail strip */}
-          <div className="flex flex-col h-full">
-            <div className="flex-1 min-h-0">
+          {/* Right column: same p-5 wrapper as gallery so details card aligns with photo */}
+          <div className="h-full bg-stone-50 border-l border-gray-100 p-5 flex flex-col">
+            <div className="flex-1 min-h-0 bg-white rounded-xl overflow-hidden">
               <ProductDetails product={product} />
             </div>
-            <div className="h-[88px] bg-stone-50 border-l border-gray-100" />
           </div>
         </section>
       </div>
