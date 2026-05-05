@@ -40,6 +40,9 @@ export default function ProductPage({ params }: Props) {
         <ProductDetails product={product} />
       </section>
 
+      {/* Related products */}
+      <RelatedProducts products={related} />
+
       {/* Description */}
       <div className="bg-stone-50 border-t border-gray-100 px-8 py-10">
         <div className="max-w-7xl mx-auto">
@@ -55,9 +58,6 @@ export default function ProductPage({ params }: Props) {
         stops={product.scrollStops}
         badge={product.eyebrow}
       />
-
-      {/* Related products */}
-      <RelatedProducts products={related} />
 
       <Footer />
     </>
