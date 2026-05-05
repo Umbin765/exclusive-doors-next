@@ -34,7 +34,7 @@ export default function StickyScroll({ stops, badge }: Props) {
   }, []);
 
   return (
-    <section className="bg-gray-950 dark-section-enter">
+    <section className="bg-gray-950">
 
       {/* ── MOBILE: each stop stacked with inline image ── */}
       <div className="lg:hidden">
