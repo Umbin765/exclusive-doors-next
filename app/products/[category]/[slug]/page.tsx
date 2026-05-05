@@ -32,7 +32,7 @@ export default function ProductPage({ params }: Props) {
       {/* Mobile: natural height stacked; Desktop: viewport-filling side-by-side */}
       <div className="flex flex-col lg:h-[calc(100vh-4rem)]">
         <Breadcrumb category={category} productName={product.name} />
-        <section className="flex-1 grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] lg:min-h-0">
+        <section className="flex-1 grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] xl:grid-cols-[2fr_1fr] 2xl:grid-cols-[2.5fr_1fr] lg:min-h-0">
           <ProductGallery
             mainImg={product.mainImg}
             thumbImgs={product.thumbImgs}
