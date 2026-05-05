@@ -22,7 +22,7 @@ export default function ProductPage({ params }: Props) {
   if (!product) notFound();
 
   const related = products
-    .filter((p) => p.category === category && p.slug !== slug)
+    .filter((p) => p.slug !== slug)
     .slice(0, 3);
 
   return (
