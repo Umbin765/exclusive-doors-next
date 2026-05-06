@@ -1,4 +1,4 @@
-import { footerColumns } from '@/lib/data';
+import { footerColumns, contact } from '@/lib/data';
 
 const socialLinks: Record<string, string> = {
   Facebook: 'https://www.facebook.com/exclusivedoors.ro/',
@@ -16,11 +16,11 @@ export default function Footer() {
         {/* Contact strip */}
         <div className="flex flex-wrap gap-6 items-center mb-10 pb-10 border-b border-gray-800">
           <span className="text-sm font-bold tracking-widest uppercase text-white mr-2">Exclusive Doors</span>
-          <a href="tel:+40728959652" className="text-sm text-gray-400 hover:text-white transition-colors">
-            0728 959 652
+          <a href={contact.phone.href} className="text-sm text-gray-400 hover:text-white transition-colors">
+            {contact.phone.display}
           </a>
-          <a href="mailto:office@exclusivedoors.ro" className="text-sm text-gray-400 hover:text-white transition-colors">
-            office@exclusivedoors.ro
+          <a href={contact.email.href} className="text-sm text-gray-400 hover:text-white transition-colors">
+            {contact.email.display}
           </a>
           <span className="text-sm text-gray-500 break-words">Airport Plaza, Drumul Gării Odăi 1A (DN1), Parter, 075100 Otopeni, Ilfov</span>
         </div>
