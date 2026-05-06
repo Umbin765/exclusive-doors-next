@@ -1,5 +1,3 @@
-import { contact } from '@/lib/data';
-
 export default function Contact() {
   return (
     <section className="py-24 bg-white" id="contact">
@@ -49,11 +47,11 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="font-bold text-gray-900 mb-0.5">Telefon & email</p>
-                    <a href={contact.phone.href} className="text-sm text-gray-500 hover:text-accent transition-colors block">
-                      {contact.phone.display}
+                    <a href="tel:+40728959652" className="text-sm text-gray-500 hover:text-accent transition-colors block">
+                      +40 (0)728 959 652
                     </a>
-                    <a href={contact.email.href} className="text-sm text-gray-500 hover:text-accent transition-colors block">
-                      {contact.email.display}
+                    <a href="mailto:office@exclusivedoors.ro" className="text-sm text-gray-500 hover:text-accent transition-colors block">
+                      office@exclusivedoors.ro
                     </a>
                   </div>
                 </div>
@@ -61,7 +59,7 @@ export default function Contact() {
             </div>
 
             <a
-              href={contact.phone.href}
+              href="tel:+40728959652"
               className="mt-10 w-full bg-accent hover:bg-accent-hover text-gray-900 font-bold text-sm py-4 flex items-center justify-center gap-2 transition-colors"
             >
               Programează o vizită

@@ -6,7 +6,6 @@ import ProductGallery from '@/components/products/ProductGallery';
 import ProductDetails from '@/components/products/ProductDetails';
 import StickyScroll from '@/components/products/StickyScroll';
 import RelatedProducts from '@/components/products/RelatedProducts';
-import DetailZoom from '@/components/products/DetailZoom';
 import { products, categoryMeta } from '@/lib/data';
 
 interface Props {
@@ -23,7 +22,7 @@ export default function ProductPage({ params }: Props) {
   if (!product) notFound();
 
   const related = products
-    .filter((p) => p.category === category && p.slug !== slug)
+    .filter((p) => p.slug !== slug)
     .slice(0, 3);
 
   return (
@@ -51,9 +50,6 @@ export default function ProductPage({ params }: Props) {
 
       {/* Related products */}
       <RelatedProducts products={related} />
-
-      {/* Technical detail panels */}
-      <DetailZoom details={product.details} />
 
       {/* Sticky scroll */}
       <StickyScroll

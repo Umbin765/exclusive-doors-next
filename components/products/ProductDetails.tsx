@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Product, contact } from '@/lib/data';
+import { Product } from '@/lib/data';
 
 export default function ProductDetails({ product }: { product: Product }) {
   const [activeFinish, setActiveFinish] = useState(0);
@@ -110,13 +110,13 @@ export default function ProductDetails({ product }: { product: Product }) {
       {/* CTAs */}
       <div className="flex flex-col gap-2 pt-0.5">
         <a
-          href="/#contact"
+          href="#contact"
           className="bg-gray-900 text-white text-[0.6875rem] font-bold tracking-[0.2em] uppercase py-3 text-center hover:bg-gray-700 transition-colors"
         >
           Cere ofertă personalizată
         </a>
         <a
-          href="/#contact"
+          href="#contact"
           className={`text-[0.6875rem] py-3 text-center transition-colors ${
             product.salePercent
               ? 'border-2 border-accent text-gray-700 hover:bg-accent/10'
@@ -126,7 +126,7 @@ export default function ProductDetails({ product }: { product: Product }) {
           Programare showroom
         </a>
         <p className="text-[0.625rem] text-gray-300 text-center">
-          📞 {contact.phone.display} · Consultanță gratuită
+          📞 0728 959 652 · Consultanță gratuită
         </p>
       </div>
 

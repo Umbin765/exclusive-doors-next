@@ -138,19 +138,6 @@ export interface FooterColumn {
   links: string[];
 }
 
-// ─── Contact ─────────────────────────────────────────────────────────────────
-
-export const contact = {
-  phone: {
-    display: '0728 959 652',
-    href: 'tel:+40728959652',
-  },
-  email: {
-    display: 'office@exclusivedoors.ro',
-    href: 'mailto:office@exclusivedoors.ro',
-  },
-} as const;
-
 // ─── Data ────────────────────────────────────────────────────────────────────
 
 export const megaMenus: Record<string, MegaMenuItem> = {
