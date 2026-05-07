@@ -118,13 +118,13 @@ export default function ProductPage({ params }: Props) {
         </div>
       </div>
 
+      {/* ── Related products ── */}
+      <RelatedProducts products={related} />
+
       {/* ── Animated product details ── */}
       <div id="product-details">
         <StickyScroll stops={product.scrollStops} badge={product.eyebrow} />
       </div>
-
-      {/* ── Related products ── */}
-      <RelatedProducts products={related} />
 
       {/* ── Brand section ── */}
       <div className="bg-white border-t border-gray-100 px-4 sm:px-6 py-16">
