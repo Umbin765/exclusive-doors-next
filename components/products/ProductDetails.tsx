@@ -27,26 +27,29 @@ function specIconPath(key: string): string {
   return 'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z';
 }
 
-function getMadeInBadge(eyebrow: string): { line1: string; line2: string } | null {
-  if (eyebrow.toUpperCase().includes('GROKE') || eyebrow.toUpperCase().includes('GRAUTHOFF'))
-    return { line1: 'MADE IN', line2: 'GERMANY' };
-  return { line1: 'PRODUS', line2: 'EUROPEAN' };
+function GermanFlag() {
+  return (
+    <div className="w-9 h-6 flex flex-col overflow-hidden rounded-sm shrink-0 shadow-sm">
+      <div className="flex-1 bg-gray-900" />
+      <div className="flex-1 bg-red-600" />
+      <div className="flex-1 bg-amber-400" />
+    </div>
+  );
 }
 
 export default function ProductDetails({ product }: { product: Product }) {
-  const badge = getMadeInBadge(product.eyebrow);
-
   return (
     <div className="flex flex-col gap-5">
 
-      {/* Made in badge */}
+      {/* Made in Germany badge */}
       <div className="flex justify-end">
-        {badge && (
-          <div className="border-2 border-gray-800 px-3 py-1.5 text-center">
-            <p className="text-[0.5rem] font-bold tracking-[0.25em] uppercase text-gray-500">{badge.line1}</p>
-            <p className="text-[0.8125rem] font-black tracking-[0.2em] uppercase text-gray-900">{badge.line2}</p>
+        <div className="flex items-center gap-2.5 border-2 border-gray-800 px-3 py-2">
+          <GermanFlag />
+          <div className="text-center">
+            <p className="text-[0.5rem] font-bold tracking-[0.25em] uppercase text-gray-500">MADE IN</p>
+            <p className="text-[0.8125rem] font-black tracking-[0.2em] uppercase text-gray-900">GERMANY</p>
           </div>
-        )}
+        </div>
       </div>
 
       {/* Caracteristici */}
