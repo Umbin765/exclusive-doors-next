@@ -87,28 +87,28 @@ export default function ProductPage({ params }: Props) {
           </div>
 
           {/* Consultant card */}
-          <div className="shrink-0 flex items-start gap-4 bg-white rounded-xl p-5 border border-gray-100 shadow-sm md:self-center">
-            <div className="w-16 h-16 rounded-full overflow-hidden shrink-0 bg-gray-100 ring-2 ring-accent/20">
+          <div className="shrink-0 flex items-center gap-6 bg-white rounded-2xl px-8 py-7 border border-gray-100 shadow-sm md:self-center min-w-[320px]">
+            <div className="w-24 h-24 rounded-full overflow-hidden shrink-0 bg-gray-100 ring-[3px] ring-accent/30">
               <img
-                src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=200&q=80"
+                src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=300&q=80"
                 alt="Monica Dochia"
                 className="w-full h-full object-cover"
               />
             </div>
             <div>
-              <p className="font-bold text-gray-900">Monica Dochia</p>
-              <p className="text-[0.625rem] text-gray-400 uppercase tracking-widest mb-3">
+              <p className="text-xl font-bold text-gray-900 leading-tight">Monica Dochia</p>
+              <p className="text-[0.625rem] font-semibold text-gray-400 uppercase tracking-[0.2em] mt-1 mb-4">
                 Director de vânzări
               </p>
               <a
                 href="tel:0728959652"
-                className="block text-sm font-semibold text-gray-800 hover:text-accent transition-colors"
+                className="block text-lg font-bold text-gray-900 hover:text-accent transition-colors"
               >
                 0728 959 652
               </a>
               <a
                 href="mailto:monica.dochia@exclusivedoors.ro"
-                className="block text-xs text-gray-400 hover:text-accent transition-colors mt-0.5"
+                className="block text-sm text-gray-400 hover:text-accent transition-colors mt-0.5"
               >
                 monica.dochia@exclusivedoors.ro
               </a>
