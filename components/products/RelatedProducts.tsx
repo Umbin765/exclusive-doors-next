@@ -6,8 +6,8 @@ export default function RelatedProducts({ products }: { products: Product[] }) {
   return (
     <section className="bg-stone-50 border-t border-gray-100 px-6 py-12">
       <div className="max-w-7xl mx-auto">
-        <p className="text-[0.625rem] font-bold tracking-[0.3em] uppercase text-gray-300 mb-8">
-          Din aceeași categorie
+        <p className="text-xl sm:text-2xl font-bold text-gray-900 mb-8">
+          Poate te interesează și modelele ăstea
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {products.map((p) => (
