@@ -137,6 +137,15 @@ export default function ProductDetails({ product }: { product: Product }) {
           PROGRAMARE SHOWROOM
         </a>
         <a
+          href="#product-details"
+          className="border-2 border-gray-900 text-gray-900 text-[0.6875rem] font-bold tracking-[0.2em] uppercase py-3 px-5 text-center hover:bg-gray-900 hover:text-white transition-colors flex items-center justify-center gap-2"
+        >
+          DETALII PRODUS
+          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </a>
+        <a
           href="tel:0728959652"
           className="border border-gray-300 text-gray-600 text-[0.6875rem] font-semibold tracking-wider py-2.5 px-5 text-center hover:border-gray-500 transition-colors"
         >

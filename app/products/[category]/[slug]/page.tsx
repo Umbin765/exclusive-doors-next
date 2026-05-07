@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/products/Breadcrumb';
 import ProductGallery from '@/components/products/ProductGallery';
 import ProductDetails from '@/components/products/ProductDetails';
+import StickyScroll from '@/components/products/StickyScroll';
 import RelatedProducts from '@/components/products/RelatedProducts';
 import { products } from '@/lib/data';
 
@@ -115,6 +116,11 @@ export default function ProductPage({ params }: Props) {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* ── Animated product details ── */}
+      <div id="product-details">
+        <StickyScroll stops={product.scrollStops} badge={product.eyebrow} />
       </div>
 
       {/* ── Related products ── */}
