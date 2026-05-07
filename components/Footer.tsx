@@ -10,19 +10,19 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-white pt-16 pb-8">
+    <footer className="bg-warm-dark text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
         {/* Contact strip */}
-        <div className="flex flex-wrap gap-6 items-center mb-10 pb-10 border-b border-gray-800">
+        <div className="flex flex-wrap gap-6 items-center mb-10 pb-10 border-b border-warm-border">
           <span className="text-sm font-bold tracking-widest uppercase text-white mr-2">Exclusive Doors</span>
-          <a href="tel:+40728959652" className="text-sm text-gray-400 hover:text-white transition-colors">
+          <a href="tel:+40728959652" className="text-sm text-warm-muted hover:text-white transition-colors">
             0728 959 652
           </a>
-          <a href="mailto:office@exclusivedoors.ro" className="text-sm text-gray-400 hover:text-white transition-colors">
+          <a href="mailto:office@exclusivedoors.ro" className="text-sm text-warm-muted hover:text-white transition-colors">
             office@exclusivedoors.ro
           </a>
-          <span className="text-sm text-gray-500 break-words">Airport Plaza, Drumul Gării Odăi 1A (DN1), Parter, 075100 Otopeni, Ilfov</span>
+          <span className="text-sm text-warm-muted break-words">Airport Plaza, Drumul Gării Odăi 1A (DN1), Parter, 075100 Otopeni, Ilfov</span>
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
@@ -38,7 +38,7 @@ export default function Footer() {
                       href={socialLinks[link] ?? '#'}
                       target={socialLinks[link] ? '_blank' : undefined}
                       rel={socialLinks[link] ? 'noopener noreferrer' : undefined}
-                      className="text-sm text-gray-400 hover:text-white transition-colors"
+                      className="text-sm text-warm-muted hover:text-white transition-colors"
                     >
                       {link}
                     </a>
@@ -49,7 +49,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="border-t border-gray-800 pt-8 text-center text-gray-500 text-xs">
+        <div className="border-t border-warm-border pt-8 text-center text-warm-muted text-xs">
           © {year} Exclusive Doors. Toate drepturile rezervate. Înființat în 2011.
         </div>
       </div>

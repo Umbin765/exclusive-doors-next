@@ -3,15 +3,15 @@ export default function CtaBand() {
     <section className="grid lg:grid-cols-2 min-h-[520px]">
 
       {/* Left — dark content panel */}
-      <div className="bg-neutral-900 flex items-center px-10 py-16 lg:px-16">
+      <div className="bg-warm-dark flex items-center px-10 py-16 lg:px-16">
         <div data-aos="fade-up" className="max-w-lg">
           <p className="text-xs font-bold tracking-[0.3em] uppercase text-accent mb-5">
             Consultanță gratuită
           </p>
-          <h2 className="text-4xl font-bold text-white leading-tight mb-6">
+          <h2 className="text-4xl font-display font-semibold text-white leading-tight mb-6">
             Ai un proiect? Discută cu un specialist Exclusive Doors
           </h2>
-          <p className="text-gray-400 leading-relaxed mb-10">
+          <p className="text-warm-muted leading-relaxed mb-10">
             Analizăm planurile, clarificăm detaliile tehnice și îți recomandăm
             soluții potrivite pentru spațiu, buget și nivelul de finisaj dorit.
             Programează o vizită în showroom sau solicită o ofertă online.
@@ -19,7 +19,7 @@ export default function CtaBand() {
           <div className="flex flex-wrap gap-4">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 bg-accent text-gray-900 text-sm font-bold px-7 py-3.5 hover:bg-accent-hover transition-colors"
+              className="inline-flex items-center gap-2 bg-accent text-warm-text text-sm font-bold px-7 py-3.5 hover:bg-accent-hover transition-colors"
             >
               Programare showroom
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

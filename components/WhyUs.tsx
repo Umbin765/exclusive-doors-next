@@ -2,7 +2,7 @@ import { features } from '@/lib/data';
 
 export default function WhyUs() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
         {/* Left: project photo */}
@@ -10,7 +10,7 @@ export default function WhyUs() {
           <img
             src="https://images.unsplash.com/photo-1613977257363-707ba9348227?w=900&q=80"
             alt="Proiect rezidențial de anvergură — Exclusive Doors"
-            className="w-full h-64 sm:h-80 lg:h-[540px] object-cover rounded-lg"
+            className="w-full h-64 sm:h-80 lg:h-[540px] object-cover"
           />
         </div>
 
@@ -19,14 +19,14 @@ export default function WhyUs() {
           <p className="text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-4">
             De ce să alegi Exclusive Doors?
           </p>
-          <h2 className="text-2xl sm:text-4xl font-bold leading-tight mb-6">
+          <h2 className="text-2xl sm:text-4xl font-display font-semibold leading-tight mb-6">
             Partener de proiect,<br />nu doar magazin
           </h2>
-          <p className="text-gray-500 leading-relaxed mb-10">
+          <p className="text-warm-muted leading-relaxed mb-10">
             Exclusive Doors nu este doar un magazin de uși, ci un partener de proiect pentru cei care caută
             soluții premium, finisaje de calitate și o echipă care înțelege atât partea estetică, cât și
             cerințele tehnice. Am echipat proiecte rezidențiale și hoteliere de anvergură —
-            inclusiv <span className="font-semibold text-gray-700">Marriott București</span>.
+            inclusiv <span className="font-semibold text-warm-text">Marriott București</span>.
           </p>
 
           <div className="space-y-7">
@@ -38,8 +38,8 @@ export default function WhyUs() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-bold text-sm mb-1">{f.title}</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">{f.body}</p>
+                  <h3 className="font-display font-semibold text-sm mb-1">{f.title}</h3>
+                  <p className="text-sm text-warm-muted leading-relaxed">{f.body}</p>
                 </div>
               </div>
             ))}
