@@ -6,7 +6,7 @@ export default function Hero() {
       {/* Background image */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=2400&q=85"
+          src="https://exclusivedoors.ro/wp-content/uploads/2020/07/396971087_712106117620274_1567849162495972077_n.jpg"
           alt="Showroom Exclusive Doors București"
           className="w-full h-full object-cover"
         />
