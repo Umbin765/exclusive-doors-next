@@ -29,9 +29,9 @@ export default function Hero() {
             Showroom Otopeni — Airport Plaza, DN1
           </a>
 
-          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold text-white leading-tight mb-6 max-w-3xl">
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold text-white leading-[1.1] mb-6 max-w-3xl">
             Showroom &amp; magazin de uși{' '}
-            <span className="text-accent">la comandă</span>{' '}
+            <em className="not-italic text-accent">la comandă</em>{' '}
             premium în București
           </h1>
           <p className="text-gray-300 text-base lg:text-lg leading-relaxed max-w-2xl mb-10">
