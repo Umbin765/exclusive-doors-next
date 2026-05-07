@@ -142,7 +142,7 @@ export default function StickyScroll({ stops, badge }: Props) {
                   className="h-px rounded-full transition-all duration-500"
                   style={{
                     width: activeIndex === i ? 32 : 8,
-                    background: activeIndex === i ? '#F8AF17' : 'rgba(255,255,255,0.2)',
+                    background: activeIndex === i ? '#4CAF7D' : 'rgba(255,255,255,0.2)',
                     transition: `width 0.4s ${SPRING}, background 0.3s ease`,
                   }}
                 />
