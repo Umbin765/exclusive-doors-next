@@ -35,20 +35,20 @@ export default function ProductPage({ params }: Props) {
       <Breadcrumb category={category} productName={product.name} />
 
       {/* ── Product title header ── */}
-      <div className="bg-white border-b border-gray-100 px-4 sm:px-6 py-4">
+      <div className="bg-cream border-b border-warm-border px-4 sm:px-6 py-4">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-end sm:justify-between gap-1">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight uppercase leading-tight">
+            <h1 className="font-display text-2xl sm:text-3xl font-semibold text-warm-text tracking-tight leading-tight">
               {product.name}
             </h1>
-            <p className="text-sm text-gray-500 mt-0.5">{brandLabel}</p>
+            <p className="text-sm text-warm-muted mt-0.5">{brandLabel}</p>
           </div>
-          <p className="text-sm text-gray-400 italic hidden sm:block">{product.model}</p>
+          <p className="text-sm text-warm-muted italic hidden sm:block">{product.model}</p>
         </div>
       </div>
 
       {/* ── Main product section ── */}
-      <div className="bg-white">
+      <div className="bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
           <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-8 xl:gap-14">
             <ProductGallery
@@ -63,14 +63,14 @@ export default function ProductPage({ params }: Props) {
       </div>
 
       {/* ── Detail images + Consultant ── */}
-      <div className="bg-stone-50 border-t border-b border-gray-100">
+      <div className="bg-warm-subtle border-t border-b border-warm-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex flex-col md:flex-row gap-6 items-stretch">
 
           {/* Detail image strip */}
           <div className="flex gap-3 flex-1 overflow-x-auto">
             {product.details.map((d, i) => (
               <div key={i} className="shrink-0 flex-1 min-w-[140px] max-w-[220px]">
-                <div className="relative h-36 sm:h-44 overflow-hidden rounded-lg">
+                <div className="relative h-36 sm:h-44 overflow-hidden">
                   <img src={d.img} alt={d.title} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-2.5">
                     <div>
@@ -88,8 +88,8 @@ export default function ProductPage({ params }: Props) {
           </div>
 
           {/* Consultant card */}
-          <div className="shrink-0 flex items-center gap-6 bg-white rounded-2xl px-8 py-7 border border-gray-100 shadow-sm md:self-center min-w-[320px]">
-            <div className="w-24 h-24 rounded-full overflow-hidden shrink-0 bg-gray-100 ring-[3px] ring-accent/30">
+          <div className="shrink-0 flex items-center gap-6 bg-cream px-8 py-7 border border-warm-border md:self-center min-w-[320px]">
+            <div className="w-24 h-24 rounded-full overflow-hidden shrink-0 bg-warm-subtle ring-[3px] ring-accent/30">
               <img
                 src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=300&q=80"
                 alt="Monica Dochia"
@@ -97,19 +97,19 @@ export default function ProductPage({ params }: Props) {
               />
             </div>
             <div>
-              <p className="text-xl font-bold text-gray-900 leading-tight">Monica Dochia</p>
-              <p className="text-[0.625rem] font-semibold text-gray-400 uppercase tracking-[0.2em] mt-1 mb-4">
+              <p className="font-display text-xl font-semibold text-warm-text leading-tight">Monica Dochia</p>
+              <p className="text-[0.625rem] font-semibold text-warm-muted uppercase tracking-[0.2em] mt-1 mb-4">
                 Director de vânzări
               </p>
               <a
                 href="tel:0728959652"
-                className="block text-lg font-bold text-gray-900 hover:text-accent transition-colors"
+                className="block text-lg font-bold text-warm-text hover:text-accent transition-colors"
               >
                 0728 959 652
               </a>
               <a
                 href="mailto:monica.dochia@exclusivedoors.ro"
-                className="block text-sm text-gray-400 hover:text-accent transition-colors mt-0.5"
+                className="block text-sm text-warm-muted hover:text-accent transition-colors mt-0.5"
               >
                 monica.dochia@exclusivedoors.ro
               </a>
@@ -127,13 +127,13 @@ export default function ProductPage({ params }: Props) {
       </div>
 
       {/* ── Brand section ── */}
-      <div className="bg-white border-t border-gray-100 px-4 sm:px-6 py-16">
+      <div className="bg-cream border-t border-warm-border px-4 sm:px-6 py-16">
         <div className="max-w-3xl mx-auto text-center">
-          <p className="text-lg sm:text-xl text-gray-400 italic leading-relaxed font-light">
+          <p className="font-display text-lg sm:text-xl text-warm-muted italic leading-relaxed font-light">
             &ldquo;{product.description.split('.').slice(0, 2).join('. ')}...&rdquo;
           </p>
-          <div className="mt-8 inline-block border-t-2 border-gray-200 pt-5">
-            <span className="text-xl font-black tracking-[0.3em] uppercase text-gray-300">
+          <div className="mt-8 inline-block border-t-2 border-warm-border pt-5">
+            <span className="text-xl font-bold tracking-[0.3em] uppercase text-warm-muted">
               {brandLabel}
             </span>
           </div>

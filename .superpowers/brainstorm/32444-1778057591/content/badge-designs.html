@@ -1,0 +1,201 @@
+<style>
+  .section-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #888;
+    margin: 32px 0 14px;
+  }
+  .section-label:first-child { margin-top: 0; }
+
+  /* Simulated product card */
+  .card-sim {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+    width: 200px;
+    flex-shrink: 0;
+  }
+  .card-img {
+    width: 100%;
+    height: 130px;
+    background: linear-gradient(135deg, #c8b99a 0%, #a08060 100%);
+    position: relative;
+  }
+  .card-body-sim {
+    padding: 12px;
+  }
+  .card-title { font-size: 13px; font-weight: 700; color: #1a1a1a; margin-bottom: 3px; }
+  .card-sub { font-size: 11px; color: #888; }
+
+  /* Band designs */
+  .band-sim {
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+</style>
+
+<h2>Badge & Band Designs</h2>
+<p class="subtitle">Badge goes on product cards · Band goes on the product detail page</p>
+
+<!-- BADGE OPTIONS -->
+<div class="section-label">Badge — on product cards (pick one)</div>
+
+<div class="options">
+
+  <div class="option" data-choice="badge-flag" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Flag Pill</h3>
+      <p>German flag + text as a pill overlaid on the card image. Clean and instantly recognizable.</p>
+      <div style="margin-top:12px; display:flex; gap:16px; align-items:flex-end;">
+        <!-- Card simulation with badge A -->
+        <div class="card-sim">
+          <div class="card-img">
+            <div style="position:absolute; top:10px; left:10px; display:inline-flex; align-items:center; gap:5px; background:rgba(255,255,255,0.95); padding:4px 9px; border-radius:99px; box-shadow:0 1px 6px rgba(0,0,0,0.15);">
+              <span style="font-size:12px;">🇩🇪</span>
+              <span style="font-size:9px; font-weight:800; letter-spacing:0.12em; color:#1a1a1a; text-transform:uppercase;">Germania</span>
+            </div>
+          </div>
+          <div class="card-body-sim">
+            <div class="card-title">GROKE Thermosafe 90</div>
+            <div class="card-sub">Ușă exterior · Antiefracție RC3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="badge-corner" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Corner Ribbon</h3>
+      <p>A diagonal corner ribbon — classic "quality mark" language. Bold and traditional.</p>
+      <div style="margin-top:12px; display:flex; gap:16px; align-items:flex-end;">
+        <div class="card-sim">
+          <div class="card-img" style="overflow:hidden;">
+            <div style="position:absolute; top:0; right:0; width:0; height:0; border-style:solid; border-width:0 68px 68px 0; border-color:transparent #1a1a1a transparent transparent; z-index:1;"></div>
+            <div style="position:absolute; top:10px; right:-18px; transform:rotate(45deg); background:transparent; z-index:2; width:68px; text-align:center;">
+              <span style="font-size:8px; font-weight:800; color:white; letter-spacing:0.05em; text-transform:uppercase; display:block; line-height:1.2;">🇩🇪<br/>DE</span>
+            </div>
+          </div>
+          <div class="card-body-sim">
+            <div class="card-title">GROKE Thermosafe 90</div>
+            <div class="card-sub">Ușă exterior · Antiefracție RC3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="badge-bar" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Bottom Bar</h3>
+      <p>A thin accent bar at the bottom of the card image with the flag and text. Understated, elegant.</p>
+      <div style="margin-top:12px; display:flex; gap:16px; align-items:flex-end;">
+        <div class="card-sim">
+          <div class="card-img">
+            <div style="position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.75); backdrop-filter:blur(2px); padding:5px 10px; display:flex; align-items:center; gap:6px;">
+              <span style="font-size:11px;">🇩🇪</span>
+              <span style="font-size:9px; font-weight:700; letter-spacing:0.15em; color:white; text-transform:uppercase;">Fabricat în Germania</span>
+            </div>
+          </div>
+          <div class="card-body-sim">
+            <div class="card-title">GROKE Thermosafe 90</div>
+            <div class="card-sub">Ușă exterior · Antiefracție RC3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- BAND OPTIONS -->
+<div class="section-label" style="margin-top:36px;">Band — on product detail page (pick one)</div>
+
+<div class="options">
+
+  <div class="option" data-choice="band-dark" onclick="toggleSelect(this)">
+    <div class="letter">X</div>
+    <div class="content">
+      <h3>Dark Prestige Band</h3>
+      <p>Full-width dark section with brand logos, quality pillars, and a German flag accent. Premium tone.</p>
+      <div style="margin-top:14px;">
+        <div class="band-sim" style="background:#111; color:white; padding:22px 24px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+            <span style="font-size:22px;">🇩🇪</span>
+            <div>
+              <div style="font-size:9px; font-weight:800; letter-spacing:0.2em; color:#F8AF17; text-transform:uppercase;">Calitate certificată</div>
+              <div style="font-size:17px; font-weight:800;">Fabricat în Germania</div>
+            </div>
+          </div>
+          <div style="font-size:10px; color:#aaa; line-height:1.6; margin-bottom:14px;">Fiecare ușă GROKE este produsă în fabricile din Germania, sub standarde stricte de calitate europeană. Garanție extinsă, precizie inginerească, materiale certificate.</div>
+          <div style="display:flex; gap:10px;">
+            <div style="background:#222; padding:8px 14px; text-align:center; flex:1; border-left:2px solid #F8AF17;">
+              <div style="font-size:13px; font-weight:800; color:#F8AF17;">50+</div>
+              <div style="font-size:8px; color:#888; text-transform:uppercase; letter-spacing:0.1em;">Ani experiență</div>
+            </div>
+            <div style="background:#222; padding:8px 14px; text-align:center; flex:1; border-left:2px solid #F8AF17;">
+              <div style="font-size:13px; font-weight:800; color:#F8AF17;">RC3</div>
+              <div style="font-size:8px; color:#888; text-transform:uppercase; letter-spacing:0.1em;">Certificat EU</div>
+            </div>
+            <div style="background:#222; padding:8px 14px; text-align:center; flex:1; border-left:2px solid #F8AF17;">
+              <div style="font-size:13px; font-weight:800; color:#F8AF17;">10 ani</div>
+              <div style="font-size:8px; color:#888; text-transform:uppercase; letter-spacing:0.1em;">Garanție</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="band-light" onclick="toggleSelect(this)">
+    <div class="letter">Y</div>
+    <div class="content">
+      <h3>Light Editorial Band</h3>
+      <p>Light background with a large German flag stripe accent on the left. Editorial feel — like a quality magazine spread.</p>
+      <div style="margin-top:14px;">
+        <div class="band-sim" style="background:#f5f3ef; display:flex; overflow:hidden; min-height:100px;">
+          <div style="width:6px; background:linear-gradient(to bottom, #000 33%, #DD0000 33%, #DD0000 66%, #FFCE00 66%); flex-shrink:0;"></div>
+          <div style="padding:18px 20px; flex:1;">
+            <div style="font-size:9px; font-weight:800; letter-spacing:0.2em; color:#888; text-transform:uppercase; margin-bottom:4px;">Origine & Calitate</div>
+            <div style="font-size:16px; font-weight:800; color:#1a1a1a; margin-bottom:6px;">Produsă în Germania 🇩🇪</div>
+            <div style="font-size:10px; color:#666; line-height:1.5;">Branduri cu tradiție: <strong>GROKE · Hörmann · Grauthoff</strong> — inginerie germană, standarde europene, garanție extinsă.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="band-split" onclick="toggleSelect(this)">
+    <div class="letter">Z</div>
+    <div class="content">
+      <h3>Split Image + Text Band</h3>
+      <p>Half image of a German factory / precision detail, half text with quality points. Storytelling-first.</p>
+      <div style="margin-top:14px;">
+        <div class="band-sim" style="display:flex; background:#1a1a1a; min-height:100px;">
+          <div style="flex:1; background:linear-gradient(135deg,#3a3020,#1a1a1a); display:flex; align-items:center; justify-content:center; padding:16px; border-right:1px solid #333;">
+            <div style="text-align:center; color:#F8AF17;">
+              <div style="font-size:28px;">🏭</div>
+              <div style="font-size:8px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#888; margin-top:4px;">Fabrică Germania</div>
+            </div>
+          </div>
+          <div style="flex:2; padding:18px 20px; color:white;">
+            <div style="font-size:9px; font-weight:800; letter-spacing:0.2em; color:#F8AF17; text-transform:uppercase; margin-bottom:6px;">🇩🇪 Fabricat în Germania</div>
+            <div style="font-size:11px; color:#ccc; line-height:1.6;">
+              ✓ Materiale certificate EN<br/>
+              ✓ Control calitate în 12 etape<br/>
+              ✓ Garanție 10 ani inclusă
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

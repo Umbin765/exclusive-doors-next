@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/superpowers-helper@1/dist/helper.js" onerror="console.log('helper not found')"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f0f0f; font-family: 'DM Sans', sans-serif; color: #fff; padding: 32px 24px; }
+
+  h2.page-title { font-size: 14px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: #666; margin-bottom: 8px; }
+  p.page-sub { font-size: 14px; color: #555; margin-bottom: 36px; line-height: 1.6; }
+
+  .directions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+  .direction { border: 2px solid #222; border-radius: 4px; overflow: hidden; cursor: pointer; transition: border-color .2s, transform .15s; }
+  .direction:hover { border-color: #4CAF7D; transform: translateY(-2px); }
+  .direction.selected { border-color: #4CAF7D; box-shadow: 0 0 0 1px #4CAF7D; }
+
+  .direction-preview { overflow: hidden; }
+  .direction-label { padding: 16px; background: #111; border-top: 1px solid #1e1e1e; }
+  .direction-label h3 { font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #fff; margin-bottom: 6px; }
+  .direction-label p { font-size: 12px; color: #666; line-height: 1.6; }
+
+  .selected-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #4CAF7D; color: #000; text-align: center; padding: 12px; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: none; }
+  .selected-bar.visible { display: block; }
+</style>
+</head>
+<body>
+
+<h2 class="page-title">Direcție design</h2>
+<p class="page-sub">Aceleași secțiuni, look complet diferit. Fiecare preview arată nav + hero + card de produs.</p>
+
+<div class="directions">
+
+  <!-- A: Editorial Serif -->
+  <div class="direction" data-choice="editorial" onclick="pick(this, 'A · Editorial Serif')">
+    <div class="direction-preview">
+      <!-- NAV -->
+      <div style="background:#fff; padding:0 20px; height:52px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #f0f0f0;">
+        <span style="font-family:'Playfair Display',serif; font-weight:700; font-size:15px; letter-spacing:1px; color:#111;">E · EXCLUSIVE DOORS</span>
+        <div style="display:flex; gap:20px; align-items:center;">
+          <span style="font-size:11px; color:#888; letter-spacing:1.5px; text-transform:uppercase;">Uși Interior</span>
+          <span style="font-size:11px; color:#888; letter-spacing:1.5px; text-transform:uppercase;">Exterior</span>
+          <span style="background:#111; color:#fff; font-size:10px; font-weight:600; padding:6px 14px; letter-spacing:1.5px; text-transform:uppercase;">Contact</span>
+        </div>
+      </div>
+      <!-- HERO -->
+      <div style="background:#1a1a1a; padding:32px 20px 24px; position:relative; min-height:180px; overflow:hidden;">
+        <div style="position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=60') center/cover; opacity:0.25;"></div>
+        <div style="position:relative;">
+          <p style="font-size:10px; letter-spacing:4px; text-transform:uppercase; color:#4CAF7D; margin-bottom:12px;">Showroom Otopeni</p>
+          <p style="font-family:'Playfair Display',serif; font-size:28px; font-weight:700; line-height:1.2; color:#fff; margin-bottom:12px;">Uși premium,<br/><em style="color:#4CAF7D;">la comandă</em></p>
+          <p style="font-size:12px; color:#888; line-height:1.7; margin-bottom:20px; max-width:280px;">Cel mai bun showroom de uși din București — proiecte rezidențiale și comerciale.</p>
+          <div style="display:flex; gap:10px;">
+            <span style="border:1px solid #4CAF7D; color:#4CAF7D; font-size:10px; font-weight:600; padding:8px 18px; letter-spacing:2px; text-transform:uppercase;">Programare</span>
+            <span style="border:1px solid #444; color:#888; font-size:10px; padding:8px 18px; letter-spacing:1px; text-transform:uppercase;">Ofertă</span>
+          </div>
+        </div>
+      </div>
+      <!-- PRODUCT CARD -->
+      <div style="background:#fafafa; padding:14px; display:flex; gap:12px; align-items:flex-start;">
+        <div style="width:80px; height:80px; background:#e8e0d5; flex-shrink:0; position:relative; overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=200&q=60" style="width:100%; height:100%; object-fit:cover;"/>
+          <div style="position:absolute; top:6px; left:6px; background:#111; color:#4CAF7D; font-size:9px; font-weight:700; padding:2px 5px;">−15%</div>
+        </div>
+        <div style="flex:1;">
+          <p style="font-size:9px; letter-spacing:3px; text-transform:uppercase; color:#4CAF7D; margin-bottom:3px;">Ușă Exterior · GROKE</p>
+          <p style="font-family:'Playfair Display',serif; font-size:15px; font-weight:700; color:#111; margin-bottom:4px;">Thermosafe 90</p>
+          <p style="font-size:10px; color:#999; margin-bottom:10px;">GRK-TS90 · La comandă</p>
+          <span style="border-bottom:1px solid #111; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#111; padding-bottom:1px;">Detalii →</span>
+        </div>
+      </div>
+    </div>
+    <div class="direction-label">
+      <h3>A · Editorial Serif</h3>
+      <p>Titluri Playfair Display, font serif elegant. Butoane outline, nav simplu și curat. Diferit de kulttur prin tipografie și rafinament.</p>
+    </div>
+  </div>
+
+  <!-- B: Dark Luxury -->
+  <div class="direction" data-choice="dark" onclick="pick(this, 'B · Dark Luxury')">
+    <div class="direction-preview">
+      <!-- NAV -->
+      <div style="background:#0a0a0a; padding:0 20px; height:52px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #1e1e1e;">
+        <span style="font-family:'DM Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:3px; text-transform:uppercase; color:#fff;">E · EXCLUSIVE</span>
+        <div style="display:flex; gap:20px; align-items:center;">
+          <span style="font-size:11px; color:#555; letter-spacing:2px; text-transform:uppercase;">Interior</span>
+          <span style="font-size:11px; color:#555; letter-spacing:2px; text-transform:uppercase;">Exterior</span>
+          <span style="background:#4CAF7D; color:#000; font-size:10px; font-weight:700; padding:6px 14px; letter-spacing:2px; text-transform:uppercase;">Showroom</span>
+        </div>
+      </div>
+      <!-- HERO -->
+      <div style="background:#0a0a0a; padding:32px 20px 24px; position:relative; min-height:180px; overflow:hidden;">
+        <div style="position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=60') center/cover; opacity:0.15; filter:grayscale(80%);"></div>
+        <div style="position:relative;">
+          <div style="display:inline-block; border:1px solid #4CAF7D; padding:3px 10px; margin-bottom:16px;">
+            <p style="font-size:9px; letter-spacing:4px; text-transform:uppercase; color:#4CAF7D;">Showroom Otopeni · București</p>
+          </div>
+          <p style="font-size:30px; font-weight:700; line-height:1.1; color:#fff; margin-bottom:14px; letter-spacing:-0.5px;">Uși premium<br/><span style="color:#4CAF7D;">la comandă</span></p>
+          <p style="font-size:11px; color:#444; line-height:1.8; margin-bottom:20px;">Interior · Exterior · Glisante · Pivotante</p>
+          <span style="background:#4CAF7D; color:#000; font-size:10px; font-weight:700; padding:10px 22px; letter-spacing:2px; text-transform:uppercase;">Programare showroom →</span>
+        </div>
+      </div>
+      <!-- PRODUCT CARD -->
+      <div style="background:#111; padding:0; overflow:hidden;">
+        <div style="position:relative; height:90px;">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=60" style="width:100%; height:100%; object-fit:cover; opacity:0.6;"/>
+          <div style="position:absolute; top:8px; left:8px; background:#0a0a0a; border:1px solid #4CAF7D; color:#4CAF7D; font-size:10px; font-weight:700; padding:3px 7px;">−15%</div>
+        </div>
+        <div style="padding:12px 14px;">
+          <p style="font-size:9px; letter-spacing:3px; text-transform:uppercase; color:#4CAF7D; margin-bottom:4px;">Ușă Exterior · GROKE</p>
+          <p style="font-size:14px; font-weight:700; color:#fff; margin-bottom:6px;">Thermosafe 90</p>
+          <div style="border:1px solid #222; color:#666; font-size:10px; font-weight:600; padding:7px; text-align:center; letter-spacing:2px; text-transform:uppercase; margin-top:8px;">DETALII →</div>
+        </div>
+      </div>
+    </div>
+    <div class="direction-label">
+      <h3>B · Dark Luxury</h3>
+      <p>Site-ul e predominant întunecat — nu doar hero-ul. Verde pe negru este puternic. Senzație de brand premium, ca un showroom de noapte.</p>
+    </div>
+  </div>
+
+  <!-- C: Warm Architectural -->
+  <div class="direction" data-choice="warm" onclick="pick(this, 'C · Warm Architectural')">
+    <div class="direction-preview">
+      <!-- NAV -->
+      <div style="background:#F4F1EC; padding:0 20px; height:52px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #e8e2d9;">
+        <span style="font-family:'Cormorant Garamond',serif; font-weight:600; font-size:17px; letter-spacing:2px; color:#2a2218;">E · EXCLUSIVE DOORS</span>
+        <div style="display:flex; gap:20px; align-items:center;">
+          <span style="font-size:11px; color:#8a7d6e; letter-spacing:1.5px; text-transform:uppercase;">Interior</span>
+          <span style="font-size:11px; color:#8a7d6e; letter-spacing:1.5px; text-transform:uppercase;">Exterior</span>
+          <span style="border:1px solid #2a2218; color:#2a2218; font-size:10px; font-weight:600; padding:6px 14px; letter-spacing:1.5px; text-transform:uppercase;">Contact</span>
+        </div>
+      </div>
+      <!-- HERO -->
+      <div style="background:#F4F1EC; padding:32px 20px 24px; position:relative; min-height:180px; overflow:hidden; display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:center;">
+        <div>
+          <p style="font-size:9px; letter-spacing:4px; text-transform:uppercase; color:#4CAF7D; margin-bottom:10px;">Showroom Otopeni</p>
+          <p style="font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; line-height:1.2; color:#2a2218; margin-bottom:12px;">Uși premium,<br/><em>la comandă</em></p>
+          <p style="font-size:11px; color:#8a7d6e; line-height:1.7; margin-bottom:16px;">Showroom București — proiecte rezidențiale premium.</p>
+          <span style="background:#2a2218; color:#F4F1EC; font-size:10px; font-weight:600; padding:8px 18px; letter-spacing:2px; text-transform:uppercase;">Programare →</span>
+        </div>
+        <div style="position:relative; height:130px; border-radius:2px; overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=300&q=70" style="width:100%; height:100%; object-fit:cover;"/>
+        </div>
+      </div>
+      <!-- PRODUCT CARD -->
+      <div style="background:#fff; border-top:2px solid #4CAF7D; padding:14px;">
+        <div style="height:70px; overflow:hidden; margin-bottom:10px; position:relative;">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=60" style="width:100%; height:100%; object-fit:cover;"/>
+          <div style="position:absolute; top:6px; left:0; background:#4CAF7D; color:#fff; font-size:9px; font-weight:700; padding:3px 8px; letter-spacing:1px;">−15% REDUCERE</div>
+        </div>
+        <p style="font-size:9px; letter-spacing:3px; text-transform:uppercase; color:#4CAF7D; margin-bottom:3px;">Ușă Exterior · GROKE</p>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:16px; font-weight:600; color:#2a2218; margin-bottom:8px;">Thermosafe 90</p>
+        <div style="border:1px solid #e8e2d9; color:#8a7d6e; font-size:10px; font-weight:600; padding:7px; text-align:center; letter-spacing:2px; text-transform:uppercase;">DETALII →</div>
+      </div>
+    </div>
+    <div class="direction-label">
+      <h3>C · Warm Architectural</h3>
+      <p>Background crem (#F4F1EC), font Cormorant Garamond, paletă warm sand. Senzație de showroom italian de design — complet diferit de kulttur.</p>
+    </div>
+  </div>
+
+</div>
+
+<p style="font-size:12px; color:#444; text-align:center; margin-top:28px;">Click pe o variantă sau spune-mi în terminal.</p>
+
+<div class="selected-bar" id="bar"></div>
+
+<script>
+function pick(el, label) {
+  document.querySelectorAll('.direction').forEach(d => d.classList.remove('selected'));
+  el.classList.add('selected');
+  var bar = document.getElementById('bar');
+  bar.textContent = 'Ai ales: ' + label + ' — confirmă în terminal';
+  bar.classList.add('visible');
+  if(window.__SP_HELPER) window.__SP_HELPER.select(el.dataset.choice, label);
+}
+</script>
+</body>
+</html>

@@ -43,28 +43,28 @@ export default function ProductDetails({ product }: { product: Product }) {
 
       {/* Made in Germany badge */}
       <div className="flex justify-end">
-        <div className="flex items-center gap-2.5 border-2 border-gray-800 px-3 py-2">
+        <div className="flex items-center gap-2.5 border-2 border-warm-text px-3 py-2">
           <GermanFlag />
           <div className="text-center">
-            <p className="text-[0.5rem] font-bold tracking-[0.25em] uppercase text-gray-500">MADE IN</p>
-            <p className="text-[0.8125rem] font-black tracking-[0.2em] uppercase text-gray-900">GERMANY</p>
+            <p className="text-[0.5rem] font-bold tracking-[0.25em] uppercase text-warm-muted">MADE IN</p>
+            <p className="text-[0.8125rem] font-black tracking-[0.2em] uppercase text-warm-text">GERMANY</p>
           </div>
         </div>
       </div>
 
       {/* Caracteristici */}
       <div>
-        <p className="text-[0.5625rem] font-bold tracking-[0.3em] uppercase text-gray-400 mb-3">
+        <p className="text-[0.5625rem] font-bold tracking-[0.3em] uppercase text-warm-muted mb-3">
           Caracteristici
         </p>
         <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
           {product.specs.map((spec) => (
             <div
               key={spec.key}
-              className="flex flex-col items-center gap-1.5 p-2.5 border border-gray-100 rounded-lg text-center bg-stone-50"
+              className="flex flex-col items-center gap-1.5 p-2.5 border border-warm-border text-center bg-warm-subtle"
             >
               <svg
-                className="w-5 h-5 text-gray-600 shrink-0"
+                className="w-5 h-5 text-warm-muted shrink-0"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth={1.5}
@@ -72,8 +72,8 @@ export default function ProductDetails({ product }: { product: Product }) {
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d={specIconPath(spec.key)} />
               </svg>
-              <span className="text-[0.5625rem] font-bold text-gray-800 leading-tight">{spec.value}</span>
-              <span className="text-[0.4375rem] text-gray-400 uppercase tracking-wider leading-tight">{spec.key}</span>
+              <span className="text-[0.5625rem] font-bold text-warm-text leading-tight">{spec.value}</span>
+              <span className="text-[0.4375rem] text-warm-muted uppercase tracking-wider leading-tight">{spec.key}</span>
             </div>
           ))}
         </div>
@@ -81,14 +81,14 @@ export default function ProductDetails({ product }: { product: Product }) {
 
       {/* Funcționalități opționale */}
       <div>
-        <p className="text-[0.5625rem] font-bold tracking-[0.3em] uppercase text-gray-400 mb-3">
+        <p className="text-[0.5625rem] font-bold tracking-[0.3em] uppercase text-warm-muted mb-3">
           Funcționalități
         </p>
         <div className="flex flex-wrap gap-2">
           {product.tags.map((tag) => (
             <span
               key={tag}
-              className="flex items-center gap-1.5 bg-white border border-gray-200 text-gray-700 text-[0.625rem] font-semibold px-2.5 py-1.5 rounded"
+              className="flex items-center gap-1.5 bg-cream border border-warm-border text-warm-text text-[0.625rem] font-semibold px-2.5 py-1.5"
             >
               <svg className="w-3 h-3 text-accent shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path
@@ -104,21 +104,21 @@ export default function ProductDetails({ product }: { product: Product }) {
       </div>
 
       {/* Description */}
-      <div className="border-t border-gray-100 pt-4">
-        <p className="text-sm text-gray-600 leading-relaxed">{product.description}</p>
+      <div className="border-t border-warm-border pt-4">
+        <p className="text-sm text-warm-muted leading-relaxed">{product.description}</p>
       </div>
 
       {/* Sale price pill */}
       {product.salePercent && (
-        <div className="flex items-center gap-3 bg-amber-50 border border-accent/25 rounded px-3 py-2">
+        <div className="flex items-center gap-3 bg-warm-subtle border border-accent/25 px-3 py-2">
           <span className="text-[0.5625rem] font-bold uppercase tracking-widest text-accent">Promoție</span>
-          <span className="text-xl font-black text-gray-900">
+          <span className="text-xl font-black text-warm-text">
             {Math.round(product.startingPrice * (1 - product.salePercent / 100)).toLocaleString('ro-RO')} €
           </span>
-          <span className="text-sm text-gray-400 line-through">
+          <span className="text-sm text-warm-muted line-through">
             {product.startingPrice.toLocaleString('ro-RO')} €
           </span>
-          <span className="text-[0.5625rem] text-gray-400">+ TVA</span>
+          <span className="text-[0.5625rem] text-warm-muted">+ TVA</span>
         </div>
       )}
 
@@ -126,19 +126,19 @@ export default function ProductDetails({ product }: { product: Product }) {
       <div className="flex flex-col gap-2 pt-1">
         <a
           href="#contact"
-          className="bg-gray-900 text-white text-[0.6875rem] font-bold tracking-[0.2em] uppercase py-3 px-5 text-center hover:bg-gray-700 transition-colors"
+          className="bg-warm-dark text-cream text-[0.6875rem] font-bold tracking-[0.2em] uppercase py-3 px-5 text-center hover:bg-warm-text transition-colors"
         >
           CERE OFERTĂ DE PREȚ
         </a>
         <a
           href="#contact"
-          className="bg-accent text-gray-900 text-[0.6875rem] font-bold tracking-[0.15em] uppercase py-3 px-5 text-center hover:bg-accent-hover transition-colors"
+          className="bg-accent text-warm-dark text-[0.6875rem] font-bold tracking-[0.15em] uppercase py-3 px-5 text-center hover:bg-accent-hover transition-colors"
         >
           PROGRAMARE SHOWROOM
         </a>
         <a
           href="#product-details"
-          className="border-2 border-gray-900 text-gray-900 text-[0.6875rem] font-bold tracking-[0.2em] uppercase py-3 px-5 text-center hover:bg-gray-900 hover:text-white transition-colors flex items-center justify-center gap-2"
+          className="border-2 border-warm-text text-warm-text text-[0.6875rem] font-bold tracking-[0.2em] uppercase py-3 px-5 text-center hover:bg-warm-dark hover:text-cream transition-colors flex items-center justify-center gap-2"
         >
           DETALII PRODUS
           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
@@ -147,17 +147,17 @@ export default function ProductDetails({ product }: { product: Product }) {
         </a>
         <a
           href="tel:0728959652"
-          className="border border-gray-300 text-gray-600 text-[0.6875rem] font-semibold tracking-wider py-2.5 px-5 text-center hover:border-gray-500 transition-colors"
+          className="border border-warm-border text-warm-muted text-[0.6875rem] font-semibold tracking-wider py-2.5 px-5 text-center hover:border-warm-text transition-colors"
         >
           📞 0728 959 652 · Consultanță gratuită
         </a>
       </div>
 
       {/* Detail thumbnails */}
-      <div className="pt-1 border-t border-gray-100">
+      <div className="pt-1 border-t border-warm-border">
         <div className="flex gap-2">
           {product.details.map((d, i) => (
-            <div key={i} className="relative flex-1 aspect-[4/3] overflow-hidden rounded">
+            <div key={i} className="relative flex-1 aspect-[4/3] overflow-hidden">
               <img src={d.img} alt={d.title} className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-black/40 flex items-end p-1.5">
                 <p className="text-white text-[0.5rem] font-bold uppercase tracking-wide leading-tight">

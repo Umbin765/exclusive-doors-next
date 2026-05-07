@@ -10,7 +10,7 @@ export default function Nav() {
   return (
     <>
       <header className="sticky top-0 z-50">
-        <nav className="bg-white/80 backdrop-blur-md border-b border-white/20 shadow-sm">
+        <nav className="bg-cream/90 backdrop-blur-md border-b border-warm-border shadow-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
 
             {/* Logo */}
@@ -36,17 +36,17 @@ export default function Nav() {
                     className={`px-3 h-full flex items-center text-sm border-b-2 transition-colors ${
                       activeMenu === key
                         ? 'text-accent border-accent'
-                        : 'text-gray-600 border-transparent hover:text-gray-900'
+                        : 'text-warm-muted border-transparent hover:text-warm-text'
                     }`}
                   >
                     {menu.label}
                   </a>
 
                   {activeMenu === key && (
-                    <div className="absolute top-full left-0 w-[41.25rem] bg-white shadow-2xl border border-gray-100 p-6 grid grid-cols-[10rem_1fr] gap-6 rounded-xl">
+                    <div className="absolute top-full left-0 w-[41.25rem] bg-cream shadow-2xl border border-warm-border p-6 grid grid-cols-[10rem_1fr] gap-6 rounded-xl">
                       {/* Category list */}
                       <div>
-                        <p className="text-[0.625rem] font-bold uppercase tracking-widest text-gray-400 mb-3">
+                        <p className="text-[0.625rem] font-bold uppercase tracking-widest text-warm-muted mb-3">
                           Categorii
                         </p>
                         <ul className="space-y-0.5">
@@ -54,7 +54,7 @@ export default function Nav() {
                             <li key={cat}>
                               <a
                                 href="#"
-                                className="text-sm text-gray-700 hover:text-accent transition-colors block py-1"
+                                className="text-sm text-warm-text hover:text-accent transition-colors block py-1"
                               >
                                 {cat}
                               </a>
@@ -71,23 +71,23 @@ export default function Nav() {
 
                       {/* Photo cards */}
                       <div>
-                        <p className="text-[0.625rem] font-bold uppercase tracking-widest text-gray-400 mb-3">
+                        <p className="text-[0.625rem] font-bold uppercase tracking-widest text-warm-muted mb-3">
                           {menu.heading}
                         </p>
                         <div className="grid grid-cols-3 gap-3">
                           {menu.cards.map((card) => (
                             <a key={card.title} href={card.href} className="group">
-                              <div className="h-28 overflow-hidden rounded mb-2 bg-gray-100">
+                              <div className="h-28 overflow-hidden rounded mb-2 bg-warm-subtle">
                                 <img
                                   src={card.img}
                                   alt={card.title}
                                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                 />
                               </div>
-                              <div className="font-semibold text-xs text-gray-900 mb-0.5">
+                              <div className="font-semibold text-xs text-warm-text mb-0.5">
                                 {card.title}
                               </div>
-                              <div className="text-xs text-gray-400 leading-snug line-clamp-2">
+                              <div className="text-xs text-warm-muted leading-snug line-clamp-2">
                                 {card.desc}
                               </div>
                             </a>
@@ -99,23 +99,23 @@ export default function Nav() {
                 </div>
               ))}
 
-              <span className="text-gray-300 mx-1 text-xs select-none">|</span>
-              <a href="#contact" className="px-3 h-full flex items-center text-sm text-gray-600 hover:text-gray-900 transition-colors">
+              <span className="text-warm-border mx-1 text-xs select-none">|</span>
+              <a href="#contact" className="px-3 h-full flex items-center text-sm text-warm-muted hover:text-warm-text transition-colors">
                 Despre Noi
               </a>
-              <a href="#contact" className="px-3 h-full flex items-center text-sm text-gray-600 hover:text-gray-900 transition-colors">
+              <a href="#contact" className="px-3 h-full flex items-center text-sm text-warm-muted hover:text-warm-text transition-colors">
                 Contact
               </a>
             </div>
 
             {/* Right: phone + CTA + hamburger */}
             <div className="flex items-center gap-2 sm:gap-4 shrink-0">
-              <a href="tel:0728959652" className="text-sm font-semibold hidden md:block">
+              <a href="tel:0728959652" className="text-sm font-semibold hidden md:block text-warm-text">
                 0728 959 652
               </a>
               <a
                 href="#contact"
-                className="hidden sm:block bg-gray-900 text-white text-sm px-4 sm:px-5 py-2.5 hover:bg-gray-700 transition-colors"
+                className="hidden sm:block bg-warm-dark text-cream text-sm px-4 sm:px-5 py-2.5 hover:bg-warm-text transition-colors"
               >
                 Programare showroom
               </a>
@@ -125,9 +125,9 @@ export default function Nav() {
                 className="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
                 aria-label="Deschide meniu"
               >
-                <span className="block w-5 h-0.5 bg-gray-800" />
-                <span className="block w-5 h-0.5 bg-gray-800" />
-                <span className="block w-3.5 h-0.5 bg-gray-800" />
+                <span className="block w-5 h-0.5 bg-warm-text" />
+                <span className="block w-5 h-0.5 bg-warm-text" />
+                <span className="block w-3.5 h-0.5 bg-warm-text" />
               </button>
             </div>
 
@@ -145,9 +145,9 @@ export default function Nav() {
           />
 
           {/* Drawer */}
-          <div className="relative ml-auto w-full max-w-sm bg-white h-full overflow-y-auto flex flex-col">
+          <div className="relative ml-auto w-full max-w-sm bg-cream h-full overflow-y-auto flex flex-col">
             {/* Drawer header */}
-            <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 sticky top-0 bg-white z-10">
+            <div className="flex items-center justify-between px-5 py-4 border-b border-warm-border sticky top-0 bg-cream z-10">
               <a href="/" className="flex items-center" onClick={() => setMobileOpen(false)}>
                 <img src="/logo.png" alt="Exclusive Doors" className="h-7 w-auto" />
               </a>
@@ -189,7 +189,7 @@ export default function Nav() {
                 </div>
               ))}
 
-              <div className="border-t border-gray-100 pt-5 space-y-3">
+              <div className="border-t border-warm-border pt-5 space-y-3">
                 <a
                   href="#contact"
                   className="text-sm text-gray-600 hover:text-accent transition-colors block"
@@ -208,7 +208,7 @@ export default function Nav() {
             </div>
 
             {/* Drawer footer */}
-            <div className="px-5 py-5 border-t border-gray-100 space-y-3">
+            <div className="px-5 py-5 border-t border-warm-border space-y-3">
               <a
                 href="tel:0728959652"
                 className="flex items-center gap-2 text-sm font-semibold text-gray-800 hover:text-accent transition-colors"
@@ -220,7 +220,7 @@ export default function Nav() {
               </a>
               <a
                 href="#contact"
-                className="block w-full bg-gray-900 text-white text-sm font-bold px-5 py-3 text-center hover:bg-gray-700 transition-colors"
+                className="block w-full bg-warm-dark text-cream text-sm font-bold px-5 py-3 text-center hover:bg-warm-text transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
                 Programare showroom

@@ -10,7 +10,7 @@ export default function Hero() {
           alt="Showroom Exclusive Doors București"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/65" />
+        <div className="absolute inset-0 bg-warm-dark/70" />
       </div>
 
       {/* Main content */}
@@ -29,7 +29,7 @@ export default function Hero() {
             Showroom Otopeni — Airport Plaza, DN1
           </a>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-6 max-w-3xl">
+          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold text-white leading-tight mb-6 max-w-3xl">
             Showroom &amp; magazin de uși{' '}
             <span className="text-accent">la comandă</span>{' '}
             premium în București
@@ -75,7 +75,7 @@ export default function Hero() {
       </div>
 
       {/* Service highlights strip */}
-      <div className="relative bg-black/80 backdrop-blur-sm border-t border-white/10">
+      <div className="relative bg-warm-dark/85 backdrop-blur-sm border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-gray-700">
             {heroHighlights.map((item) => (

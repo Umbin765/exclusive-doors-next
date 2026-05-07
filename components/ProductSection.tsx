@@ -6,7 +6,7 @@ export default function ProductSection({ section, alt }: { section: ProductSecti
   const subCards = megaMenus[id]?.cards ?? [];
 
   return (
-    <section className={`py-20 border-t border-gray-100 ${alt ? 'bg-stone-50' : 'bg-white'}`} id={id}>
+    <section className={`py-20 border-t border-warm-border ${alt ? 'bg-warm-subtle' : 'bg-cream'}`} id={id}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
         {/* Text block */}
@@ -14,15 +14,15 @@ export default function ProductSection({ section, alt }: { section: ProductSecti
           <p className="text-xs font-bold tracking-[0.25em] uppercase text-accent mb-4">
             {eyebrow}
           </p>
-          <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 leading-tight mb-6">
+          <h2 className="font-display text-2xl sm:text-4xl font-semibold text-warm-text leading-tight mb-6">
             {heading}
           </h2>
-          <p className="text-gray-500 leading-relaxed mb-8">
+          <p className="text-warm-muted leading-relaxed mb-8">
             {body}
           </p>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 border border-gray-900 text-sm font-medium px-6 py-3 hover:bg-gray-900 hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 border border-warm-text text-warm-text text-sm font-medium px-6 py-3 hover:bg-warm-dark hover:text-cream transition-colors"
           >
             {ctaLabel}
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -56,9 +56,9 @@ export default function ProductSection({ section, alt }: { section: ProductSecti
                     </div>
                   )}
                 </div>
-                <div className="p-4">
-                  <h3 className="font-bold text-gray-900 mb-2">{card.title}</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed mb-4">{card.desc}</p>
+                <div className="p-4 bg-cream">
+                  <h3 className="font-display font-semibold text-warm-text mb-2">{card.title}</h3>
+                  <p className="text-sm text-warm-muted leading-relaxed mb-4">{card.desc}</p>
                   <span
                     className={`inline-flex items-center gap-1 text-sm font-semibold ${
                       card.salePercent ? 'text-gray-900 border border-accent rounded px-2 py-0.5' : 'text-accent'

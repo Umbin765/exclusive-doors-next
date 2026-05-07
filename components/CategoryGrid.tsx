@@ -2,16 +2,16 @@ import { categories } from '@/lib/data';
 
 export default function CategoryGrid() {
   return (
-    <section className="bg-white pt-20 pb-12">
+    <section className="bg-cream pt-20 pb-12">
       {/* Section header */}
       <div className="text-center mb-10 px-4 sm:px-6" data-aos="fade-up">
         <p className="text-xs font-bold tracking-[0.3em] uppercase text-accent mb-3">
           Colecția noastră
         </p>
-        <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-4">
+        <h2 className="font-display text-2xl sm:text-4xl font-semibold text-warm-text mb-4">
           Descoperă produsele din showroom
         </h2>
-        <p className="text-gray-500 text-base max-w-xl mx-auto leading-relaxed">
+        <p className="text-warm-muted text-base max-w-xl mx-auto leading-relaxed">
           Suntem specializați în proiecte premium: uși de interior și exterior la comandă,
           glisante și pivotante pentru case particulare și comerciale.
         </p>
