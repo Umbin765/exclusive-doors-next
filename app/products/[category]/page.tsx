@@ -23,7 +23,7 @@ export default function CategoryPage({ params }: Props) {
     <>
       <Nav />
       <CategoryHero category={category} />
-      <section className="py-14 px-6 bg-white">
+      <section className="py-14 px-6 bg-cream">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {categoryProducts.map((p) => (
