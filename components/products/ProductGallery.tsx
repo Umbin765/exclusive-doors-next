@@ -18,7 +18,7 @@ export default function ProductGallery({ mainImg, thumbImgs, alt, salePercent }:
   const next = () => setActive((i) => (i + 1) % allImgs.length);
 
   return (
-    <div className="bg-stone-50 p-3 lg:p-4 flex flex-col lg:h-full lg:overflow-hidden">
+    <div className="p-3 lg:p-4 flex flex-col">
       {/* Main image with arrow controls */}
       <div className="relative rounded-xl overflow-hidden lg:flex-1 h-64 sm:h-80 lg:h-auto lg:min-h-[27rem] lg:max-h-[calc(100vh-12rem)]">
         <img
