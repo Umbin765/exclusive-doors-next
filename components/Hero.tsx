@@ -10,7 +10,7 @@ export default function Hero() {
           alt="Showroom Exclusive Doors București"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-warm-dark/70" />
+        <div className="absolute inset-0 bg-warm-dark/75" />
       </div>
 
       {/* Main content */}

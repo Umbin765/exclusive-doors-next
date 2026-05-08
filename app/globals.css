@@ -8,5 +8,12 @@
        Since Tailwind uses rem everywhere (text, spacing, max-widths),
        the entire layout scales proportionally on large screens. */
     font-size: clamp(1rem, 1.15vw, 1.375rem);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .font-display {
+    /* Force subpixel-quality smoothing for the serif display font on Chrome/macOS */
+    -webkit-font-smoothing: subpixel-antialiased;
   }
 }
