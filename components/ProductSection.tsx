@@ -39,23 +39,23 @@ export default function ProductSection({ section, alt }: { section: ProductSecti
               <a
                 key={card.title}
                 href={card.href ?? '#contact'}
-                className={`group block border-2 rounded-xl overflow-hidden shadow-md hover:shadow-[0_8px_40px_rgba(0,0,0,0.18)] transition-all duration-300 ${
+                className={`relative group block border-2 rounded-xl shadow-md hover:shadow-[0_8px_40px_rgba(0,0,0,0.18)] transition-all duration-300 ${
                   card.salePercent
                     ? 'border-accent/40 hover:border-accent'
                     : 'border-transparent hover:border-accent'
                 }`}
               >
-                <div className="relative overflow-hidden">
+                {card.salePercent && (
+                  <div className="absolute -top-4 -left-4 z-10">
+                    <SaleBadge percent={card.salePercent} />
+                  </div>
+                )}
+                <div className="relative overflow-hidden rounded-t-xl">
                   <img
                     src={card.img}
                     alt={card.title}
                     className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  {card.salePercent && (
-                    <div className="absolute top-3 left-3">
-                      <SaleBadge percent={card.salePercent} />
-                    </div>
-                  )}
                   {card.madeInGermany && (
                     <div className="absolute bottom-3 right-3">
                       <GermanBadge />

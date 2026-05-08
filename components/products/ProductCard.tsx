@@ -9,12 +9,17 @@ export default function ProductCard({ product }: { product: Product }) {
   return (
     <Link
       href={`/products/${product.category}/${product.slug}`}
-      className={`group block overflow-hidden border-2 shadow-sm hover:shadow-lg transition-all duration-300 ${
+      className={`relative group block border-2 shadow-sm hover:shadow-lg transition-all duration-300 ${
         onSale
           ? 'border-accent/40 hover:border-accent'
           : 'border-transparent hover:border-accent'
       }`}
     >
+      {onSale && (
+        <div className="absolute -top-4 -left-4 z-10">
+          <SaleBadge percent={product.salePercent!} />
+        </div>
+      )}
       {/* Image */}
       <div className="relative overflow-hidden h-56">
         <img
@@ -22,11 +27,6 @@ export default function ProductCard({ product }: { product: Product }) {
           alt={product.name}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
-        {onSale && (
-          <div className="absolute top-3 left-3">
-            <SaleBadge percent={product.salePercent!} />
-          </div>
-        )}
         {product.madeInGermany && (
           <div className="absolute bottom-3 right-3">
             <GermanBadge />
