@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
-import Breadcrumb from '@/components/products/Breadcrumb';
 import ProductGallery from '@/components/products/ProductGallery';
 import ProductDetails from '@/components/products/ProductDetails';
 import StickyScroll from '@/components/products/StickyScroll';
@@ -31,26 +30,29 @@ export default function ProductPage({ params }: Props) {
     <>
       <Nav />
 
-      {/* ── Breadcrumb ── */}
-      <Breadcrumb category={category} productName={product.name} />
-
-      {/* ── Product title header ── */}
-      <div className="bg-cream border-b border-warm-border px-4 sm:px-6 py-4">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-end sm:justify-between gap-1">
+      {/* ── Breadcrumb + title (compact) ── */}
+      <div className="bg-cream border-b border-warm-border px-4 sm:px-6 py-2.5">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div>
-            <h1 className="font-display text-2xl sm:text-3xl font-semibold text-warm-text tracking-tight leading-tight">
+            <p className="text-[0.625rem] text-warm-muted tracking-wide mb-0.5">
+              <a href="/" className="hover:text-accent transition-colors">Acasă</a>
+              <span className="mx-1.5">/</span>
+              <a href={`/products/${category}`} className="hover:text-accent transition-colors capitalize">{category}</a>
+              <span className="mx-1.5">/</span>
+              <span className="text-warm-text font-medium">{product.name}</span>
+            </p>
+            <h1 className="font-display text-xl sm:text-2xl font-semibold text-warm-text leading-tight">
               {product.name}
+              <span className="text-sm font-normal text-warm-muted ml-3 hidden sm:inline">{brandLabel} · {product.model}</span>
             </h1>
-            <p className="text-sm text-warm-muted mt-0.5">{brandLabel}</p>
           </div>
-          <p className="text-sm text-warm-muted italic hidden sm:block">{product.model}</p>
         </div>
       </div>
 
       {/* ── Main product section ── */}
       <div className="bg-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-8 xl:gap-14">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-6 xl:gap-10">
             <ProductGallery
               mainImg={product.mainImg}
               thumbImgs={product.thumbImgs}
