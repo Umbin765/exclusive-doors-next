@@ -19,7 +19,7 @@
 
   /* Chrome gets extra top padding to match Safari's visual spacing */
   .browser-chrome .hero-content {
-    padding-top: 5rem;
+    padding-top: 2rem;
   }
   .browser-safari .hero-content {
     padding-top: 2.5rem;
