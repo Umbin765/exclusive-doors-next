@@ -24,4 +24,9 @@
   .browser-safari .hero-content {
     padding-top: 2.5rem;
   }
+
+  /* Chrome: tighten gap between buttons and stats */
+  .browser-chrome .hero-buttons {
+    margin-bottom: 1.5rem;
+  }
 }

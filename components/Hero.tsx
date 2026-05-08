@@ -40,7 +40,7 @@ export default function Hero() {
             Specializați în proiecte premium de uși la comandă, pentru case particulare și comerciale.
           </p>
 
-          <div className="flex flex-wrap gap-4 mb-14">
+          <div className="flex flex-wrap gap-4 mb-14 hero-buttons">
             <a
               href="#contact"
               className="inline-flex items-center gap-2 bg-accent text-gray-900 text-sm font-bold px-8 py-3.5 hover:bg-accent-hover transition-colors"
