@@ -1,6 +1,7 @@
 import { Product } from '@/lib/data';
 import Link from 'next/link';
 import SaleBadge from './SaleBadge';
+import GermanBadge from './GermanBadge';
 
 export default function ProductCard({ product }: { product: Product }) {
   const onSale = !!product.salePercent;
@@ -24,6 +25,11 @@ export default function ProductCard({ product }: { product: Product }) {
         {onSale && (
           <div className="absolute top-3 left-3">
             <SaleBadge percent={product.salePercent!} />
+          </div>
+        )}
+        {product.madeInGermany && (
+          <div className="absolute bottom-3 right-3">
+            <GermanBadge />
           </div>
         )}
       </div>

@@ -1,5 +1,6 @@
 import { ProductSectionData, megaMenus } from '@/lib/data';
 import SaleBadge from '@/components/products/SaleBadge';
+import GermanBadge from '@/components/products/GermanBadge';
 
 export default function ProductSection({ section, alt }: { section: ProductSectionData; alt?: boolean }) {
   const { id, eyebrow, heading, body, ctaLabel } = section;
@@ -53,6 +54,11 @@ export default function ProductSection({ section, alt }: { section: ProductSecti
                   {card.salePercent && (
                     <div className="absolute top-3 left-3">
                       <SaleBadge percent={card.salePercent} />
+                    </div>
+                  )}
+                  {card.madeInGermany && (
+                    <div className="absolute bottom-3 right-3">
+                      <GermanBadge />
                     </div>
                   )}
                 </div>

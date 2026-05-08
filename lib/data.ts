@@ -6,6 +6,7 @@ export interface MegaMenuCard {
   img: string;
   href: string;
   salePercent?: number;
+  madeInGermany?: boolean;
 }
 
 export interface MegaMenuItem {
@@ -148,7 +149,7 @@ export const megaMenus: Record<string, MegaMenuItem> = {
     heading: 'Tipuri de uși interior',
     cards: [
       { title: 'Filomuro',     desc: 'La nivel cu peretele, pentru un aspect modern și îngrijit.',    img: 'https://exclusivedoors.ro/wp-content/uploads/2024/09/Untitled-design-5-700x700.jpg',  href: '/products/interior/filomuro', salePercent: 20 },
-      { title: 'Albe vopsite', desc: 'Uși de interior vopsite în alb, luminoase și elegante.',        img: 'https://exclusivedoors.ro/wp-content/uploads/2021/12/HGM-WEISS-ART-TYP-101-409x546.jpg', href: '/products/interior/filomuro' },
+      { title: 'Albe vopsite', desc: 'Uși de interior vopsite în alb, luminoase și elegante.',        img: 'https://exclusivedoors.ro/wp-content/uploads/2021/12/HGM-WEISS-ART-TYP-101-409x546.jpg', href: '/products/interior/filomuro', madeInGermany: true },
       { title: 'Laminate',     desc: 'Uși de interior laminate, pentru un aspect cald și natural.',   img: 'https://exclusivedoors.ro/wp-content/uploads/2021/10/ASTRA-LINEA-ART-cu-balamale-aparente.jpg',  href: '/products/interior/filomuro' },
     ],
   },
@@ -158,7 +159,7 @@ export const megaMenus: Record<string, MegaMenuItem> = {
     categories: ['Metalice antiefracție', 'Termice GROKE', 'Superlock', 'Hörmann', 'Personalizate'],
     heading: 'Tipuri de uși exterior',
     cards: [
-      { title: 'Termice GROKE', desc: 'Uși de exterior termice GROKE — izolare superioară și securitate.',  img: 'https://exclusivedoors.ro/wp-content/uploads/2020/12/rupere_termica-700x700.jpg', href: '/products/exterior/groke-thermosafe', salePercent: 15 },
+      { title: 'Termice GROKE', desc: 'Uși de exterior termice GROKE — izolare superioară și securitate.',  img: 'https://exclusivedoors.ro/wp-content/uploads/2020/12/rupere_termica-700x700.jpg', href: '/products/exterior/groke-thermosafe', salePercent: 15, madeInGermany: true },
       { title: 'Metalice Superlock', desc: 'Uși metalice antiefracție Superlock, securitate maximă.',      img: 'https://exclusivedoors.ro/wp-content/uploads/2020/12/metalice_antiefractie_1-700x700.jpg', href: '/products/exterior/groke-thermosafe' },
       { title: 'Personalizate', desc: 'Soluții complet personalizate pentru orice proiect.',                img: 'https://exclusivedoors.ro/wp-content/uploads/2020/12/SL-HI-TECH-8013.jpg', href: '/products/exterior/groke-thermosafe' },
     ],
@@ -171,7 +172,7 @@ export const megaMenus: Record<string, MegaMenuItem> = {
     cards: [
       { title: 'Sistem glisant',   desc: 'Elegante și funcționale, ideale pentru spații deschise.',  img: 'https://exclusivedoors.ro/wp-content/uploads/2021/12/HGM-GLATT-CULISANTA-1-409x546.jpg', href: '/products/glisante/liftant-culisant', salePercent: 10 },
       { title: 'Liftant-culisant', desc: 'Sisteme liftant-culisante pentru deschideri mari.',         img: 'https://exclusivedoors.ro/wp-content/uploads/2021/11/ALINEA-1.jpg',  href: '/products/glisante/liftant-culisant' },
-      { title: 'Din sticlă L&H',  desc: 'Uși glisante cu sticlă securizată L&H din Bremen.',        img: 'https://exclusivedoors.ro/wp-content/uploads/2021/11/TENDA-CLASSIC-WHITE.jpg', href: '/products/glisante/liftant-culisant' },
+      { title: 'Din sticlă L&H',  desc: 'Uși glisante cu sticlă securizată L&H din Bremen.',        img: 'https://exclusivedoors.ro/wp-content/uploads/2021/11/TENDA-CLASSIC-WHITE.jpg', href: '/products/glisante/liftant-culisant', madeInGermany: true },
     ],
   },
   pivotante: {
@@ -397,6 +398,7 @@ export interface Product {
   description: string;
   startingPrice: number;
   salePercent?: number;
+  madeInGermany?: boolean;
   scrollStops: ScrollStop[];
   details: DetailPanel[];
 }
@@ -464,6 +466,7 @@ export const products: Product[] = [
     description: 'Ușile Filomuro sunt montate la nivel cu peretele, creând o suprafață continuă fără toc vizibil. Disponibile cu furnir de stejar natural, nuc, sau în variante vopsite mat. Ideale pentru proiecte premium cu finisaje îngrijite și arhitectură contemporană. Substrat MDF hidrofug 19mm, garnituri perimetrale triple.',
     startingPrice: 700,
     salePercent: 20,
+    madeInGermany: true,
     scrollStops: [
       {
         eyebrow: 'Sistem Filomuro',
@@ -555,6 +558,7 @@ export const products: Product[] = [
     description: 'Ușile GROKE Thermosafe sunt soluția premium pentru intrări rezidențiale de înaltă performanță. Profil din aluminiu reciclabil, garnituri triple, sisteme de blocare multipunct și finisaje anodizate sau vopsite în orice culoare RAL. Disponibile la orice dimensiune, inclusiv formate supradimensionate.',
     startingPrice: 2200,
     salePercent: 15,
+    madeInGermany: true,
     scrollStops: [
       {
         eyebrow: 'Securitate RC3',
