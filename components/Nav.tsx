@@ -10,7 +10,7 @@ export default function Nav() {
   return (
     <>
       <header className="sticky top-0 z-50">
-        <nav className="bg-cream/90 backdrop-blur-md border-b border-warm-border shadow-sm">
+        <nav className="bg-cream border-b border-warm-border shadow-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
 
             {/* Logo */}
