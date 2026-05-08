@@ -62,7 +62,7 @@ export default function ProductSection({ section, alt }: { section: ProductSecti
                     </div>
                   )}
                 </div>
-                <div className="p-4 bg-cream">
+                <div className="p-4">
                   <h3 className="font-display font-semibold text-warm-text mb-2">{card.title}</h3>
                   <p className="text-sm text-warm-muted leading-relaxed mb-4">{card.desc}</p>
                   <span
