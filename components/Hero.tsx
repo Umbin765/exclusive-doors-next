@@ -15,7 +15,7 @@ export default function Hero() {
 
       {/* Main content */}
       <div className="relative flex-1 flex items-start">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-8 sm:pt-10 pb-6 w-full" data-aos="fade-up">
+        <div className="hero-content max-w-7xl mx-auto px-4 sm:px-6 pb-6 w-full" data-aos="fade-up">
           {/* Location bubble */}
           <a
             href="https://maps.google.com/?cid=17163938270079558934"

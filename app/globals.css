@@ -16,4 +16,12 @@
     /* Force subpixel-quality smoothing for the serif display font on Chrome/macOS */
     -webkit-font-smoothing: subpixel-antialiased;
   }
+
+  /* Chrome gets extra top padding to match Safari's visual spacing */
+  .browser-chrome .hero-content {
+    padding-top: 5rem;
+  }
+  .browser-safari .hero-content {
+    padding-top: 2.5rem;
+  }
 }

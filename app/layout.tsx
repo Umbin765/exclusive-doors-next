@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import AosInit from '@/components/AosInit';
+import BrowserDetect from '@/components/BrowserDetect';
 
 export const metadata: Metadata = {
   title: 'Exclusive Doors — Uși Premium București',
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="antialiased bg-cream text-warm-text font-sans">
         {children}
         <AosInit />
+        <BrowserDetect />
       </body>
     </html>
   );
