@@ -64,61 +64,6 @@ export default function ProductPage({ params }: Props) {
         </div>
       </div>
 
-      {/* ── Detail images + Consultant ── */}
-      <div className="bg-warm-subtle border-t border-b border-warm-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex flex-col md:flex-row gap-6 items-stretch">
-
-          {/* Detail image strip */}
-          <div className="flex gap-3 flex-1 overflow-x-auto">
-            {product.details.map((d, i) => (
-              <div key={i} className="shrink-0 flex-1 min-w-[140px] max-w-[220px]">
-                <div className="relative h-36 sm:h-44 overflow-hidden">
-                  <img src={d.img} alt={d.title} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-2.5">
-                    <div>
-                      <p className="text-white text-[0.5625rem] font-bold uppercase tracking-wide leading-tight">
-                        {d.title}
-                      </p>
-                      <p className="text-white/60 text-[0.5rem] mt-0.5">
-                        {d.specKey}: {d.specVal}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Consultant card */}
-          <div className="shrink-0 flex items-center gap-6 bg-cream px-8 py-7 border border-warm-border md:self-center min-w-[320px]">
-            <div className="w-24 h-24 shrink-0 overflow-hidden">
-              <img
-                src="/monica.png"
-                alt="Monica Dochia"
-                className="w-full h-full object-cover mix-blend-multiply"
-              />
-            </div>
-            <div>
-              <p className="font-display text-xl font-semibold text-warm-text leading-tight">Monica Dochia</p>
-              <p className="text-[0.625rem] font-semibold text-warm-muted uppercase tracking-[0.2em] mt-1 mb-4">
-                Director de vânzări
-              </p>
-              <a
-                href="tel:0728959652"
-                className="block text-lg font-bold text-warm-text hover:text-accent transition-colors"
-              >
-                0728 959 652
-              </a>
-              <a
-                href="mailto:monica.dochia@exclusivedoors.ro"
-                className="block text-sm text-warm-muted hover:text-accent transition-colors mt-0.5"
-              >
-                monica.dochia@exclusivedoors.ro
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* ── Related products ── */}
       <RelatedProducts products={related} />
