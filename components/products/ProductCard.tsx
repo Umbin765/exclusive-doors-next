@@ -9,11 +9,7 @@ export default function ProductCard({ product }: { product: Product }) {
   return (
     <Link
       href={`/products/${product.category}/${product.slug}`}
-      className={`relative group block border-2 shadow-sm hover:shadow-lg transition-all duration-300 ${
-        onSale
-          ? 'border-accent/40 hover:border-accent'
-          : 'border-transparent hover:border-accent'
-      }`}
+      className="relative group block border-2 border-transparent shadow-sm hover:shadow-lg hover:border-accent transition-all duration-300"
     >
       {onSale && (
         <div className="absolute -top-4 -left-4 z-10">
