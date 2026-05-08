@@ -1,4 +1,4 @@
-import { heroStats, heroHighlights } from '@/lib/data';
+import { heroStats } from '@/lib/data';
 
 export default function Hero() {
   return (
@@ -68,20 +68,6 @@ export default function Hero() {
               <div key={stat.label} className={i > 0 ? 'border-l border-gray-600 pl-6 sm:pl-8' : ''}>
                 <div className="text-2xl sm:text-3xl font-bold text-white">{stat.num}</div>
                 <div className="text-xs text-gray-400 mt-0.5">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Service highlights strip */}
-      <div className="relative bg-warm-dark/85 backdrop-blur-sm border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-gray-700">
-            {heroHighlights.map((item) => (
-              <div key={item.text} className="py-4 px-5 flex items-center gap-3">
-                <span className="text-accent shrink-0">{item.icon}</span>
-                <span className="text-sm text-gray-300">{item.text}</span>
               </div>
             ))}
           </div>
