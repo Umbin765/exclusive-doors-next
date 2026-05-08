@@ -91,11 +91,11 @@ export default function ProductPage({ params }: Props) {
 
           {/* Consultant card */}
           <div className="shrink-0 flex items-center gap-6 bg-cream px-8 py-7 border border-warm-border md:self-center min-w-[320px]">
-            <div className="w-24 h-24 rounded-full overflow-hidden shrink-0 bg-warm-subtle ring-[3px] ring-accent/30">
+            <div className="w-24 h-24 shrink-0 overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=300&q=80"
+                src="/monica.png"
                 alt="Monica Dochia"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover mix-blend-multiply"
               />
             </div>
             <div>
