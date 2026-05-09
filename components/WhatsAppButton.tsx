@@ -5,7 +5,7 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contactează-ne pe WhatsApp"
-      className="fixed bottom-5 right-5 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center hover:scale-110 transition-all duration-200"
+      className="fixed bottom-5 right-2 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center hover:scale-110 transition-all duration-200"
       style={{ boxShadow: '0 4px 24px rgba(37, 211, 102, 0.45), 0 2px 8px rgba(0,0,0,0.18)' }}
     >
       <svg viewBox="0 0 24 24" className="w-7 h-7 fill-white" xmlns="http://www.w3.org/2000/svg">
