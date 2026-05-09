@@ -42,7 +42,7 @@ export default function Hero() {
 
           <div className="flex flex-wrap gap-4 mb-14 hero-buttons">
             <a
-              href="#contact"
+              href="tel:0728959652"
               className="inline-flex items-center gap-2 bg-accent text-gray-900 text-sm font-bold px-8 py-3.5 hover:bg-accent-hover transition-colors"
             >
               Programare showroom
