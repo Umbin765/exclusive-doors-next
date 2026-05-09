@@ -162,44 +162,50 @@ export default function Nav() {
               </button>
             </div>
 
-            {/* Menu sections */}
-            <div className="flex-1 px-5 py-4 space-y-6">
-              {Object.entries(megaMenus).map(([key, menu]) => (
-                <div key={key}>
+            {/* Menu sections — 2×2 photo card grid */}
+            <div className="flex-1 px-4 py-5">
+              <div className="grid grid-cols-2 gap-3">
+                {Object.entries(megaMenus).map(([key, menu]) => (
                   <a
+                    key={key}
                     href={menu.href}
-                    className="text-xs font-bold tracking-[0.2em] uppercase text-gray-900 mb-2 block hover:text-accent transition-colors"
                     onClick={() => setMobileOpen(false)}
+                    className="group block rounded-lg overflow-hidden border border-warm-border bg-white active:scale-[0.98] transition-transform"
                   >
-                    {menu.label}
+                    {/* Photo */}
+                    <div className="relative h-28 overflow-hidden">
+                      <img
+                        src={menu.cards[0].img}
+                        alt={menu.label}
+                        className="w-full h-full object-cover group-active:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      <span className="absolute bottom-2 left-2 text-[9px] font-bold tracking-widest text-white/80 uppercase">
+                        {key}
+                      </span>
+                    </div>
+                    {/* Label */}
+                    <div className="px-3 py-2.5">
+                      <div className="text-[13px] font-semibold text-warm-text leading-tight">{menu.label}</div>
+                      <div className="text-[10px] text-warm-muted mt-0.5 leading-snug line-clamp-1">
+                        {menu.categories.slice(0, 3).join(' · ')}
+                      </div>
+                    </div>
                   </a>
-                  <ul className="space-y-0.5 pl-1">
-                    {menu.categories.map((cat) => (
-                      <li key={cat}>
-                        <a
-                          href={menu.href}
-                          className="text-sm text-gray-500 hover:text-accent transition-colors block py-1"
-                          onClick={() => setMobileOpen(false)}
-                        >
-                          {cat}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+                ))}
+              </div>
 
-              <div className="border-t border-warm-border pt-5 space-y-3">
+              <div className="border-t border-warm-border mt-5 pt-4 flex gap-6">
                 <a
                   href="#contact"
-                  className="text-sm text-gray-600 hover:text-accent transition-colors block"
+                  className="text-sm text-warm-muted hover:text-accent transition-colors"
                   onClick={() => setMobileOpen(false)}
                 >
                   Despre Noi
                 </a>
                 <a
                   href="#contact"
-                  className="text-sm text-gray-600 hover:text-accent transition-colors block"
+                  className="text-sm text-warm-muted hover:text-accent transition-colors"
                   onClick={() => setMobileOpen(false)}
                 >
                   Contact
