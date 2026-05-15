@@ -52,7 +52,7 @@
 .v2 .v2-hero-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 60px; padding-bottom: 20px; border-bottom: 1px solid var(--v2-line); font-family: var(--v2-mono); font-size: 11px; color: var(--v2-ink-light); letter-spacing: .08em; text-transform: uppercase; }
 .v2 .v2-hero-meta-num { font-weight: 500; color: var(--v2-ink); }
 .v2 .v2-hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 80px; align-items: start; }
-.v2 .v2-h1 { font-family: var(--v2-display); font-size: 88px; font-weight: 400; line-height: .98; letter-spacing: -.02em; color: var(--v2-ink); margin-bottom: 32px; }
+.v2 .v2-h1 { font-family: var(--v2-display); font-size: clamp(56px, 6vw, 88px); font-weight: 400; line-height: .98; letter-spacing: -.02em; color: var(--v2-ink); margin-bottom: 32px; }
 .v2 .v2-h1 em { font-style: italic; color: var(--v2-orange); }
 .v2 .v2-h1 .v2-strike { position: relative; display: inline-block; }
 .v2 .v2-h1 .v2-strike::after { content: ''; position: absolute; left: -4px; right: -4px; top: 52%; height: 4px; background: var(--v2-orange); transform: rotate(-2deg); }
@@ -216,7 +216,7 @@
 /* ── FINAL CTA ── */
 .v2 .v2-final { background: var(--v2-paper); padding: 120px 56px; text-align: center; border-top: 1px solid var(--v2-line); }
 .v2 .v2-final-eyebrow { font-family: var(--v2-mono); font-size: 11px; color: var(--v2-orange); letter-spacing: .16em; text-transform: uppercase; margin-bottom: 32px; font-weight: 500; }
-.v2 .v2-final-h2 { font-family: var(--v2-display); font-size: 96px; font-weight: 400; line-height: .95; color: var(--v2-ink); letter-spacing: -.025em; max-width: 900px; margin: 0 auto 32px; }
+.v2 .v2-final-h2 { font-family: var(--v2-display); font-size: clamp(48px, 7vw, 96px); font-weight: 400; line-height: .95; color: var(--v2-ink); letter-spacing: -.025em; max-width: 900px; margin: 0 auto 32px; }
 .v2 .v2-final-h2 em { font-style: italic; color: var(--v2-orange); }
 .v2 .v2-final-sub { font-size: 18px; color: var(--v2-ink-gray); max-width: 560px; margin: 0 auto 48px; line-height: 1.6; }
 .v2 .v2-final-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
@@ -236,3 +236,73 @@
 .v2 .v2-footer-col a { display: block; color: var(--v2-paper); text-decoration: none; font-size: 13px; margin-bottom: 10px; cursor: pointer; }
 .v2 .v2-footer-col a:hover { color: var(--v2-orange); }
 .v2 .v2-footer-bottom { display: flex; justify-content: space-between; align-items: center; font-family: var(--v2-mono); font-size: 11px; color: var(--v2-ink-light); letter-spacing: .04em; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+  .v2 .v2-nav { padding: 20px 40px; }
+  .v2 .v2-hero { padding: 64px 40px 80px; }
+  .v2 .v2-hero-grid { gap: 56px; }
+  .v2 .v2-h1 { font-size: 72px; }
+  .v2 .v2-problem { padding: 80px 40px; }
+  .v2 .v2-problem-row { grid-template-columns: 60px 1fr 160px; gap: 24px; }
+  .v2 .v2-config { padding: 80px 40px; }
+  .v2 .v2-catalog { padding: 80px 40px; }
+  .v2 .v2-catalog-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 260px 260px 260px; }
+  .v2 .v2-catalog-item-hero { grid-row: span 1; }
+  .v2 .v2-voices { padding: 80px 40px; }
+  .v2 .v2-showroom { padding: 80px 40px; }
+  .v2 .v2-final { padding: 96px 40px; }
+  .v2 .v2-final-h2 { font-size: 76px; }
+  .v2 .v2-footer { padding: 56px 40px 28px; }
+  .v2 .v2-footer-top { gap: 40px; }
+}
+
+@media (max-width: 860px) {
+  .v2 .v2-hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  .v2 .v2-hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .v2 .v2-problem-grid { grid-template-columns: 1fr; gap: 40px; }
+  .v2 .v2-problem-row { grid-template-columns: 50px 1fr; }
+  .v2 .v2-problem-cost { display: none; }
+  .v2 .v2-config-body { grid-template-columns: 1fr; padding: 40px; gap: 40px; }
+  .v2 .v2-config-illust { aspect-ratio: 16/9; }
+  .v2 .v2-catalog-header { grid-template-columns: 1fr; }
+  .v2 .v2-catalog-nav { flex-direction: row; flex-wrap: wrap; gap: 0 20px; }
+  .v2 .v2-catalog-nav a { padding: 6px 0; }
+  .v2 .v2-voices-grid { grid-template-columns: 1fr; gap: 40px; }
+  .v2 .v2-showroom-content { grid-template-columns: 1fr; gap: 48px; }
+  .v2 .v2-footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+
+@media (max-width: 640px) {
+  .v2 .v2-nav { padding: 16px 20px; }
+  .v2 .v2-nav-links { display: none; }
+  .v2 .v2-nav-phone { display: none; }
+  .v2 .v2-hero { padding: 40px 20px 60px; }
+  .v2 .v2-hero-meta { margin-bottom: 40px; }
+  .v2 .v2-h1 { font-size: 52px; }
+  .v2 .v2-hero-actions { gap: 10px; }
+  .v2 .v2-problem { padding: 64px 20px; }
+  .v2 .v2-problem-h2 { font-size: 38px; }
+  .v2 .v2-config { padding: 64px 20px; }
+  .v2 .v2-section-h2 { font-size: 36px; }
+  .v2 .v2-config-body { padding: 28px 20px; }
+  .v2 .v2-config-tabs { grid-template-columns: 1fr; }
+  .v2 .v2-config-tab { border-right: none; border-bottom: 1px solid var(--v2-line); }
+  .v2 .v2-catalog { padding: 64px 20px; }
+  .v2 .v2-catalog-h2 { font-size: 40px; }
+  .v2 .v2-catalog-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .v2 .v2-catalog-item-img { min-height: 220px; }
+  .v2 .v2-voices { padding: 64px 20px; }
+  .v2 .v2-voices-h2 { font-size: 38px; }
+  .v2 .v2-showroom { padding: 64px 20px; }
+  .v2 .v2-showroom-h2 { font-size: 44px; }
+  .v2 .v2-partners { padding: 40px 20px; }
+  .v2 .v2-partners-grid { grid-template-columns: 1fr; gap: 20px; }
+  .v2 .v2-final { padding: 72px 20px; }
+  .v2 .v2-final-h2 { font-size: 48px; }
+  .v2 .v2-final-actions { flex-direction: column; align-items: stretch; }
+  .v2 .v2-btn-cta-large { justify-content: center; }
+  .v2 .v2-footer { padding: 48px 20px 24px; }
+  .v2 .v2-footer-top { grid-template-columns: 1fr; gap: 28px; }
+  .v2 .v2-footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+}
