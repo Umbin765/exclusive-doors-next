@@ -3,10 +3,11 @@ import { useState } from 'react';
 import './v2.css';
 import { products, portfolio } from '@/lib/data';
 
-const CONFIG_STEPS = [
+const getConfigSteps = () => [
   {
     step: 'Pasul 01', title: 'Filtrare', desc: 'Reducem 100 → 3 opțiuni',
     num: '01', illustLabel: 'Filtrare personalizată',
+    img: products[0].mainImg,
     h3: 'Filtrăm 80% din opțiuni pentru tine.',
     body: 'Începem cu o conversație de 5 minute despre proiectul tău: stilul interior, tipul renovării, bugetul și nivelul de izolație necesar. Din sute de modele rămân 2–3 cu adevărat relevante.',
     features: [
@@ -18,6 +19,7 @@ const CONFIG_STEPS = [
   {
     step: 'Pasul 02', title: 'Matching', desc: 'Coerență cu designul',
     num: '02', illustLabel: 'Matching design',
+    img: portfolio[0].img,
     h3: 'Potrivim ușa cu designul tău existent.',
     body: 'Analizăm pardoselile, pereții, finisajele și stilul renovării. Recomandăm soluții care completează spațiul — nu uși care arată frumos în catalog, ci uși care arată bine în casa ta.',
     features: [
@@ -29,6 +31,7 @@ const CONFIG_STEPS = [
   {
     step: 'Pasul 03', title: 'Validare', desc: 'Tehnic & montaj profesional',
     num: '03', illustLabel: 'Validare & montaj',
+    img: portfolio[1].img,
     h3: 'Validăm tehnic și instalăm corect.',
     body: 'Măsurători la fața locului, verificarea golului, confirmarea izolației necesare. Echipa noastră montează și reglează — o dată, corect. Garanție completă inclusă.',
     features: [
@@ -54,6 +57,7 @@ const VOICES = [
 
 export default function V2Page() {
   const [activeStep, setActiveStep] = useState(0);
+  const CONFIG_STEPS = getConfigSteps();
   const step = CONFIG_STEPS[activeStep];
   const CATALOG_ITEMS = getCatalogItems();
 
@@ -169,6 +173,7 @@ export default function V2Page() {
           </div>
           <div className="v2-config-body">
             <div className="v2-config-illust">
+              <img src={step.img} alt={step.illustLabel} />
               <div className="v2-config-illust-num">{step.num}</div>
               <div className="v2-config-illust-label">{step.illustLabel}</div>
             </div>
