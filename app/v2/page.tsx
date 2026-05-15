@@ -84,7 +84,8 @@ export default function V2Page() {
           <span>Showroom Otopeni · Mai 2026</span>
         </div>
         <div className="v2-hero-grid">
-          <div>
+          <div className="v2-hero-left">
+            <img src={products[1].mainImg} alt="Ușă premium Exclusive Doors" className="v2-hero-left-img" />
             <h1 className="v2-h1">
               <span className="v2-strike">Sute</span><br />
               de uși.<br />
