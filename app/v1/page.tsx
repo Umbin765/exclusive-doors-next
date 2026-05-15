@@ -1,14 +1,15 @@
 'use client';
 import { useState } from 'react';
 import './v1.css';
+import { products, portfolio } from '@/lib/data';
 
 const TABS = ['Interior Furniruite', 'Interior Albe & Vopsite', 'Sticlă Securizată', 'Exterior & Antiefracție', 'Tehnice & Garaj'];
 
 const PRODUCTS = [
-  { brand: 'Grauthoff', name: 'HGM Fachwerk Furnir Stejar Natur', tags: ['Furnirui', 'Germania', 'Garanție 2 ani'], badge: 'Bestseller' },
-  { brand: 'Grauthoff', name: 'HGM Classic Art Nuc Natural', tags: ['Furnirui', 'Clasic', 'Premium'], badge: undefined },
-  { brand: 'Grauthoff', name: 'HGM Steel Art Efect Metal Negru', tags: ['Modern', 'Izolație fonică'], badge: undefined },
-  { brand: 'L&H', name: 'L&H Sticlă Securizată Premium', tags: ['Sticlă', 'Design'], badge: undefined },
+  { brand: 'Grauthoff', name: 'HGM Fachwerk Furnir Stejar Natur', tags: ['Furnirui', 'Germania', 'Garanție 2 ani'], badge: 'Bestseller', img: products[0].mainImg },
+  { brand: 'Grauthoff', name: 'HGM Classic Art Nuc Natural', tags: ['Furnirui', 'Clasic', 'Premium'], badge: undefined, img: products[0].thumbImgs[2] },
+  { brand: 'GROKE', name: 'Thermosafe 90 — Aluminiu', tags: ['Exterior', 'RC3', 'Termoizolant'], badge: undefined, img: products[1].mainImg },
+  { brand: 'L&H', name: 'Sistem Liftant-Culisant 200', tags: ['Glisant', 'Design', 'La comandă'], badge: undefined, img: products[2].mainImg },
 ];
 
 const TESTIMONIALS = [
@@ -66,12 +67,7 @@ export default function V1Page() {
           </div>
         </div>
         <div className="v1-hero-right">
-          <div className="v1-hero-right-bg" />
-          <div className="v1-hero-img-icon">🚪</div>
-          <div className="v1-hero-img-label">
-            <strong>Fotografie hero</strong>
-            Ușă Grauthoff HGM în context<br />rezidențial premium, lumină naturală
-          </div>
+          <img src={products[0].mainImg} alt="Ușă Grauthoff HGM premium" className="v1-hero-right-img" />
           <div className="v1-hero-badge">
             ✓ Consultație Gratuită
             <span>15 minute · Fără obligații</span>
@@ -182,7 +178,7 @@ export default function V1Page() {
           {PRODUCTS.map((p, i) => (
             <div key={i} className="v1-product-card">
               <div className="v1-product-img">
-                🚪
+                <img src={p.img} alt={p.name} />
                 {p.badge && <div className="v1-product-badge">{p.badge}</div>}
               </div>
               <div className="v1-product-info">
@@ -235,10 +231,14 @@ export default function V1Page() {
         </div>
         <div className="v1-projects-label">Proiecte finalizate</div>
         <div className="v1-projects-strip">
-          {['Apartament · Dorobanți · 2025', 'Casă · Pipera · 2025', 'Penthouse · Floreasca · 2026'].map(c => (
-            <div key={c} className="v1-project-thumb">
-              <div className="v1-project-thumb-img">🏠</div>
-              <div className="v1-project-caption">{c}</div>
+          {[
+            { caption: 'Apartament · Dorobanți · 2025', img: portfolio[0].img, alt: portfolio[0].title },
+            { caption: 'Casă · Pipera · 2025', img: portfolio[1].img, alt: portfolio[1].title },
+            { caption: 'Penthouse · Floreasca · 2026', img: portfolio[2].img, alt: portfolio[2].title },
+          ].map(c => (
+            <div key={c.caption} className="v1-project-thumb">
+              <div className="v1-project-thumb-img"><img src={c.img} alt={c.alt} /></div>
+              <div className="v1-project-caption">{c.caption}</div>
             </div>
           ))}
           <div className="v1-project-more">

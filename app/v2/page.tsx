@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import './v2.css';
+import { products, portfolio } from '@/lib/data';
 
 const CONFIG_STEPS = [
   {
@@ -38,12 +39,12 @@ const CONFIG_STEPS = [
   },
 ];
 
-const CATALOG_ITEMS = [
-  { hero: true, brand: 'Grauthoff Germania', name: 'HGM Fachwerk\nFurnir Stejar Natur', tags: ['Bestseller', 'Furnirui', 'Premium'], badge: 'Featured' },
-  { brand: 'Grauthoff', name: 'HGM Classic Art Nuc', tags: ['Furnirui'] },
-  { brand: 'L&H', name: 'L&H Sticlă Securizată', tags: ['Modern'] },
-  { brand: 'SUPERLOCK', name: 'SL Chic Antiefracție', tags: ['Exterior'] },
-  { brand: 'Groke', name: 'GROKE Modern Aluminiu', tags: ['Exterior'] },
+const getCatalogItems = () => [
+  { hero: true, brand: 'Grauthoff Germania', name: 'HGM Fachwerk\nFurnir Stejar Natur', tags: ['Bestseller', 'Furnirui', 'Premium'], badge: 'Featured', img: products[0].mainImg },
+  { brand: 'Grauthoff', name: 'HGM Classic Art Nuc', tags: ['Furnirui'], img: products[0].thumbImgs[2] },
+  { brand: 'L&H', name: 'L&H Sticlă Securizată', tags: ['Modern'], img: products[2].mainImg },
+  { brand: 'SUPERLOCK', name: 'SL Chic Antiefracție', tags: ['Exterior'], img: products[3].mainImg },
+  { brand: 'Groke', name: 'GROKE Modern Aluminiu', tags: ['Exterior'], img: products[1].mainImg },
 ];
 
 const VOICES = [
@@ -54,6 +55,7 @@ const VOICES = [
 export default function V2Page() {
   const [activeStep, setActiveStep] = useState(0);
   const step = CONFIG_STEPS[activeStep];
+  const CATALOG_ITEMS = getCatalogItems();
 
   return (
     <div className="v2">
@@ -209,7 +211,7 @@ export default function V2Page() {
           {CATALOG_ITEMS.map((item, i) => (
             <div key={i} className={`v2-catalog-item${item.hero ? ' v2-catalog-item-hero' : ''}`}>
               <div className="v2-catalog-item-img">
-                🚪
+                <img src={item.img} alt={item.name} />
                 {item.badge && <div className="v2-catalog-item-badge">{item.badge}</div>}
               </div>
               <div className="v2-catalog-item-info">
