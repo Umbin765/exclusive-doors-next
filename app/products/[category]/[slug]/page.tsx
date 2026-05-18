@@ -1,11 +1,12 @@
 import { notFound } from 'next/navigation';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import StickyBar from '@/components/products/StickyBar';
 import ProductGallery from '@/components/products/ProductGallery';
-import ProductDetails from '@/components/products/ProductDetails';
 import StickyScroll from '@/components/products/StickyScroll';
-import RelatedProducts from '@/components/products/RelatedProducts';
-import { products } from '@/lib/data';
+import FinishSection from '@/components/products/FinishSection';
+import FAQSection from '@/components/products/FAQSection';
+import { products, Product } from '@/lib/data';
 
 interface Props {
   params: { category: string; slug: string };
@@ -21,126 +22,322 @@ export default function ProductPage({ params }: Props) {
   if (!product) notFound();
 
   const related = products.filter((p) => p.slug !== slug).slice(0, 3);
-
-  // Brand label from eyebrow: "Ușă Interior · Filomuro" → "Filomuro"
   const eyebrowParts = product.eyebrow.split('·');
   const brandLabel = eyebrowParts.length > 1 ? eyebrowParts[1].trim() : eyebrowParts[0].trim();
+  const salePrice = product.salePercent
+    ? Math.round(product.startingPrice * (1 - product.salePercent / 100))
+    : product.startingPrice;
 
   return (
     <>
       <Nav />
 
-      {/* ── Breadcrumb + title (compact) ── */}
-      <div className="bg-cream border-b border-warm-border px-4 sm:px-6 py-2.5">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-          <div>
-            <p className="text-[0.625rem] text-warm-muted tracking-wide mb-0.5">
-              <a href="/" className="hover:text-accent transition-colors">Acasă</a>
-              <span className="mx-1.5">/</span>
-              <a href={`/products/${category}`} className="hover:text-accent transition-colors capitalize">{category}</a>
-              <span className="mx-1.5">/</span>
-              <span className="text-warm-text font-medium">{product.name}</span>
-            </p>
-            <h1 className="font-display text-xl sm:text-2xl font-semibold text-warm-text leading-tight">
-              {product.name}
-              <span className="text-sm font-normal text-warm-muted ml-3 hidden sm:inline">{brandLabel} · {product.model}</span>
-            </h1>
-          </div>
-        </div>
-      </div>
+      {/* Breadcrumb */}
+      <nav className="pd-breadcrumb">
+        <a href="/">exclusivedoors.ro</a>
+        <span className="sep">›</span>
+        <a href={`/products/${category}`}>{category.charAt(0).toUpperCase() + category.slice(1)}</a>
+        <span className="sep">›</span>
+        <a href={`/products/${category}`}>{brandLabel}</a>
+        <span className="sep">›</span>
+        <span style={{ color: 'var(--ink)', fontWeight: 600 }}>{product.name}</span>
+      </nav>
 
-      {/* ── Main product section ── */}
-      <div className="bg-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-6 xl:gap-10">
-            <ProductGallery
-              mainImg={product.mainImg}
-              thumbImgs={product.thumbImgs}
-              alt={product.name}
-              salePercent={product.salePercent}
-            />
-            <ProductDetails product={product} />
-          </div>
-        </div>
-      </div>
+      {/* Sticky conversion bar */}
+      <StickyBar product={product} />
 
-      {/* ── Detail images + Consultant ── */}
-      <div className="bg-warm-subtle border-t border-b border-warm-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex flex-col md:flex-row gap-6 items-stretch">
+      {/* ── S1: Hero product ── */}
+      <section className="pd-hero" id="pd-hero">
+        <ProductGallery product={product} />
 
-          {/* Detail image strip */}
-          <div className="flex gap-3 flex-1 overflow-x-auto">
-            {product.details.map((d, i) => (
-              <div key={i} className="shrink-0 flex-1 min-w-[140px] max-w-[220px]">
-                <div className="relative h-36 sm:h-44 overflow-hidden">
-                  <img src={d.img} alt={d.title} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-2.5">
-                    <div>
-                      <p className="text-white text-[0.5625rem] font-bold uppercase tracking-wide leading-tight">
-                        {d.title}
-                      </p>
-                      <p className="text-white/60 text-[0.5rem] mt-0.5">
-                        {d.specKey}: {d.specVal}
-                      </p>
-                    </div>
-                  </div>
+        <div className="pd-info">
+          <div className="pd-eyebrow">{product.eyebrow}</div>
+          <h1 className="pd-title">{product.name.toUpperCase()}</h1>
+          <p className="pd-subtitle">
+            {product.description.split('.').slice(0, 2).join('. ')}.
+          </p>
+
+          {/* Characteristic chips */}
+          <div className="char-grid">
+            {product.specs.map((spec) => (
+              <div key={spec.key} className="char-item">
+                <div className="char-label">{spec.key}</div>
+                <div className={`char-value${spec.key.includes('fonică') || spec.key.includes('Garanție') ? ' highlight' : ''}`}>
+                  {spec.value}
                 </div>
               </div>
             ))}
+            <div className="char-item">
+              <div className="char-label">Disponibilitate</div>
+              <div className="char-value">La comandă</div>
+            </div>
           </div>
 
-          {/* Consultant card */}
-          <div className="shrink-0 flex items-center gap-6 bg-cream px-8 py-7 border border-warm-border md:self-center min-w-[320px]">
-            <div className="w-24 h-24 shrink-0 overflow-hidden">
-              <img
-                src="/monica.png"
-                alt="Monica Dochia"
-                className="w-full h-full object-cover mix-blend-multiply"
-              />
+          {/* Finish selector */}
+          <div className="config-section">
+            <div className="config-label">
+              <span>Esență furnir</span>
+              <a>Ghid finisaje →</a>
+            </div>
+            <div className="options-row">
+              {product.finishes.map((f, i) => (
+                <button key={i} className={`opt-chip${i === 0 ? ' active' : ''}`}>
+                  {f.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Opening direction */}
+          <div className="config-section">
+            <div className="config-label"><span>Sens deschidere</span></div>
+            <div className="options-row">
+              <button className="dir-chip active">↩ Stânga · Interior</button>
+              <button className="dir-chip">↪ Dreapta · Interior</button>
+              <button className="dir-chip">↩ Stânga · Exterior</button>
+              <button className="dir-chip">↪ Dreapta · Exterior</button>
+            </div>
+          </div>
+
+          {/* Dimensions */}
+          <div className="config-section">
+            <div className="config-label">
+              <span>Dimensiuni gol de zid</span>
+              <a>Cum măsor? →</a>
+            </div>
+            <div className="dims-row">
+              <div className="dim-input">
+                <label>Lățime gol</label>
+                <span className="dim-val">900 <span className="dim-unit">mm</span></span>
+              </div>
+              <div className="dim-input">
+                <label>Înălțime gol</label>
+                <span className="dim-val">2100 <span className="dim-unit">mm</span></span>
+              </div>
+              <div className="dim-input">
+                <label>Grosime perete</label>
+                <span className="dim-val">150 <span className="dim-unit">mm</span></span>
+              </div>
+              <div className="dim-input">
+                <label>Număr de foi</label>
+                <span className="dim-val">1 foaie</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Price block */}
+          {product.salePercent ? (
+            <div className="price-block">
+              <div>
+                <div className="price-promo-label">Promoție activă</div>
+                <div>
+                  <span className="price-main">{salePrice.toLocaleString('ro-RO')} €</span>
+                  <span className="price-orig">{product.startingPrice.toLocaleString('ro-RO')} €</span>
+                </div>
+                <div className="price-vat">+ TVA · Preț indicativ · Ofertă exactă la consultație</div>
+              </div>
+              <div className="price-badge">−{product.salePercent}%</div>
+            </div>
+          ) : (
+            <div className="price-block">
+              <div>
+                <div className="price-promo-label">Preț de la</div>
+                <div className="price-main">{product.startingPrice.toLocaleString('ro-RO')} €</div>
+                <div className="price-vat">+ TVA · Preț indicativ · Ofertă exactă la consultație</div>
+              </div>
+            </div>
+          )}
+
+          {/* CTA stack */}
+          <div className="cta-stack">
+            <a href="#contact" className="btn-primary-lg">Cere ofertă de preț</a>
+            <a href="#contact" className="btn-secondary-lg">Programare showroom</a>
+            <a href="tel:0728959652" className="btn-phone-lg">📞 0728 959 652 · Consultanță gratuită</a>
+          </div>
+
+          {/* Expert card */}
+          <div className="expert-card">
+            <div className="expert-avatar">
+              <img src="/monica.png" alt="Monica Dochia" />
             </div>
             <div>
-              <p className="font-display text-xl font-semibold text-warm-text leading-tight">Monica Dochia</p>
-              <p className="text-[0.625rem] font-semibold text-warm-muted uppercase tracking-[0.2em] mt-1 mb-4">
-                Director de vânzări
-              </p>
-              <a
-                href="tel:0728959652"
-                className="block text-lg font-bold text-warm-text hover:text-accent transition-colors"
-              >
-                0728 959 652
-              </a>
-              <a
-                href="mailto:monica.dochia@exclusivedoors.ro"
-                className="block text-sm text-warm-muted hover:text-accent transition-colors mt-0.5"
-              >
-                monica.dochia@exclusivedoors.ro
-              </a>
+              <div className="expert-name">Monica Dochia</div>
+              <div className="expert-role">Director de vânzări</div>
+            </div>
+            <div className="expert-contact">
+              <a href="tel:0728959652">0728 959 652</a>
+              <a href="mailto:monica.dochia@exclusivedoors.ro">monica.dochia@</a>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* ── Related products ── */}
-      <RelatedProducts products={related} />
+      {/* ── S2: Scroll story ── */}
+      <StickyScroll stops={product.scrollStops} badge={product.eyebrow} />
 
-      {/* ── Animated product details ── */}
-      <div id="product-details">
-        <StickyScroll stops={product.scrollStops} badge={product.eyebrow} />
-      </div>
+      {/* ── S3: Technical specs ── */}
+      <section className="specs-section">
+        <div className="section-meta">
+          <span className="section-num">§ Specificații tehnice complete</span>
+          <span className="section-label">Valori verificabile · Certificări disponibile</span>
+        </div>
+        <div className="specs-grid">
+          <div>
+            <h2 className="specs-h2">SPECS<br /><span>TEHNICE.</span></h2>
+            <table className="specs-table">
+              <tbody>
+                {product.specs.map((spec) => (
+                  <tr key={spec.key} className={spec.key.includes('fonică') || spec.key.includes('Înălțime') ? 'spec-hl' : ''}>
+                    <td>{spec.key}</td>
+                    <td>{spec.value}</td>
+                  </tr>
+                ))}
+                <tr><td>Finisaj suprafață</td><td>Lac mat anti-UV, aplicat în 2 straturi</td></tr>
+                <tr><td>Garnituri</td><td>EPDM triple perimetrale</td></tr>
+                <tr><td>Lățimi disponibile</td><td>600 · 700 · 800 · 900 · 1000 mm</td></tr>
+                <tr><td>Grosime panou</td><td>45 mm</td></tr>
+                <tr><td>Certificare</td><td>CE EN 14351-1 <span className="spec-cert">CE</span></td></tr>
+                <tr><td>Origine</td><td>Westfalia, Germania 🇩🇪</td></tr>
+                <tr><td>Producție</td><td>La comandă · 4–8 săptămâni</td></tr>
+              </tbody>
+            </table>
+          </div>
 
-      {/* ── Brand section ── */}
-      <div className="bg-cream border-t border-warm-border px-4 sm:px-6 py-16">
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="font-display text-lg sm:text-xl text-warm-muted italic leading-relaxed font-light">
-            &ldquo;{product.description.split('.').slice(0, 2).join('. ')}...&rdquo;
-          </p>
-          <div className="mt-8 inline-block border-t-2 border-warm-border pt-5">
-            <span className="text-xl font-bold tracking-[0.3em] uppercase text-warm-muted">
-              {brandLabel}
-            </span>
+          <div>
+            <div className="specs-visual">
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 10, color: 'var(--gray)', letterSpacing: '.12em', textTransform: 'uppercase', marginBottom: 16 }}>
+                Secțiune transversală panou
+              </div>
+              <div className="xsec-diagram">
+                <div className="xsec">
+                  <div className="xsec-l1" />
+                  <div className="xsec-l2" />
+                  <div className="xsec-l3">MDF 19mm</div>
+                  <div className="xsec-l4" />
+                  <div className="xsec-l5" />
+                </div>
+                <div className="xsec-legend">
+                  <div className="xsec-leg">
+                    <div className="xsec-dot" style={{ background: '#8B6914' }} />
+                    <span className="xsec-leg-text">Furnir stejar 0.6mm</span>
+                  </div>
+                  <div className="xsec-leg">
+                    <div className="xsec-dot" style={{ background: '#C4A35A' }} />
+                    <span className="xsec-leg-text">Cadru lemn masiv</span>
+                  </div>
+                  <div className="xsec-leg">
+                    <div className="xsec-dot" style={{ background: '#D4C09A' }} />
+                    <span className="xsec-leg-text">MDF hidrofug 19mm</span>
+                  </div>
+                </div>
+              </div>
+              <div className="xsec-title">45mm total panou</div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* ── S4: Finishes ── */}
+      <FinishSection finishes={product.finishes} />
+
+      {/* ── S5: FAQ ── */}
+      <FAQSection />
+
+      {/* ── S6: Similar products ── */}
+      <section className="similar-section">
+        <div className="similar-header">
+          <h2 className="similar-h2">
+            POATE TE<br />INTERESEAZĂ<br />ȘI <span>ACESTEA.</span>
+          </h2>
+          <a href={`/products/${category}`} className="similar-view-all">
+            Vezi toate ușile {category} →
+          </a>
+        </div>
+        <div className="similar-grid">
+          {related.map((p) => {
+            const relBrand = p.eyebrow.split('·').slice(0, 2).join('·').trim();
+            const relSalePrice = p.salePercent
+              ? Math.round(p.startingPrice * (1 - p.salePercent / 100))
+              : null;
+            return (
+              <a
+                key={p.slug}
+                href={`/products/${p.category}/${p.slug}`}
+                className="similar-card"
+              >
+                <div className="similar-img">
+                  <img src={p.mainImg} alt={p.name} />
+                  {p.salePercent && (
+                    <div className="similar-badge">−{p.salePercent}%</div>
+                  )}
+                </div>
+                <div className="similar-info">
+                  <div className="similar-brand">{relBrand}</div>
+                  <div className="similar-name">{p.name}</div>
+                  <div className="similar-chips">
+                    {p.tags.map((tag) => (
+                      <span key={tag} className="similar-chip">{tag}</span>
+                    ))}
+                  </div>
+                  <div className="similar-link">Detalii produs</div>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ── S7: Consult CTA ── */}
+      <section className="consult-section" id="contact">
+        <div className="consult-grid">
+          <div>
+            <h2 className="consult-h2">ALEGE<br />CORECT<br />DIN PRIMA.</h2>
+            <p className="consult-sub">
+              Vino 15 minute în showroom. Vedem mostrele fizice de furnir, verificăm dacă
+              produsul se potrivește cu golul tău de zid, și pleci cu o ofertă exactă — fără surprize.
+            </p>
+            <div>
+              <a href="tel:0728959652" className="btn-white">Programează consultația</a>
+              <a href="tel:0728959652" className="btn-woutline">0728 959 652</a>
+            </div>
+            <p className="consult-note">Gratuit · Fără obligații · Otopeni, Ilfov</p>
+          </div>
+
+          <div className="consult-card">
+            <div className="consult-card-header">
+              <div className="consult-avatar">
+                <img src="/monica.png" alt="Monica Dochia" />
+              </div>
+              <div>
+                <div className="consult-name">Monica Dochia</div>
+                <div className="consult-role">Director de vânzări · Exclusive Doors</div>
+              </div>
+            </div>
+            <div className="consult-body">
+              <div className="consult-item">
+                <span className="consult-ico">📞</span>
+                <a href="tel:0728959652">0728 959 652</a>
+              </div>
+              <div className="consult-item">
+                <span className="consult-ico">✉</span>
+                <a href="mailto:monica.dochia@exclusivedoors.ro">monica.dochia@exclusivedoors.ro</a>
+              </div>
+              <div className="consult-item">
+                <span className="consult-ico">📍</span>
+                Drumul Gării Odăi 1A, Otopeni, Ilfov
+              </div>
+              <div className="consult-item">
+                <span className="consult-ico">🕐</span>
+                Lun–Vin 09–18 · Sâm 10–14
+              </div>
+              <div className="consult-item">
+                <span className="consult-ico">💬</span>
+                <a href="https://wa.me/40728959652">WhatsApp direct →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </>

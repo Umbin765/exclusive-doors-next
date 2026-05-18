@@ -1,80 +1,55 @@
 'use client';
 
 import { useState } from 'react';
-import SaleBadge from './SaleBadge';
+import { Product } from '@/lib/data';
 
 interface Props {
-  mainImg: string;
-  thumbImgs: string[];
-  alt: string;
-  salePercent?: number;
+  product: Product;
 }
 
-export default function ProductGallery({ mainImg, thumbImgs, alt, salePercent }: Props) {
-  const allImgs = [mainImg, ...thumbImgs];
+export default function ProductGallery({ product }: Props) {
+  const allImgs = [product.mainImg, ...product.thumbImgs];
   const [active, setActive] = useState(0);
 
-  const prev = () => setActive((i) => (i - 1 + allImgs.length) % allImgs.length);
-  const next = () => setActive((i) => (i + 1) % allImgs.length);
+  const salePrice = product.salePercent
+    ? Math.round(product.startingPrice * (1 - product.salePercent / 100))
+    : null;
 
   return (
-    <div className="p-3 lg:p-4 flex flex-col">
-      {/* Main image with arrow controls */}
-      <div className="relative rounded-xl overflow-hidden lg:flex-1 h-64 sm:h-80 lg:h-auto lg:min-h-[27rem] lg:max-h-[calc(100vh-12rem)]">
-        <img
-          src={allImgs[active]}
-          alt={alt}
-          className="w-full h-full object-cover transition-opacity duration-300"
-        />
+    <div className="pd-gallery">
+      <div className="pd-gallery-main">
+        {allImgs.map((img, i) => (
+          <img
+            key={i}
+            src={img}
+            alt={`${product.name} — ${i + 1}`}
+            style={{ opacity: active === i ? 1 : 0 }}
+          />
+        ))}
 
-        {/* Left arrow */}
-        <button
-          onClick={prev}
-          className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center shadow-md hover:bg-white transition-colors"
-          aria-label="Imagine anterioară"
-        >
-          <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
+        {product.salePercent && (
+          <div className="pd-gallery-badge">−{product.salePercent}% reducere</div>
+        )}
 
-        {/* Right arrow */}
-        <button
-          onClick={next}
-          className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center shadow-md hover:bg-white transition-colors"
-          aria-label="Imagine următoare"
-        >
-          <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-
-        {/* Sale badge */}
-        {salePercent && (
-          <div className="absolute top-3 left-3">
-            <SaleBadge percent={salePercent} />
+        {product.madeInGermany && (
+          <div className="pd-gallery-origin">
+            <strong>🇩🇪 DE</strong>Made in<br />Germany
           </div>
         )}
 
-        {/* Counter */}
-        <span className="absolute bottom-3 right-3 bg-white/75 backdrop-blur-sm text-gray-500 text-[0.5625rem] tracking-widest px-2.5 py-1 rounded-md">
-          {active + 1} / {allImgs.length}
-        </span>
+        <div className="pd-gallery-counter">{active + 1} / {allImgs.length}</div>
+        <div className="pd-gallery-zoom">⊕</div>
       </div>
 
-      {/* Thumbnail strip — small fixed-width squares */}
-      <div className="flex gap-2 mt-3">
+      <div className="pd-gallery-thumbs">
         {allImgs.map((img, i) => (
           <button
             key={i}
+            className={`pd-gallery-thumb${active === i ? ' active' : ''}`}
             onClick={() => setActive(i)}
-            className={`rounded-lg overflow-hidden w-14 h-14 shrink-0 border-2 transition-all duration-200 ${
-              active === i
-                ? 'ring-2 ring-accent ring-offset-1 border-transparent'
-                : 'border-transparent opacity-50 hover:opacity-100'
-            }`}
+            aria-label={`Imagine ${i + 1}`}
           >
-            <img src={img} alt={`View ${i + 1}`} className="w-full h-full object-cover" />
+            <img src={img} alt={`View ${i + 1}`} />
           </button>
         ))}
       </div>
