@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Form Tabs</title>
+<script src="/helper.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #111; color: #eee; padding: 24px; }
+  h2 { font-size: 20px; font-weight: 600; margin-bottom: 6px; color: #fff; }
+  .subtitle { font-size: 14px; color: #888; margin-bottom: 24px; }
+
+  .admin-shell { background: #f5f0eb; border-radius: 12px; overflow: hidden; display: flex; min-height: 540px; }
+
+  .sidebar { background: #fff; width: 180px; flex-shrink: 0; border-right: 1px solid #e8e2da; padding: 16px 0; }
+  .logo { padding: 0 14px 14px; border-bottom: 1px solid #e8e2da; margin-bottom: 10px; }
+  .logo-text { font-size: 12px; font-weight: 700; color: #1a1a1a; }
+  .logo-sub { font-size: 10px; color: #bbb; }
+  .nav-group-label { font-size: 9px; font-weight: 700; color: #ccc; letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 14px 3px; }
+  .nav-item { padding: 6px 14px; font-size: 12px; color: #777; display: flex; align-items: center; gap: 7px; }
+  .nav-item.active { background: #fdf6ec; color: #c8a96e; font-weight: 600; border-right: 2px solid #c8a96e; }
+  .nav-item .dot { width: 5px; height: 5px; border-radius: 50%; background: #ddd; flex-shrink: 0; }
+  .nav-item.active .dot { background: #c8a96e; }
+  .nav-group-collapsed { opacity: 0.4; }
+
+  .main { flex: 1; padding: 20px 24px; }
+
+  .page-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+  .breadcrumb { font-size: 12px; color: #bbb; }
+  .breadcrumb span { color: #c8a96e; }
+  .page-title { font-size: 18px; font-weight: 700; color: #1a1a1a; }
+
+  /* TAB BAR */
+  .tab-bar { display: flex; gap: 0; border-bottom: 2px solid #e8e2da; margin-bottom: 20px; }
+  .tab { padding: 9px 18px; font-size: 13px; color: #999; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; font-weight: 500; display: flex; align-items: center; gap: 6px; }
+  .tab.active { color: #c8a96e; border-bottom-color: #c8a96e; font-weight: 600; }
+  .tab-icon { font-size: 14px; }
+  .tab-badge { background: #f0e8d8; color: #c8a96e; font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 10px; }
+
+  /* FORM ELEMENTS */
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-grid.three { grid-template-columns: 1fr 1fr 1fr; }
+  .form-field { display: flex; flex-direction: column; gap: 4px; }
+  .form-field.full { grid-column: 1 / -1; }
+  .field-label { font-size: 11px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.05em; }
+  .field-input { background: #fff; border: 1px solid #e0d8ce; border-radius: 6px; padding: 8px 10px; font-size: 13px; color: #333; }
+  .field-input.textarea { min-height: 70px; resize: none; }
+  .field-input.select { appearance: none; }
+
+  .toggle-row { display: flex; align-items: center; justify-content: space-between; background: #fff; border: 1px solid #e0d8ce; border-radius: 6px; padding: 10px 12px; }
+  .toggle-label { font-size: 13px; color: #555; }
+  .toggle-sub { font-size: 11px; color: #bbb; }
+  .toggle-pill { width: 36px; height: 20px; background: #c8a96e; border-radius: 10px; position: relative; }
+  .toggle-pill::after { content: ''; position: absolute; width: 14px; height: 14px; background: #fff; border-radius: 50%; right: 3px; top: 3px; }
+  .toggle-pill.off { background: #ddd; }
+  .toggle-pill.off::after { right: auto; left: 3px; }
+
+  .section-label { font-size: 12px; font-weight: 700; color: #bbb; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; margin-top: 4px; }
+
+  /* GALLERY TAB */
+  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .gallery-item { background: #fff; border: 1px solid #e0d8ce; border-radius: 8px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #ccc; position: relative; }
+  .gallery-item.filled { background: #e8e2da; color: #999; font-size: 10px; }
+  .gallery-item.add { border-style: dashed; cursor: pointer; color: #c8a96e; font-size: 22px; }
+  .gallery-order { position: absolute; top: 4px; left: 6px; font-size: 10px; background: #c8a96e; color: #fff; border-radius: 4px; padding: 1px 5px; font-weight: 700; }
+
+  /* REPEATER */
+  .repeater-item { background: #fff; border: 1px solid #e0d8ce; border-radius: 8px; padding: 12px; margin-bottom: 8px; display: flex; gap: 10px; align-items: flex-start; }
+  .repeater-handle { color: #ccc; font-size: 16px; cursor: grab; padding-top: 4px; }
+  .repeater-fields { flex: 1; display: grid; grid-template-columns: 1fr 2fr; gap: 8px; }
+  .repeater-del { color: #ddd; font-size: 14px; cursor: pointer; padding-top: 4px; }
+  .add-row-btn { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #c8a96e; cursor: pointer; padding: 8px 0; font-weight: 600; }
+
+  /* SAVE BAR */
+  .save-bar { margin-top: 20px; display: flex; justify-content: flex-end; gap: 10px; }
+  .btn { padding: 8px 20px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; }
+  .btn-secondary { background: #fff; border: 1px solid #e0d8ce; color: #777; }
+  .btn-primary { background: #c8a96e; border: none; color: #fff; }
+
+  /* TAB CONTENTS */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .hint-box { background: #fdf6ec; border: 1px solid #f0e0c0; border-radius: 6px; padding: 10px 12px; font-size: 12px; color: #a07840; margin-bottom: 14px; }
+</style>
+</head>
+<body>
+<h2>Product form — tab layout (light theme)</h2>
+<p class="subtitle">Click the tabs to see each section. This is what staff will use to add/edit products.</p>
+
+<div class="admin-shell">
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="logo"><div class="logo-text">Exclusive Doors</div><div class="logo-sub">Admin</div></div>
+    <div class="nav-item"><span class="dot"></span>Dashboard</div>
+    <div class="nav-group-label">Catalog</div>
+    <div class="nav-item active"><span class="dot"></span>Produse</div>
+    <div class="nav-item"><span class="dot"></span>Categorii</div>
+    <div class="nav-item"><span class="dot"></span>Conținut CMS</div>
+    <div class="nav-group-label">Clienți</div>
+    <div class="nav-item"><span class="dot"></span>Clienți</div>
+    <div class="nav-item"><span class="dot"></span>Tranzacții</div>
+    <div class="nav-item"><span class="dot"></span>Lead-uri</div>
+    <div class="nav-item"><span class="dot"></span>Referrals</div>
+    <div class="nav-group-label">Marketing</div>
+    <div class="nav-item"><span class="dot"></span>Promoții</div>
+    <div class="nav-item"><span class="dot"></span>Email</div>
+    <div class="nav-group-label nav-group-collapsed">Setări</div>
+    <div class="nav-item nav-group-collapsed"><span class="dot"></span>Config Referral</div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="breadcrumb">Catalog → <span>Produse</span> → Adaugă produs</div>
+    <div class="page-header">
+      <div class="page-title">Produs nou</div>
+    </div>
+
+    <!-- TAB BAR -->
+    <div class="tab-bar">
+      <div class="tab active" onclick="switchTab('basic', this)"><span class="tab-icon">📋</span> Bază</div>
+      <div class="tab" onclick="switchTab('gallery', this)"><span class="tab-icon">🖼️</span> Galerie <span class="tab-badge">0</span></div>
+      <div class="tab" onclick="switchTab('content', this)"><span class="tab-icon">✏️</span> Conținut</div>
+      <div class="tab" onclick="switchTab('finishes', this)"><span class="tab-icon">🎨</span> Finisaje</div>
+    </div>
+
+    <!-- TAB: BAZA -->
+    <div id="tab-basic" class="tab-content active">
+      <div class="form-grid">
+        <div class="form-field">
+          <div class="field-label">Categorie</div>
+          <div class="field-input select" style="background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23bbb'/%3E%3C/svg%3E\"); background-repeat:no-repeat; background-position:right 10px center;">Interior ▾</div>
+        </div>
+        <div class="form-field">
+          <div class="field-label">Slug (URL)</div>
+          <div class="field-input" style="color:#bbb;">auto-generat din nume</div>
+        </div>
+        <div class="form-field">
+          <div class="field-label">Eyebrow</div>
+          <div class="field-input">Ușă interior · Furnir</div>
+        </div>
+        <div class="form-field">
+          <div class="field-label">Nume produs</div>
+          <div class="field-input">Filomuro</div>
+        </div>
+        <div class="form-field">
+          <div class="field-label">Model / SKU</div>
+          <div class="field-input">FMR-200 · La comandă</div>
+        </div>
+        <div class="form-field">
+          <div class="field-label">Preț de la (EUR)</div>
+          <div class="field-input">2 400</div>
+        </div>
+        <div class="form-field full">
+          <div class="field-label">Descriere scurtă</div>
+          <div class="field-input textarea">Ușă flush cu toc ascuns, finisaj furnir stejar natural. Disponibilă la comandă în 8–10 săptămâni.</div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px; display:flex; flex-direction:column; gap:8px;">
+        <div class="toggle-row">
+          <div><div class="toggle-label">Vizibil pe site</div><div class="toggle-sub">Afișat în catalog public</div></div>
+          <div class="toggle-pill"></div>
+        </div>
+        <div class="toggle-row">
+          <div><div class="toggle-label">Made in Germany</div><div class="toggle-sub">Afișează badge pe produs</div></div>
+          <div class="toggle-pill off"></div>
+        </div>
+        <div class="form-field" style="margin-top:4px;">
+          <div class="field-label">Reducere (%)</div>
+          <div class="field-input" style="width:120px;">—</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: GALLERY -->
+    <div id="tab-gallery" class="tab-content">
+      <div class="hint-box">Trage imaginile pentru a le reordona. Prima imagine apare pe cardul din catalog.</div>
+      <div class="gallery-grid">
+        <div class="gallery-item filled"><div class="gallery-order">1</div>hero.jpg</div>
+        <div class="gallery-item filled"><div class="gallery-order">2</div>detail.jpg</div>
+        <div class="gallery-item filled"><div class="gallery-order">3</div>room.jpg</div>
+        <div class="gallery-item add">+</div>
+      </div>
+    </div>
+
+    <!-- TAB: CONTINUT -->
+    <div id="tab-content" class="tab-content">
+      <div class="section-label">Specificații tehnice</div>
+      <div class="repeater-item">
+        <div class="repeater-handle">⠿</div>
+        <div class="repeater-fields">
+          <div class="field-input">Material</div>
+          <div class="field-input">Furnir stejar natural</div>
+        </div>
+        <div class="repeater-del">✕</div>
+      </div>
+      <div class="repeater-item">
+        <div class="repeater-handle">⠿</div>
+        <div class="repeater-fields">
+          <div class="field-input">Grosime</div>
+          <div class="field-input">45 mm</div>
+        </div>
+        <div class="repeater-del">✕</div>
+      </div>
+      <div class="add-row-btn">+ Adaugă specificație</div>
+
+      <div class="section-label" style="margin-top:16px;">Panouri detaliu <span style="font-size:10px;color:#bbb;font-weight:400;">(3–5 panouri afișate pe pagina produsului)</span></div>
+      <div class="repeater-item">
+        <div class="repeater-handle">⠿</div>
+        <div style="flex:1">
+          <div class="form-grid" style="gap:8px;">
+            <div class="field-input">Fabricație precisă</div>
+            <div class="field-input">Toleranță 3mm</div>
+          </div>
+          <div class="field-input textarea" style="margin-top:8px; min-height:44px;">Fiecare ușă este fabricată la comandă cu toleranțe stricte...</div>
+        </div>
+        <div class="repeater-del">✕</div>
+      </div>
+      <div class="add-row-btn">+ Adaugă panou</div>
+    </div>
+
+    <!-- TAB: FINISAJE -->
+    <div id="tab-finishes" class="tab-content">
+      <div class="hint-box">Finisajele și tagurile sunt opționale. Pot fi adăugate oricând după publicare.</div>
+      <div class="section-label">Finisaje disponibile</div>
+      <div class="repeater-item">
+        <div class="repeater-handle">⠿</div>
+        <div class="repeater-fields">
+          <div style="display:flex;align-items:center;gap:8px;"><div style="width:28px;height:28px;border-radius:4px;background:#c8a96e;border:1px solid #ddd;"></div><div class="field-input" style="width:70px;">#c8a96e</div></div>
+          <div class="field-input">Stejar natural</div>
+        </div>
+        <div class="repeater-del">✕</div>
+      </div>
+      <div class="add-row-btn">+ Adaugă finisaj</div>
+
+      <div class="section-label" style="margin-top:16px;">Taguri</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <div style="background:#fdf6ec;border:1px solid #e8d5a8;border-radius:20px;padding:4px 12px;font-size:12px;color:#a07840;">furnir</div>
+        <div style="background:#fdf6ec;border:1px solid #e8d5a8;border-radius:20px;padding:4px 12px;font-size:12px;color:#a07840;">interior</div>
+        <div style="background:#f5f0eb;border:1px dashed #ddd;border-radius:20px;padding:4px 12px;font-size:12px;color:#bbb;cursor:pointer;">+ tag nou</div>
+      </div>
+    </div>
+
+    <div class="save-bar">
+      <div class="btn btn-secondary">Anulează</div>
+      <div class="btn btn-primary">Salvează produs</div>
+    </div>
+  </div>
+</div>
+
+<script>
+function switchTab(name, el) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+}
+</script>
+</body>
+</html>

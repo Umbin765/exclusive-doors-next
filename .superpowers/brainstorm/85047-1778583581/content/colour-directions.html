@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colour Directions</title>
+<script src="/helper.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: #1C1710; padding: 24px; }
+  h2 { font-size: 18px; font-weight: 600; color: #F4F1EC; margin-bottom: 4px; }
+  .subtitle { font-size: 13px; color: #8A7D6E; margin-bottom: 22px; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  .panel {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .panel:hover { border-color: rgba(255,255,255,0.15); }
+  .panel.selected { border-color: #fff; }
+
+  .panel-label {
+    padding: 10px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  /* Mini admin shell */
+  .mini { display: flex; height: 340px; }
+  .mini-sidebar {
+    width: 130px;
+    flex-shrink: 0;
+    padding: 12px 0;
+    border-right-width: 1px;
+    border-right-style: solid;
+  }
+  .mini-logo {
+    padding: 0 11px 11px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    margin-bottom: 8px;
+  }
+  .mini-logo-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .mini-logo-sub { font-size: 9px; margin-top: 1px; }
+  .mini-group {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    padding: 8px 11px 2px;
+  }
+  .mini-item {
+    padding: 5px 11px;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .mini-item.active {
+    font-weight: 600;
+    border-right-width: 2px;
+    border-right-style: solid;
+  }
+  .dot { width: 4px; height: 4px; border-radius: 50%; flex-shrink: 0; }
+
+  .mini-main { flex: 1; padding: 14px; overflow: hidden; }
+  .mini-breadcrumb { font-size: 9.5px; margin-bottom: 5px; }
+  .mini-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  /* Tab bar */
+  .mini-tabs { display: flex; border-bottom-width: 1px; border-bottom-style: solid; margin-bottom: 12px; }
+  .mini-tab { padding: 6px 11px; font-size: 11px; font-weight: 500; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  .mini-tab.active { font-weight: 700; border-bottom-width: 2px; border-bottom-style: solid; }
+
+  /* Form fields */
+  .mini-form { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .mini-field-label { font-size: 8.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 3px; }
+  .mini-field-input {
+    border-radius: 4px;
+    padding: 5px 8px;
+    font-size: 11px;
+    border-width: 1px;
+    border-style: solid;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .mini-toggles { margin-top: 8px; display: flex; flex-direction: column; gap: 5px; }
+  .mini-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 4px;
+    padding: 6px 8px;
+    border-width: 1px;
+    border-style: solid;
+  }
+  .mini-toggle-label { font-size: 11px; }
+  .mini-toggle-pill {
+    width: 26px; height: 14px;
+    border-radius: 7px;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .mini-toggle-pill::after {
+    content: '';
+    position: absolute;
+    width: 9px; height: 9px;
+    background: #fff;
+    border-radius: 50%;
+    right: 2.5px; top: 2.5px;
+  }
+  .mini-toggle-pill.off::after { right: auto; left: 2.5px; }
+
+  .mini-save { margin-top: 10px; display: flex; justify-content: flex-end; gap: 7px; }
+  .mini-btn {
+    padding: 5px 13px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    border: none;
+  }
+
+  /* ─── THEME A: White + Slate ─────────────────── */
+  .a-bg { background: #FAFAFA; }
+  .a-sidebar { background: #fff; border-color: #E5E5E5; }
+  .a-logo-border { border-color: #E5E5E5; }
+  .a-logo-name { color: #1A1A1A; }
+  .a-logo-sub { color: #BDBDBD; }
+  .a-group { color: #BDBDBD; }
+  .a-item { color: #757575; }
+  .a-active { color: #1E3A5F; background: #EEF3FA; border-color: #1E3A5F; }
+  .a-dot { background: #E5E5E5; }
+  .a-active-dot { background: #1E3A5F; }
+  .a-main { background: #FAFAFA; }
+  .a-breadcrumb { color: #BDBDBD; }
+  .a-breadcrumb-accent { color: #1E3A5F; }
+  .a-title { color: #1A1A1A; }
+  .a-tabs-border { border-color: #E5E5E5; }
+  .a-tab { color: #9E9E9E; }
+  .a-tab-active { color: #1E3A5F; border-color: #1E3A5F; }
+  .a-label { color: #9E9E9E; }
+  .a-input { background: #fff; border-color: #E5E5E5; color: #1A1A1A; }
+  .a-toggle { background: #fff; border-color: #E5E5E5; }
+  .a-toggle-label { color: #1A1A1A; }
+  .a-pill { background: #1E3A5F; }
+  .a-pill-off { background: #E5E5E5; }
+  .a-save-ghost { background: #fff; border: 1px solid #E5E5E5; color: #757575; }
+  .a-save-primary { background: #1E3A5F; color: #fff; }
+  .a-panel-label { background: #1E3A5F; color: #fff; }
+
+  /* ─── THEME B: Warm white + Muted terracotta ─── */
+  .b-bg { background: #F8F5F1; }
+  .b-sidebar { background: #fff; border-color: #EAE3DA; }
+  .b-logo-border { border-color: #EAE3DA; }
+  .b-logo-name { color: #2C2418; }
+  .b-logo-sub { color: #C4B8A8; }
+  .b-group { color: #C4B8A8; }
+  .b-item { color: #8A7D6E; }
+  .b-active { color: #B85428; background: #FDF1EB; border-color: #B85428; }
+  .b-dot { background: #E2D9CE; }
+  .b-active-dot { background: #B85428; }
+  .b-main { background: #F8F5F1; }
+  .b-breadcrumb { color: #C4B8A8; }
+  .b-breadcrumb-accent { color: #B85428; }
+  .b-title { color: #2C2418; }
+  .b-tabs-border { border-color: #EAE3DA; }
+  .b-tab { color: #8A7D6E; }
+  .b-tab-active { color: #B85428; border-color: #B85428; }
+  .b-label { color: #8A7D6E; }
+  .b-input { background: #fff; border-color: #EAE3DA; color: #2C2418; }
+  .b-toggle { background: #fff; border-color: #EAE3DA; }
+  .b-toggle-label { color: #2C2418; }
+  .b-pill { background: #B85428; }
+  .b-pill-off { background: #EAE3DA; }
+  .b-save-ghost { background: #fff; border: 1px solid #EAE3DA; color: #8A7D6E; }
+  .b-save-primary { background: #B85428; color: #fff; }
+  .b-panel-label { background: #B85428; color: #fff; }
+
+  /* ─── THEME C: Light gray + Dark warm brown ─── */
+  .c-bg { background: #F5F5F3; }
+  .c-sidebar { background: #fff; border-color: #E8E8E5; }
+  .c-logo-border { border-color: #E8E8E5; }
+  .c-logo-name { color: #2C2418; }
+  .c-logo-sub { color: #BEBEBE; }
+  .c-group { color: #BEBEBE; }
+  .c-item { color: #7A7A78; }
+  .c-active { color: #2C2418; background: #EFEDE9; border-color: #2C2418; }
+  .c-dot { background: #E8E8E5; }
+  .c-active-dot { background: #2C2418; }
+  .c-main { background: #F5F5F3; }
+  .c-breadcrumb { color: #BEBEBE; }
+  .c-breadcrumb-accent { color: #2C2418; }
+  .c-title { color: #2C2418; }
+  .c-tabs-border { border-color: #E8E8E5; }
+  .c-tab { color: #9E9E9C; }
+  .c-tab-active { color: #2C2418; border-color: #2C2418; }
+  .c-label { color: #9E9E9C; }
+  .c-input { background: #fff; border-color: #E8E8E5; color: #2C2418; }
+  .c-toggle { background: #fff; border-color: #E8E8E5; }
+  .c-toggle-label { color: #2C2418; }
+  .c-pill { background: #2C2418; }
+  .c-pill-off { background: #E8E8E5; }
+  .c-save-ghost { background: #fff; border: 1px solid #E8E8E5; color: #7A7A78; }
+  .c-save-primary { background: #2C2418; color: #F4F1EC; }
+  .c-panel-label { background: #2C2418; color: #F4F1EC; }
+</style>
+</head>
+<body>
+
+<h2>Colour directions</h2>
+<p class="subtitle">Same layout, three different palettes. Click to select.</p>
+
+<div class="grid">
+
+  <!-- A: White + Slate blue -->
+  <div class="panel" data-choice="a" onclick="toggleSelect(this)">
+    <div class="panel-label a-panel-label">A — White + Navy</div>
+    <div class="mini a-bg">
+      <div class="mini-sidebar a-sidebar">
+        <div class="mini-logo a-logo-border">
+          <div class="mini-logo-name a-logo-name">Exclusive Doors</div>
+          <div class="mini-logo-sub a-logo-sub">Admin</div>
+        </div>
+        <div class="mini-group a-group">Catalog</div>
+        <div class="mini-item active a-active"><div class="dot a-active-dot"></div>Produse</div>
+        <div class="mini-item a-item"><div class="dot a-dot"></div>Categorii</div>
+        <div class="mini-group a-group" style="margin-top:4px;">Clienți</div>
+        <div class="mini-item a-item"><div class="dot a-dot"></div>Clienți</div>
+        <div class="mini-item a-item"><div class="dot a-dot"></div>Lead-uri</div>
+        <div class="mini-group a-group" style="margin-top:4px;">Marketing</div>
+        <div class="mini-item a-item"><div class="dot a-dot"></div>Promoții</div>
+        <div class="mini-item a-item"><div class="dot a-dot"></div>Email</div>
+      </div>
+      <div class="mini-main a-main">
+        <div class="mini-breadcrumb a-breadcrumb">Catalog / <span class="a-breadcrumb-accent">Produse</span> / Produs nou</div>
+        <div class="mini-title a-title">Produs nou</div>
+        <div class="mini-tabs a-tabs-border">
+          <div class="mini-tab active a-tab-active">Bază</div>
+          <div class="mini-tab a-tab">Galerie</div>
+          <div class="mini-tab a-tab">Conținut</div>
+        </div>
+        <div class="mini-form">
+          <div>
+            <div class="mini-field-label a-label">Categorie</div>
+            <div class="mini-field-input a-input">Interior</div>
+          </div>
+          <div>
+            <div class="mini-field-label a-label">Nume produs</div>
+            <div class="mini-field-input a-input">Filomuro</div>
+          </div>
+          <div>
+            <div class="mini-field-label a-label">Preț de la (EUR)</div>
+            <div class="mini-field-input a-input">2 400</div>
+          </div>
+          <div>
+            <div class="mini-field-label a-label">Model / SKU</div>
+            <div class="mini-field-input a-input">FMR-200</div>
+          </div>
+        </div>
+        <div class="mini-toggles">
+          <div class="mini-toggle a-toggle">
+            <div class="mini-toggle-label a-toggle-label">Vizibil pe site</div>
+            <div class="mini-toggle-pill a-pill"></div>
+          </div>
+        </div>
+        <div class="mini-save">
+          <button class="mini-btn a-save-ghost">Anulează</button>
+          <button class="mini-btn a-save-primary">Salvează</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- B: Warm white + muted terracotta -->
+  <div class="panel" data-choice="b" onclick="toggleSelect(this)">
+    <div class="panel-label b-panel-label">B — Warm + Terracotta</div>
+    <div class="mini b-bg">
+      <div class="mini-sidebar b-sidebar">
+        <div class="mini-logo b-logo-border">
+          <div class="mini-logo-name b-logo-name">Exclusive Doors</div>
+          <div class="mini-logo-sub b-logo-sub">Admin</div>
+        </div>
+        <div class="mini-group b-group">Catalog</div>
+        <div class="mini-item active b-active"><div class="dot b-active-dot"></div>Produse</div>
+        <div class="mini-item b-item"><div class="dot b-dot"></div>Categorii</div>
+        <div class="mini-group b-group" style="margin-top:4px;">Clienți</div>
+        <div class="mini-item b-item"><div class="dot b-dot"></div>Clienți</div>
+        <div class="mini-item b-item"><div class="dot b-dot"></div>Lead-uri</div>
+        <div class="mini-group b-group" style="margin-top:4px;">Marketing</div>
+        <div class="mini-item b-item"><div class="dot b-dot"></div>Promoții</div>
+        <div class="mini-item b-item"><div class="dot b-dot"></div>Email</div>
+      </div>
+      <div class="mini-main b-main">
+        <div class="mini-breadcrumb b-breadcrumb">Catalog / <span class="b-breadcrumb-accent">Produse</span> / Produs nou</div>
+        <div class="mini-title b-title">Produs nou</div>
+        <div class="mini-tabs b-tabs-border">
+          <div class="mini-tab active b-tab-active">Bază</div>
+          <div class="mini-tab b-tab">Galerie</div>
+          <div class="mini-tab b-tab">Conținut</div>
+        </div>
+        <div class="mini-form">
+          <div>
+            <div class="mini-field-label b-label">Categorie</div>
+            <div class="mini-field-input b-input">Interior</div>
+          </div>
+          <div>
+            <div class="mini-field-label b-label">Nume produs</div>
+            <div class="mini-field-input b-input">Filomuro</div>
+          </div>
+          <div>
+            <div class="mini-field-label b-label">Preț de la (EUR)</div>
+            <div class="mini-field-input b-input">2 400</div>
+          </div>
+          <div>
+            <div class="mini-field-label b-label">Model / SKU</div>
+            <div class="mini-field-input b-input">FMR-200</div>
+          </div>
+        </div>
+        <div class="mini-toggles">
+          <div class="mini-toggle b-toggle">
+            <div class="mini-toggle-label b-toggle-label">Vizibil pe site</div>
+            <div class="mini-toggle-pill b-pill"></div>
+          </div>
+        </div>
+        <div class="mini-save">
+          <button class="mini-btn b-save-ghost">Anulează</button>
+          <button class="mini-btn b-save-primary">Salvează</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- C: Light gray + Dark warm brown -->
+  <div class="panel" data-choice="c" onclick="toggleSelect(this)">
+    <div class="panel-label c-panel-label">C — Neutral + Dark brown</div>
+    <div class="mini c-bg">
+      <div class="mini-sidebar c-sidebar">
+        <div class="mini-logo c-logo-border">
+          <div class="mini-logo-name c-logo-name">Exclusive Doors</div>
+          <div class="mini-logo-sub c-logo-sub">Admin</div>
+        </div>
+        <div class="mini-group c-group">Catalog</div>
+        <div class="mini-item active c-active"><div class="dot c-active-dot"></div>Produse</div>
+        <div class="mini-item c-item"><div class="dot c-dot"></div>Categorii</div>
+        <div class="mini-group c-group" style="margin-top:4px;">Clienți</div>
+        <div class="mini-item c-item"><div class="dot c-dot"></div>Clienți</div>
+        <div class="mini-item c-item"><div class="dot c-dot"></div>Lead-uri</div>
+        <div class="mini-group c-group" style="margin-top:4px;">Marketing</div>
+        <div class="mini-item c-item"><div class="dot c-dot"></div>Promoții</div>
+        <div class="mini-item c-item"><div class="dot c-dot"></div>Email</div>
+      </div>
+      <div class="mini-main c-main">
+        <div class="mini-breadcrumb c-breadcrumb">Catalog / <span class="c-breadcrumb-accent">Produse</span> / Produs nou</div>
+        <div class="mini-title c-title">Produs nou</div>
+        <div class="mini-tabs c-tabs-border">
+          <div class="mini-tab active c-tab-active">Bază</div>
+          <div class="mini-tab c-tab">Galerie</div>
+          <div class="mini-tab c-tab">Conținut</div>
+        </div>
+        <div class="mini-form">
+          <div>
+            <div class="mini-field-label c-label">Categorie</div>
+            <div class="mini-field-input c-input">Interior</div>
+          </div>
+          <div>
+            <div class="mini-field-label c-label">Nume produs</div>
+            <div class="mini-field-input c-input">Filomuro</div>
+          </div>
+          <div>
+            <div class="mini-field-label c-label">Preț de la (EUR)</div>
+            <div class="mini-field-input c-input">2 400</div>
+          </div>
+          <div>
+            <div class="mini-field-label c-label">Model / SKU</div>
+            <div class="mini-field-input c-input">FMR-200</div>
+          </div>
+        </div>
+        <div class="mini-toggles">
+          <div class="mini-toggle c-toggle">
+            <div class="mini-toggle-label c-toggle-label">Vizibil pe site</div>
+            <div class="mini-toggle-pill c-pill"></div>
+          </div>
+        </div>
+        <div class="mini-save">
+          <button class="mini-btn c-save-ghost">Anulează</button>
+          <button class="mini-btn c-save-primary">Salvează</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

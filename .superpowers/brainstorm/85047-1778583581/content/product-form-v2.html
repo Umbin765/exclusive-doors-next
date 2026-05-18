@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Form v2</title>
+<script src="/helper.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: #1C1710;
+    color: #2C2418;
+    padding: 24px;
+  }
+  h2 { font-size: 18px; font-weight: 600; margin-bottom: 4px; color: #F4F1EC; font-family: 'DM Sans', sans-serif; }
+  .subtitle { font-size: 13px; color: #8A7D6E; margin-bottom: 20px; }
+
+  .admin-shell {
+    background: #F4F1EC;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    min-height: 560px;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    background: #fff;
+    width: 188px;
+    flex-shrink: 0;
+    border-right: 1px solid #E2D9CE;
+    padding: 16px 0;
+  }
+  .logo {
+    padding: 0 14px 14px;
+    border-bottom: 1px solid #E2D9CE;
+    margin-bottom: 10px;
+  }
+  .logo-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2C2418;
+    letter-spacing: 0.02em;
+  }
+  .logo-sub { font-size: 10px; color: #C4B8A8; margin-top: 1px; }
+
+  .nav-group-label {
+    font-size: 9px;
+    font-weight: 700;
+    color: #C4B8A8;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    padding: 10px 14px 3px;
+  }
+  .nav-item {
+    padding: 6px 14px;
+    font-size: 12.5px;
+    color: #8A7D6E;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .nav-item.active {
+    background: #FFF3EB;
+    color: #FF6600;
+    font-weight: 600;
+    border-right: 2px solid #FF6600;
+  }
+  .nav-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: #E2D9CE;
+    flex-shrink: 0;
+  }
+  .nav-item.active .nav-dot { background: #FF6600; }
+  .nav-group-collapsed { opacity: 0.38; }
+
+  /* MAIN */
+  .main { flex: 1; padding: 20px 22px; overflow: hidden; }
+
+  .breadcrumb {
+    font-size: 11.5px;
+    color: #C4B8A8;
+    margin-bottom: 6px;
+  }
+  .breadcrumb span { color: #FF6600; }
+
+  .page-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #2C2418;
+    margin-bottom: 18px;
+  }
+
+  /* TABS */
+  .tab-bar {
+    display: flex;
+    border-bottom: 1.5px solid #E2D9CE;
+    margin-bottom: 18px;
+    gap: 0;
+  }
+  .tab {
+    padding: 8px 16px;
+    font-size: 13px;
+    color: #8A7D6E;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1.5px;
+    font-weight: 500;
+    transition: color 0.12s;
+  }
+  .tab:hover { color: #2C2418; }
+  .tab.active {
+    color: #FF6600;
+    border-bottom-color: #FF6600;
+    font-weight: 600;
+  }
+  .tab-badge {
+    display: inline-block;
+    background: #EDE9E3;
+    color: #8A7D6E;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 8px;
+    margin-left: 4px;
+  }
+  .tab.active .tab-badge {
+    background: #FFE8D6;
+    color: #FF6600;
+  }
+
+  /* FORM */
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .form-field { display: flex; flex-direction: column; gap: 4px; }
+  .form-field.full { grid-column: 1 / -1; }
+  .field-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #8A7D6E;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .field-input {
+    background: #fff;
+    border: 1px solid #E2D9CE;
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 13px;
+    color: #2C2418;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .field-input.muted { color: #C4B8A8; }
+  .field-input.textarea { min-height: 66px; }
+
+  .toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    border: 1px solid #E2D9CE;
+    border-radius: 6px;
+    padding: 9px 12px;
+  }
+  .toggle-label { font-size: 13px; color: #2C2418; }
+  .toggle-sub { font-size: 11px; color: #C4B8A8; margin-top: 1px; }
+  .toggle-pill {
+    width: 34px; height: 18px;
+    background: #FF6600;
+    border-radius: 9px;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .toggle-pill::after {
+    content: '';
+    position: absolute;
+    width: 12px; height: 12px;
+    background: #fff;
+    border-radius: 50%;
+    right: 3px; top: 3px;
+  }
+  .toggle-pill.off { background: #E2D9CE; }
+  .toggle-pill.off::after { right: auto; left: 3px; }
+
+  /* GALLERY */
+  .hint-box {
+    background: #FFF3EB;
+    border: 1px solid #FFDFC0;
+    border-radius: 6px;
+    padding: 9px 12px;
+    font-size: 12px;
+    color: #C05000;
+    margin-bottom: 14px;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .gallery-item {
+    background: #EDE9E3;
+    border: 1px solid #E2D9CE;
+    border-radius: 8px;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: #8A7D6E;
+    position: relative;
+  }
+  .gallery-item.add {
+    background: #fff;
+    border: 1.5px dashed #E2D9CE;
+    color: #FF6600;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .gallery-order {
+    position: absolute;
+    top: 5px; left: 5px;
+    font-size: 9px;
+    background: #FF6600;
+    color: #fff;
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-weight: 700;
+  }
+
+  /* REPEATER */
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #C4B8A8;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 8px;
+    margin-top: 4px;
+  }
+  .repeater-item {
+    background: #fff;
+    border: 1px solid #E2D9CE;
+    border-radius: 7px;
+    padding: 10px;
+    margin-bottom: 6px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .repeater-handle { color: #C4B8A8; font-size: 14px; cursor: grab; padding-top: 3px; }
+  .repeater-fields { flex: 1; display: grid; grid-template-columns: 1fr 2fr; gap: 7px; }
+  .repeater-del { color: #E2D9CE; font-size: 13px; cursor: pointer; padding-top: 3px; }
+  .add-row-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: #FF6600;
+    cursor: pointer;
+    padding: 7px 0;
+    font-weight: 600;
+  }
+
+  /* SAVE BAR */
+  .save-bar {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid #E2D9CE;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  .btn {
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-secondary { background: #fff; border: 1px solid #E2D9CE; color: #8A7D6E; }
+  .btn-primary { background: #FF6600; border: none; color: #fff; }
+
+  /* TAB CONTENT */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* FINISHES */
+  .color-swatch {
+    width: 26px; height: 26px;
+    border-radius: 4px;
+    border: 1px solid #E2D9CE;
+    flex-shrink: 0;
+  }
+  .tag-pill {
+    background: #EDE9E3;
+    border: 1px solid #E2D9CE;
+    border-radius: 16px;
+    padding: 4px 11px;
+    font-size: 12px;
+    color: #8A7D6E;
+  }
+  .tag-pill.add {
+    border-style: dashed;
+    color: #C4B8A8;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<h2>Product form — light theme, brand colours</h2>
+<p class="subtitle">DM Sans + Cormorant Garamond, cream/orange palette matching the public site. Click tabs to explore.</p>
+
+<div class="admin-shell">
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="logo">
+      <div class="logo-name">Exclusive Doors</div>
+      <div class="logo-sub">Admin</div>
+    </div>
+    <div class="nav-item"><div class="nav-dot"></div>Dashboard</div>
+    <div class="nav-group-label">Catalog</div>
+    <div class="nav-item active"><div class="nav-dot"></div>Produse</div>
+    <div class="nav-item"><div class="nav-dot"></div>Categorii</div>
+    <div class="nav-item"><div class="nav-dot"></div>Conținut CMS</div>
+    <div class="nav-group-label">Clienți</div>
+    <div class="nav-item"><div class="nav-dot"></div>Clienți</div>
+    <div class="nav-item"><div class="nav-dot"></div>Tranzacții</div>
+    <div class="nav-item"><div class="nav-dot"></div>Lead-uri</div>
+    <div class="nav-item"><div class="nav-dot"></div>Referrals</div>
+    <div class="nav-group-label">Marketing</div>
+    <div class="nav-item"><div class="nav-dot"></div>Promoții</div>
+    <div class="nav-item"><div class="nav-dot"></div>Email</div>
+    <div class="nav-group-label nav-group-collapsed">Setări</div>
+    <div class="nav-item nav-group-collapsed"><div class="nav-dot"></div>Config Referral</div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="breadcrumb">Catalog / <span>Produse</span> / Produs nou</div>
+    <div class="page-title">Produs nou</div>
+
+    <div class="tab-bar">
+      <div class="tab active" onclick="switchTab('basic', this)">Bază</div>
+      <div class="tab" onclick="switchTab('gallery', this)">Galerie <span class="tab-badge">3</span></div>
+      <div class="tab" onclick="switchTab('content', this)">Conținut</div>
+      <div class="tab" onclick="switchTab('finishes', this)">Finisaje</div>
+    </div>
+
+    <!-- TAB: BAZA -->
+    <div id="tab-basic" class="tab-content active">
+      <div class="form-grid">
+        <div class="form-field">
+          <div class="field-label">Categorie</div>
+          <div class="field-input">Interior</div>
+        </div>
+        <div class="form-field">
+          <div class="field-label">Slug (URL)</div>
+          <div class="field-input muted">auto-generat din nume</div>
+        </div>
+        <div class="form-field">
+          <div class="field-label">Eyebrow</div>
+          <div class="field-input">Ușă interior · Furnir</div>
+        </div>
+        <div class="form-field">
+          <div class="field-label">Nume produs</div>
+          <div class="field-input">Filomuro</div>
+        </div>
+        <div class="form-field">
+          <div class="field-label">Model / SKU</div>
+          <div class="field-input">FMR-200 · La comandă</div>
+        </div>
+        <div class="form-field">
+          <div class="field-label">Preț de la (EUR)</div>
+          <div class="field-input">2 400</div>
+        </div>
+        <div class="form-field full">
+          <div class="field-label">Descriere scurtă</div>
+          <div class="field-input textarea">Ușă flush cu toc ascuns, finisaj furnir stejar natural. Disponibilă la comandă în 8–10 săptămâni.</div>
+        </div>
+      </div>
+      <div style="margin-top:12px;display:flex;flex-direction:column;gap:7px;">
+        <div class="toggle-row">
+          <div><div class="toggle-label">Vizibil pe site</div><div class="toggle-sub">Afișat în catalogul public</div></div>
+          <div class="toggle-pill"></div>
+        </div>
+        <div class="toggle-row">
+          <div><div class="toggle-label">Made in Germany</div><div class="toggle-sub">Afișează badge pe card și pe pagina produsului</div></div>
+          <div class="toggle-pill off"></div>
+        </div>
+        <div class="form-field" style="max-width:160px;margin-top:2px;">
+          <div class="field-label">Reducere (%)</div>
+          <div class="field-input muted">nicio reducere</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: GALLERY -->
+    <div id="tab-gallery" class="tab-content">
+      <div class="hint-box">Trage imaginile pentru a le reordona. Prima imagine apare pe cardul din catalog.</div>
+      <div class="gallery-grid">
+        <div class="gallery-item"><div class="gallery-order">1</div>hero.jpg</div>
+        <div class="gallery-item"><div class="gallery-order">2</div>detail.jpg</div>
+        <div class="gallery-item"><div class="gallery-order">3</div>room.jpg</div>
+        <div class="gallery-item add">+</div>
+      </div>
+    </div>
+
+    <!-- TAB: CONTINUT -->
+    <div id="tab-content" class="tab-content">
+      <div class="section-label">Specificații tehnice</div>
+      <div class="repeater-item">
+        <div class="repeater-handle">⠿</div>
+        <div class="repeater-fields">
+          <div class="field-input">Material</div>
+          <div class="field-input">Furnir stejar natural</div>
+        </div>
+        <div class="repeater-del">✕</div>
+      </div>
+      <div class="repeater-item">
+        <div class="repeater-handle">⠿</div>
+        <div class="repeater-fields">
+          <div class="field-input">Grosime</div>
+          <div class="field-input">45 mm</div>
+        </div>
+        <div class="repeater-del">✕</div>
+      </div>
+      <div class="add-row-btn">+ Adaugă specificație</div>
+
+      <div class="section-label" style="margin-top:14px;">Panouri detaliu <span style="font-size:10px;color:#C4B8A8;font-weight:400;">(3–5 afișate pe pagina produsului)</span></div>
+      <div class="repeater-item">
+        <div class="repeater-handle">⠿</div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:7px;">
+          <div class="form-grid" style="gap:7px;">
+            <div class="field-input">Fabricație precisă</div>
+            <div class="field-input">Toleranță 3mm</div>
+          </div>
+          <div class="field-input textarea" style="min-height:42px;">Fiecare ușă este fabricată la comandă cu toleranțe stricte de 3mm...</div>
+        </div>
+        <div class="repeater-del">✕</div>
+      </div>
+      <div class="add-row-btn">+ Adaugă panou</div>
+    </div>
+
+    <!-- TAB: FINISAJE -->
+    <div id="tab-finishes" class="tab-content">
+      <div class="hint-box">Finisajele și tagurile sunt opționale. Pot fi completate oricând după publicare.</div>
+      <div class="section-label">Finisaje disponibile</div>
+      <div class="repeater-item">
+        <div class="repeater-handle">⠿</div>
+        <div style="flex:1;display:flex;align-items:center;gap:8px;">
+          <div class="color-swatch" style="background:#c8a96e;"></div>
+          <div class="field-input" style="width:80px;">#c8a96e</div>
+          <div class="field-input" style="flex:1;">Stejar natural</div>
+        </div>
+        <div class="repeater-del">✕</div>
+      </div>
+      <div class="add-row-btn">+ Adaugă finisaj</div>
+
+      <div class="section-label" style="margin-top:14px;">Taguri</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;">
+        <div class="tag-pill">furnir</div>
+        <div class="tag-pill">interior</div>
+        <div class="tag-pill add">+ tag nou</div>
+      </div>
+    </div>
+
+    <div class="save-bar">
+      <div class="btn btn-secondary">Anulează</div>
+      <div class="btn btn-primary">Salvează produs</div>
+    </div>
+  </div>
+</div>
+
+<script>
+function switchTab(name, el) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+}
+</script>
+</body>
+</html>

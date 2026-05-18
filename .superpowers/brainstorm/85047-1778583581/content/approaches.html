@@ -1,0 +1,42 @@
+<h2>3 Approaches — Admin Redesign</h2>
+<p class="subtitle">Sidebar simplification + theme + product form. Pick the direction that feels right.</p>
+
+<div class="options">
+
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Grouped sidebar + Filament custom theme</h3>
+      <p>Keep Filament as-is but group the 11 sidebar items into 3–4 navigation groups (Content, Customers, Automation, Settings). Add a warm gold/cream brand theme to replace the generic dark. Product form gets tabs. Fast to implement — no structural changes to Filament.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Minimal code changes</li><li>Stays within Filament conventions</li><li>Can ship in a day</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Still 11 items (just grouped)</li><li>Filament theme customisation is limited</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Grouped sidebar + full brand theme (recommended)</h3>
+      <p>Same grouping as A, but use a custom Filament panel theme with your brand colours (warm white background, gold accents, clean typography). Hide low-traffic items (Config Referral, Email Triggers) behind a "Settings" group collapsed by default. Product form tabs. This is the sweet spot between effort and result.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Feels like a product built for Exclusive Doors</li><li>Much cleaner visual hierarchy</li><li>Most important items front and centre</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>~2–3 days of work</li><li>Custom theme needs testing across all pages</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Radically simplified — hide advanced features</h3>
+      <p>Cut the sidebar to 6 items max: Dashboard, Produse, Clienți, Lead-uri, Promoții, and a single "Setări" page that contains categories, CMS, referral config, email templates, and triggers all in one settings screen. Product form tabs. Much steeper refactor — some Filament resources get merged.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Cleanest possible sidebar</li><li>Beginner-friendly for staff</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Most complex to build</li><li>Merged settings page can itself become overwhelming</li><li>Harder to extend later</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+</div>

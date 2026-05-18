@@ -21,8 +21,10 @@ const config: Config = {
         'warm-subtle': '#EDE9E3',
       },
       fontFamily: {
-        display: ['Cormorant Garamond', 'Georgia', 'serif'],
+        display: ['Fraunces', 'Georgia', 'serif'],
+        disp: ['Bebas Neue', 'Impact', 'sans-serif'],
         sans: ['DM Sans', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
     },
   },
