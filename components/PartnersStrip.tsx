@@ -1,23 +1,24 @@
 const brands = [
-  { name: 'GRAUTHOFF', href: '/products/interior' },
-  { name: 'GROKE', href: '/products/exterior' },
-  { name: 'SUPERLOCK', href: '/products/exterior' },
-  { name: 'HÖRMANN', href: '/products/exterior' },
+  { name: 'Grauthoff', href: '/products/interior' },
+  { name: 'Groke', href: '/products/exterior' },
+  { name: 'Superlock', href: '/products/exterior' },
+  { name: 'Hörmann', href: '/products/exterior' },
   { name: 'HGM', href: '/products/interior' },
   { name: 'L&H', href: '/products/glisante' },
 ];
 
 export default function PartnersStrip() {
   return (
-    <section className="ed-partners">
-      <div className="ed-partners__inner">
-        <span className="ed-partners__label">Branduri reprezentate</span>
-        <div className="ed-partners__logos">
+    <section className="partners-strip">
+      <div className="partners-grid">
+        <div className="partners-h">
+          Colaborăm cu <em>arhitecți</em> &amp; designeri.
+        </div>
+        <div className="partners-list">
           {brands.map((b) => (
-            <a key={b.name} href={b.href} className="ed-partners__logo">
-              {b.name}
-            </a>
+            <a key={b.name} href={b.href} className="partner-card">{b.name}</a>
           ))}
+          <a href="#contact" className="partner-card partner-cta">Devino partener →</a>
         </div>
       </div>
     </section>

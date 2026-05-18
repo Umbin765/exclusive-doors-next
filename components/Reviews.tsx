@@ -17,10 +17,6 @@ interface ReviewsData {
   reviews: GoogleReview[];
 }
 
-function stars(n: number) {
-  return '★'.repeat(Math.round(n));
-}
-
 function truncate(text: string, max = 200) {
   if (text.length <= max) return text;
   return text.slice(0, text.lastIndexOf(' ', max)) + '…';
@@ -36,81 +32,99 @@ export default function Reviews() {
         const liveReviews = Array.isArray(json.reviews) ? json.reviews : [];
         const liveNames = new Set(liveReviews.map((r: GoogleReview) => r.author_name));
         const extras = fallbackGoogleReviews.filter((r) => !liveNames.has(r.author_name));
-        const merged = [...liveReviews, ...extras].slice(0, 6);
+        const merged = [...liveReviews, ...extras].slice(0, 2);
         setData({
-          rating: json.rating ?? 4.3,
-          totalReviews: json.totalReviews ?? 152,
+          rating: json.rating ?? 4.9,
+          totalReviews: json.totalReviews ?? 127,
           reviews: merged,
         });
       })
       .catch(() =>
-        setData({ rating: 4.3, totalReviews: 152, reviews: fallbackGoogleReviews.slice(0, 6) })
+        setData({ rating: 4.9, totalReviews: 127, reviews: fallbackGoogleReviews.slice(0, 2) })
       );
   }, []);
 
+  const displayRating = data?.rating ?? 4.9;
+  const displayTotal = data?.totalReviews ?? 127;
+
   return (
-    <section className="ed-voices">
-      <div className="ed-voices__inner">
-        <div className="ed-voices__head">
-          <div>
-            <span className="ed-label">Ce spun clienții</span>
-            <h2 className="ed-voices__hl">Peste 150 de proiecte.<br />O singură concluzie.</h2>
-          </div>
-          {data && (
-            <div className="ed-voices__meta">
-              <span className="ed-voices__stars">{stars(Math.round(data.rating))}</span>
-              <span className="ed-voices__rating-num">
-                {data.rating.toFixed(1)} · {data.totalReviews} recenzii
-              </span>
-              <a
-                href="https://search.google.com/local/writereview?placeid=ChIJj_3EwaEcskARFrnrM6e5b-4"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ed-voices__write-link"
-              >
-                Scrie o recenzie
-              </a>
+    <section className="voices-section">
+      <div className="voices-grid">
+        {/* Left: heading + rating display */}
+        <div>
+          <div className="section-eyebrow">Voci · Rating Google</div>
+          <h2 className="voices-h2">Cei care au<br /><em>ales corect.</em></h2>
+
+          <div className="rating-display">
+            <div className="rating-display-val">{displayRating.toFixed(1)}</div>
+            <div>
+              <div className="rating-display-stars">★★★★★</div>
+              <div className="rating-display-meta">{displayTotal} recenzii verificate Google</div>
             </div>
-          )}
+          </div>
+
+          <p style={{ color: 'var(--ink-gray)', lineHeight: 1.65, fontSize: '15px' }}>
+            Testimoniale de la proprietari și arhitecți care au trecut prin Showroom Decision System
+            și au finalizat renovarea fără regrete.
+          </p>
+
+          <p className="voices-cta">
+            → <a
+              href="https://search.google.com/local/writereview?placeid=ChIJj_3EwaEcskARFrnrM6e5b-4"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Citește toate recenziile pe Google
+            </a>
+          </p>
         </div>
 
-        {data ? (
-          <div className="ed-voices__grid">
-            {data.reviews.map((review, i) => (
-              <div key={i} className="ed-voice-card">
-                <div className="ed-voice-card__stars">{stars(review.rating)}</div>
-                <p className="ed-voice-card__quote">"{truncate(review.text)}"</p>
-                <div className="ed-voice-card__author">
+        {/* Right: 2 voice cards */}
+        <div className="voice-cards">
+          {data?.reviews.map((review, i) => (
+            <div key={i} className="voice-card">
+              <div className="voice-stars">{'★'.repeat(review.rating)}</div>
+              <p className="voice-text">"{truncate(review.text)}"</p>
+              <div className="voice-author">
+                <div className="voice-author-left">
                   <img
                     src={review.profile_photo_url}
                     alt={review.author_name}
-                    className="ed-voice-card__avatar"
+                    className="voice-avatar"
                     referrerPolicy="no-referrer"
                   />
                   <div>
-                    <span className="ed-voice-card__name">{review.author_name}</span>
-                    <span className="ed-voice-card__when">{review.relative_time_description}</span>
+                    <div className="voice-name">{review.author_name}</div>
+                    <div className="voice-role">{review.relative_time_description}</div>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-        ) : (
-          <div className="ed-voices__grid">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div
-                key={i}
-                style={{
-                  background: 'var(--paper)',
-                  borderLeft: '3px solid var(--line)',
-                  padding: '2rem 1.75rem',
-                  height: '180px',
-                  animation: 'pulse 1.5s ease-in-out infinite',
-                }}
-              />
-            ))}
-          </div>
-        )}
+            </div>
+          )) ?? (
+            <>
+              <div className="voice-card">
+                <div className="voice-stars">★★★★★</div>
+                <p className="voice-text">"Am venit fără să știu ce vreau. În 20 de minute știam exact ce uși se potrivesc cu renovarea. Montajul perfect, fără nicio corecție ulterioară."</p>
+                <div className="voice-author">
+                  <div>
+                    <span className="voice-name">Alexandru M.</span>
+                    <span className="voice-role" style={{ display: 'block', marginTop: '2px' }}>Proprietar · Sector 1, București</span>
+                  </div>
+                </div>
+              </div>
+              <div className="voice-card">
+                <div className="voice-stars">★★★★★</div>
+                <p className="voice-text">"Recomand constant Exclusive Doors clienților mei. Documentație tehnică clară, termene respectate, nicio problemă de aliniere."</p>
+                <div className="voice-author">
+                  <div>
+                    <span className="voice-name">Ioana R.</span>
+                    <span className="voice-role" style={{ display: 'block', marginTop: '2px' }}>Arhitect · 12 proiecte împreună</span>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </section>
   );

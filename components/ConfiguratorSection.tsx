@@ -4,31 +4,46 @@ import { useState } from 'react';
 
 const steps = [
   {
-    tab: '01 — Filtrare',
+    step: 'Pasul 01',
+    title: 'Filtrare',
+    desc: 'Reducem 100 → 3 opțiuni',
     num: '01',
-    hl: 'Filtrăm 80% din opțiuni',
-    body: 'Analizăm stilul arhitecturii, materialele existente și bugetul. Eliminăm ce nu se potrivește — înainte să pierzi timp cu cataloage inutile.',
-    img: 'https://exclusivedoors.ro/wp-content/uploads/2024/09/Untitled-design-5-700x700.jpg',
-    cta: 'Explorează colecția de uși',
-    href: '/products/interior',
+    illustLabel: 'Filtrare personalizată',
+    h3: 'Filtrăm 80% din opțiuni pentru tine.',
+    body: 'Începem cu o conversație de 5 minute despre proiectul tău: stilul interior, tipul renovării, bugetul și nivelul de izolație necesar. Din sute de modele rămân 2–3 cu adevărat relevante.',
+    features: [
+      'Analiză rapidă a stilului tău interior și a proiectului existent',
+      'Eliminăm opțiunile incompatibile cu bugetul și destinația',
+      'Prezentăm doar variantele care chiar se potrivesc, fără confuzie',
+    ],
   },
   {
-    tab: '02 — Potrivire',
+    step: 'Pasul 02',
+    title: 'Matching',
+    desc: 'Coerență cu designul',
     num: '02',
-    hl: 'Potrivim designul cu spațiul',
+    illustLabel: 'Potrivire cu spațiul',
+    h3: 'Potrivim ușa cu designul tău interior.',
     body: 'Comparăm modele fizice din showroom cu planurile tale. Dimensiuni, finisaje, sisteme de deschidere — totul validat vizual, nu din imagini de catalog.',
-    img: 'https://exclusivedoors.ro/wp-content/uploads/2020/12/rupere_termica-700x700.jpg',
-    cta: 'Programează vizita',
-    href: '#contact',
+    features: [
+      'Comparare directă cu mostrele din showroom',
+      'Coerență cromatică și texturală cu pardoselile și pereții',
+      'Validare a dimensiunilor și compatibilității cu golul existent',
+    ],
   },
   {
-    tab: '03 — Validare',
+    step: 'Pasul 03',
+    title: 'Validare',
+    desc: 'Tehnic & montaj profesional',
     num: '03',
-    hl: 'Validăm tehnic fiecare detaliu',
+    illustLabel: 'Validare tehnică',
+    h3: 'Validăm tehnic fiecare detaliu.',
     body: 'Verificăm izolarea fonică, coeficientul termic, clasa de efracție și compatibilitatea cu golul existent. Zero surprize la montaj.',
-    img: 'https://exclusivedoors.ro/wp-content/uploads/2021/12/HGM-GLATT-CULISANTA-1-409x546.jpg',
-    cta: 'Vorbește cu un specialist',
-    href: '#contact',
+    features: [
+      'Verificare coeficient termic și izolație fonică',
+      'Clasă de efracție potrivită pentru locul instalării',
+      'Compatibilitate completă cu sistemul de montaj existent',
+    ],
   },
 ];
 
@@ -37,36 +52,52 @@ export default function ConfiguratorSection() {
   const step = steps[active];
 
   return (
-    <section className="ed-config">
-      <div className="ed-config__inner">
-        <div className="ed-config__head">
-          <span className="ed-eyebrow">Cum funcționează</span>
-          <h2 className="ed-config__hl">
-            Sistemul Exclusiv<br />de Alegere în 15 minute
-          </h2>
-        </div>
+    <section className="config-section">
+      <div className="config-header">
+        <div className="section-eyebrow">Showroom Decision System</div>
+        <h2 className="section-h2">Metoda noastră în <em>3 pași</em>.</h2>
+        <p className="section-lead">
+          Nu îți arătăm un catalog. Conducem decizia. În 15 minute pleci cu 2–3 opțiuni
+          clare — și știi exact ce alegi și de ce.
+        </p>
+      </div>
 
-        <div className="ed-config__tabs">
+      <div className="configurator">
+        <div className="config-tabs">
           {steps.map((s, i) => (
-            <button
+            <div
               key={i}
-              className={`ed-config__tab${active === i ? ' ed-config__tab--active' : ''}`}
+              className={`config-tab${active === i ? ' active' : ''}`}
               onClick={() => setActive(i)}
             >
-              {s.tab}
-            </button>
+              <div className="config-tab-step">{s.step}</div>
+              <div className="config-tab-title">{s.title}</div>
+              <div className="config-tab-desc">{s.desc}</div>
+            </div>
           ))}
         </div>
 
-        <div className="ed-config__panel">
-          <div>
-            <div className="ed-config__step-num">{step.num}</div>
-            <h3 className="ed-config__step-hl">{step.hl}</h3>
-            <p className="ed-config__step-body">{step.body}</p>
-            <a href={step.href} className="ed-btn ed-btn--primary">{step.cta}</a>
+        <div className="config-body">
+          <div className="config-illustration">
+            <div className="config-illust-num">{step.num}</div>
+            <div className="config-illust-label">{step.illustLabel}</div>
           </div>
-          <div className="ed-config__img">
-            <img src={step.img} alt={step.hl} />
+
+          <div className="config-content">
+            <h3>{step.h3}</h3>
+            <p>{step.body}</p>
+            <div className="config-features">
+              {step.features.map((f, i) => (
+                <div key={i} className="config-feature">
+                  <div className="config-feature-check">✓</div>
+                  <div>{f}</div>
+                </div>
+              ))}
+            </div>
+            <div className="config-cta">
+              <a href="#contact" className="btn-orange-line">Începe consultația →</a>
+              <span className="config-cta-note">Durează 15 min · Gratuit</span>
+            </div>
           </div>
         </div>
       </div>

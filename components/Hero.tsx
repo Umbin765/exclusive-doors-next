@@ -1,46 +1,53 @@
-import { statsBarItems } from '@/lib/data';
-
 export default function Hero() {
   return (
-    <section className="ed-hero">
-      <div className="ed-hero__inner">
-        {/* Left: display headline */}
-        <div className="ed-hero__left">
-          <span className="ed-label">Showroom Otopeni · București</span>
-          <h1 className="ed-hero__hl">
-            <span className="ed-hero__hl-cross">Mii de opțiuni.</span>
-            <span className="ed-hero__hl-cross">Nicio decizie.</span>
-            <span className="ed-hero__hl-main">Ușa potrivită.<br />Din prima.</span>
+    <section className="hero">
+      <div className="hero-meta">
+        <span><span className="hero-meta-num">№ 01</span> · Decizia care contează</span>
+        <span>Showroom Otopeni · 2026</span>
+      </div>
+
+      <div className="hero-grid">
+        <div>
+          <h1 className="hero-h1">
+            <span className="strike">Sute</span><br />
+            de uși.<br />
+            <em>Trei</em> corecte<br />
+            pentru tine.
           </h1>
         </div>
 
-        {/* Right: body + CTAs */}
-        <div className="ed-hero__right">
-          <span className="ed-eyebrow">Sistemul Exclusiv de Alegere</span>
-          <p className="ed-hero__body">
-            În 15 minute în showroom filtrăm 80% din opțiuni,
-            potrivim designul cu arhitectura ta și validăm tehnic
-            fiecare detaliu — fără să pierzi timp cu cataloage inutile.
+        <div className="hero-right-col">
+          <div className="hero-eyebrow">Consultanță gratuită · 15 min</div>
+          <p className="hero-sub">
+            Renovezi în nordul Bucureștiului și ușile sunt una din ultimele decizii.{' '}
+            <strong>Filtrăm pentru tine 80% din opțiuni</strong> și rămânem cu 2–3 potrivite
+            pentru proiectul tău. Pleci din showroom cu claritate completă.
           </p>
-          <div className="ed-hero__ctas">
-            <a href="#contact" className="ed-btn ed-btn--primary">
-              Programează consultația gratuită
-            </a>
-            <a href="#catalog" className="ed-btn ed-btn--ghost">
-              Explorează colecția
-            </a>
+          <div className="hero-actions">
+            <a href="#contact" className="btn-cta">Programează consultația gratuită</a>
+            <a href="#catalog" className="btn-cta-secondary">Descoperă colecțiile <span>→</span></a>
           </div>
+          <div className="hero-fineprint">Fără obligații · Showroom Otopeni · 0728 959 652</div>
         </div>
       </div>
 
-      {/* Stats bar */}
-      <div className="ed-stats-bar">
-        {statsBarItems.map((stat) => (
-          <div key={stat.label} className="ed-stats-bar__item">
-            <span className="ed-stats-bar__num">{stat.num}</span>
-            <span className="ed-stats-bar__label">{stat.label}</span>
-          </div>
-        ))}
+      <div className="hero-stats">
+        <div className="hero-stat">
+          <div className="hero-stat-val"><em>20+</em></div>
+          <div className="hero-stat-label">Ani de experiență cu uși germane premium</div>
+        </div>
+        <div className="hero-stat">
+          <div className="hero-stat-val">500<em>+</em></div>
+          <div className="hero-stat-label">Proiecte finalizate în București și Ilfov</div>
+        </div>
+        <div className="hero-stat">
+          <div className="hero-stat-val">4<em>.</em>9</div>
+          <div className="hero-stat-label">Rating Google din 127 recenzii reale</div>
+        </div>
+        <div className="hero-stat">
+          <div className="hero-stat-val">6</div>
+          <div className="hero-stat-label">Producători germani și europeni reprezentați</div>
+        </div>
       </div>
     </section>
   );

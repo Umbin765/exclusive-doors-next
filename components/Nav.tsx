@@ -8,63 +8,51 @@ export default function Nav() {
 
   return (
     <>
-      <header className="ed-nav">
-        <div className="ed-nav__inner">
-          {/* Logo */}
-          <a href="/" className="ed-nav__logo">
-            <img src="/logo.png" alt="Exclusive Doors" />
-          </a>
+      <nav className="ref-nav">
+        <a href="/" className="nav-logo">
+          <img src="/logo.png" alt="Exclusive Doors" className="nav-logo-img" />
+        </a>
 
-          {/* Desktop nav links */}
-          <nav className="ed-nav__links">
-            {Object.entries(megaMenus).map(([key, menu]) => (
-              <a key={key} href={menu.href} className="ed-nav__link">
-                {menu.label}
-              </a>
-            ))}
-            <a href="/portofoliu" className="ed-nav__link">Portofoliu</a>
-            <a href="#contact" className="ed-nav__link">Contact</a>
-          </nav>
-
-          {/* Right: phone + CTA pill + burger */}
-          <div className="ed-nav__right">
-            <a href="tel:0728959652" className="ed-nav__phone">0728 959 652</a>
-            <a href="#contact" className="ed-nav__cta">Programează</a>
-            <button
-              className="ed-nav__burger"
-              onClick={() => setMobileOpen(true)}
-              aria-label="Deschide meniu"
-            >
-              <span /><span /><span />
-            </button>
-          </div>
+        <div className="nav-links">
+          {Object.entries(megaMenus).map(([key, menu]) => (
+            <a key={key} href={menu.href}>{menu.label}</a>
+          ))}
+          <a href="/portofoliu">Proiecte</a>
+          <a href="#contact">Showroom</a>
         </div>
-      </header>
 
-      {/* Mobile overlay */}
+        <div className="nav-right">
+          <a href="tel:0728959652" className="nav-phone">0728 959 652</a>
+          <a href="#contact" className="nav-cta">Programează</a>
+          <button
+            className="nav-burger"
+            onClick={() => setMobileOpen(true)}
+            aria-label="Deschide meniu"
+          >
+            <span /><span /><span />
+          </button>
+        </div>
+      </nav>
+
       {mobileOpen && (
-        <div className="ed-mobile-overlay" onClick={() => setMobileOpen(false)}>
-          <div className="ed-mobile-drawer" onClick={(e) => e.stopPropagation()}>
-            <div className="ed-mobile-drawer__head">
+        <div className="mobile-overlay" onClick={() => setMobileOpen(false)}>
+          <div className="mobile-drawer" onClick={(e) => e.stopPropagation()}>
+            <div className="mobile-drawer__head">
               <a href="/" onClick={() => setMobileOpen(false)}>
-                <img src="/logo.png" alt="Exclusive Doors" />
+                <img src="/logo.png" alt="Exclusive Doors" style={{ height: '28px', width: 'auto' }} />
               </a>
               <button onClick={() => setMobileOpen(false)} aria-label="Închide">✕</button>
             </div>
-
-            <div className="ed-mobile-drawer__links">
+            <div className="mobile-drawer__links">
               {Object.entries(megaMenus).map(([key, menu]) => (
-                <a key={key} href={menu.href} onClick={() => setMobileOpen(false)}>
-                  {menu.label}
-                </a>
+                <a key={key} href={menu.href} onClick={() => setMobileOpen(false)}>{menu.label}</a>
               ))}
-              <a href="/portofoliu" onClick={() => setMobileOpen(false)}>Portofoliu</a>
-              <a href="#contact" onClick={() => setMobileOpen(false)}>Contact</a>
+              <a href="/portofoliu" onClick={() => setMobileOpen(false)}>Proiecte</a>
+              <a href="#contact" onClick={() => setMobileOpen(false)}>Showroom</a>
             </div>
-
-            <div className="ed-mobile-drawer__foot">
-              <a href="tel:0728959652" className="ed-mobile-tel">0728 959 652</a>
-              <a href="#contact" className="ed-nav__cta" onClick={() => setMobileOpen(false)}>
+            <div className="mobile-drawer__foot">
+              <a href="tel:0728959652" className="mobile-tel">0728 959 652</a>
+              <a href="#contact" className="nav-cta" style={{ textAlign: 'center', borderRadius: '100px' }} onClick={() => setMobileOpen(false)}>
                 Programează consultația
               </a>
             </div>

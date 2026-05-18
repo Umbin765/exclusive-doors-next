@@ -1,80 +1,46 @@
-const socialLinks: Record<string, string> = {
-  Facebook: 'https://www.facebook.com/exclusivedoors.ro/',
-  Instagram: 'https://www.instagram.com/exclusivedoors.ro/',
-  'Google Maps': 'https://maps.google.com/?cid=17163938270079558934',
-};
-
-const cols = [
-  {
-    head: 'Produse',
-    links: [
-      { label: 'Uși Interior', href: '/products/interior' },
-      { label: 'Uși Exterior', href: '/products/exterior' },
-      { label: 'Uși Glisante', href: '/products/glisante' },
-      { label: 'Uși Pivotante', href: '/products/pivotante' },
-    ],
-  },
-  {
-    head: 'Branduri',
-    links: [
-      { label: 'Grauthoff', href: '/products/interior' },
-      { label: 'Groke', href: '/products/exterior' },
-      { label: 'Superlock', href: '/products/exterior' },
-      { label: 'Hörmann', href: '/products/exterior' },
-    ],
-  },
-  {
-    head: 'Companie',
-    links: [
-      { label: 'Portofoliu', href: '/portofoliu' },
-      { label: 'Contact', href: '#contact' },
-      { label: 'Facebook', href: socialLinks['Facebook'] },
-      { label: 'Instagram', href: socialLinks['Instagram'] },
-    ],
-  },
-];
-
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="ed-footer">
-      <div className="ed-footer__inner">
-        <div className="ed-footer__grid">
-          {/* Brand column */}
-          <div className="ed-footer__brand">
-            <img src="/logo.png" alt="Exclusive Doors" />
-            <p className="ed-footer__tagline">
-              Importator unic Grauthoff în România.<br />
-              Showroom Otopeni, județul Ilfov.
-            </p>
-          </div>
-
-          {/* Link columns */}
-          {cols.map((col) => (
-            <div key={col.head}>
-              <span className="ed-footer__col-head">{col.head}</span>
-              <ul className="ed-footer__col-links">
-                {col.links.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      target={link.href.startsWith('http') ? '_blank' : undefined}
-                      rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+    <footer className="ref-footer">
+      <div className="footer-top">
+        <div>
+          <div className="footer-brand">Exclusive<em>.</em>Doors</div>
+          <p className="footer-tagline">
+            Importator unic de uși germane premium. Showroom în Otopeni, Ilfov.
+            Consultanță gratuită pentru proprietari și arhitecți.
+          </p>
         </div>
 
-        <div className="ed-footer__bottom">
-          <span>© {year} Exclusive Doors. Toate drepturile rezervate.</span>
-          <span>Airport Plaza, Drumul Gării Odăi 1A (DN1), Otopeni, Ilfov</span>
+        <div className="footer-col">
+          <span className="footer-col-title">Produse</span>
+          <a href="/products/interior">Uși Interior</a>
+          <a href="/products/exterior">Uși Exterior</a>
+          <a href="/products/glisante">Sticlă Securizată</a>
+          <a href="/products/pivotante">Tehnice &amp; Garaj</a>
         </div>
+
+        <div className="footer-col">
+          <span className="footer-col-title">Servicii</span>
+          <a href="#contact">Consultanță gratuită</a>
+          <a href="#contact">Măsurători</a>
+          <a href="#contact">Montaj profesional</a>
+          <a href="#contact">Parteneri arhitecți</a>
+        </div>
+
+        <div className="footer-col">
+          <span className="footer-col-title">Companie</span>
+          <a href="#contact">Showroom Otopeni</a>
+          <a href="/portofoliu">Proiecte realizate</a>
+          <a href="https://www.facebook.com/exclusivedoors.ro/" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a href="https://www.instagram.com/exclusivedoors.ro/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+
+      <div className="footer-bottom">
+        <div>© {year} Exclusive Doors Style SRL · Drumul Gării Odăi 1A, Otopeni, Ilfov</div>
+        <div>0728 959 652 · office@exclusivedoors.ro</div>
       </div>
     </footer>
   );
