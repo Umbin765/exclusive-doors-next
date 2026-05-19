@@ -25,11 +25,6 @@ const problems = [
 export default function ProblemSection() {
   return (
     <section className="problem-section">
-      <div className="section-meta">
-        <span><span className="section-meta-num">№ 02</span> · Realitatea renovărilor</span>
-        <span>Costul greșelii</span>
-      </div>
-
       <div className="problem-grid">
         <div>
           <h2 className="problem-h2">
