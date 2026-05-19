@@ -271,7 +271,7 @@ body {
 }
 .hero-h1 {
   font-family: var(--display);
-  font-size: 88px;
+  font-size: 100px;
   font-weight: 400;
   line-height: .98;
   letter-spacing: -.02em;
@@ -389,7 +389,7 @@ body {
 }
 .hero-stat-val {
   font-family: var(--display);
-  font-size: 42px;
+  font-size: 52px;
   font-weight: 500;
   color: var(--ink);
   line-height: 1;
@@ -1355,7 +1355,7 @@ body {
   .voices-section, .showroom-section, .partners-strip,
   .final-cta { padding-left: 32px; padding-right: 32px; }
   .ref-footer { padding: 48px 32px 24px; }
-  .hero-h1 { font-size: 72px; }
+  .hero-h1 { font-size: 80px; }
   .final-h2 { font-size: 72px; }
 }
 
@@ -1368,7 +1368,7 @@ body {
   .hero { padding: 48px 24px 64px; }
   .hero-meta { display: none; }
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-  .hero-h1 { font-size: 56px; }
+  .hero-h1 { font-size: 64px; }
   .hero-stats { grid-template-columns: repeat(2, 1fr); }
 
   .problem-section { padding: 72px 24px; }

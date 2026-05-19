@@ -2,6 +2,10 @@ export default function Hero() {
   return (
     <section className="hero">
       <div className="hero-content">
+      <div className="hero-meta">
+        <div><span className="hero-meta-num">№ 01</span> · Decizia care contează</div>
+        <div>Showroom Otopeni · Mai 2026</div>
+      </div>
       <div className="hero-grid">
         <div>
           <h1 className="hero-h1">
