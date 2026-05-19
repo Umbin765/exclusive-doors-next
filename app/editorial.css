@@ -43,7 +43,7 @@ body {
 }
 .ref-nav {
   background: var(--paper);
-  padding: 35px 56px;
+  padding: 27px 56px;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
@@ -236,14 +236,14 @@ body {
 
 /* ── S1: HERO EDITORIAL ───────────────────── */
 .hero {
-  padding: 80px 56px 0;
+  padding: 64px 56px 0;
   position: relative;
   border-bottom: 1px solid var(--line);
-  min-height: 100vh;
+  min-height: calc(100svh - 85px);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 56px;
+  gap: 48px;
 }
 .hero-content {
   width: 100%;
@@ -271,7 +271,7 @@ body {
 }
 .hero-h1 {
   font-family: var(--display);
-  font-size: clamp(44px, 7vw, 112px);
+  font-size: clamp(52px, 8.5vw, 128px);
   font-weight: 400;
   line-height: .98;
   letter-spacing: -.02em;
@@ -315,7 +315,7 @@ body {
   background: var(--orange);
 }
 .hero-sub {
-  font-size: clamp(15px, 1.2vw, 18px);
+  font-size: clamp(16px, 1.4vw, 20px);
   color: var(--ink2);
   line-height: 1.55;
   margin-bottom: 32px;
