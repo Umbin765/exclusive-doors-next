@@ -52,7 +52,8 @@ body {
 
 /* ── MEGA MENU ───────────────────────────── */
 .mega-menu {
-  position: absolute; top: 100%; left: 120px; right: 120px;
+  position: absolute; top: 100%; left: 56px; right: auto;
+  width: 860px;
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: 8px;
