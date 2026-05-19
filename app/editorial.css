@@ -239,7 +239,7 @@ body {
   padding: 0 56px;
   position: relative;
   border-bottom: 1px solid var(--line);
-  height: calc(100svh - 80px);
+  height: calc(100dvh - 80px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -410,7 +410,7 @@ body {
   color: var(--paper);
   padding: 100px 56px;
   position: relative;
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -507,7 +507,7 @@ body {
 .config-section {
   background: var(--paper);
   padding: 100px 56px;
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -729,7 +729,7 @@ body {
   background: var(--paper);
   padding: 100px 56px;
   border-top: 1px solid var(--line);
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -891,7 +891,7 @@ body {
   background: var(--white);
   padding: 100px 56px;
   border-top: 1px solid var(--line);
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -998,7 +998,7 @@ body {
   padding: 100px 56px;
   position: relative;
   overflow: hidden;
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1157,7 +1157,7 @@ body {
   background: var(--paper);
   padding: 56px;
   border-top: 1px solid var(--line);
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1210,7 +1210,7 @@ body {
   text-align: center;
   border-top: 1px solid var(--line);
   position: relative;
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1421,7 +1421,7 @@ body {
 .story-visual-col {
   position: sticky;
   top: 0;
-  height: 100vh;
+  height: 100dvh;
   background: var(--ink2);
   display: flex; align-items: center; justify-content: center;
   flex-direction: column; gap: 20px;
@@ -1474,7 +1474,7 @@ body {
 }
 .story-content-col { padding: 0; }
 .story-chapter {
-  min-height: 100vh;
+  min-height: 100dvh;
   padding: 80px 56px;
   display: flex; flex-direction: column; justify-content: center;
   border-bottom: 1px solid #2a2826;
