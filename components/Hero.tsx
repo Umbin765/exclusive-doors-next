@@ -12,6 +12,13 @@ export default function Hero() {
           </h1>
         </div>
 
+        <div className="hero-photo">
+          <img
+            src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=900&h=1100&fit=crop&q=85"
+            alt="Uși premium interior"
+          />
+        </div>
+
         <div className="hero-right-col">
           <div className="hero-eyebrow">Consultanță gratuită · 15 min</div>
           <p className="hero-sub">
