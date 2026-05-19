@@ -52,8 +52,7 @@ body {
 
 /* ── MEGA MENU ───────────────────────────── */
 .mega-menu {
-  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
-  width: 920px;
+  position: absolute; top: 100%; left: 56px; right: 56px;
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -62,8 +61,8 @@ body {
   overflow: hidden;
 }
 @keyframes megaFadeIn {
-  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
-  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 .mega-inner {
   display: grid;
@@ -104,7 +103,7 @@ body {
 }
 .mega-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(14,13,12,.09); }
 .mega-card-img {
-  height: 160px; overflow: hidden; position: relative;
+  height: 190px; overflow: hidden; position: relative;
   background: var(--paper2);
 }
 .mega-card-img img { width: 100%; height: 100%; object-fit: cover; }
