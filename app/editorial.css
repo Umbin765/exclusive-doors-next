@@ -43,7 +43,7 @@ body {
 }
 .ref-nav {
   background: var(--paper);
-  padding: 18px 56px;
+  padding: 35px 56px;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
