@@ -885,6 +885,10 @@ body {
   padding: 100px 56px;
   position: relative;
   overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .showroom-decoration {
   position: absolute;
@@ -905,6 +909,7 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: center;
+  flex: 1;
 }
 .showroom-left h2 {
   font-family: var(--display);
