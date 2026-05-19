@@ -37,6 +37,10 @@ body {
 }
 
 /* ── NAV ─────────────────────────────────── */
+.nav-wrapper {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--paper);
+}
 .ref-nav {
   background: var(--paper);
   padding: 24px 56px;
@@ -44,8 +48,75 @@ body {
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   border-bottom: 1px solid var(--line);
-  position: sticky; top: 0; z-index: 100;
 }
+
+/* ── MEGA MENU ───────────────────────────── */
+.mega-menu {
+  position: absolute; top: 100%; left: 0; right: 0;
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 24px 48px rgba(14,13,12,.14);
+  animation: megaFadeIn .18s ease;
+}
+@keyframes megaFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.mega-inner {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+}
+.mega-cats {
+  background: var(--paper);
+  padding: 28px 28px;
+  border-right: 1px solid var(--line);
+}
+.mega-section-label {
+  font-family: var(--mono); font-size: 9px;
+  color: var(--gray-lt); letter-spacing: .18em;
+  text-transform: uppercase; margin-bottom: 14px;
+}
+.mega-cat-link {
+  display: block; font-size: 14px; font-weight: 500;
+  color: var(--ink); text-decoration: none;
+  padding: 7px 0; border-bottom: 1px solid transparent;
+  transition: color .15s;
+}
+.mega-cat-link:hover { color: var(--orange); }
+.mega-view-all {
+  display: block; font-family: var(--mono); font-size: 11px;
+  color: var(--orange); text-decoration: none;
+  margin-top: 20px; font-weight: 500; letter-spacing: .04em;
+}
+.mega-cards-area { padding: 28px 36px; }
+.mega-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+}
+.mega-card {
+  text-decoration: none; color: inherit;
+  border-radius: 4px; overflow: hidden;
+  border: 1px solid var(--line);
+  transition: transform .2s, box-shadow .2s;
+  display: block;
+}
+.mega-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(14,13,12,.09); }
+.mega-card-img {
+  height: 140px; overflow: hidden; position: relative;
+  background: var(--paper2);
+}
+.mega-card-img img { width: 100%; height: 100%; object-fit: cover; }
+.mega-card-badge {
+  position: absolute; top: 8px; left: 8px;
+  background: var(--orange); color: #fff;
+  font-family: var(--mono); font-size: 10px; font-weight: 500;
+  letter-spacing: .06em; padding: 3px 8px; border-radius: 2px;
+}
+.mega-card-info { padding: 11px 14px; background: var(--white); }
+.mega-card-title { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+.mega-card-desc { font-size: 11px; color: var(--gray); line-height: 1.4; }
+
+/* nav link active state while mega is open */
+.nav-links a.mega-active { color: var(--orange); }
 .nav-logo {
   font-family: var(--display);
   font-size: 22px; font-weight: 500;
