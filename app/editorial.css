@@ -610,38 +610,50 @@ body {
   min-height: 360px;
 }
 .config-illustration {
-  background: var(--paper2);
-  border-radius: 6px;
-  aspect-ratio: 4/3;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  position: relative;
-  overflow: hidden;
+  gap: 8px;
 }
-.config-illustration::before {
-  content: '';
+.config-illust-main {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+.config-illust-main img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.config-illust-overlay {
   position: absolute; inset: 0;
-  background: radial-gradient(circle at 30% 30%, rgba(246,100,2,.04), transparent 60%);
+  background: linear-gradient(to top, rgba(26,24,22,.65) 0%, transparent 50%);
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px 18px;
+  gap: 4px;
 }
 .config-illust-num {
   font-family: var(--display);
-  font-size: 140px;
+  font-size: 52px;
   font-weight: 500;
-  color: var(--orange);
+  color: rgba(255,255,255,.9);
   line-height: 1;
   font-style: italic;
-  opacity: .9;
 }
 .config-illust-label {
   font-family: var(--mono);
-  font-size: 11px;
-  color: var(--ink-light);
-  text-align: center;
+  font-size: 10px;
+  color: rgba(255,255,255,.65);
   letter-spacing: .1em;
   text-transform: uppercase;
+}
+.config-illust-sub {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.config-illust-sub img {
+  width: 100%; aspect-ratio: 1;
+  object-fit: cover; border-radius: 6px; display: block;
 }
 .config-content h3 {
   font-family: var(--display);

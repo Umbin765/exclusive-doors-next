@@ -9,6 +9,11 @@ const steps = [
     desc: 'Reducem 100 → 3 opțiuni',
     num: '01',
     illustLabel: 'Filtrare personalizată',
+    imgs: [
+      'https://exclusivedoors.ro/wp-content/uploads/2024/09/Untitled-design-5-700x700.jpg',
+      'https://exclusivedoors.ro/wp-content/uploads/2021/12/HGM-WEISS-ART-TYP-101-409x546.jpg',
+      'https://exclusivedoors.ro/wp-content/uploads/2021/10/ASTRA-LINEA-ART-cu-balamale-aparente.jpg',
+    ],
     h3: 'Filtrăm 80% din opțiuni pentru tine.',
     body: 'Începem cu o conversație de 5 minute despre proiectul tău: stilul interior, tipul renovării, bugetul și nivelul de izolație necesar. Din sute de modele rămân 2–3 cu adevărat relevante.',
     features: [
@@ -23,6 +28,11 @@ const steps = [
     desc: 'Coerență cu designul',
     num: '02',
     illustLabel: 'Potrivire cu spațiul',
+    imgs: [
+      'https://exclusivedoors.ro/wp-content/uploads/2021/12/HGM-GLATT-CULISANTA-1-409x546.jpg',
+      'https://exclusivedoors.ro/wp-content/uploads/2021/11/ALINEA-1.jpg',
+      'https://exclusivedoors.ro/wp-content/uploads/2020/12/SL-HI-TECH-8013.jpg',
+    ],
     h3: 'Potrivim ușa cu designul tău interior.',
     body: 'Comparăm modele fizice din showroom cu planurile tale. Dimensiuni, finisaje, sisteme de deschidere — totul validat vizual, nu din imagini de catalog.',
     features: [
@@ -37,6 +47,11 @@ const steps = [
     desc: 'Tehnic & montaj profesional',
     num: '03',
     illustLabel: 'Validare tehnică',
+    imgs: [
+      'https://exclusivedoors.ro/wp-content/uploads/2020/12/rupere_termica-700x700.jpg',
+      'https://exclusivedoors.ro/wp-content/uploads/2020/12/metalice_antiefractie_1-700x700.jpg',
+      'https://exclusivedoors.ro/wp-content/uploads/2020/12/SL-HI-TECH-8010.jpg',
+    ],
     h3: 'Validăm tehnic fiecare detaliu.',
     body: 'Verificăm izolarea fonică, coeficientul termic, clasa de efracție și compatibilitatea cu golul existent. Zero surprize la montaj.',
     features: [
@@ -79,8 +94,17 @@ export default function ConfiguratorSection() {
 
         <div className="config-body">
           <div className="config-illustration">
-            <div className="config-illust-num">{step.num}</div>
-            <div className="config-illust-label">{step.illustLabel}</div>
+            <div className="config-illust-main">
+              <img src={step.imgs[0]} alt={step.illustLabel} />
+              <div className="config-illust-overlay">
+                <span className="config-illust-num">{step.num}</span>
+                <span className="config-illust-label">{step.illustLabel}</span>
+              </div>
+            </div>
+            <div className="config-illust-sub">
+              <img src={step.imgs[1]} alt={step.illustLabel} />
+              <img src={step.imgs[2]} alt={step.illustLabel} />
+            </div>
           </div>
 
           <div className="config-content">
