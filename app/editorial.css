@@ -271,7 +271,7 @@ body {
 }
 .hero-h1 {
   font-family: var(--display);
-  font-size: 100px;
+  font-size: clamp(44px, 7vw, 112px);
   font-weight: 400;
   line-height: .98;
   letter-spacing: -.02em;
@@ -315,7 +315,7 @@ body {
   background: var(--orange);
 }
 .hero-sub {
-  font-size: 17px;
+  font-size: clamp(15px, 1.2vw, 18px);
   color: var(--ink2);
   line-height: 1.55;
   margin-bottom: 32px;
@@ -389,7 +389,7 @@ body {
 }
 .hero-stat-val {
   font-family: var(--display);
-  font-size: 52px;
+  font-size: clamp(32px, 3.6vw, 56px);
   font-weight: 500;
   color: var(--ink);
   line-height: 1;
@@ -1355,7 +1355,6 @@ body {
   .voices-section, .showroom-section, .partners-strip,
   .final-cta { padding-left: 32px; padding-right: 32px; }
   .ref-footer { padding: 48px 32px 24px; }
-  .hero-h1 { font-size: 80px; }
   .final-h2 { font-size: 72px; }
 }
 
@@ -1368,7 +1367,6 @@ body {
   .hero { padding: 48px 24px 64px; }
   .hero-meta { display: none; }
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-  .hero-h1 { font-size: 64px; }
   .hero-stats { grid-template-columns: repeat(2, 1fr); }
 
   .problem-section { padding: 72px 24px; }
@@ -1405,7 +1403,6 @@ body {
 }
 
 @media (max-width: 600px) {
-  .hero-h1 { font-size: 44px; }
   .hero-stats { grid-template-columns: repeat(2, 1fr); }
   .catalog-grid { grid-template-columns: 1fr; }
   .final-h2 { font-size: 44px; }
