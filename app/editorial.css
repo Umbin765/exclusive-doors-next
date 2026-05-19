@@ -52,7 +52,8 @@ body {
 
 /* ── MEGA MENU ───────────────────────────── */
 .mega-menu {
-  position: absolute; top: 100%; left: 56px; right: auto;
+  position: absolute; top: 100%; left: 50%;
+  transform: translateX(-50%);
   width: 860px;
   background: var(--white);
   border: 1px solid var(--line);
@@ -62,8 +63,8 @@ body {
   overflow: hidden;
 }
 @keyframes megaFadeIn {
-  from { opacity: 0; transform: translateY(-6px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 .mega-inner {
   display: grid;
