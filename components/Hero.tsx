@@ -1,6 +1,7 @@
 export default function Hero() {
   return (
     <section className="hero">
+      <div className="hero-content">
       <div className="hero-grid">
         <div>
           <h1 className="hero-h1">
@@ -24,6 +25,7 @@ export default function Hero() {
           </div>
           <div className="hero-fineprint">Fără obligații · Showroom Otopeni · 0728 959 652</div>
         </div>
+      </div>
       </div>
 
       <div className="hero-stats">
