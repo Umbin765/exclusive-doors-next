@@ -244,6 +244,7 @@ body {
   display: flex;
   align-items: center;
   padding: 80px 0;
+  width: 100%;
 }
 .hero-meta {
   display: flex;
@@ -260,6 +261,7 @@ body {
 }
 .hero-meta-num { font-weight: 500; color: var(--ink); }
 .hero-grid {
+  width: 100%;
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   gap: 80px;
